@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\HLS.Paygate.Shared\HLS.Paygate.Shared.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Events\SimBalanceMessage.cs" />
+        <Compile Remove="Events\SimCommandResponsed.cs" />
+        <Compile Remove="Events\SimCommandSent.cs" />
+        <Compile Remove="Events\SimControlCommandRejected.cs" />
+        <Compile Remove="Events\SimControlCommandResult.cs" />
+        <Compile Remove="Events\SimDepositCommandRejected.cs" />
+        <Compile Remove="Events\SimDepositCommandSubmitted.cs" />
+        <Compile Remove="Events\SimVinaDone.cs" />
+        <Compile Remove="Events\SimVinaInit.cs" />
+        <Compile Remove="Events\SimVinaProcessing.cs" />
+        <Compile Remove="Sims.cs" />
+        <Compile Remove="SimControls.cs" />
+        <Compile Remove="Automation\**" />
+        <Compile Remove="Commands\CardConfirmCommand.cs" />
+        <Compile Remove="Commands\CardCallBackCommand.cs" />
+        <Compile Remove="Commands\MappingUssdVinaphoneCommand.cs" />
+        <Compile Remove="Commands\SimControlCommand.cs" />
+        <Compile Remove="Commands\CollectDiscountCommand.cs" />
+        <Compile Remove="Dtos\SimDto.cs" />
+        <Compile Remove="Dtos\LevelDiscountRecordDto.cs" />
+        <Compile Remove="Dtos\CardRequestDto.cs" />
+        <Compile Remove="Enums\CardConst.cs" />
+        <Compile Remove="Enums\SimConst.cs" />
+        <Compile Remove="Events\ITopupItemRequest.cs" />
+        <Compile Remove="Commands\CardSaleRequestCommand.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="Automation\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Automation\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Orleans.Transactions" Version="7.2.1" />
+    </ItemGroup>
+</Project>

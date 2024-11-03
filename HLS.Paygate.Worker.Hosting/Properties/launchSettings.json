@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "HLS.Paygate.Worker.Hosting": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+2021-05-30 00:11:10.895 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-05-30 00:11:10.980 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-05-30 00:11:10.980 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-05-30 00:11:10.981 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-05-30 00:11:11.046 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:15568:63fdb1df successfully announced in 25.9762 ms
+2021-05-30 00:11:11.051 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:15568:63fdb1df is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-05-30 00:11:11.080 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 3 servers were removed due to timeout
+2021-05-30 00:11:11.204 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:15568:63fdb1df all the dispatchers started
+2021-05-30 00:11:11.494 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-05-30 00:11:11.897 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] Begin_AutoCheckPayBill
+2021-05-30 00:11:11.903 +07:00 [WRN] [Hangfire.AutomaticRetryAttribute.] Failed to process the job '60b275af0f036453318004c1': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:37.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at HLS.Paygate.Common.Domain.Services.CommonAppService..ctor(IConfiguration configuration, ICommonMongoRepository reportMongoRepository, ILogger`1 logger, IDateTimeHelper dateHepper, INotificationSevice notification, IBotMessageService bot, IEmailSender emailSender) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\CommonAppService.cs:line 50
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetServiceOrCreateInstance(IServiceProvider provider, Type type)
+   at Hangfire.AspNetCore.AspNetCoreJobActivatorScope.Resolve(Type type)
+   at Hangfire.Server.CoreBackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_0.<PerformJobWithFilters>b__0()
+   at Hangfire.Server.BackgroundJobPerformer.InvokePerformFilter(IServerFilter filter, PerformingContext preContext, Func`1 continuation)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_1.<PerformJobWithFilters>b__2()
+   at Hangfire.Server.BackgroundJobPerformer.PerformJobWithFilters(PerformContext context, IEnumerable`1 filters)
+   at Hangfire.Server.BackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.Worker.PerformJob(BackgroundProcessContext context, IStorageConnection connection, String jobId)
+2021-05-30 00:11:11.980 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] WarningBalance)
+2021-05-30 00:11:11.903 +07:00 [WRN] [Hangfire.AutomaticRetryAttribute.] Failed to process the job '60b11aeae4600af3315bff5e': an exception occurred. Retry attempt 9 of 10 will be performed in 01:11:40.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at HLS.Paygate.Common.Domain.Services.CommonAppService..ctor(IConfiguration configuration, ICommonMongoRepository reportMongoRepository, ILogger`1 logger, IDateTimeHelper dateHepper, INotificationSevice notification, IBotMessageService bot, IEmailSender emailSender) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\CommonAppService.cs:line 50
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetServiceOrCreateInstance(IServiceProvider provider, Type type)
+   at Hangfire.AspNetCore.AspNetCoreJobActivatorScope.Resolve(Type type)
+   at Hangfire.Server.CoreBackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_0.<PerformJobWithFilters>b__0()
+   at Hangfire.Server.BackgroundJobPerformer.InvokePerformFilter(IServerFilter filter, PerformingContext preContext, Func`1 continuation)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_1.<PerformJobWithFilters>b__2()
+   at Hangfire.Server.BackgroundJobPerformer.PerformJobWithFilters(PerformContext context, IEnumerable`1 filters)
+   at Hangfire.Server.BackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.Worker.PerformJob(BackgroundProcessContext context, IStorageConnection connection, String jobId)
+2021-05-30 00:11:12.217 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] WarningBalance_Error:System.NullReferenceException: Object reference not set to an instance of an object.
+   at ServiceStack.InProcessServiceGateway.ExecAsync[TResponse](Object request) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack\InProcessServiceGateway.cs:line 116
+   at ServiceStack.InProcessServiceGateway.SendAsync[TResponse](Object requestDto, CancellationToken token) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack\InProcessServiceGateway.cs:line 235
+   at ServiceStack.InProcessServiceGateway.SendAsync[TResponse](Object requestDto, CancellationToken token) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack\InProcessServiceGateway.cs:line 241
+   at HLS.Paygate.Common.Domain.Services.CommonAppService.WarningBalance() in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\CommonAppService.cs:line 293
+2021-05-30 00:11:12.381 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] ProcessQueryBill:{"CreatedDate":"\/Date(1621593834103+0700)\/","LastQueryDate":"\/Date(1622261750212+0700)\/","Description":"{\"result\":{\"__type\":\"HLS.Paygate.Shared.MessageResponseBase, HLS.Paygate.Shared\",\"responseCode\":\"01\",\"responseMessage\":\"Giao dịch thành công\",\"transCodeProvider\":\"NT21052100000018\",\"providerCode\":\"ZOTA_TEST\"},\"success\":true,\"error\":{\"code\":0,\"message\":\"Thanh toán cho hóa đơn 0969207309 thành công\"}}","AccountCode":"NT937204","ProductCode":"VTE_BILL","CategoryCode":"MOBILE_BILL","ServiceCode":"PAY_BILL","ProductName":"Viettel trả sau","LastTransCode":"P2105210229773","InvoiceInfo":"{\"FullName\":\"\",\"CustomerReference\":\"0969207309\",\"Address\":\"\",\"Period\":\"\",\"ProductName\":\"Viettel trả sau\",\"ProductCode\":\"VTE_BILL\"}","PaymentAmount":0,"InvoiceCode":"0969207309","Status":"Paid","IsQueryBill":true,"IsLastSuccess":true,"IsInvoice":false,"RetryCount":34,"ResponseQuery":"{\"responseStatus\":{\"errorCode\":\"00\",\"message\":\"Dịch vụ chưa được thiết lập. Vui lòng liên hệ CSKH để được hỗ trợ\"}}","Id":"7a956eb1e50f4732ba45b6ee1ea48ad1","AddedAtUtc":"\/Date(1621593834096)\/","Version":0}
+2021-05-30 00:11:12.774 +07:00 [ERR] [Hangfire.AutomaticRetryAttribute.] Failed to process the job '60b0fb921f7f2e40cd3ac5f7': an exception occurred.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at ServiceStack.InProcessServiceGateway.ExecAsync[TResponse](Object request) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack\InProcessServiceGateway.cs:line 116
+   at ServiceStack.InProcessServiceGateway.SendAsync[TResponse](Object requestDto, CancellationToken token) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack\InProcessServiceGateway.cs:line 235
+   at ServiceStack.InProcessServiceGateway.SendAsync[TResponse](Object requestDto, CancellationToken token) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack\InProcessServiceGateway.cs:line 241
+   at HLS.Paygate.Common.Domain.Services.CommonAppService.AutoCheckPayBill() in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\CommonAppService.cs:line 209
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+2021-05-30 00:11:13.193 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-05-30 00:11:13.264 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-05-30 00:11:13.282 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-05-30 00:11:13.290 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-05-30 00:11:13.290 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-05-30 00:11:13.291 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-05-30 00:11:13.291 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-05-30 00:11:13.294 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-05-30 00:11:13.294 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-05-30 00:11:13.302 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-05-30 00:11:13.302 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-05-30 00:11:13.316 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:15568:d58cba48 successfully announced in 14.281 ms
+2021-05-30 00:11:13.316 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:15568:42a345ca successfully announced in 9.6018 ms
+2021-05-30 00:11:13.317 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:15568:d58cba48 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-05-30 00:11:13.318 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:15568:42a345ca is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-05-30 00:11:13.462 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:15568:42a345ca all the dispatchers started
+2021-05-30 00:11:13.471 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:15568:d58cba48 all the dispatchers started
+2021-05-30 00:11:13.541 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-05-30 00:11:13.542 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-05-30 00:11:13.543 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-05-30 00:11:13.543 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-05-30 00:11:17.158 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/ - -
+2021-05-30 00:11:17.168 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/ - - - 404 0 - 10.2775ms
+2021-05-30 00:11:24.509 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui - -
+2021-05-30 00:11:24.517 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui - - - 302 0 - 8.1218ms
+2021-05-30 00:11:24.519 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/ - -
+2021-05-30 00:11:24.551 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/ - - - 200 4469 text/html;+charset=utf-8 32.6887ms
+2021-05-30 00:11:24.587 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/screen.css - -
+2021-05-30 00:11:24.587 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/reset.css - -
+2021-05-30 00:11:24.588 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery-1.8.0.min.js - -
+2021-05-30 00:11:24.588 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/object-assign-pollyfill.js - -
+2021-05-30 00:11:24.589 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/typography.css - -
+2021-05-30 00:11:24.596 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/object-assign-pollyfill.js - - - 200 349 text/javascript 7.8534ms
+2021-05-30 00:11:24.596 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/reset.css - - - 200 773 text/css 9.3465ms
+2021-05-30 00:11:24.596 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/typography.css - - - 200 0 text/css 7.0055ms
+2021-05-30 00:11:24.597 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.slideto.min.js - -
+2021-05-30 00:11:24.597 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/screen.css - - - 200 43644 text/css 10.1382ms
+2021-05-30 00:11:24.598 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.slideto.min.js - - - 200 365 text/javascript 1.3857ms
+2021-05-30 00:11:24.599 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/handlebars-4.0.5.js - -
+2021-05-30 00:11:24.599 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.ba-bbq.min.js - -
+2021-05-30 00:11:24.599 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.wiggle.min.js - -
+2021-05-30 00:11:24.605 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.ba-bbq.min.js - - - 200 3518 text/javascript 6.1615ms
+2021-05-30 00:11:24.606 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/lodash.min.js - -
+2021-05-30 00:11:24.607 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/backbone-min.js - -
+2021-05-30 00:11:24.608 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery-1.8.0.min.js - - - 200 92034 text/javascript 20.2749ms
+2021-05-30 00:11:24.610 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/swagger-ui.js - -
+2021-05-30 00:11:24.610 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/backbone-min.js - - - 200 19371 text/javascript 3.2057ms
+2021-05-30 00:11:24.611 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.wiggle.min.js - - - 200 536 text/javascript 12.3573ms
+2021-05-30 00:11:24.611 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/lodash.min.js - - - 200 51895 text/javascript 5.9237ms
+2021-05-30 00:11:24.612 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/highlight.9.1.0.pack.js - -
+2021-05-30 00:11:24.615 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jsoneditor.min.js - -
+2021-05-30 00:11:24.615 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/swagger-oauth.js - -
+2021-05-30 00:11:24.615 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/handlebars-4.0.5.js - - - 200 71506 text/javascript 16.2246ms
+2021-05-30 00:11:24.621 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/highlight.9.1.0.pack_extended.js - -
+2021-05-30 00:11:24.622 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/highlight.9.1.0.pack_extended.js - - - 200 310 text/javascript 0.6796ms
+2021-05-30 00:11:24.622 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/marked.js - -
+2021-05-30 00:11:24.623 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/swagger-oauth.js - - - 200 7042 text/javascript 8.9292ms
+2021-05-30 00:11:24.632 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/highlight.9.1.0.pack.js - - - 200 10962 text/javascript 19.7992ms
+2021-05-30 00:11:24.634 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/marked.js - - - 200 15724 text/javascript 11.2331ms
+2021-05-30 00:11:24.663 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jsoneditor.min.js - - - 200 129839 text/javascript 48.7408ms
+2021-05-30 00:11:24.675 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/images/logo_small.png - -
+2021-05-30 00:11:24.676 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/images/logo_small.png - - - 200 2912 image/png 1.1902ms
+2021-05-30 00:11:24.679 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/print.css - -
+2021-05-30 00:11:24.685 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/print.css - - - 200 41666 text/css 6.0292ms
+2021-05-30 00:11:24.701 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/swagger-ui.js - - - 200 2729821 text/javascript 91.1461ms
+2021-05-30 00:11:24.789 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/openapi - -
+2021-05-30 00:11:24.879 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/openapi - - - 200 - application/json;+charset=utf-8 90.1404ms
+2021-05-30 00:11:35.144 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/images/throbber.gif - -
+2021-05-30 00:11:35.145 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/api/v1/common/notification/get_last?AccountCode=NT951709 - -
+2021-05-30 00:11:35.145 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/images/throbber.gif - - - 200 9257 image/gif 0.9648ms
+2021-05-30 00:11:35.332 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/api/v1/common/notification/get_last?AccountCode=NT951709 - - - 200 - application/json;+charset=utf-8 187.0287ms
+2021-05-30 00:11:57.056 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] Begin_AutoCheckPayBill
+2021-05-30 00:11:57.063 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] ProcessQueryBill:{"createdDate":"\/Date(1621593834103+0700)\/","lastQueryDate":"\/Date(1622261750212+0700)\/","description":"{\"result\":{\"__type\":\"HLS.Paygate.Shared.MessageResponseBase, HLS.Paygate.Shared\",\"responseCode\":\"01\",\"responseMessage\":\"Giao dịch thành công\",\"transCodeProvider\":\"NT21052100000018\",\"providerCode\":\"ZOTA_TEST\"},\"success\":true,\"error\":{\"code\":0,\"message\":\"Thanh toán cho hóa đơn 0969207309 thành công\"}}","accountCode":"NT937204","productCode":"VTE_BILL","categoryCode":"MOBILE_BILL","serviceCode":"PAY_BILL","productName":"Viettel trả sau","lastTransCode":"P2105210229773","invoiceInfo":"{\"FullName\":\"\",\"CustomerReference\":\"0969207309\",\"Address\":\"\",\"Period\":\"\",\"ProductName\":\"Viettel trả sau\",\"ProductCode\":\"VTE_BILL\"}","paymentAmount":0,"invoiceCode":"0969207309","status":"Paid","isQueryBill":true,"isLastSuccess":true,"isInvoice":false,"retryCount":34,"responseQuery":"{\"responseStatus\":{\"errorCode\":\"00\",\"message\":\"Dịch vụ chưa được thiết lập. Vui lòng liên hệ CSKH để được hỗ trợ\"}}","id":"7a956eb1e50f4732ba45b6ee1ea48ad1","addedAtUtc":"\/Date(1621593834096)\/","version":0}
+2021-05-30 00:11:57.318 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] ProcessQueryBillResponse:{"responseStatus":{"errorCode":"00","message":"Dịch vụ chưa được thiết lập. Vui lòng liên hệ CSKH để được hỗ trợ"}}
+2021-05-30 00:11:57.319 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] ProcessQueryBillError:{"responseStatus":{"errorCode":"00","message":"Dịch vụ chưa được thiết lập. Vui lòng liên hệ CSKH để được hỗ trợ"}}

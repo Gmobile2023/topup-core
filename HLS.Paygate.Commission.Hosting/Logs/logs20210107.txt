@@ -1,0 +1,383 @@
+2021-01-07 12:01:12.868 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportBalanceConsumer" (using supplied consumer factory)
+2021-01-07 12:01:12.933 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportItemConsumer" (using supplied consumer factory)
+2021-01-07 12:01:12.937 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportCardStockConsumer" (using supplied consumer factory)
+2021-01-07 12:01:12.939 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-01-07 12:01:12.941 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-01-07 12:01:12.943 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-01-07 12:01:13.137 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-01-07 12:01:13.189 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-01-07 12:01:13.252 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 60421)
+2021-01-07 12:01:13.285 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-card-stock, type: fanout, durable"
+2021-01-07 12:01:13.286 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-01-07 12:01:13.293 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-item, type: fanout, durable"
+2021-01-07 12:01:13.293 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, type: fanout, durable"
+2021-01-07 12:01:13.293 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-01-07 12:01:13.298 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, type: fanout, durable"
+2021-01-07 12:01:13.299 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-01-07 12:01:13.299 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, destination: report-card-stock"
+2021-01-07 12:01:13.302 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, type: fanout, durable"
+2021-01-07 12:01:13.307 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, type: fanout, durable"
+2021-01-07 12:01:13.308 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-01-07 12:01:13.308 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-card-stock, durable"
+2021-01-07 12:01:13.310 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-01-07 12:01:13.310 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, type: fanout, durable"
+2021-01-07 12:01:13.314 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-card-stock, destination: report-card-stock"
+2021-01-07 12:01:13.314 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-01-07 12:01:13.323 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-01-07 12:01:13.323 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, destination: report-item"
+2021-01-07 12:01:13.323 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-balance, type: fanout, durable"
+2021-01-07 12:01:13.329 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:01:13.329 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:01:15.126 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, type: fanout, durable"
+2021-01-07 12:01:15.126 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-01-07 12:01:15.126 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, destination: report-item"
+2021-01-07 12:01:15.129 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-01-07 12:01:15.129 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, destination: report-balance"
+2021-01-07 12:01:15.131 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-01-07 12:01:15.131 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, destination: report-item"
+2021-01-07 12:01:15.131 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-01-07 12:01:15.132 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-balance, durable"
+2021-01-07 12:01:15.133 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-01-07 12:01:15.135 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-01-07 12:01:15.137 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-balance, destination: report-balance"
+2021-01-07 12:01:15.137 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, destination: report-item"
+2021-01-07 12:01:15.138 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-01-07 12:01:15.141 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-01-07 12:01:15.141 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-item, durable"
+2021-01-07 12:01:15.141 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:01:15.141 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:01:15.142 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-7KsQGNcYz_rVDO50MGaL-A"
+2021-01-07 12:01:15.144 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-CWyz8eSx2z-4dFNBLsEXyw"
+2021-01-07 12:01:15.147 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-item, destination: report-item"
+2021-01-07 12:01:15.148 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:01:15.150 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag-7t6eAIbI4Epd7gEz7criFA"
+2021-01-07 12:01:15.150 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-8rQIKp3of4-Wmcig0FU8Cg"
+2021-01-07 12:01:15.151 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:01:15.153 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-0ryecPpjxSyfQGQJczYVlg"
+2021-01-07 12:01:15.157 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag-_pAb2eR1WrRX0gBj0vDe8Q"
+2021-01-07 12:01:15.712 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6780"
+2021-01-07 12:01:15.714 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-01-07 12:01:15.715 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-01-07 12:01:15.717 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Report.Hosting"
+2021-01-07 12:01:18.423 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/  
+2021-01-07 12:01:18.486 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 67.157ms 404 
+2021-01-07 12:01:20.687 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui  
+2021-01-07 12:01:20.702 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 15.0476ms 302 
+2021-01-07 12:01:20.742 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/  
+2021-01-07 12:01:20.789 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 47.2095ms 200 text/html; charset=utf-8
+2021-01-07 12:01:20.797 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/typography.css  
+2021-01-07 12:01:20.803 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/reset.css  
+2021-01-07 12:01:20.806 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/screen.css  
+2021-01-07 12:01:20.809 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.slideto.min.js  
+2021-01-07 12:01:20.811 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery-1.8.0.min.js  
+2021-01-07 12:01:20.812 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/object-assign-pollyfill.js  
+2021-01-07 12:01:20.828 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 26.5255ms 200 text/css
+2021-01-07 12:01:20.829 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 29.5533ms 200 text/css
+2021-01-07 12:01:20.831 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.ba-bbq.min.js  
+2021-01-07 12:01:20.832 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.wiggle.min.js  
+2021-01-07 12:01:20.837 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 4.6883ms 200 text/javascript
+2021-01-07 12:01:20.839 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 30.3635ms 200 text/javascript
+2021-01-07 12:01:20.840 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 31.2582ms 200 text/javascript
+2021-01-07 12:01:20.843 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/handlebars-4.0.5.js  
+2021-01-07 12:01:20.844 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/lodash.min.js  
+2021-01-07 12:01:20.847 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/backbone-min.js  
+2021-01-07 12:01:20.848 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 12.9775ms 200 text/javascript
+2021-01-07 12:01:20.849 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 34.8436ms 200 text/css
+2021-01-07 12:01:20.852 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack.js  
+2021-01-07 12:01:20.852 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/swagger-ui.js  
+2021-01-07 12:01:20.855 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 12.0769ms 200 text/javascript
+2021-01-07 12:01:20.857 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 4.3508ms 200 text/javascript
+2021-01-07 12:01:20.859 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack_extended.js  
+2021-01-07 12:01:20.860 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/marked.js  
+2021-01-07 12:01:20.864 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 4.803ms 200 text/javascript
+2021-01-07 12:01:20.866 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 21.242ms 200 text/javascript
+2021-01-07 12:01:20.869 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 22.8721ms 200 text/javascript
+2021-01-07 12:01:20.872 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 7.0519ms 200 text/javascript
+2021-01-07 12:01:20.873 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jsoneditor.min.js  
+2021-01-07 12:01:20.874 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/images/logo_small.png  
+2021-01-07 12:01:20.878 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 11.1225ms 200 image/png
+2021-01-07 12:01:20.887 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 13.7988ms 200 text/javascript
+2021-01-07 12:01:20.889 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 79.8517ms 200 text/javascript
+2021-01-07 12:01:20.892 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/swagger-oauth.js  
+2021-01-07 12:01:20.895 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 3.2458ms 200 text/javascript
+2021-01-07 12:01:20.909 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 56.6266ms 200 text/javascript
+2021-01-07 12:01:21.826 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/typography.css  
+2021-01-07 12:01:21.828 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/screen.css  
+2021-01-07 12:01:21.830 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.slideto.min.js  
+2021-01-07 12:01:21.833 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery-1.8.0.min.js  
+2021-01-07 12:01:21.835 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 7.9743ms 200 text/css
+2021-01-07 12:01:21.838 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 9.82ms 200 text/javascript
+2021-01-07 12:01:21.840 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 10.885ms 200 text/css
+2021-01-07 12:01:21.842 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.wiggle.min.js  
+2021-01-07 12:01:21.844 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.ba-bbq.min.js  
+2021-01-07 12:01:21.846 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/handlebars-4.0.5.js  
+2021-01-07 12:01:21.848 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 8.8094ms 200 text/javascript
+2021-01-07 12:01:21.849 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 8.6614ms 200 text/javascript
+2021-01-07 12:01:21.852 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/backbone-min.js  
+2021-01-07 12:01:21.854 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/swagger-ui.js  
+2021-01-07 12:01:21.856 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 8.8172ms 200 text/javascript
+2021-01-07 12:01:21.857 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 5.316ms 200 text/javascript
+2021-01-07 12:01:21.859 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 20.7688ms 200 text/javascript
+2021-01-07 12:01:21.861 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack.js  
+2021-01-07 12:01:21.863 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack_extended.js  
+2021-01-07 12:01:21.864 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/lodash.min.js  
+2021-01-07 12:01:21.869 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/reset.css  
+2021-01-07 12:01:21.872 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 8.1876ms 200 text/javascript
+2021-01-07 12:01:21.876 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 7.1422ms 200 text/javascript
+2021-01-07 12:01:21.877 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 6.7739ms 200 text/javascript
+2021-01-07 12:01:21.879 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/marked.js  
+2021-01-07 12:01:21.882 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jsoneditor.min.js  
+2021-01-07 12:01:21.884 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 5.9907ms 200 text/javascript
+2021-01-07 12:01:21.888 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/swagger-oauth.js  
+2021-01-07 12:01:21.890 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 25.8318ms 200 text/javascript
+2021-01-07 12:01:21.891 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 48.0199ms 200 text/css
+2021-01-07 12:01:21.894 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 12.7923ms 200 text/javascript
+2021-01-07 12:01:21.895 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 11.4747ms 200 text/javascript
+2021-01-07 12:01:21.898 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/object-assign-pollyfill.js  
+2021-01-07 12:01:21.931 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/images/logo_small.png  
+2021-01-07 12:01:21.943 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 107.7131ms 200 text/javascript
+2021-01-07 12:01:21.948 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 39.76ms 200 image/png
+2021-01-07 12:01:21.950 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/print.css  
+2021-01-07 12:01:21.958 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 10.6247ms 200 text/css
+2021-01-07 12:01:22.071 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/openapi  
+2021-01-07 12:01:22.091 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/images/favicon-32x32.png  
+2021-01-07 12:01:22.094 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 2.3762ms 200 image/png
+2021-01-07 12:01:22.325 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 254.3638ms 200 application/json; charset=utf-8
+2021-01-07 12:01:27.966 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/images/throbber.gif  
+2021-01-07 12:01:27.967 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/auditlog/account-activities  
+2021-01-07 12:01:27.970 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 5.3216ms 200 image/gif
+2021-01-07 12:01:28.601 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 635.2871ms 405 application/json; charset=utf-8
+2021-01-07 12:01:58.746 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportBalanceConsumer" (using supplied consumer factory)
+2021-01-07 12:01:58.804 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportItemConsumer" (using supplied consumer factory)
+2021-01-07 12:01:58.806 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportCardStockConsumer" (using supplied consumer factory)
+2021-01-07 12:01:58.808 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-01-07 12:01:58.809 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-01-07 12:01:58.810 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-01-07 12:01:58.966 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-01-07 12:01:59.024 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-01-07 12:01:59.098 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 60484)
+2021-01-07 12:01:59.129 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-balance, type: fanout, durable"
+2021-01-07 12:01:59.129 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-item, type: fanout, durable"
+2021-01-07 12:01:59.135 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, type: fanout, durable"
+2021-01-07 12:01:59.135 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, type: fanout, durable"
+2021-01-07 12:01:59.138 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-card-stock, type: fanout, durable"
+2021-01-07 12:01:59.139 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, type: fanout, durable"
+2021-01-07 12:01:59.141 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, destination: report-balance"
+2021-01-07 12:01:59.142 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, type: fanout, durable"
+2021-01-07 12:01:59.142 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, type: fanout, durable"
+2021-01-07 12:01:59.146 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, type: fanout, durable"
+2021-01-07 12:01:59.146 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-01-07 12:01:59.146 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, destination: report-card-stock"
+2021-01-07 12:01:59.149 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-balance, durable"
+2021-01-07 12:01:59.150 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, destination: report-item"
+2021-01-07 12:01:59.150 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-01-07 12:01:59.152 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-card-stock, durable"
+2021-01-07 12:01:59.153 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-01-07 12:01:59.154 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-01-07 12:01:59.155 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, destination: report-item"
+2021-01-07 12:01:59.157 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-balance, destination: report-balance"
+2021-01-07 12:01:59.157 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-card-stock, destination: report-card-stock"
+2021-01-07 12:02:00.092 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-01-07 12:02:00.092 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-01-07 12:02:00.093 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, destination: report-item"
+2021-01-07 12:02:00.094 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-01-07 12:02:00.097 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:02:00.097 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:02:01.097 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-01-07 12:02:01.097 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-01-07 12:02:01.097 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-01-07 12:02:01.098 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, destination: report-item"
+2021-01-07 12:02:01.100 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-01-07 12:02:01.101 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-01-07 12:02:01.101 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-item, durable"
+2021-01-07 12:02:01.101 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:02:01.103 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-01-07 12:02:01.103 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-01-07 12:02:01.105 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-item, destination: report-item"
+2021-01-07 12:02:01.107 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:02:01.108 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-01-07 12:02:01.108 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:02:01.115 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 12:02:01.119 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag-FWuNOIGntF_TSUpsmdRG2w"
+2021-01-07 12:02:01.120 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-lF3BrKHF0Efa7KhcI5t1Uw"
+2021-01-07 12:02:01.120 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-ENXQuRZDBSMLArLoXDJR3Q"
+2021-01-07 12:02:01.121 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-zIE0wXe_GL8b05ccPVP9zA"
+2021-01-07 12:02:01.121 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag-4tYzcg18P8mPMeKqBIl0qw"
+2021-01-07 12:02:01.124 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-tY4vTexnHMLHZr95rUWwkw"
+2021-01-07 12:02:01.460 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6780"
+2021-01-07 12:02:01.463 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-01-07 12:02:01.464 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-01-07 12:02:01.466 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Report.Hosting"
+2021-01-07 12:02:42.890 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/auditlog/account-activities  
+2021-01-07 12:02:43.249 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] GetAccountActivityHistoryRequest:{"accountType":0,"agentType":0,"accountActivityType":"0","limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-07 12:02:43.579 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 690.8439ms 200 application/json; charset=utf-8
+2021-01-07 12:02:51.566 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/auditlog/account-activities  
+2021-01-07 12:02:51.569 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] GetAccountActivityHistoryRequest:{"accountType":0,"agentType":0,"accountActivityType":"0","limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-07 12:02:51.588 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 21.7925ms 200 application/json; charset=utf-8
+2021-01-07 12:02:52.631 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/auditlog/account-activities  
+2021-01-07 12:02:52.635 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] GetAccountActivityHistoryRequest:{"accountType":0,"agentType":0,"accountActivityType":"0","limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-07 12:02:52.651 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 20.099ms 200 application/json; charset=utf-8
+2021-01-07 12:03:00.989 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/auditlog/account-activities  
+2021-01-07 12:03:00.992 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] GetAccountActivityHistoryRequest:{"accountType":0,"agentType":0,"accountActivityType":"0","limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-07 12:03:14.063 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 13072.9789ms 200 application/json; charset=utf-8
+2021-01-07 12:03:19.574 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/auditlog/account-activities?SearchType=99  
+2021-01-07 12:03:19.585 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] GetAccountActivityHistoryRequest:{"accountType":0,"agentType":0,"accountActivityType":"0","limit":20,"offset":0,"searchType":"99","rowMax":2147483647,"orderType":"Desc"}
+2021-01-07 12:03:20.547 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 974.2629ms 200 application/json; charset=utf-8
+2021-01-07 12:03:24.871 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/auditlog/account-activities?AccountActivityType=99  
+2021-01-07 12:03:24.876 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] GetAccountActivityHistoryRequest:{"accountType":0,"agentType":0,"accountActivityType":"Default","limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-07 12:03:25.771 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 900.0536ms 200 application/json; charset=utf-8
+2021-01-07 14:15:53.214 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportBalanceConsumer" (using supplied consumer factory)
+2021-01-07 14:15:53.290 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportItemConsumer" (using supplied consumer factory)
+2021-01-07 14:15:53.293 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportCardStockConsumer" (using supplied consumer factory)
+2021-01-07 14:15:53.294 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-01-07 14:15:53.296 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-01-07 14:15:53.297 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-01-07 14:15:53.556 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-01-07 14:15:53.611 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-01-07 14:15:53.681 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 50580)
+2021-01-07 14:15:53.709 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-01-07 14:15:53.709 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-01-07 14:15:53.716 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-01-07 14:15:53.716 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-01-07 14:15:53.722 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-01-07 14:15:53.722 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-01-07 14:15:53.724 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-balance, type: fanout, durable"
+2021-01-07 14:15:53.729 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, type: fanout, durable"
+2021-01-07 14:15:53.730 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-01-07 14:15:53.730 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-01-07 14:15:53.732 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-item, type: fanout, durable"
+2021-01-07 14:15:53.732 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, destination: report-balance"
+2021-01-07 14:15:53.734 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, type: fanout, durable"
+2021-01-07 14:15:53.737 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, type: fanout, durable"
+2021-01-07 14:15:53.737 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-balance, durable"
+2021-01-07 14:15:53.737 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-01-07 14:15:53.737 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-01-07 14:15:53.739 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-card-stock, type: fanout, durable"
+2021-01-07 14:15:53.740 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, type: fanout, durable"
+2021-01-07 14:15:53.740 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-balance, destination: report-balance"
+2021-01-07 14:15:53.747 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 14:15:53.747 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 14:15:55.474 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, type: fanout, durable"
+2021-01-07 14:15:55.474 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, type: fanout, durable"
+2021-01-07 14:15:55.474 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-01-07 14:15:55.474 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 14:15:55.477 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-01-07 14:15:55.487 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, destination: report-item"
+2021-01-07 14:15:55.488 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, destination: report-card-stock"
+2021-01-07 14:15:55.493 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, destination: report-item"
+2021-01-07 14:15:55.493 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-card-stock, durable"
+2021-01-07 14:15:55.497 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-card-stock, destination: report-card-stock"
+2021-01-07 14:15:55.498 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-01-07 14:15:55.498 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, destination: report-item"
+2021-01-07 14:15:55.501 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 14:15:55.502 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, destination: report-item"
+2021-01-07 14:15:55.502 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-01-07 14:15:55.502 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-L_bbNSD4cuwszL7solwyhQ"
+2021-01-07 14:15:55.502 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag-svptSgDmZu4VBBPUX5iNnw"
+2021-01-07 14:15:55.502 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-pW-AWcOx5XHTl74TPeVCPg"
+2021-01-07 14:15:55.504 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-01-07 14:15:55.505 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-item, durable"
+2021-01-07 14:15:55.507 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-20GPHybPOvzyn0qfTtjzPw"
+2021-01-07 14:15:55.507 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-item, destination: report-item"
+2021-01-07 14:15:55.509 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 14:15:55.512 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-07 14:15:55.515 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-_LGvtDP1M9M5zO7Ib6NQSQ"
+2021-01-07 14:15:55.518 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag-rvCo5r3PziRc_Ug_zeZs0A"
+2021-01-07 14:15:56.313 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6780"
+2021-01-07 14:15:56.315 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-01-07 14:15:56.317 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-01-07 14:15:56.319 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Report.Hosting"
+2021-01-07 14:15:57.685 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/  
+2021-01-07 14:15:57.757 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 74.785ms 404 
+2021-01-07 14:15:59.665 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui  
+2021-01-07 14:15:59.677 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 13.5557ms 302 
+2021-01-07 14:15:59.681 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/  
+2021-01-07 14:15:59.726 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 45.6442ms 200 text/html; charset=utf-8
+2021-01-07 14:15:59.737 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/typography.css  
+2021-01-07 14:15:59.739 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/reset.css  
+2021-01-07 14:15:59.743 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/object-assign-pollyfill.js  
+2021-01-07 14:15:59.742 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/screen.css  
+2021-01-07 14:15:59.747 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery-1.8.0.min.js  
+2021-01-07 14:15:59.748 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.slideto.min.js  
+2021-01-07 14:15:59.759 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 21.8817ms 200 text/css
+2021-01-07 14:15:59.763 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 17.0947ms 200 text/javascript
+2021-01-07 14:15:59.765 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 22.9449ms 200 text/css
+2021-01-07 14:15:59.768 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 13.2344ms 200 text/javascript
+2021-01-07 14:15:59.769 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/handlebars-4.0.5.js  
+2021-01-07 14:15:59.773 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 27.2929ms 200 text/css
+2021-01-07 14:15:59.775 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/lodash.min.js  
+2021-01-07 14:15:59.776 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/swagger-ui.js  
+2021-01-07 14:15:59.778 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.ba-bbq.min.js  
+2021-01-07 14:15:59.780 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 22.2478ms 200 text/javascript
+2021-01-07 14:15:59.785 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.wiggle.min.js  
+2021-01-07 14:15:59.790 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 17.5975ms 200 text/javascript
+2021-01-07 14:15:59.786 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 20.4255ms 200 text/javascript
+2021-01-07 14:15:59.792 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/backbone-min.js  
+2021-01-07 14:15:59.794 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 21.9118ms 200 text/javascript
+2021-01-07 14:15:59.796 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack.js  
+2021-01-07 14:15:59.798 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack_extended.js  
+2021-01-07 14:15:59.800 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jsoneditor.min.js  
+2021-01-07 14:15:59.802 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 13.8016ms 200 text/javascript
+2021-01-07 14:15:59.805 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 7.9677ms 200 text/javascript
+2021-01-07 14:15:59.807 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 8.9936ms 200 text/javascript
+2021-01-07 14:15:59.809 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/images/logo_small.png  
+2021-01-07 14:15:59.811 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/swagger-oauth.js  
+2021-01-07 14:15:59.817 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 17.3541ms 200 text/javascript
+2021-01-07 14:15:59.819 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 5.5561ms 200 image/png
+2021-01-07 14:15:59.821 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 8.7497ms 200 text/javascript
+2021-01-07 14:15:59.822 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/marked.js  
+2021-01-07 14:15:59.825 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 5.6045ms 200 text/javascript
+2021-01-07 14:15:59.833 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 35.4086ms 200 text/javascript
+2021-01-07 14:15:59.846 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 70.1544ms 200 text/javascript
+2021-01-07 14:16:00.465 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/metadata  
+2021-01-07 14:16:00.488 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 23.743ms 200 text/html; charset=utf-8
+2021-01-07 14:16:00.556 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/favicon.ico  
+2021-01-07 14:16:00.558 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 3.4878ms 404 
+2021-01-07 14:16:01.958 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/typography.css  
+2021-01-07 14:16:01.961 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 3.2443ms 200 text/css
+2021-01-07 14:16:01.964 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/reset.css  
+2021-01-07 14:16:01.966 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/object-assign-pollyfill.js  
+2021-01-07 14:16:01.967 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.slideto.min.js  
+2021-01-07 14:16:01.972 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.wiggle.min.js  
+2021-01-07 14:16:01.970 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery-1.8.0.min.js  
+2021-01-07 14:16:01.974 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 6.1572ms 200 text/javascript
+2021-01-07 14:16:01.976 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/screen.css  
+2021-01-07 14:16:01.979 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 6.8574ms 200 text/css
+2021-01-07 14:16:01.981 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 8.9156ms 200 text/javascript
+2021-01-07 14:16:01.984 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/handlebars-4.0.5.js  
+2021-01-07 14:16:01.986 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/backbone-min.js  
+2021-01-07 14:16:01.989 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 23.0281ms 200 text/javascript
+2021-01-07 14:16:01.991 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 15.5339ms 200 text/css
+2021-01-07 14:16:01.993 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/lodash.min.js  
+2021-01-07 14:16:01.994 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.ba-bbq.min.js  
+2021-01-07 14:16:01.996 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 11.2159ms 200 text/javascript
+2021-01-07 14:16:01.999 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 5.3828ms 200 text/javascript
+2021-01-07 14:16:02.005 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack_extended.js  
+2021-01-07 14:16:02.008 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 18.9453ms 200 text/javascript
+2021-01-07 14:16:02.008 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 31.511ms 200 text/javascript
+2021-01-07 14:16:02.009 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/swagger-oauth.js  
+2021-01-07 14:16:02.011 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jsoneditor.min.js  
+2021-01-07 14:16:02.013 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 6.4808ms 200 text/javascript
+2021-01-07 14:16:02.016 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack.js  
+2021-01-07 14:16:02.020 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 10.0242ms 200 text/javascript
+2021-01-07 14:16:02.022 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/swagger-ui.js  
+2021-01-07 14:16:02.024 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 10.3073ms 200 text/javascript
+2021-01-07 14:16:02.025 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 16.0823ms 200 text/javascript
+2021-01-07 14:16:02.028 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 14.3965ms 200 text/javascript
+2021-01-07 14:16:02.029 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/marked.js  
+2021-01-07 14:16:02.034 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 3.979ms 200 text/javascript
+2021-01-07 14:16:02.039 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 44.2612ms 200 text/javascript
+2021-01-07 14:16:02.040 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/images/logo_small.png  
+2021-01-07 14:16:02.042 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 4.5732ms 200 image/png
+2021-01-07 14:16:02.045 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/print.css  
+2021-01-07 14:16:02.068 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 22.8383ms 200 text/css
+2021-01-07 14:16:02.133 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/openapi  
+2021-01-07 14:16:02.410 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 277.3864ms 200 application/json; charset=utf-8
+2021-01-07 14:16:07.685 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/images/throbber.gif  
+2021-01-07 14:16:07.686 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/auditlog/account-activities  
+2021-01-07 14:16:07.689 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 5.6737ms 200 image/gif
+2021-01-07 14:16:08.102 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] GetAccountActivityHistoryRequest:{"accountType":0,"agentType":0,"accountActivityType":"0","limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-07 14:16:11.128 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 3441.7671ms 200 application/json; charset=utf-8
+2021-01-07 14:16:16.807 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/auditlog/account-activities?AccountActivityType=99  
+2021-01-07 14:16:16.818 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] GetAccountActivityHistoryRequest:{"accountType":0,"agentType":0,"accountActivityType":"Default","limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-07 14:16:19.470 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 2664.1254ms 200 application/json; charset=utf-8

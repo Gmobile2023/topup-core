@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\HLS.Paygate.Report.Domain\HLS.Paygate.Report.Domain.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Consumers\ReportSimBalanceConsumer.cs"/>
+        <Compile Remove="Consumers\CardStockNotificationConsumer.cs"/>
+        <Compile Remove="Consumers\BotSendMessageConsumer.cs"/>
+        <Compile Remove="Consumers\AuditLogConsumer.cs"/>
+        <Compile Remove="Services\ChatbotService.cs"/>
+        <Compile Remove="Services\NotificationService.cs"/>
+        <Compile Remove="Services\AuditLogService.cs"/>
+        <Compile Remove="Services\TransactionReportService.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="TW.Paygate.Report.Interface.DotSettings"/>
+    </ItemGroup>
+
+</Project>

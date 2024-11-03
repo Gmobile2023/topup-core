@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Orleans.Sdk" Version="8.1.0" />
+        <PackageReference Include="Microsoft.Orleans.Transactions" Version="8.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\HLS.Paygate.Shared\HLS.Paygate.Shared.csproj" />
+        <ProjectReference Include="..\Orleans.Sagas\Orleans.Sagas.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Grains\ITransferGrain.cs" />
+    </ItemGroup>
+
+</Project>

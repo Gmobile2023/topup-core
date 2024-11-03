@@ -1,0 +1,35 @@
+2020-12-21 17:44:55.350 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Backend.Interface.Consumers.TransactionFailConsumer" (using supplied consumer factory)
+2020-12-21 17:44:55.395 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Backend.Interface.Consumers.TransactionRefundConsumer" (using supplied consumer factory)
+2020-12-21 17:44:56.706 +07:00 [INF] [HLS.Paygate.Backend.Hosting.MassTransitApiHostedService.] Starting bus
+2020-12-21 17:44:56.711 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2020-12-21 17:44:56.739 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2020-12-21 17:44:56.794 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 55700)
+2020-12-21 17:44:56.818 +07:00 [DBG] [MassTransit.] Declare exchange: "name: transaction-fail, type: fanout, durable"
+2020-12-21 17:44:56.823 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SaleCommandFailed, type: fanout, durable"
+2020-12-21 17:44:56.825 +07:00 [DBG] [MassTransit.] Declare exchange: "name: transaction-refund, type: fanout, durable"
+2020-12-21 17:44:56.827 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SaleCommandFailed, destination: transaction-fail"
+2020-12-21 17:44:56.830 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Commands:TransactionRefundCommand, type: fanout, durable"
+2020-12-21 17:44:56.833 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Commands:TransactionRefundCommand, destination: transaction-refund"
+2020-12-21 17:44:56.833 +07:00 [DBG] [MassTransit.] Declare queue: "name: transaction-fail, durable"
+2020-12-21 17:44:56.844 +07:00 [DBG] [MassTransit.] Bind queue: "source: transaction-fail, destination: transaction-fail"
+2020-12-21 17:44:56.844 +07:00 [DBG] [MassTransit.] Declare queue: "name: transaction-refund, durable"
+2020-12-21 17:44:56.848 +07:00 [DBG] [MassTransit.] Bind queue: "source: transaction-refund, destination: transaction-refund"
+2020-12-21 17:44:56.853 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2020-12-21 17:44:56.853 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2020-12-21 17:44:56.879 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/transaction-refund - "amq.ctag-xwpnbvlF7EfOlyVUcxEeeg"
+2020-12-21 17:44:56.879 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/transaction-fail - "amq.ctag-cqX3qY3ziiw-u0CJsZGJ9A"
+2020-12-21 17:44:57.355 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6798"
+2020-12-21 17:44:57.356 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2020-12-21 17:44:57.356 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Production"
+2020-12-21 17:44:57.356 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Backend.Hosting\out"
+2020-12-21 17:45:04.371 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application is shutting down...
+2020-12-21 17:45:04.375 +07:00 [INF] [HLS.Paygate.Backend.Hosting.MassTransitApiHostedService.] Stopping bus
+2020-12-21 17:45:04.376 +07:00 [DBG] [MassTransit.] Stopping host
+2020-12-21 17:45:04.383 +07:00 [DBG] [MassTransit.] Stopping Consumer: rabbitmq://103.109.43.93/paygate/transaction-fail - "amq.ctag-cqX3qY3ziiw-u0CJsZGJ9A"
+2020-12-21 17:45:04.390 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Cancel Ok: rabbitmq://103.109.43.93/paygate/transaction-fail - "amq.ctag-cqX3qY3ziiw-u0CJsZGJ9A"
+2020-12-21 17:45:04.391 +07:00 [DBG] [MassTransit.] Consumer completed "amq.ctag-cqX3qY3ziiw-u0CJsZGJ9A": 0 received, 0 concurrent
+2020-12-21 17:45:04.391 +07:00 [DBG] [MassTransit.] Stopping Consumer: rabbitmq://103.109.43.93/paygate/transaction-refund - "amq.ctag-xwpnbvlF7EfOlyVUcxEeeg"
+2020-12-21 17:45:04.395 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Cancel Ok: rabbitmq://103.109.43.93/paygate/transaction-refund - "amq.ctag-xwpnbvlF7EfOlyVUcxEeeg"
+2020-12-21 17:45:04.395 +07:00 [DBG] [MassTransit.] Consumer completed "amq.ctag-xwpnbvlF7EfOlyVUcxEeeg": 0 received, 0 concurrent
+2020-12-21 17:45:04.403 +07:00 [INF] [MassTransit.] Disconnect: "paygate@103.109.43.93:5672/paygate"
+2020-12-21 17:45:04.413 +07:00 [INF] [MassTransit.] Disconnected: "paygate@103.109.43.93:5672/paygate"

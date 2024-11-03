@@ -1,0 +1,562 @@
+2021-02-17 15:48:27.808 +07:00 [DBG] [Hangfire.Mongo.Migration.MigrationLock.] Acquired lock for migration
+2021-02-17 15:48:28.208 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-02-17 15:48:28.228 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-02-17 15:48:28.229 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-02-17 15:48:28.230 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.CommonConsumer" (using supplied consumer factory)
+2021-02-17 15:48:29.286 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-02-17 15:48:29.289 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-02-17 15:48:29.291 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-02-17 15:48:29.293 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-02-17 15:48:29.311 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop BackgroundServerProcess:a6971c4a has started in 6.8937 ms
+2021-02-17 15:48:29.315 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-02-17 15:48:29.357 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-02-17 15:48:29.372 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:10964:01154314 successfully announced in 55.7653 ms
+2021-02-17 15:48:29.376 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerHeartbeatProcess:6e12157d has started in 3.3204 ms
+2021-02-17 15:48:29.378 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:10964:01154314 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-02-17 15:48:29.381 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerWatchdog:1b5b0196 has started in 3.1504 ms
+2021-02-17 15:48:29.382 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerJobCancellationWatcher:49a5c960 has started in 3.9948 ms
+2021-02-17 15:48:29.388 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoExpirationManager:f613d3a7 has started in 8.1356 ms
+2021-02-17 15:48:29.389 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoNotificationObserver:0c9d3bbd has started in 5.2943 ms
+2021-02-17 15:48:29.393 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:49b42865 has started in 5.7475 ms
+2021-02-17 15:48:29.395 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:ce02c825 has started in 8.079 ms
+2021-02-17 15:48:29.396 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:fec96d46 has started in 8.7188 ms
+2021-02-17 15:48:29.399 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:b6f426d9 has started in 11.931 ms
+2021-02-17 15:48:29.401 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:5a8e99d1 has started in 13.8438 ms
+2021-02-17 15:48:29.404 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:f7644b65 has started in 17.4431 ms
+2021-02-17 15:48:29.406 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:9dd3288d has started in 18.5632 ms
+2021-02-17 15:48:29.408 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:4970e665 has started in 20.8613 ms
+2021-02-17 15:48:29.410 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:0bfdc792 has started in 22.7953 ms
+2021-02-17 15:48:29.412 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8811aaf9 has started in 24.9505 ms
+2021-02-17 15:48:29.415 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:a17b828d has started in 27.98 ms
+2021-02-17 15:48:29.417 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:cfa58f5c has started in 30.1989 ms
+2021-02-17 15:48:29.419 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:f34875a5 has started in 32.3446 ms
+2021-02-17 15:48:29.424 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:7757feb1 has started in 36.6756 ms
+2021-02-17 15:48:29.426 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:525dabdd has started in 38.589 ms
+2021-02-17 15:48:29.427 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8b4fb2b2 has started in 39.7368 ms
+2021-02-17 15:48:29.430 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:e5946dd7 has started in 43.0441 ms
+2021-02-17 15:48:29.430 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:ecfe5779 has started in 43.0441 ms
+2021-02-17 15:48:29.434 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:40bda032 has started in 46.9502 ms
+2021-02-17 15:48:29.435 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:aeed66c7 has started in 48.0187 ms
+2021-02-17 15:48:29.439 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop DelayedJobScheduler:0da029e3 has started in 6.5933 ms
+2021-02-17 15:48:29.441 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:10964:01154314 all the dispatchers started
+2021-02-17 15:48:29.442 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop RecurringJobScheduler:46a0f051 has started in 6.4482 ms
+2021-02-17 15:48:29.466 +07:00 [DBG] [Hangfire.Mongo.MongoExpirationManager.] Removed 0 outdated documents from 'hangfire.jobGraph'.
+2021-02-17 15:48:29.478 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 51463)
+2021-02-17 15:48:29.524 +07:00 [DBG] [MassTransit.] Declare exchange: "name: common, type: fanout, durable"
+2021-02-17 15:48:29.524 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-02-17 15:48:29.530 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-02-17 15:48:29.530 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, type: fanout, durable"
+2021-02-17 15:48:29.530 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-02-17 15:48:29.534 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-02-17 15:48:29.535 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, destination: common"
+2021-02-17 15:48:29.535 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-02-17 15:48:29.535 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-02-17 15:48:29.536 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-02-17 15:48:29.538 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-02-17 15:48:29.541 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-02-17 15:48:29.543 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-02-17 15:48:29.543 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-02-17 15:48:29.543 +07:00 [DBG] [MassTransit.] Declare queue: "name: common, durable"
+2021-02-17 15:48:29.545 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-02-17 15:48:29.551 +07:00 [DBG] [MassTransit.] Bind queue: "source: common, destination: common"
+2021-02-17 15:48:29.551 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-02-17 15:48:29.551 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-02-17 15:48:29.551 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-02-17 15:48:29.562 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:48:29.562 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:48:29.562 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:48:29.562 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:48:29.592 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/common - "amq.ctag-7Gdh4jeXbf-Uui0HHd6PBQ"
+2021-02-17 15:48:29.592 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-96olozytchjCYY9mgMYRaw"
+2021-02-17 15:48:29.601 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-N55FAuT8_KoLPXSNMFtDgQ"
+2021-02-17 15:48:29.601 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-o28IXclMNXrmOFQks_t1cg"
+2021-02-17 15:48:30.829 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-02-17 15:48:30.832 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-02-17 15:48:30.834 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-02-17 15:48:30.836 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-02-17 15:48:30.839 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop BackgroundServerProcess:4aaad8eb has started in 3.0212 ms
+2021-02-17 15:48:30.842 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-02-17 15:48:30.844 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-02-17 15:48:30.845 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-02-17 15:48:30.847 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-02-17 15:48:30.852 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:10964:6c90d24f successfully announced in 9.671 ms
+2021-02-17 15:48:30.852 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop BackgroundServerProcess:6a49001b has started in 4.2732 ms
+2021-02-17 15:48:30.855 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:10964:6c90d24f is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-02-17 15:48:30.857 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerHeartbeatProcess:f99447a8 has started in 4.7296 ms
+2021-02-17 15:48:30.860 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerWatchdog:83a31dbe has started in 4.1595 ms
+2021-02-17 15:48:30.861 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerJobCancellationWatcher:9d7b7f4a has started in 4.7777 ms
+2021-02-17 15:48:30.863 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:10964:2a7f3b54 successfully announced in 8.3692 ms
+2021-02-17 15:48:30.866 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:10964:2a7f3b54 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-02-17 15:48:30.868 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerHeartbeatProcess:dc92d004 has started in 5.1883 ms
+2021-02-17 15:48:30.868 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoExpirationManager:c4b9045a has started in 10.8917 ms
+2021-02-17 15:48:30.871 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoNotificationObserver:21984c91 has started in 8.2041 ms
+2021-02-17 15:48:30.874 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:35d865f8 has started in 6.4673 ms
+2021-02-17 15:48:30.874 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerWatchdog:8a0fb29b has started in 8.542 ms
+2021-02-17 15:48:30.876 +07:00 [DBG] [Hangfire.Mongo.MongoExpirationManager.] Removed 0 outdated documents from 'hangfire.jobGraph'.
+2021-02-17 15:48:30.878 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:6caf7cb9 has started in 9.4828 ms
+2021-02-17 15:48:30.880 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerJobCancellationWatcher:c52e768e has started in 7.4909 ms
+2021-02-17 15:48:30.882 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:699e6827 has started in 13.0623 ms
+2021-02-17 15:48:30.884 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:38ef7e32 has started in 16.0081 ms
+2021-02-17 15:48:30.886 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:f6bcda2f has started in 17.5363 ms
+2021-02-17 15:48:30.889 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:e687d7df has started in 20.4019 ms
+2021-02-17 15:48:30.890 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:7a222bf9 has started in 21.8904 ms
+2021-02-17 15:48:30.892 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:ccaf28bd has started in 24.0333 ms
+2021-02-17 15:48:30.895 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:3fc0cf29 has started in 27.4811 ms
+2021-02-17 15:48:30.897 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:52e13eb9 has started in 29.5819 ms
+2021-02-17 15:48:30.899 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoExpirationManager:fa39190a has started in 24.1997 ms
+2021-02-17 15:48:30.903 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:ed4f7dfd has started in 35.2036 ms
+2021-02-17 15:48:30.906 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:9833081e has started in 37.7152 ms
+2021-02-17 15:48:30.907 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoNotificationObserver:81021846 has started in 13.8796 ms
+2021-02-17 15:48:30.908 +07:00 [DBG] [Hangfire.Mongo.MongoExpirationManager.] Removed 0 outdated documents from 'hangfire.jobGraph'.
+2021-02-17 15:48:30.910 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:ead6fdb1 has started in 42.3583 ms
+2021-02-17 15:48:30.914 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:948d731c has started in 12.9295 ms
+2021-02-17 15:48:30.917 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:541d89c3 has started in 47.6466 ms
+2021-02-17 15:48:30.919 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:1305ab24 has started in 17.7629 ms
+2021-02-17 15:48:30.922 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:4f459831 has started in 52.924 ms
+2021-02-17 15:48:30.924 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:cdbce597 has started in 23.0053 ms
+2021-02-17 15:48:30.927 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:33e001b5 has started in 58.6049 ms
+2021-02-17 15:48:30.929 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:3f960976 has started in 60.6506 ms
+2021-02-17 15:48:30.933 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:e188cc0c has started in 64.5698 ms
+2021-02-17 15:48:30.935 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:320043bd has started in 33.2647 ms
+2021-02-17 15:48:30.938 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:5098430a has started in 37.0906 ms
+2021-02-17 15:48:30.941 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:0aa8dc99 has started in 39.4428 ms
+2021-02-17 15:48:30.943 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:6c9961c7 has started in 42.1113 ms
+2021-02-17 15:48:30.946 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:03e654a2 has started in 44.7004 ms
+2021-02-17 15:48:30.949 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:93a96048 has started in 47.8585 ms
+2021-02-17 15:48:30.951 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:86034800 has started in 49.7655 ms
+2021-02-17 15:48:30.955 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:d7938684 has started in 54.1829 ms
+2021-02-17 15:48:30.957 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:56d9acc5 has started in 89.2097 ms
+2021-02-17 15:48:30.963 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:9e0c0798 has started in 93.9945 ms
+2021-02-17 15:48:30.966 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:269ff7d9 has started in 64.0337 ms
+2021-02-17 15:48:30.969 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop DelayedJobScheduler:b96455a8 has started in 10.8433 ms
+2021-02-17 15:48:30.972 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:48f3fdaa has started in 71.3018 ms
+2021-02-17 15:48:30.972 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:89d151a9 has started in 71.3218 ms
+2021-02-17 15:48:30.977 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:72a9da0b has started in 76.2384 ms
+2021-02-17 15:48:30.980 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop RecurringJobScheduler:3733c6de has started in 17.0641 ms
+2021-02-17 15:48:30.982 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:10964:6c90d24f all the dispatchers started
+2021-02-17 15:48:30.986 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:bfb1bc03 has started in 84.3654 ms
+2021-02-17 15:48:30.990 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:f8b54709 has started in 87.8093 ms
+2021-02-17 15:48:30.993 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:0d93f14a has started in 91.278 ms
+2021-02-17 15:48:30.995 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:ab207160 has started in 94.079 ms
+2021-02-17 15:48:30.997 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:5961d9c2 has started in 96.0713 ms
+2021-02-17 15:48:31.000 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop DelayedJobScheduler:e65f2970 has started in 7.9778 ms
+2021-02-17 15:48:31.003 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:10964:2a7f3b54 all the dispatchers started
+2021-02-17 15:48:31.006 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop RecurringJobScheduler:d4c986a4 has started in 9.2243 ms
+2021-02-17 15:48:31.445 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6790"
+2021-02-17 15:48:31.449 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-02-17 15:48:31.452 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-02-17 15:48:31.455 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-02-17 15:48:59.412 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:10964:01154314 heartbeat successfully sent
+2021-02-17 15:49:00.865 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:10964:6c90d24f heartbeat successfully sent
+2021-02-17 15:49:00.880 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:10964:2a7f3b54 heartbeat successfully sent
+2021-02-17 15:49:29.448 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:10964:01154314 heartbeat successfully sent
+2021-02-17 15:49:30.900 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:10964:6c90d24f heartbeat successfully sent
+2021-02-17 15:49:30.914 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:10964:2a7f3b54 heartbeat successfully sent
+2021-02-17 15:49:39.810 +07:00 [DBG] [Hangfire.Mongo.Migration.MigrationLock.] Acquired lock for migration
+2021-02-17 15:49:40.071 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-02-17 15:49:40.090 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-02-17 15:49:40.092 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-02-17 15:49:40.093 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.CommonConsumer" (using supplied consumer factory)
+2021-02-17 15:49:40.367 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-02-17 15:49:40.370 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-02-17 15:49:40.372 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-02-17 15:49:40.406 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-02-17 15:49:40.423 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop BackgroundServerProcess:7a9ce1c9 has started in 5.9049 ms
+2021-02-17 15:49:40.427 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-02-17 15:49:40.449 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:4888:35f69416 successfully announced in 21.4972 ms
+2021-02-17 15:49:40.454 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerHeartbeatProcess:a9834676 has started in 4.5578 ms
+2021-02-17 15:49:40.456 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:4888:35f69416 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-02-17 15:49:40.459 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerWatchdog:a7a95995 has started in 2.911 ms
+2021-02-17 15:49:40.460 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerJobCancellationWatcher:7eb1543e has started in 3.2964 ms
+2021-02-17 15:49:40.463 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoNotificationObserver:955ca53c has started in 2.8667 ms
+2021-02-17 15:49:40.464 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoExpirationManager:c20d8410 has started in 4.9878 ms
+2021-02-17 15:49:40.467 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:751eb53a has started in 5.5296 ms
+2021-02-17 15:49:40.470 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:92bcc25e has started in 8.5291 ms
+2021-02-17 15:49:40.471 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:5f4324d5 has started in 9.6252 ms
+2021-02-17 15:49:40.474 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:23619734 has started in 13.0011 ms
+2021-02-17 15:49:40.476 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:90463ea7 has started in 14.1531 ms
+2021-02-17 15:49:40.478 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:a25709fb has started in 16.1854 ms
+2021-02-17 15:49:40.480 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:d79160be has started in 18.2014 ms
+2021-02-17 15:49:40.483 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:d019f29e has started in 20.7915 ms
+2021-02-17 15:49:40.486 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:03496477 has started in 23.894 ms
+2021-02-17 15:49:40.489 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:4bcd1239 has started in 27.0152 ms
+2021-02-17 15:49:40.491 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:f6da7774 has started in 29.4708 ms
+2021-02-17 15:49:40.492 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-02-17 15:49:40.494 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:e39fb619 has started in 32.074 ms
+2021-02-17 15:49:40.496 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:047e03e1 has started in 34.0534 ms
+2021-02-17 15:49:40.498 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:0cbe65cc has started in 36.0429 ms
+2021-02-17 15:49:40.500 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:20368dd6 has started in 38.6309 ms
+2021-02-17 15:49:40.502 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:4e9d3867 has started in 40.7591 ms
+2021-02-17 15:49:40.505 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:2f66cec9 has started in 43.3885 ms
+2021-02-17 15:49:40.509 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:2951cca3 has started in 47.406 ms
+2021-02-17 15:49:40.510 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:d2fc82fa has started in 48.4846 ms
+2021-02-17 15:49:40.511 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8a9d7166 has started in 49.7778 ms
+2021-02-17 15:49:40.513 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop DelayedJobScheduler:29df63e3 has started in 4.4212 ms
+2021-02-17 15:49:40.518 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop RecurringJobScheduler:b774d80c has started in 6.2621 ms
+2021-02-17 15:49:40.519 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:4888:35f69416 all the dispatchers started
+2021-02-17 15:49:40.538 +07:00 [DBG] [Hangfire.Mongo.MongoExpirationManager.] Removed 0 outdated documents from 'hangfire.jobGraph'.
+2021-02-17 15:49:40.578 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 51581)
+2021-02-17 15:49:40.606 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-02-17 15:49:40.613 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-02-17 15:49:40.613 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-02-17 15:49:40.618 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-02-17 15:49:40.619 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-02-17 15:49:40.621 +07:00 [DBG] [MassTransit.] Declare exchange: "name: common, type: fanout, durable"
+2021-02-17 15:49:40.621 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-02-17 15:49:40.625 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, type: fanout, durable"
+2021-02-17 15:49:40.626 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-02-17 15:49:40.627 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-02-17 15:49:40.628 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-02-17 15:49:40.628 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, destination: common"
+2021-02-17 15:49:40.630 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-02-17 15:49:40.631 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-02-17 15:49:40.631 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-02-17 15:49:40.631 +07:00 [DBG] [MassTransit.] Declare queue: "name: common, durable"
+2021-02-17 15:49:40.633 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-02-17 15:49:40.634 +07:00 [DBG] [MassTransit.] Bind queue: "source: common, destination: common"
+2021-02-17 15:49:40.638 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-02-17 15:49:40.640 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:49:40.640 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:49:40.640 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:49:40.642 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-02-17 15:49:40.646 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:49:40.661 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-27CrB7cQQoX8dpncdAJIkg"
+2021-02-17 15:49:40.661 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/common - "amq.ctag-4NX3Ui5uUECjLimRZ11H_A"
+2021-02-17 15:49:40.662 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-Z5UlHZoPZqLeHSG1RQ8c5w"
+2021-02-17 15:49:40.662 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-J9GlytEO0zobiI5Bk4Qj7w"
+2021-02-17 15:49:56.185 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-02-17 15:49:56.187 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-02-17 15:49:56.189 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-02-17 15:49:56.192 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-02-17 15:49:56.194 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop BackgroundServerProcess:c8f1e129 has started in 2.5778 ms
+2021-02-17 15:49:56.196 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-02-17 15:49:56.198 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-02-17 15:49:56.201 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-02-17 15:49:56.203 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-02-17 15:49:56.205 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:4888:c460f367 successfully announced in 7.2264 ms
+2021-02-17 15:49:56.209 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:4888:c460f367 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-02-17 15:49:56.211 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerHeartbeatProcess:8574ae7f has started in 5.7861 ms
+2021-02-17 15:49:56.212 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop BackgroundServerProcess:a84348e2 has started in 8.6224 ms
+2021-02-17 15:49:56.216 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerWatchdog:2f314ee0 has started in 7.0601 ms
+2021-02-17 15:49:56.219 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerJobCancellationWatcher:e396b574 has started in 6.4755 ms
+2021-02-17 15:49:56.219 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoExpirationManager:ac9b744b has started in 6.1378 ms
+2021-02-17 15:49:56.222 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoNotificationObserver:ca48f2a3 has started in 5.8948 ms
+2021-02-17 15:49:56.225 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:20efb793 has started in 6.0155 ms
+2021-02-17 15:49:56.227 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:5ab9eea7 has started in 8.3767 ms
+2021-02-17 15:49:56.228 +07:00 [DBG] [Hangfire.Mongo.MongoExpirationManager.] Removed 0 outdated documents from 'hangfire.jobGraph'.
+2021-02-17 15:49:56.230 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:5fe264db has started in 10.7555 ms
+2021-02-17 15:49:56.232 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:55196171 has started in 13.1051 ms
+2021-02-17 15:49:56.234 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:9a003b47 has started in 15.2553 ms
+2021-02-17 15:49:56.236 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:4888:3002d299 successfully announced in 10.2203 ms
+2021-02-17 15:49:56.239 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:66459e65 has started in 20.1689 ms
+2021-02-17 15:49:56.241 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:6a18dc7a has started in 21.7312 ms
+2021-02-17 15:49:56.244 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:4888:3002d299 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-02-17 15:49:56.247 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerHeartbeatProcess:5cc050a1 has started in 11.1353 ms
+2021-02-17 15:49:56.249 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:e509307a has started in 29.3217 ms
+2021-02-17 15:49:56.252 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:2045833c has started in 32.6755 ms
+2021-02-17 15:49:56.254 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:38dfabd8 has started in 34.02 ms
+2021-02-17 15:49:56.256 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:9cb0de81 has started in 36.5383 ms
+2021-02-17 15:49:56.259 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:4f2108c7 has started in 40.0119 ms
+2021-02-17 15:49:56.262 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:bdcf29a4 has started in 42.7528 ms
+2021-02-17 15:49:56.264 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:95a109d3 has started in 44.7376 ms
+2021-02-17 15:49:56.268 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:a265a8f0 has started in 48.6641 ms
+2021-02-17 15:49:56.270 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerJobCancellationWatcher:3d8ec515 has started in 6.6247 ms
+2021-02-17 15:49:56.273 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerWatchdog:1ae5ef00 has started in 27.84 ms
+2021-02-17 15:49:56.275 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoExpirationManager:36c7d9c3 has started in 11.3282 ms
+2021-02-17 15:49:56.278 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:fef716c6 has started in 59.0365 ms
+2021-02-17 15:49:56.281 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:36144b43 has started in 61.129 ms
+2021-02-17 15:49:56.281 +07:00 [DBG] [Hangfire.Mongo.MongoExpirationManager.] Removed 0 outdated documents from 'hangfire.jobGraph'.
+2021-02-17 15:49:56.283 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:cde384ae has started in 63.7595 ms
+2021-02-17 15:49:56.286 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:877f6a88 has started in 66.5737 ms
+2021-02-17 15:49:56.289 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoNotificationObserver:309f94db has started in 21.7563 ms
+2021-02-17 15:49:56.290 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8ae63fd5 has started in 71.6257 ms
+2021-02-17 15:49:56.294 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop DelayedJobScheduler:07f6d564 has started in 13.4847 ms
+2021-02-17 15:49:56.297 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:4888:c460f367 all the dispatchers started
+2021-02-17 15:49:56.300 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop RecurringJobScheduler:acfbe258 has started in 8.7629 ms
+2021-02-17 15:49:56.302 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:eda296f9 has started in 19.7737 ms
+2021-02-17 15:49:56.307 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:bd2b3f93 has started in 23.9846 ms
+2021-02-17 15:49:56.309 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:f315ca28 has started in 26.078 ms
+2021-02-17 15:49:56.313 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8a69ab83 has started in 29.5089 ms
+2021-02-17 15:49:56.316 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:f656a6db has started in 33.0802 ms
+2021-02-17 15:49:56.318 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:61d47f01 has started in 35.2664 ms
+2021-02-17 15:49:56.322 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:53f08d26 has started in 38.5144 ms
+2021-02-17 15:49:56.325 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:3ecc58c7 has started in 42.4586 ms
+2021-02-17 15:49:56.328 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:b4f19e31 has started in 44.323 ms
+2021-02-17 15:49:56.331 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:5c425d42 has started in 48.0027 ms
+2021-02-17 15:49:56.334 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:1a12447a has started in 51.2072 ms
+2021-02-17 15:49:56.336 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:a2bc55fc has started in 53.5005 ms
+2021-02-17 15:49:56.340 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:c87e1f42 has started in 57.6236 ms
+2021-02-17 15:49:56.342 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:7f05ba2a has started in 59.7902 ms
+2021-02-17 15:49:56.347 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:f8363324 has started in 64.2309 ms
+2021-02-17 15:49:56.350 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:474f6d84 has started in 67.5286 ms
+2021-02-17 15:49:56.352 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:fdb1670e has started in 69.6664 ms
+2021-02-17 15:49:56.357 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8a3d1093 has started in 73.1441 ms
+2021-02-17 15:49:56.360 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:62131f9c has started in 76.9054 ms
+2021-02-17 15:49:56.362 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:72ee5325 has started in 79.3758 ms
+2021-02-17 15:49:56.367 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop DelayedJobScheduler:3359b037 has started in 10.9417 ms
+2021-02-17 15:49:56.370 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop RecurringJobScheduler:c33027c9 has started in 6.8839 ms
+2021-02-17 15:49:56.372 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:4888:3002d299 all the dispatchers started
+2021-02-17 15:49:56.776 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6790"
+2021-02-17 15:49:56.780 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-02-17 15:49:56.784 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-02-17 15:49:56.787 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-02-17 15:50:10.482 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:4888:35f69416 heartbeat successfully sent
+2021-02-17 15:50:26.250 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:4888:c460f367 heartbeat successfully sent
+2021-02-17 15:50:26.295 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:4888:3002d299 heartbeat successfully sent
+2021-02-17 15:50:40.531 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:4888:35f69416 heartbeat successfully sent
+2021-02-17 15:50:56.279 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:4888:c460f367 heartbeat successfully sent
+2021-02-17 15:50:56.326 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:4888:3002d299 heartbeat successfully sent
+2021-02-17 15:51:15.558 +07:00 [DBG] [Hangfire.Mongo.Migration.MigrationLock.] Acquired lock for migration
+2021-02-17 15:51:15.816 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-02-17 15:51:15.834 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-02-17 15:51:15.835 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-02-17 15:51:15.837 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Common.Interface.Consumers.CommonConsumer" (using supplied consumer factory)
+2021-02-17 15:51:16.580 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-02-17 15:51:16.584 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-02-17 15:51:16.587 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-02-17 15:51:16.589 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-02-17 15:51:16.605 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop BackgroundServerProcess:2e2ca38d has started in 5.6368 ms
+2021-02-17 15:51:16.608 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-02-17 15:51:16.633 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19820:d2e64b7e successfully announced in 24.0914 ms
+2021-02-17 15:51:16.637 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerHeartbeatProcess:59e3f02c has started in 2.9498 ms
+2021-02-17 15:51:16.638 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19820:d2e64b7e is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-02-17 15:51:16.641 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerWatchdog:a8c90270 has started in 3.0217 ms
+2021-02-17 15:51:16.642 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerJobCancellationWatcher:9a94961f has started in 3.4864 ms
+2021-02-17 15:51:16.644 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoExpirationManager:37914fe5 has started in 2.712 ms
+2021-02-17 15:51:16.646 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoNotificationObserver:5268881f has started in 3.9886 ms
+2021-02-17 15:51:16.650 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:9dc8f8ed has started in 4.7405 ms
+2021-02-17 15:51:16.653 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:b559c5ee has started in 7.3242 ms
+2021-02-17 15:51:16.653 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:c9ee46be has started in 7.3242 ms
+2021-02-17 15:51:16.654 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:4d1ed555 has started in 9.1995 ms
+2021-02-17 15:51:16.658 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:6d28525d has started in 12.5567 ms
+2021-02-17 15:51:16.660 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8e484c39 has started in 14.1783 ms
+2021-02-17 15:51:16.662 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:1f3b8e29 has started in 16.5045 ms
+2021-02-17 15:51:16.664 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:9df91786 has started in 18.5322 ms
+2021-02-17 15:51:16.666 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:6d1a2fec has started in 20.7197 ms
+2021-02-17 15:51:16.669 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:ad265244 has started in 23.6698 ms
+2021-02-17 15:51:16.670 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:66627075 has started in 24.6669 ms
+2021-02-17 15:51:16.674 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:a7c50812 has started in 28.627 ms
+2021-02-17 15:51:16.675 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:fcab327e has started in 29.6972 ms
+2021-02-17 15:51:16.678 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:e5f21e20 has started in 32.1745 ms
+2021-02-17 15:51:16.680 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:11e673a6 has started in 34.6692 ms
+2021-02-17 15:51:16.687 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:682ebbf2 has started in 41.0544 ms
+2021-02-17 15:51:16.690 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:2db1531e has started in 44.0648 ms
+2021-02-17 15:51:16.693 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:215f9b68 has started in 47.9702 ms
+2021-02-17 15:51:16.695 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:3a77b97d has started in 49.1897 ms
+2021-02-17 15:51:16.696 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:baab4059 has started in 51.0422 ms
+2021-02-17 15:51:16.698 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-02-17 15:51:16.699 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop DelayedJobScheduler:d3536b32 has started in 5.6774 ms
+2021-02-17 15:51:16.702 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19820:d2e64b7e all the dispatchers started
+2021-02-17 15:51:16.705 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop RecurringJobScheduler:02abb458 has started in 8.0434 ms
+2021-02-17 15:51:16.722 +07:00 [DBG] [Hangfire.Mongo.MongoExpirationManager.] Removed 0 outdated documents from 'hangfire.jobGraph'.
+2021-02-17 15:51:16.761 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 51675)
+2021-02-17 15:51:16.801 +07:00 [DBG] [MassTransit.] Declare exchange: "name: common, type: fanout, durable"
+2021-02-17 15:51:16.801 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-02-17 15:51:16.806 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-02-17 15:51:16.807 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-02-17 15:51:16.807 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, type: fanout, durable"
+2021-02-17 15:51:16.810 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-02-17 15:51:16.811 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-02-17 15:51:16.811 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, destination: common"
+2021-02-17 15:51:16.813 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-02-17 15:51:16.813 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-02-17 15:51:16.817 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-02-17 15:51:16.818 +07:00 [DBG] [MassTransit.] Declare queue: "name: common, durable"
+2021-02-17 15:51:16.818 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-02-17 15:51:16.818 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-02-17 15:51:16.820 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-02-17 15:51:16.824 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-02-17 15:51:16.825 +07:00 [DBG] [MassTransit.] Bind queue: "source: common, destination: common"
+2021-02-17 15:51:16.825 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-02-17 15:51:16.824 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-02-17 15:51:16.827 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-02-17 15:51:16.833 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:51:16.833 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:51:16.833 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:51:16.833 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-02-17 15:51:16.854 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-lZ_6rsLhZyTODZ231w0Qqw"
+2021-02-17 15:51:16.854 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-1FaOxa7BJEHbgB6Sk6_zWg"
+2021-02-17 15:51:16.856 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/common - "amq.ctag-Y0j_dqaVV2d-9nOCvpGPnQ"
+2021-02-17 15:51:16.856 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-uvd5NW56vK7KSeIIT_6QQA"
+2021-02-17 15:51:21.904 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-02-17 15:51:21.906 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-02-17 15:51:21.908 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-02-17 15:51:21.910 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-02-17 15:51:21.912 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop BackgroundServerProcess:6c031b50 has started in 2.2742 ms
+2021-02-17 15:51:21.914 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.8.0.5:27017,10.8.0.5:27018,10.8.0.5:27019, database name: PaygateCommon, prefix: hangfire'
+2021-02-17 15:51:21.916 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-02-17 15:51:21.918 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-02-17 15:51:21.920 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-02-17 15:51:21.922 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19820:f5a4f766 successfully announced in 6.8716 ms
+2021-02-17 15:51:21.925 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19820:f5a4f766 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-02-17 15:51:21.927 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerHeartbeatProcess:0bf0ff32 has started in 4.0707 ms
+2021-02-17 15:51:21.928 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop BackgroundServerProcess:1d46e597 has started in 7.0572 ms
+2021-02-17 15:51:21.931 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerWatchdog:b44d134a has started in 5.9296 ms
+2021-02-17 15:51:21.932 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerJobCancellationWatcher:4b0cf1c7 has started in 4.4615 ms
+2021-02-17 15:51:21.936 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoExpirationManager:9526263a has started in 7.4985 ms
+2021-02-17 15:51:21.939 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19820:23fdfbf1 successfully announced in 8.5918 ms
+2021-02-17 15:51:21.939 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoNotificationObserver:e1de18a5 has started in 6.5269 ms
+2021-02-17 15:51:21.944 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19820:23fdfbf1 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-02-17 15:51:21.944 +07:00 [DBG] [Hangfire.Mongo.MongoExpirationManager.] Removed 0 outdated documents from 'hangfire.jobGraph'.
+2021-02-17 15:51:21.946 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:1c6ffdc1 has started in 9.2076 ms
+2021-02-17 15:51:21.947 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerHeartbeatProcess:9346d64b has started in 7.7105 ms
+2021-02-17 15:51:21.951 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:7d73f46e has started in 13.348 ms
+2021-02-17 15:51:21.955 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:e9ff15f8 has started in 18.1713 ms
+2021-02-17 15:51:21.955 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerWatchdog:d32bae03 has started in 11.0428 ms
+2021-02-17 15:51:21.955 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop ServerJobCancellationWatcher:f3fee536 has started in 5.0389 ms
+2021-02-17 15:51:21.959 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:38712c36 has started in 21.5648 ms
+2021-02-17 15:51:21.962 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoExpirationManager:ce23ccda has started in 10.8455 ms
+2021-02-17 15:51:21.967 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:77976bb1 has started in 30.9752 ms
+2021-02-17 15:51:21.968 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:43392805 has started in 31.0355 ms
+2021-02-17 15:51:21.970 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop MongoNotificationObserver:9af49d6f has started in 12.2856 ms
+2021-02-17 15:51:21.970 +07:00 [DBG] [Hangfire.Mongo.MongoExpirationManager.] Removed 0 outdated documents from 'hangfire.jobGraph'.
+2021-02-17 15:51:21.973 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:911d95c1 has started in 36.2317 ms
+2021-02-17 15:51:21.976 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8d927cf1 has started in 39.4491 ms
+2021-02-17 15:51:21.980 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:c8afca06 has started in 16.562 ms
+2021-02-17 15:51:21.981 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:158c5a11 has started in 44.5402 ms
+2021-02-17 15:51:21.985 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:1fbe002a has started in 47.4913 ms
+2021-02-17 15:51:21.988 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:a8344b40 has started in 25.0603 ms
+2021-02-17 15:51:21.988 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:545a5b06 has started in 25.4252 ms
+2021-02-17 15:51:21.991 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:94fdd774 has started in 54.9524 ms
+2021-02-17 15:51:21.994 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:73a344a9 has started in 31.1618 ms
+2021-02-17 15:51:21.998 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:f2904cc5 has started in 61.123 ms
+2021-02-17 15:51:22.000 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:c18968fa has started in 37.239 ms
+2021-02-17 15:51:22.003 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:7102340c has started in 66.4635 ms
+2021-02-17 15:51:22.006 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:647e95e8 has started in 42.6599 ms
+2021-02-17 15:51:22.008 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:47dcf060 has started in 44.4344 ms
+2021-02-17 15:51:22.013 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:7b069b86 has started in 76.3454 ms
+2021-02-17 15:51:22.013 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:6eb170a1 has started in 49.7826 ms
+2021-02-17 15:51:22.016 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:c95b2170 has started in 79.8337 ms
+2021-02-17 15:51:22.018 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:118a3db6 has started in 55.1942 ms
+2021-02-17 15:51:22.022 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:9f75129d has started in 85.6229 ms
+2021-02-17 15:51:22.024 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:3517137a has started in 61.4176 ms
+2021-02-17 15:51:22.028 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:4eeb502d has started in 64.4558 ms
+2021-02-17 15:51:22.030 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:a63da799 has started in 67.0916 ms
+2021-02-17 15:51:22.033 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:98f3862a has started in 95.6241 ms
+2021-02-17 15:51:22.035 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:34dd66e6 has started in 98.2313 ms
+2021-02-17 15:51:22.039 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:b7664af9 has started in 101.4154 ms
+2021-02-17 15:51:22.040 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8e5dcb2c has started in 77.3993 ms
+2021-02-17 15:51:22.045 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8b4772be has started in 81.5982 ms
+2021-02-17 15:51:22.047 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:8c6f97f7 has started in 110.0418 ms
+2021-02-17 15:51:22.050 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:3f17cf8d has started in 87.1549 ms
+2021-02-17 15:51:22.053 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop DelayedJobScheduler:9d096764 has started in 12.8646 ms
+2021-02-17 15:51:22.056 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:c3926dfe has started in 92.9449 ms
+2021-02-17 15:51:22.058 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:72ad74e3 has started in 95.0683 ms
+2021-02-17 15:51:22.061 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19820:f5a4f766 all the dispatchers started
+2021-02-17 15:51:22.065 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:7b739ea6 has started in 101.6413 ms
+2021-02-17 15:51:22.067 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop RecurringJobScheduler:5703ee71 has started in 18.9019 ms
+2021-02-17 15:51:22.072 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:77647626 has started in 107.8904 ms
+2021-02-17 15:51:22.075 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop Worker:6d6c70cc has started in 111.6755 ms
+2021-02-17 15:51:22.077 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop DelayedJobScheduler:580706e1 has started in 8.9346 ms
+2021-02-17 15:51:22.080 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19820:23fdfbf1 all the dispatchers started
+2021-02-17 15:51:22.083 +07:00 [DBG] [Hangfire.Processing.BackgroundExecution.] Execution loop RecurringJobScheduler:e3115393 has started in 12.2438 ms
+2021-02-17 15:51:22.225 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.7:6790"
+2021-02-17 15:51:22.228 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-02-17 15:51:22.231 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-02-17 15:51:22.236 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-02-17 15:51:31.576 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/  
+2021-02-17 15:51:31.762 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 186.752ms 404 
+2021-02-17 15:51:36.932 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui  
+2021-02-17 15:51:36.950 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 16.2007ms 302 
+2021-02-17 15:51:36.955 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/  
+2021-02-17 15:51:37.004 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 48.6722ms 200 text/html; charset=utf-8
+2021-02-17 15:51:37.031 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/object-assign-pollyfill.js  
+2021-02-17 15:51:37.034 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/css/reset.css  
+2021-02-17 15:51:37.037 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/css/screen.css  
+2021-02-17 15:51:37.044 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/css/typography.css  
+2021-02-17 15:51:37.048 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/jquery-1.8.0.min.js  
+2021-02-17 15:51:37.051 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/jquery.slideto.min.js  
+2021-02-17 15:51:37.064 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 32.7926ms 200 text/css
+2021-02-17 15:51:37.067 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 30.2374ms 200 text/css
+2021-02-17 15:51:37.071 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 34.3408ms 200 text/css
+2021-02-17 15:51:37.075 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 36.8787ms 200 text/javascript
+2021-02-17 15:51:37.079 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/handlebars-4.0.5.js  
+2021-02-17 15:51:37.082 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/jquery.wiggle.min.js  
+2021-02-17 15:51:37.084 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/jquery.ba-bbq.min.js  
+2021-02-17 15:51:37.088 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 20.8213ms 200 text/javascript
+2021-02-17 15:51:37.091 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 10.4686ms 200 text/javascript
+2021-02-17 15:51:37.094 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 9.7989ms 200 text/javascript
+2021-02-17 15:51:37.096 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/backbone-min.js  
+2021-02-17 15:51:37.099 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/lodash.min.js  
+2021-02-17 15:51:37.106 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 8.4909ms 200 text/javascript
+2021-02-17 15:51:37.110 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 12.2932ms 200 text/javascript
+2021-02-17 15:51:37.120 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/highlight.9.1.0.pack.js  
+2021-02-17 15:51:37.123 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/highlight.9.1.0.pack_extended.js  
+2021-02-17 15:51:37.126 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/marked.js  
+2021-02-17 15:51:37.131 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 9.7774ms 200 text/javascript
+2021-02-17 15:51:37.133 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 9.8886ms 200 text/javascript
+2021-02-17 15:51:37.137 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/swagger-oauth.js  
+2021-02-17 15:51:37.140 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 15.1222ms 200 text/javascript
+2021-02-17 15:51:37.143 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 7.4056ms 200 text/javascript
+2021-02-17 15:51:37.149 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 72.4495ms 200 text/javascript
+2021-02-17 15:51:37.152 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 118.2097ms 200 text/javascript
+2021-02-17 15:51:37.155 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/lib/jsoneditor.min.js  
+2021-02-17 15:51:37.158 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/swagger-ui.js  
+2021-02-17 15:51:37.164 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 11.3253ms 200 text/javascript
+2021-02-17 15:51:37.167 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/images/logo_small.png  
+2021-02-17 15:51:37.171 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 4.0827ms 200 image/png
+2021-02-17 15:51:37.175 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/css/print.css  
+2021-02-17 15:51:37.193 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 17.8112ms 200 text/css
+2021-02-17 15:51:37.211 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 52.4769ms 200 text/javascript
+2021-02-17 15:51:37.297 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/openapi  
+2021-02-17 15:51:37.318 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.7:6790/swagger-ui/images/favicon-32x32.png  
+2021-02-17 15:51:37.322 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 4.7864ms 200 image/png
+2021-02-17 15:51:37.457 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 158.9395ms 200 application/json; charset=utf-8
+2021-02-17 15:51:46.680 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:19820:d2e64b7e heartbeat successfully sent
+2021-02-17 15:51:51.952 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:f5a4f766 heartbeat successfully sent
+2021-02-17 15:51:51.970 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:23fdfbf1 heartbeat successfully sent
+2021-02-17 15:52:16.682 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:19820:d2e64b7e heartbeat successfully sent
+2021-02-17 15:52:21.967 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:f5a4f766 heartbeat successfully sent
+2021-02-17 15:52:21.982 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:23fdfbf1 heartbeat successfully sent
+2021-02-17 15:52:46.704 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:19820:d2e64b7e heartbeat successfully sent
+2021-02-17 15:52:51.998 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:f5a4f766 heartbeat successfully sent
+2021-02-17 15:52:52.013 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:23fdfbf1 heartbeat successfully sent
+2021-02-17 15:53:16.723 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:19820:d2e64b7e heartbeat successfully sent
+2021-02-17 15:53:22.010 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:f5a4f766 heartbeat successfully sent
+2021-02-17 15:53:22.023 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:23fdfbf1 heartbeat successfully sent
+2021-02-17 15:53:46.751 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:19820:d2e64b7e heartbeat successfully sent
+2021-02-17 15:53:52.040 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:f5a4f766 heartbeat successfully sent
+2021-02-17 15:53:52.056 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:23fdfbf1 heartbeat successfully sent
+2021-02-17 15:54:16.790 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:19820:d2e64b7e heartbeat successfully sent
+2021-02-17 15:54:22.049 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:f5a4f766 heartbeat successfully sent
+2021-02-17 15:54:22.065 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:23fdfbf1 heartbeat successfully sent
+2021-02-17 15:54:46.813 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:19820:d2e64b7e heartbeat successfully sent
+2021-02-17 15:54:52.067 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:f5a4f766 heartbeat successfully sent
+2021-02-17 15:54:52.089 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server commonservice-gunner:19820:23fdfbf1 heartbeat successfully sent
+2021-02-17 15:55:16.834 +07:00 [DBG] [Hangfire.Server.ServerHeartbeatProcess.] Server gunner:19820:d2e64b7e heartbeat successfully sent

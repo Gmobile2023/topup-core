@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Orleans.Sdk" Version="7.2.1" />
+        <PackageReference Include="Microsoft.Orleans.Core" Version="7.2.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\HLS.Paygate.Stock.Contracts\HLS.Paygate.Stock.Contracts.csproj" />
+        <ProjectReference Include="..\HLS.Paygate.Stock.Domains\HLS.Paygate.Stock.Domains.csproj" />
+        <ProjectReference Include="..\Paygate.Discovery.Requests\Paygate.Discovery.Requests.csproj" />
+
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Consumers\CardCallBackConsumer.cs" />
+        <Compile Remove="Consumers\CardConfirmConsumer.cs" />
+        <Compile Remove="Consumers\CardRequestConsumer.cs" />
+        <Compile Remove="Consumers\StockCardsImportConsumer.cs" />
+        <Compile Remove="Consumers\StockCommandConsumer.cs" />
+        <Compile Remove="StateMachines\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="StateMachines\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="StateMachines\**" />
+    </ItemGroup>
+
+</Project>

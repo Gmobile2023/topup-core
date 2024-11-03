@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <LangVersion>default</LangVersion>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+        <Version>2.0.0</Version>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <SkipPostSharp>True</SkipPostSharp>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="appsettings.json" />
+        <None Remove="nlog.config" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.2" />
+        <PackageReference Include="MassTransit.MongoDb" Version="8.0.8" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.8" />
+        <PackageReference Include="Microsoft.AspNetCore.HealthChecks" Version="1.0.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+        <PackageReference Include="NLog.Extensions.Logging" Version="1.7.4" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+        <PackageReference Include="ServiceStack.Api.OpenApi" Version="6.4.0" />
+        <PackageReference Include="ServiceStack.RabbitMq.Core" Version="6.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\HLS.Paygate.Gw.Model\HLS.Paygate.Gw.Model.csproj" />
+        <ProjectReference Include="..\HLS.Paygate.Shared\HLS.Paygate.Shared.csproj" />
+        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+        
+        <ProjectReference Include="..\TW.Paygate.Worker.Domain\HLS.Paygate.Worker.Components.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Configurations\Configure.Db.cs" />
+        <Compile Remove="MassTransitConsoleHostedService.cs" />
+        <Compile Remove="QueuedHostedService2.cs" />
+    </ItemGroup>
+
+</Project>

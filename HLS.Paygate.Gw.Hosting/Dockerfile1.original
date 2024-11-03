@@ -1,0 +1,29 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["HLS.Paygate.Gw.Hosting/HLS.Paygate.Gw.Hosting.csproj", "HLS.Paygate.Gw.Hosting/"]
+COPY ["HLS.Paygate.Gw.Model/HLS.Paygate.Gw.Model.csproj", "HLS.Paygate.Gw.Model/"]
+COPY ["HLS.Paygate.Shared/HLS.Paygate.Shared.csproj", "HLS.Paygate.Shared/"]
+COPY ["HLS.Paygate.Gw.Domain/HLS.Paygate.Gw.Domain.csproj", "HLS.Paygate.Gw.Domain/"]
+COPY ["Paygate.Discovery.Requests/Paygate.Discovery.Requests.csproj", "Paygate.Discovery.Requests/"]
+COPY ["Paygate.Contracts/Paygate.Contracts.csproj", "Paygate.Contracts/"]
+COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
+COPY ["Paygate.Discovery.Consul/Paygate.Discovery.Consul.csproj", "Paygate.Discovery.Consul/"]
+COPY ["HLS.Paygate.Gw.Interface/HLS.Paygate.Gw.Interface.csproj", "HLS.Paygate.Gw.Interface/"]
+RUN dotnet restore "HLS.Paygate.Gw.Hosting/HLS.Paygate.Gw.Hosting.csproj"
+COPY . .
+WORKDIR "/src/HLS.Paygate.Gw.Hosting"
+RUN dotnet build "HLS.Paygate.Gw.Hosting.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "HLS.Paygate.Gw.Hosting.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "HLS.Paygate.Gw.Hosting.dll"]

@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Orleans.Sdk" Version="7.2.1" />
+        <PackageReference Include="Microsoft.Orleans.Transactions" Version="7.2.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\HLS.Paygate.Shared\HLS.Paygate.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Commands\CardStockCommand.cs" />
+        <Compile Remove="ApiRequests\GetCardForMappingRequest.cs" />
+        <Compile Remove="ApiRequests\CardPushRequest.cs" />
+        <Compile Remove="Events\CardComingEvent.cs" />
+        <Compile Remove="Dtos\GrainsStockGrainDto.cs" />
+        <Compile Remove="Dtos\CardStockDto.cs" />
+        <Compile Remove="Commands\**" />
+        <Compile Remove="ApiRequests\CardSaleRequest.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Commands\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Commands\**" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\HLS.Paygate.Gw.Model\HLS.Paygate.Gw.Model.csproj"/>
+        <ProjectReference Include="..\HLS.Paygate.Shared\HLS.Paygate.Shared.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Commands"/>
+        <Folder Include="Events"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Commands\CardStockCommand.cs"/>
+        <Compile Remove="ApiRequests\GetCardForMappingRequest.cs"/>
+        <Compile Remove="ApiRequests\CardPushRequest.cs"/>
+        <Compile Remove="Events\CardComingEvent.cs"/>
+        <Compile Remove="ApiRequests\BillQueryRequest.cs"/>
+        <Compile Remove="ApiRequests\CheckTransRequest.cs"/>
+    </ItemGroup>
+
+</Project>

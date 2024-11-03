@@ -1,0 +1,72 @@
+2021-08-05 16:44:30.131 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-08-05 16:44:31.166 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-08-05 16:44:31.292 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-08-05 16:44:31.362 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-08-05 16:44:31.436 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6791"
+2021-08-05 16:44:31.438 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-08-05 16:44:31.439 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-08-05 16:44:31.439 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Commission.Hosting"
+2021-08-05 16:44:33.504 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/ - -
+2021-08-05 16:44:33.727 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/ - - - 404 0 - 225.3373ms
+2021-08-05 16:44:38.605 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui - -
+2021-08-05 16:44:38.639 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui - - - 302 0 - 33.3777ms
+2021-08-05 16:44:38.641 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/ - -
+2021-08-05 16:44:38.677 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/ - - - 200 4469 text/html;+charset=utf-8 36.0901ms
+2021-08-05 16:44:38.713 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/css/screen.css - -
+2021-08-05 16:44:38.714 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/css/reset.css - -
+2021-08-05 16:44:38.716 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/css/typography.css - -
+2021-08-05 16:44:38.719 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jquery-1.8.0.min.js - -
+2021-08-05 16:44:38.719 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jquery.slideto.min.js - -
+2021-08-05 16:44:38.764 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/css/reset.css - - - 200 773 text/css 49.4415ms
+2021-08-05 16:44:38.764 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/css/typography.css - - - 200 0 text/css 47.4618ms
+2021-08-05 16:44:38.764 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/object-assign-pollyfill.js - -
+2021-08-05 16:44:38.766 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jquery.wiggle.min.js - -
+2021-08-05 16:44:38.767 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/object-assign-pollyfill.js - - - 200 349 text/javascript 2.8994ms
+2021-08-05 16:44:38.769 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jquery.ba-bbq.min.js - -
+2021-08-05 16:44:38.771 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/handlebars-4.0.5.js - -
+2021-08-05 16:44:38.772 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jquery-1.8.0.min.js - - - 200 92034 text/javascript 53.1307ms
+2021-08-05 16:44:38.772 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/css/screen.css - - - 200 43644 text/css 59.2688ms
+2021-08-05 16:44:38.773 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/lodash.min.js - -
+2021-08-05 16:44:38.777 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jquery.wiggle.min.js - - - 200 536 text/javascript 10.8009ms
+2021-08-05 16:44:38.777 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jquery.ba-bbq.min.js - - - 200 3518 text/javascript 7.5560ms
+2021-08-05 16:44:38.787 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jquery.slideto.min.js - - - 200 365 text/javascript 67.6094ms
+2021-08-05 16:44:38.788 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/backbone-min.js - -
+2021-08-05 16:44:38.794 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/highlight.9.1.0.pack.js - -
+2021-08-05 16:44:38.794 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/lodash.min.js - - - 200 51895 text/javascript 21.5496ms
+2021-08-05 16:44:38.795 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/swagger-ui.js - -
+2021-08-05 16:44:38.796 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/backbone-min.js - - - 200 19371 text/javascript 8.6543ms
+2021-08-05 16:44:38.799 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/highlight.9.1.0.pack.js - - - 200 10962 text/javascript 4.8556ms
+2021-08-05 16:44:38.805 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/highlight.9.1.0.pack_extended.js - -
+2021-08-05 16:44:38.808 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/marked.js - -
+2021-08-05 16:44:38.808 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/highlight.9.1.0.pack_extended.js - - - 200 310 text/javascript 2.8092ms
+2021-08-05 16:44:38.809 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/marked.js - - - 200 15724 text/javascript 0.9089ms
+2021-08-05 16:44:38.809 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/swagger-oauth.js - -
+2021-08-05 16:44:38.812 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/handlebars-4.0.5.js - - - 200 71506 text/javascript 41.1613ms
+2021-08-05 16:44:38.813 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/swagger-oauth.js - - - 200 7042 text/javascript 4.4546ms
+2021-08-05 16:44:38.817 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jsoneditor.min.js - -
+2021-08-05 16:44:38.838 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/lib/jsoneditor.min.js - - - 200 129839 text/javascript 21.2210ms
+2021-08-05 16:44:38.843 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/images/logo_small.png - -
+2021-08-05 16:44:38.845 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/images/logo_small.png - - - 200 2912 image/png 1.1749ms
+2021-08-05 16:44:38.846 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/css/print.css - -
+2021-08-05 16:44:38.848 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/css/print.css - - - 200 41666 text/css 1.4257ms
+2021-08-05 16:44:38.856 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/swagger-ui.js - - - 200 2729821 text/javascript 60.8964ms
+2021-08-05 16:44:38.986 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/openapi - -
+2021-08-05 16:44:39.010 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/images/favicon-32x32.png - -
+2021-08-05 16:44:39.011 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/swagger-ui/images/favicon-32x32.png - - - 200 1141 image/png 0.8435ms
+2021-08-05 16:44:39.137 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6791/openapi - - - 200 - application/json;+charset=utf-8 150.3866ms
+2021-08-05 16:45:25.815 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-08-05 16:45:26.452 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-08-05 16:45:26.487 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-08-05 16:45:26.574 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-08-05 16:45:26.643 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6791"
+2021-08-05 16:45:26.645 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-08-05 16:45:26.645 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-08-05 16:45:26.646 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Commission.Hosting"
+2021-08-05 16:47:55.758 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-08-05 16:47:56.583 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-08-05 16:47:56.633 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-08-05 16:47:56.650 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-08-05 16:47:56.736 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6791"
+2021-08-05 16:47:56.739 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-08-05 16:47:56.740 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-08-05 16:47:56.740 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Commission.Hosting"

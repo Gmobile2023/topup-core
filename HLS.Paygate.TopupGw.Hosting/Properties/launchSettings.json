@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "HLS.Paygate.TopupGw.Hosting": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

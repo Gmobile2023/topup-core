@@ -1,0 +1,338 @@
+2021-01-10 13:14:11.278 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportBalanceConsumer" (using supplied consumer factory)
+2021-01-10 13:14:11.341 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportItemConsumer" (using supplied consumer factory)
+2021-01-10 13:14:11.344 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportCardStockConsumer" (using supplied consumer factory)
+2021-01-10 13:14:11.346 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-01-10 13:14:11.347 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-01-10 13:14:11.349 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-01-10 13:14:11.351 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.TransactionReportConsumer" (using supplied consumer factory)
+2021-01-10 13:14:11.515 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-01-10 13:14:11.565 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-01-10 13:14:11.622 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 59581)
+2021-01-10 13:14:11.661 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-card-stock, type: fanout, durable"
+2021-01-10 13:14:11.661 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-item, type: fanout, durable"
+2021-01-10 13:14:11.663 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-01-10 13:14:11.668 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-01-10 13:14:11.668 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, type: fanout, durable"
+2021-01-10 13:14:11.668 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, type: fanout, durable"
+2021-01-10 13:14:11.670 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-balance, type: fanout, durable"
+2021-01-10 13:14:11.671 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, type: fanout, durable"
+2021-01-10 13:14:11.672 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, destination: report-card-stock"
+2021-01-10 13:14:11.672 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-01-10 13:14:11.674 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, type: fanout, durable"
+2021-01-10 13:14:11.674 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, type: fanout, durable"
+2021-01-10 13:14:11.677 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, type: fanout, durable"
+2021-01-10 13:14:11.678 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, destination: report-balance"
+2021-01-10 13:14:11.678 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-01-10 13:14:11.681 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, destination: report-item"
+2021-01-10 13:14:11.683 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-card-stock, durable"
+2021-01-10 13:14:11.683 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-01-10 13:14:13.552 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-01-10 13:14:13.552 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-01-10 13:14:13.553 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-balance, durable"
+2021-01-10 13:14:13.553 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, destination: report-item"
+2021-01-10 13:14:13.554 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-card-stock, destination: report-card-stock"
+2021-01-10 13:14:13.554 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-01-10 13:14:13.556 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-01-10 13:14:14.569 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-01-10 13:14:14.569 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-balance, destination: report-balance"
+2021-01-10 13:14:14.569 +07:00 [DBG] [MassTransit.] Declare exchange: "name: transaction-report, type: fanout, durable"
+2021-01-10 13:14:14.571 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, destination: report-item"
+2021-01-10 13:14:14.571 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-01-10 13:14:14.574 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:14:14.574 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:14:15.567 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, type: fanout, durable"
+2021-01-10 13:14:15.569 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-01-10 13:14:15.569 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-01-10 13:14:15.575 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, destination: transaction-report"
+2021-01-10 13:14:15.575 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, destination: report-item"
+2021-01-10 13:14:15.575 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:14:15.576 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:14:15.576 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-01-10 13:14:15.579 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-01-10 13:14:15.579 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-item, durable"
+2021-01-10 13:14:15.580 +07:00 [DBG] [MassTransit.] Declare queue: "name: transaction-report, durable"
+2021-01-10 13:14:15.584 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-item, destination: report-item"
+2021-01-10 13:14:15.584 +07:00 [DBG] [MassTransit.] Bind queue: "source: transaction-report, destination: transaction-report"
+2021-01-10 13:14:15.588 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:14:15.588 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:14:15.588 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:14:15.610 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-dyjSJOiRiuTbbNyYzYi_Cw"
+2021-01-10 13:14:15.610 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-sNFR6_V8hbai7PbiD4YShg"
+2021-01-10 13:14:15.612 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/transaction-report - "amq.ctag-scUmE6uOGmGBMeO_rbdHIw"
+2021-01-10 13:14:15.612 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-xqQ5b7Drk9Yi0rJM-6bFSA"
+2021-01-10 13:14:15.612 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag-S46Gopqbo_VGU5wm7aLrCA"
+2021-01-10 13:14:15.612 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-kudItqN7e4XGVNbpXk_JwQ"
+2021-01-10 13:14:15.612 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag-thC6OGJ5qqMIM49Lh7Q8Tw"
+2021-01-10 13:14:16.225 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6780"
+2021-01-10 13:14:16.227 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-01-10 13:14:16.229 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-01-10 13:14:16.231 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Report.Hosting"
+2021-01-10 13:20:45.299 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportBalanceConsumer" (using supplied consumer factory)
+2021-01-10 13:20:45.355 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportItemConsumer" (using supplied consumer factory)
+2021-01-10 13:20:45.358 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportCardStockConsumer" (using supplied consumer factory)
+2021-01-10 13:20:45.359 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-01-10 13:20:45.360 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-01-10 13:20:45.362 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-01-10 13:20:45.363 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.TransactionReportConsumer" (using supplied consumer factory)
+2021-01-10 13:20:45.510 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-01-10 13:20:45.562 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-01-10 13:20:45.618 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 59688)
+2021-01-10 13:20:45.650 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-item, type: fanout, durable"
+2021-01-10 13:20:45.650 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-balance, type: fanout, durable"
+2021-01-10 13:20:45.656 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, type: fanout, durable"
+2021-01-10 13:20:45.656 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, type: fanout, durable"
+2021-01-10 13:20:45.656 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-01-10 13:20:45.659 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, type: fanout, durable"
+2021-01-10 13:20:45.660 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, destination: report-balance"
+2021-01-10 13:20:45.661 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-01-10 13:20:45.662 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, type: fanout, durable"
+2021-01-10 13:20:45.663 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-card-stock, type: fanout, durable"
+2021-01-10 13:20:45.664 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-01-10 13:20:45.665 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, type: fanout, durable"
+2021-01-10 13:20:45.668 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, type: fanout, durable"
+2021-01-10 13:20:45.668 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, destination: report-item"
+2021-01-10 13:20:45.669 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-balance, durable"
+2021-01-10 13:20:45.669 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-01-10 13:20:45.671 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-01-10 13:20:45.671 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, destination: report-card-stock"
+2021-01-10 13:20:45.675 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, destination: report-item"
+2021-01-10 13:20:45.676 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-balance, destination: report-balance"
+2021-01-10 13:20:45.676 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-01-10 13:20:47.401 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-01-10 13:20:47.401 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-01-10 13:20:47.403 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-card-stock, durable"
+2021-01-10 13:20:47.403 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, destination: report-item"
+2021-01-10 13:20:47.411 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:20:47.411 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:20:48.403 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-01-10 13:20:48.403 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-01-10 13:20:48.404 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-card-stock, destination: report-card-stock"
+2021-01-10 13:20:48.405 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, destination: report-item"
+2021-01-10 13:20:48.406 +07:00 [DBG] [MassTransit.] Declare exchange: "name: transaction-report, type: fanout, durable"
+2021-01-10 13:20:48.406 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-01-10 13:20:48.408 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-01-10 13:20:48.408 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:20:48.408 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-item, durable"
+2021-01-10 13:20:49.412 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, type: fanout, durable"
+2021-01-10 13:20:49.416 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-01-10 13:20:49.416 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-01-10 13:20:49.416 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-item, destination: report-item"
+2021-01-10 13:20:49.418 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, destination: transaction-report"
+2021-01-10 13:20:49.419 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-l1nG3A8xkkN3wipp9RHXHQ"
+2021-01-10 13:20:49.422 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag-Wpeis9GqPZRNysz3-sHJ2Q"
+2021-01-10 13:20:49.426 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-1jDTFjkPkZHLbUFJq7bIYw"
+2021-01-10 13:20:49.426 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-01-10 13:20:49.427 +07:00 [DBG] [MassTransit.] Declare queue: "name: transaction-report, durable"
+2021-01-10 13:20:49.427 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:20:49.427 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:20:49.429 +07:00 [DBG] [MassTransit.] Bind queue: "source: transaction-report, destination: transaction-report"
+2021-01-10 13:20:49.431 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:20:49.433 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-nmNPANfDTaYpswWrcFZXlA"
+2021-01-10 13:20:49.433 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag--N0FcPzR6DT3KYfixKneqg"
+2021-01-10 13:20:49.433 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:20:49.436 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-DDzkBZL4lcOV3UzI0XZ47w"
+2021-01-10 13:20:49.439 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/transaction-report - "amq.ctag-YZlHleFMo7ETyhZYiU1pFg"
+2021-01-10 13:20:49.963 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6780"
+2021-01-10 13:20:49.965 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-01-10 13:20:49.967 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-01-10 13:20:49.969 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Report.Hosting"
+2021-01-10 13:21:07.647 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/  
+2021-01-10 13:21:07.686 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 41.96ms 404 
+2021-01-10 13:21:15.288 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui  
+2021-01-10 13:21:15.301 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 12.1581ms 302 
+2021-01-10 13:21:15.304 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/  
+2021-01-10 13:21:15.356 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 52.1357ms 200 text/html; charset=utf-8
+2021-01-10 13:21:15.370 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/typography.css  
+2021-01-10 13:21:15.372 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/reset.css  
+2021-01-10 13:21:15.377 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/screen.css  
+2021-01-10 13:21:15.378 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/object-assign-pollyfill.js  
+2021-01-10 13:21:15.379 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery-1.8.0.min.js  
+2021-01-10 13:21:15.381 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.slideto.min.js  
+2021-01-10 13:21:15.390 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 19.4255ms 200 text/css
+2021-01-10 13:21:15.393 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 20.5152ms 200 text/css
+2021-01-10 13:21:15.394 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 13.3998ms 200 text/javascript
+2021-01-10 13:21:15.396 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.wiggle.min.js  
+2021-01-10 13:21:15.398 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 16.8225ms 200 text/css
+2021-01-10 13:21:15.399 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/handlebars-4.0.5.js  
+2021-01-10 13:21:15.402 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jquery.ba-bbq.min.js  
+2021-01-10 13:21:15.403 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 5.9867ms 200 text/javascript
+2021-01-10 13:21:15.405 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 18.2697ms 200 text/javascript
+2021-01-10 13:21:15.406 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/lodash.min.js  
+2021-01-10 13:21:15.407 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/backbone-min.js  
+2021-01-10 13:21:15.408 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/swagger-ui.js  
+2021-01-10 13:21:15.427 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 23.5333ms 200 text/javascript
+2021-01-10 13:21:15.427 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 17.8594ms 200 text/javascript
+2021-01-10 13:21:15.432 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack.js  
+2021-01-10 13:21:15.432 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/jsoneditor.min.js  
+2021-01-10 13:21:15.434 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 28.0904ms 200 text/javascript
+2021-01-10 13:21:15.437 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 36.8134ms 200 text/javascript
+2021-01-10 13:21:15.438 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 57.7012ms 200 text/javascript
+2021-01-10 13:21:15.441 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/swagger-oauth.js  
+2021-01-10 13:21:15.443 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/highlight.9.1.0.pack_extended.js  
+2021-01-10 13:21:15.446 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/lib/marked.js  
+2021-01-10 13:21:15.448 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 15.4611ms 200 text/javascript
+2021-01-10 13:21:15.449 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 7.6551ms 200 text/javascript
+2021-01-10 13:21:15.453 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 14.7489ms 200 text/javascript
+2021-01-10 13:21:15.454 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 12.655ms 200 text/javascript
+2021-01-10 13:21:15.473 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 42.6719ms 200 text/javascript
+2021-01-10 13:21:15.477 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/images/logo_small.png  
+2021-01-10 13:21:15.479 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 3.1096ms 200 image/png
+2021-01-10 13:21:15.497 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/css/print.css  
+2021-01-10 13:21:15.500 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 93.6515ms 200 text/javascript
+2021-01-10 13:21:15.504 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 6.3812ms 200 text/css
+2021-01-10 13:21:15.593 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/openapi  
+2021-01-10 13:21:15.799 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 205.5854ms 200 application/json; charset=utf-8
+2021-01-10 13:21:30.044 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/swagger-ui/images/throbber.gif  
+2021-01-10 13:21:30.044 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/cardstock/card_stock_ImExPort  
+2021-01-10 13:21:30.046 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 4.5724ms 200 image/gif
+2021-01-10 13:21:41.217 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] CardStockImExPortRequest request: {"limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-10 13:22:11.779 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportBalanceConsumer" (using supplied consumer factory)
+2021-01-10 13:22:11.833 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportItemConsumer" (using supplied consumer factory)
+2021-01-10 13:22:11.836 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportCardStockConsumer" (using supplied consumer factory)
+2021-01-10 13:22:11.838 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-01-10 13:22:11.839 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-01-10 13:22:11.840 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-01-10 13:22:11.841 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.TransactionReportConsumer" (using supplied consumer factory)
+2021-01-10 13:22:11.990 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-01-10 13:22:12.039 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-01-10 13:22:12.095 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 59849)
+2021-01-10 13:22:12.130 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-item, type: fanout, durable"
+2021-01-10 13:22:12.130 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-balance, type: fanout, durable"
+2021-01-10 13:22:12.136 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-01-10 13:22:12.136 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, type: fanout, durable"
+2021-01-10 13:22:12.136 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, type: fanout, durable"
+2021-01-10 13:22:12.141 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-01-10 13:22:12.141 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, type: fanout, durable"
+2021-01-10 13:22:12.145 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-01-10 13:22:12.145 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, type: fanout, durable"
+2021-01-10 13:22:12.147 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, destination: report-balance"
+2021-01-10 13:22:12.148 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-01-10 13:22:12.149 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-01-10 13:22:12.149 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, type: fanout, durable"
+2021-01-10 13:22:12.153 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-01-10 13:22:12.153 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, destination: report-item"
+2021-01-10 13:22:12.154 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-card-stock, type: fanout, durable"
+2021-01-10 13:22:12.161 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-01-10 13:22:12.161 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-balance, durable"
+2021-01-10 13:22:12.876 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, type: fanout, durable"
+2021-01-10 13:22:12.877 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-01-10 13:22:12.878 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, destination: report-item"
+2021-01-10 13:22:12.878 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-01-10 13:22:12.879 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-balance, destination: report-balance"
+2021-01-10 13:22:12.879 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-01-10 13:22:12.879 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, destination: report-card-stock"
+2021-01-10 13:22:13.883 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-01-10 13:22:13.883 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-01-10 13:22:13.885 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, destination: report-item"
+2021-01-10 13:22:13.885 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-card-stock, durable"
+2021-01-10 13:22:13.886 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-01-10 13:22:13.886 +07:00 [DBG] [MassTransit.] Declare exchange: "name: transaction-report, type: fanout, durable"
+2021-01-10 13:22:13.889 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:22:13.889 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:22:13.889 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:22:13.889 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-card-stock, destination: report-card-stock"
+2021-01-10 13:22:13.890 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, destination: report-item"
+2021-01-10 13:22:15.872 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, type: fanout, durable"
+2021-01-10 13:22:15.874 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-item, durable"
+2021-01-10 13:22:15.874 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:22:15.874 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-01-10 13:22:15.877 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, destination: transaction-report"
+2021-01-10 13:22:15.877 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-item, destination: report-item"
+2021-01-10 13:22:15.878 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-01-10 13:22:15.883 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:22:15.883 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:22:15.883 +07:00 [DBG] [MassTransit.] Declare queue: "name: transaction-report, durable"
+2021-01-10 13:22:15.887 +07:00 [DBG] [MassTransit.] Bind queue: "source: transaction-report, destination: transaction-report"
+2021-01-10 13:22:15.891 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:22:15.893 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-SLeBOm6GbG4piYN1Z5Xi7A"
+2021-01-10 13:22:15.893 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-cP2jgBvtgeixWa1LI2ZVcQ"
+2021-01-10 13:22:15.895 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag--tex8CSF2Cxz6HEch5ccSA"
+2021-01-10 13:22:15.895 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag-60u_XEtWJb94oLZD_gWNQw"
+2021-01-10 13:22:15.895 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-qudKDb2__f2xtG-P44m-AQ"
+2021-01-10 13:22:15.895 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-ubYSYuvicbtaCnFH6_fkuA"
+2021-01-10 13:22:15.901 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/transaction-report - "amq.ctag-ITMmf9wCIuCh5zSkxZBOTQ"
+2021-01-10 13:22:16.375 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6780"
+2021-01-10 13:22:16.378 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-01-10 13:22:16.380 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-01-10 13:22:16.381 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Report.Hosting"
+2021-01-10 13:22:20.690 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/cardstock/card_stock_inventory  
+2021-01-10 13:22:20.969 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] CardStockInventoryRequest request: {"cardValue":0,"limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-10 13:22:21.254 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 566.0098ms 500 application/json; charset=utf-8
+2021-01-10 13:22:36.214 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/cardstock/card_stock_inventory  
+2021-01-10 13:22:41.015 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] CardStockInventoryRequest request: {"cardValue":0,"limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-10 13:23:43.529 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 67313.6947ms 500 application/json; charset=utf-8
+2021-01-10 13:29:26.630 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/cardstock/card_stock_inventory  
+2021-01-10 13:29:33.388 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] CardStockInventoryRequest request: {"cardValue":0,"limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-10 13:29:38.271 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 11639.9534ms 500 application/json; charset=utf-8
+2021-01-10 13:31:22.824 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportBalanceConsumer" (using supplied consumer factory)
+2021-01-10 13:31:22.887 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportItemConsumer" (using supplied consumer factory)
+2021-01-10 13:31:22.889 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportCardStockConsumer" (using supplied consumer factory)
+2021-01-10 13:31:22.891 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2021-01-10 13:31:22.893 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2021-01-10 13:31:22.894 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.AuditLogConsumer" (using supplied consumer factory)
+2021-01-10 13:31:22.896 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.TransactionReportConsumer" (using supplied consumer factory)
+2021-01-10 13:31:23.046 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2021-01-10 13:31:23.098 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2021-01-10 13:31:23.173 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 60518)
+2021-01-10 13:31:23.202 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2021-01-10 13:31:23.206 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2021-01-10 13:31:23.215 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2021-01-10 13:31:23.215 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2021-01-10 13:31:23.218 +07:00 [DBG] [MassTransit.] Declare exchange: "name: audit-log, type: fanout, durable"
+2021-01-10 13:31:23.219 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2021-01-10 13:31:23.220 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2021-01-10 13:31:23.229 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, type: fanout, durable"
+2021-01-10 13:31:23.230 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2021-01-10 13:31:23.230 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2021-01-10 13:31:23.233 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:AccountActivityHistoryMessage, destination: audit-log"
+2021-01-10 13:31:23.233 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-card-stock, type: fanout, durable"
+2021-01-10 13:31:23.246 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, type: fanout, durable"
+2021-01-10 13:31:23.246 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2021-01-10 13:31:23.246 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2021-01-10 13:31:23.247 +07:00 [DBG] [MassTransit.] Declare queue: "name: audit-log, durable"
+2021-01-10 13:31:23.250 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, destination: report-card-stock"
+2021-01-10 13:31:23.250 +07:00 [DBG] [MassTransit.] Bind queue: "source: audit-log, destination: audit-log"
+2021-01-10 13:31:23.250 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-balance, type: fanout, durable"
+2021-01-10 13:31:23.255 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:31:23.255 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:31:25.011 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-card-stock, durable"
+2021-01-10 13:31:25.011 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:31:25.011 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, type: fanout, durable"
+2021-01-10 13:31:25.015 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, destination: report-balance"
+2021-01-10 13:31:25.015 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-card-stock, destination: report-card-stock"
+2021-01-10 13:31:25.015 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-item, type: fanout, durable"
+2021-01-10 13:31:25.021 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-balance, durable"
+2021-01-10 13:31:25.021 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:31:25.999 +07:00 [DBG] [MassTransit.] Declare exchange: "name: transaction-report, type: fanout, durable"
+2021-01-10 13:31:25.999 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, type: fanout, durable"
+2021-01-10 13:31:26.001 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-balance, destination: report-balance"
+2021-01-10 13:31:26.005 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-g7Fpzg6KgDCR8ad0c0q-6A"
+2021-01-10 13:31:26.005 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/audit-log - "amq.ctag-uMSemdt0E_3aHd0Z4FL54g"
+2021-01-10 13:31:26.005 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-V2S3U1ygTa6-3HFsiROprA"
+2021-01-10 13:31:26.008 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, type: fanout, durable"
+2021-01-10 13:31:26.009 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, type: fanout, durable"
+2021-01-10 13:31:26.009 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-5GoSO1vkHhJbhYsK_vbDrA"
+2021-01-10 13:31:26.010 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:31:26.011 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:PayBillSaveMessage, destination: transaction-report"
+2021-01-10 13:31:26.011 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, type: fanout, durable"
+2021-01-10 13:31:26.013 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, type: fanout, durable"
+2021-01-10 13:31:26.014 +07:00 [DBG] [MassTransit.] Declare queue: "name: transaction-report, durable"
+2021-01-10 13:31:26.015 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag-Biq6CBvqKkP9qHnZdDhzHw"
+2021-01-10 13:31:26.016 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, destination: report-item"
+2021-01-10 13:31:26.016 +07:00 [DBG] [MassTransit.] Bind queue: "source: transaction-report, destination: transaction-report"
+2021-01-10 13:31:26.020 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, destination: report-item"
+2021-01-10 13:31:26.021 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:31:26.024 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSyncAccounMessage, destination: report-item"
+2021-01-10 13:31:26.027 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/transaction-report - "amq.ctag-1M2j5PBx0XYOdbZgH37KwA"
+2021-01-10 13:31:26.028 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportTransStatusMessage, destination: report-item"
+2021-01-10 13:31:26.033 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-item, durable"
+2021-01-10 13:31:26.035 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-item, destination: report-item"
+2021-01-10 13:31:26.040 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2021-01-10 13:31:26.046 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag-MZzB3eOpcMLcjWSxxA-i1g"
+2021-01-10 13:31:26.581 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6780"
+2021-01-10 13:31:26.583 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-01-10 13:31:26.585 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-01-10 13:31:26.586 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Report.Hosting"
+2021-01-10 13:31:33.082 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:6780/api/v1/report/cardstock/card_stock_inventory  
+2021-01-10 13:31:36.185 +07:00 [INF] [HLS.Paygate.Report.Interface.Services.ReportService.] CardStockInventoryRequest request: {"cardValue":0,"limit":20,"offset":0,"searchType":"Search","rowMax":2147483647,"orderType":"Desc"}
+2021-01-10 13:31:39.481 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.] Request finished in 6400.5622ms 500 application/json; charset=utf-8

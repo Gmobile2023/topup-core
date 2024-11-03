@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Remove="Consumers\ReportSimBalanceConsumer.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\HLS.Paygate.Common.Domain\HLS.Paygate.Common.Domain.csproj"/>
+        <ProjectReference Include="..\Paygate.Contracts\Paygate.Contracts.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="TW.Paygate.Report.Interface.DotSettings"/>
+    </ItemGroup>
+
+</Project>

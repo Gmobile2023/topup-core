@@ -1,0 +1,719 @@
+2021-06-12 11:43:14.568 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 11:43:14.649 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 11:43:14.649 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 11:43:14.650 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 11:43:14.782 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:3992:0fa76ecf successfully announced in 23.7357 ms
+2021-06-12 11:43:14.786 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:3992:0fa76ecf is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 11:43:14.865 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 6 servers were removed due to timeout
+2021-06-12 11:43:15.000 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:3992:0fa76ecf all the dispatchers started
+2021-06-12 11:43:15.405 +07:00 [WRN] [Hangfire.AutomaticRetryAttribute.] Failed to process the job '60c43b63c930620d4edf2812': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:36.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at HLS.Paygate.Common.Domain.Services.CommonAppService..ctor(IConfiguration configuration, ICommonMongoRepository reportMongoRepository, ILogger`1 logger, IDateTimeHelper dateHepper, INotificationSevice notification, IBotMessageService bot, IEmailSender emailSender) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\CommonAppService.cs:line 50
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetServiceOrCreateInstance(IServiceProvider provider, Type type)
+   at Hangfire.AspNetCore.AspNetCoreJobActivatorScope.Resolve(Type type)
+   at Hangfire.Server.CoreBackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_0.<PerformJobWithFilters>b__0()
+   at Hangfire.Server.BackgroundJobPerformer.InvokePerformFilter(IServerFilter filter, PerformingContext preContext, Func`1 continuation)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_1.<PerformJobWithFilters>b__2()
+   at Hangfire.Server.BackgroundJobPerformer.PerformJobWithFilters(PerformContext context, IEnumerable`1 filters)
+   at Hangfire.Server.BackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.Worker.PerformJob(BackgroundProcessContext context, IStorageConnection connection, String jobId)
+2021-06-12 11:43:15.405 +07:00 [WRN] [Hangfire.AutomaticRetryAttribute.] Failed to process the job '60c43b63c930620d4edf2819': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:32.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at HLS.Paygate.Common.Domain.Services.CommonAppService..ctor(IConfiguration configuration, ICommonMongoRepository reportMongoRepository, ILogger`1 logger, IDateTimeHelper dateHepper, INotificationSevice notification, IBotMessageService bot, IEmailSender emailSender) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\CommonAppService.cs:line 50
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetServiceOrCreateInstance(IServiceProvider provider, Type type)
+   at Hangfire.AspNetCore.AspNetCoreJobActivatorScope.Resolve(Type type)
+   at Hangfire.Server.CoreBackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_0.<PerformJobWithFilters>b__0()
+   at Hangfire.Server.BackgroundJobPerformer.InvokePerformFilter(IServerFilter filter, PerformingContext preContext, Func`1 continuation)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_1.<PerformJobWithFilters>b__2()
+   at Hangfire.Server.BackgroundJobPerformer.PerformJobWithFilters(PerformContext context, IEnumerable`1 filters)
+   at Hangfire.Server.BackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.Worker.PerformJob(BackgroundProcessContext context, IStorageConnection connection, String jobId)
+2021-06-12 11:43:16.788 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-06-12 11:43:18.067 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-06-12 11:43:18.189 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-06-12 11:43:18.208 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-06-12 11:43:18.215 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 11:43:18.215 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 11:43:18.216 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 11:43:18.216 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 11:43:18.219 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 11:43:18.227 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 11:43:18.227 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 11:43:18.227 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 11:43:18.272 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:6c2e062a successfully announced in 45.8349 ms
+2021-06-12 11:43:18.273 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:6c2e062a is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 11:43:18.277 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:ed512769 successfully announced in 4.3636 ms
+2021-06-12 11:43:18.278 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:ed512769 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 11:43:18.378 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:6c2e062a all the dispatchers started
+2021-06-12 11:43:18.416 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:ed512769 all the dispatchers started
+2021-06-12 11:43:18.486 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-06-12 11:43:18.487 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-06-12 11:43:18.488 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-06-12 11:43:18.488 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-06-12 11:43:45.811 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/ - -
+2021-06-12 11:43:45.819 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/ - - - 404 0 - 7.4148ms
+2021-06-12 11:43:48.692 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] WarningBalance)
+2021-06-12 11:43:48.948 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] CheckBalance: VTDD BILLING-MASTER return: {"result":4533824377.00,"success":true,"error":{"code":0}}
+2021-06-12 11:43:48.994 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] CheckBalance: VTDD TOPUP-NT994838 return: {"result":0,"success":true,"error":{"code":0}}
+2021-06-12 11:43:49.003 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.BotMessageService.] BotTypeSendMessageToGroup: {"chatId":"-591929747","title":"Cảnh báo số dư tài khoản số dư tài khoản VTDD TOPUP","message":"Nhất Trần xin thông báo số dư tài khoản VTDD TOPUP-NT994838 hiện tại là: 0đ.\nVui lòng nạp tiền để đảm bảo dịch vụ. Trân trọng cám ơn!","module":"Balance","messageType":"Wraning","botType":"Sale"}
+2021-06-12 11:43:49.826 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui - -
+2021-06-12 11:43:49.830 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui - - - 302 0 - 4.7936ms
+2021-06-12 11:43:49.832 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/ - -
+2021-06-12 11:43:49.871 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/ - - - 200 4469 text/html;+charset=utf-8 38.5204ms
+2021-06-12 11:43:49.896 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/typography.css - -
+2021-06-12 11:43:49.900 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.slideto.min.js - -
+2021-06-12 11:43:49.900 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/reset.css - -
+2021-06-12 11:43:49.901 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery-1.8.0.min.js - -
+2021-06-12 11:43:49.901 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/object-assign-pollyfill.js - -
+2021-06-12 11:43:49.901 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/screen.css - -
+2021-06-12 11:43:49.931 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/reset.css - - - 200 773 text/css 32.0469ms
+2021-06-12 11:43:49.931 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/typography.css - - - 200 0 text/css 34.5919ms
+2021-06-12 11:43:49.932 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.slideto.min.js - - - 200 365 text/javascript 32.4990ms
+2021-06-12 11:43:49.932 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.wiggle.min.js - -
+2021-06-12 11:43:49.932 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/screen.css - - - 200 43644 text/css 31.1431ms
+2021-06-12 11:43:49.932 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/object-assign-pollyfill.js - - - 200 349 text/javascript 31.2103ms
+2021-06-12 11:43:49.934 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.wiggle.min.js - - - 200 536 text/javascript 1.2923ms
+2021-06-12 11:43:49.935 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/handlebars-4.0.5.js - -
+2021-06-12 11:43:49.938 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/backbone-min.js - -
+2021-06-12 11:43:49.938 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/lodash.min.js - -
+2021-06-12 11:43:49.941 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/backbone-min.js - - - 200 19371 text/javascript 3.6853ms
+2021-06-12 11:43:49.942 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/lodash.min.js - - - 200 51895 text/javascript 4.0720ms
+2021-06-12 11:43:49.952 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.ba-bbq.min.js - -
+2021-06-12 11:43:49.953 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/marked.js - -
+2021-06-12 11:43:49.952 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/swagger-ui.js - -
+2021-06-12 11:43:49.958 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/marked.js - - - 200 15724 text/javascript 4.6051ms
+2021-06-12 11:43:49.961 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jsoneditor.min.js - -
+2021-06-12 11:43:49.961 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery.ba-bbq.min.js - - - 200 3518 text/javascript 8.8283ms
+2021-06-12 11:43:49.961 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/handlebars-4.0.5.js - - - 200 71506 text/javascript 26.5361ms
+2021-06-12 11:43:49.961 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jquery-1.8.0.min.js - - - 200 92034 text/javascript 61.2203ms
+2021-06-12 11:43:49.961 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/highlight.9.1.0.pack_extended.js - -
+2021-06-12 11:43:49.962 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/highlight.9.1.0.pack.js - -
+2021-06-12 11:43:49.963 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/highlight.9.1.0.pack_extended.js - - - 200 310 text/javascript 1.4457ms
+2021-06-12 11:43:49.964 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/highlight.9.1.0.pack.js - - - 200 10962 text/javascript 2.1680ms
+2021-06-12 11:43:49.970 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/swagger-oauth.js - -
+2021-06-12 11:43:49.972 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/swagger-oauth.js - - - 200 7042 text/javascript 9.9683ms
+2021-06-12 11:43:49.994 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/lib/jsoneditor.min.js - - - 200 129839 text/javascript 33.1577ms
+2021-06-12 11:43:49.994 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/images/logo_small.png - -
+2021-06-12 11:43:49.995 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/images/logo_small.png - - - 200 2912 image/png 0.7005ms
+2021-06-12 11:43:49.997 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/print.css - -
+2021-06-12 11:43:49.998 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/css/print.css - - - 200 41666 text/css 1.1643ms
+2021-06-12 11:43:50.010 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/swagger-ui.js - - - 200 2729821 text/javascript 58.6422ms
+2021-06-12 11:43:50.101 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/openapi - -
+2021-06-12 11:43:50.190 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/openapi - - - 200 - application/json;+charset=utf-8 89.2173ms
+2021-06-12 11:43:50.256 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.BotMessageService.] BotTypeSendMessageToGroup:{"ok":true,"result":{"message_id":370,"from":{"id":1480315274,"is_bot":true,"first_name":"Nh\u1ea5t Tr\u1ea7n DEV","username":"nhattran_dev_bot"},"chat":{"id":-591929747,"title":"Nh\u00f3m Gunner","type":"group","all_members_are_administrators":true},"date":1623473030,"text":"\u26a0 C\u1ea3nh b\u00e1o s\u1ed1 d\u01b0 t\u00e0i kho\u1ea3n s\u1ed1 d\u01b0 t\u00e0i kho\u1ea3n VTDD TOPUP\n12/06/2021 11:43:49, VietNam-[Balance]-[Warning]\nNh\u1ea5t Tr\u1ea7n xin th\u00f4ng b\u00e1o s\u1ed1 d\u01b0 t\u00e0i kho\u1ea3n VTDD TOPUP-NT994838 hi\u1ec7n t\u1ea1i l\u00e0: 0\u0111.\nVui l\u00f2ng n\u1ea1p ti\u1ec1n \u0111\u1ec3 \u0111\u1ea3m b\u1ea3o d\u1ecbch v\u1ee5. Tr\u00e2n tr\u1ecdng c\u00e1m \u01a1n!"}
+2021-06-12 11:44:00.381 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] Begin_AutoCheckPayBill
+2021-06-12 11:44:07.135 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/api/v1/common/notification/get_last?accountCode=NT951709&limit=3 - 0
+2021-06-12 11:44:07.301 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/api/v1/common/notification/get_last?accountCode=NT951709&limit=3 - 0 - 200 - application/json;+charset=utf-8 166.3665ms
+2021-06-12 11:44:58.833 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/images/throbber.gif - -
+2021-06-12 11:44:58.834 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://10.8.0.25:6790/swagger-ui/images/throbber.gif - - - 200 9257 image/gif 0.9910ms
+2021-06-12 11:44:58.835 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 11:44:58.864 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 11:45:01.246 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :{"notification":{"title":"Tiêu đề","body":"Body","sound":"sampleaudio"},"registration_ids":["cR0ViZfm-8U:APA91bE1b-K9ZJYUA4kfHpuStoS9Ew2ganSwUqqvj0TiJca9xfxOiInSMJRl2Ejx_jHDZkZ60gRyZLH_ySOaRjB6xqjSBS0HkpYp4B4vPeYXIa8_l_1UFIaYkVEH4_euQQamu9zh7RdY"]}
+2021-06-12 11:45:39.840 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value 'key=AAAAAV1C7Os:APA91bE6oyZXdGD3QmFVOHBryJW0TvUVfdXL97DPqlLajsJaoT1PpResk06ae4j7zpxMUirAZha_Q3eFMazaqs9a5SUqgyvAbs2FWM05ef8okDqiipU6VwR9SXJzcC-VY_LX2sQxs9bk' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at ServiceStack.JsonHttpClient.CreateRequest(String httpMethod, String absoluteUrl, Object request) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack.HttpClient\JsonHttpClient.cs:line 334
+   at ServiceStack.JsonHttpClient.SendAsync[TResponse](String httpMethod, String absoluteUrl, Object request, CancellationToken token) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack.HttpClient\JsonHttpClient.cs:line 245
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(String notification) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\NotificationSevice.cs:line 430
+2021-06-12 11:45:39.866 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 41031.3216ms
+2021-06-12 11:45:39.895 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] Begin_AutoCheckPayBill
+2021-06-12 11:52:11.217 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 11:52:11.219 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 11:52:12.602 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :{"notification":{"title":"Tiêu đề","body":"Body","sound":"sampleaudio"},"registration_ids":["cR0ViZfm-8U:APA91bE1b-K9ZJYUA4kfHpuStoS9Ew2ganSwUqqvj0TiJca9xfxOiInSMJRl2Ejx_jHDZkZ60gRyZLH_ySOaRjB6xqjSBS0HkpYp4B4vPeYXIa8_l_1UFIaYkVEH4_euQQamu9zh7RdY"]}
+2021-06-12 11:52:36.909 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value 'key=AAAAAV1C7Os:APA91bE6oyZXdGD3QmFVOHBryJW0TvUVfdXL97DPqlLajsJaoT1PpResk06ae4j7zpxMUirAZha_Q3eFMazaqs9a5SUqgyvAbs2FWM05ef8okDqiipU6VwR9SXJzcC-VY_LX2sQxs9bk' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at ServiceStack.JsonHttpClient.CreateRequest(String httpMethod, String absoluteUrl, Object request) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack.HttpClient\JsonHttpClient.cs:line 334
+   at ServiceStack.JsonHttpClient.SendAsync[TResponse](String httpMethod, String absoluteUrl, Object request, CancellationToken token) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack.HttpClient\JsonHttpClient.cs:line 245
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(String notification) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\NotificationSevice.cs:line 430
+2021-06-12 11:52:36.926 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 25709.0416ms
+2021-06-12 11:53:02.660 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application is shutting down...
+2021-06-12 11:53:02.661 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:ed512769 caught stopping signal...
+2021-06-12 11:53:02.669 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:ed512769 caught stopped signal...
+2021-06-12 11:53:03.155 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:ed512769 All dispatchers stopped
+2021-06-12 11:53:03.173 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:ed512769 successfully reported itself as stopped in 7.4424 ms
+2021-06-12 11:53:03.175 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:3992:ed512769 has been stopped in total 514.1214 ms
+2021-06-12 11:53:04.173 +07:00 [INF] [MassTransit.] Bus stopped: rabbitmq://103.109.43.93/paygate
+2021-06-12 11:53:04.174 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:3992:0fa76ecf caught stopping signal...
+2021-06-12 11:53:04.188 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:3992:0fa76ecf caught stopped signal...
+2021-06-12 11:53:05.166 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:3992:0fa76ecf All dispatchers stopped
+2021-06-12 11:53:05.176 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:3992:0fa76ecf successfully reported itself as stopped in 4.4988 ms
+2021-06-12 11:53:05.176 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:3992:0fa76ecf has been stopped in total 989.2751 ms
+2021-06-12 12:10:09.524 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:10:09.614 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:10:09.614 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:10:09.615 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:10:09.671 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:21500:aec152b7 successfully announced in 24.2266 ms
+2021-06-12 12:10:09.675 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:21500:aec152b7 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:10:09.776 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:21500:aec152b7 all the dispatchers started
+2021-06-12 12:10:10.266 +07:00 [WRN] [Hangfire.AutomaticRetryAttribute.] Failed to process the job '60c441b2312b8a7544ffb6a9': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:44.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at HLS.Paygate.Common.Domain.Services.CommonAppService..ctor(IConfiguration configuration, ICommonMongoRepository reportMongoRepository, ILogger`1 logger, IDateTimeHelper dateHepper, INotificationSevice notification, IBotMessageService bot, IEmailSender emailSender) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\CommonAppService.cs:line 50
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetServiceOrCreateInstance(IServiceProvider provider, Type type)
+   at Hangfire.AspNetCore.AspNetCoreJobActivatorScope.Resolve(Type type)
+   at Hangfire.Server.CoreBackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_0.<PerformJobWithFilters>b__0()
+   at Hangfire.Server.BackgroundJobPerformer.InvokePerformFilter(IServerFilter filter, PerformingContext preContext, Func`1 continuation)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_1.<PerformJobWithFilters>b__2()
+   at Hangfire.Server.BackgroundJobPerformer.PerformJobWithFilters(PerformContext context, IEnumerable`1 filters)
+   at Hangfire.Server.BackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.Worker.PerformJob(BackgroundProcessContext context, IStorageConnection connection, String jobId)
+2021-06-12 12:10:10.266 +07:00 [WRN] [Hangfire.AutomaticRetryAttribute.] Failed to process the job '60c441b1312b8a7544ffb6a2': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:32.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at HLS.Paygate.Common.Domain.Services.CommonAppService..ctor(IConfiguration configuration, ICommonMongoRepository reportMongoRepository, ILogger`1 logger, IDateTimeHelper dateHepper, INotificationSevice notification, IBotMessageService bot, IEmailSender emailSender) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\CommonAppService.cs:line 50
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetServiceOrCreateInstance(IServiceProvider provider, Type type)
+   at Hangfire.AspNetCore.AspNetCoreJobActivatorScope.Resolve(Type type)
+   at Hangfire.Server.CoreBackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_0.<PerformJobWithFilters>b__0()
+   at Hangfire.Server.BackgroundJobPerformer.InvokePerformFilter(IServerFilter filter, PerformingContext preContext, Func`1 continuation)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_1.<PerformJobWithFilters>b__2()
+   at Hangfire.Server.BackgroundJobPerformer.PerformJobWithFilters(PerformContext context, IEnumerable`1 filters)
+   at Hangfire.Server.BackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.Worker.PerformJob(BackgroundProcessContext context, IStorageConnection connection, String jobId)
+2021-06-12 12:10:10.819 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-06-12 12:10:11.347 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-06-12 12:10:11.378 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-06-12 12:10:11.401 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-06-12 12:10:11.409 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:10:11.409 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:10:11.410 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:10:11.410 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:10:11.428 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:10:11.428 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:10:11.429 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:10:11.429 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:10:11.432 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21500:28a9ad6f successfully announced in 4.2832 ms
+2021-06-12 12:10:11.433 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21500:28a9ad6f is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:10:11.438 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21500:3d708c0c successfully announced in 4.9332 ms
+2021-06-12 12:10:11.441 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21500:3d708c0c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:10:11.573 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21500:3d708c0c all the dispatchers started
+2021-06-12 12:10:11.575 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21500:28a9ad6f all the dispatchers started
+2021-06-12 12:10:11.651 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-06-12 12:10:11.652 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-06-12 12:10:11.652 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-06-12 12:10:11.652 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-06-12 12:10:22.441 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:10:22.507 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:10:23.890 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:11:00.977 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value 'key=AAAAAV1C7Os:APA91bE6oyZXdGD3QmFVOHBryJW0TvUVfdXL97DPqlLajsJaoT1PpResk06ae4j7zpxMUirAZha_Q3eFMazaqs9a5SUqgyvAbs2FWM05ef8okDqiipU6VwR9SXJzcC-VY_LX2sQxs9bk' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(PushNotificationDto notification) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\NotificationSevice.cs:line 436
+2021-06-12 12:11:01.857 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 39416.3419ms
+2021-06-12 12:11:01.964 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] Begin_AutoCheckPayBill
+2021-06-12 12:11:02.035 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] WarningBalance)
+2021-06-12 12:11:02.158 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] CheckBalance: VTDD BILLING-MASTER return: {"result":4533824377.00,"success":true,"error":{"code":0}}
+2021-06-12 12:11:02.181 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] CheckBalance: VTDD TOPUP-NT994838 return: {"result":0,"success":true,"error":{"code":0}}
+2021-06-12 12:11:02.191 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.BotMessageService.] BotTypeSendMessageToGroup: {"chatId":"-591929747","title":"Cảnh báo số dư tài khoản số dư tài khoản VTDD TOPUP","message":"Nhất Trần xin thông báo số dư tài khoản VTDD TOPUP-NT994838 hiện tại là: 0đ.\nVui lòng nạp tiền để đảm bảo dịch vụ. Trân trọng cám ơn!","module":"Balance","messageType":"Wraning","botType":"Sale"}
+2021-06-12 12:11:03.498 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.BotMessageService.] BotTypeSendMessageToGroup:{"ok":true,"result":{"message_id":371,"from":{"id":1480315274,"is_bot":true,"first_name":"Nh\u1ea5t Tr\u1ea7n DEV","username":"nhattran_dev_bot"},"chat":{"id":-591929747,"title":"Nh\u00f3m Gunner","type":"group","all_members_are_administrators":true},"date":1623474664,"text":"\u26a0 C\u1ea3nh b\u00e1o s\u1ed1 d\u01b0 t\u00e0i kho\u1ea3n s\u1ed1 d\u01b0 t\u00e0i kho\u1ea3n VTDD TOPUP\n12/06/2021 12:11:02, VietNam-[Balance]-[Warning]\nNh\u1ea5t Tr\u1ea7n xin th\u00f4ng b\u00e1o s\u1ed1 d\u01b0 t\u00e0i kho\u1ea3n VTDD TOPUP-NT994838 hi\u1ec7n t\u1ea1i l\u00e0: 0\u0111.\nVui l\u00f2ng n\u1ea1p ti\u1ec1n \u0111\u1ec3 \u0111\u1ea3m b\u1ea3o d\u1ecbch v\u1ee5. Tr\u00e2n tr\u1ecdng c\u00e1m \u01a1n!"}
+2021-06-12 12:11:51.509 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:11:51.614 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:11:51.614 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:11:51.614 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:11:51.656 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19516:ae56eb7c successfully announced in 19.0743 ms
+2021-06-12 12:11:51.687 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19516:ae56eb7c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:11:51.831 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19516:ae56eb7c all the dispatchers started
+2021-06-12 12:11:52.062 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-06-12 12:11:52.560 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-06-12 12:11:52.599 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-06-12 12:11:52.613 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-06-12 12:11:52.620 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:11:52.621 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:11:52.621 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:11:52.621 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:11:52.623 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:11:52.634 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:11:52.634 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:11:52.634 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:11:52.638 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19516:8ff56c4f successfully announced in 4.5801 ms
+2021-06-12 12:11:52.640 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19516:8ff56c4f is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:11:52.643 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19516:9d67ca91 successfully announced in 4.3581 ms
+2021-06-12 12:11:52.648 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19516:9d67ca91 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:11:52.766 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19516:8ff56c4f all the dispatchers started
+2021-06-12 12:11:52.826 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19516:9d67ca91 all the dispatchers started
+2021-06-12 12:11:53.022 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-06-12 12:11:53.023 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-06-12 12:11:53.024 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-06-12 12:11:53.024 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-06-12 12:11:55.802 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:11:55.867 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:11:57.332 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:12:11.143 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value 'key=AAAAAV1C7Os:APA91bEJEYZO1hlKlbuKjrgq4R58oqyF3bwHzAcK9rxRxRkjAVsId8cQSbHRUX3_p6QfWILq1dFOjEHqrx5OTU1a-EvKNebKjtF-pxrXlr2Cnobd4PCAT1ldeArKpReh1OQZbR5QIHNx' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(PushNotificationDto notification) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\NotificationSevice.cs:line 436
+2021-06-12 12:12:11.160 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 15357.8085ms
+2021-06-12 12:12:11.889 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:12:11.892 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:12:12.996 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:12:18.966 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value 'key=AAAAAV1C7Os:APA91bEJEYZO1hlKlbuKjrgq4R58oqyF3bwHzAcK9rxRxRkjAVsId8cQSbHRUX3_p6QfWILq1dFOjEHqrx5OTU1a-EvKNebKjtF-pxrXlr2Cnobd4PCAT1ldeArKpReh1OQZbR5QIHNx' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(PushNotificationDto notification) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\NotificationSevice.cs:line 436
+2021-06-12 12:12:18.969 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 7079.4438ms
+2021-06-12 12:12:20.215 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:12:20.218 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:12:21.394 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:12:35.495 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value 'key=AAAAAV1C7Os:APA91bEJEYZO1hlKlbuKjrgq4R58oqyF3bwHzAcK9rxRxRkjAVsId8cQSbHRUX3_p6QfWILq1dFOjEHqrx5OTU1a-EvKNebKjtF-pxrXlr2Cnobd4PCAT1ldeArKpReh1OQZbR5QIHNx' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(PushNotificationDto notification) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\NotificationSevice.cs:line 436
+2021-06-12 12:12:35.497 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 15282.2264ms
+2021-06-12 12:14:20.937 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:14:21.015 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:14:21.016 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:14:21.016 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:14:21.135 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:24624:7e82f09e successfully announced in 41.5292 ms
+2021-06-12 12:14:21.139 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:24624:7e82f09e is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:14:21.215 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:24624:7e82f09e all the dispatchers started
+2021-06-12 12:14:22.208 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-06-12 12:14:22.711 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-06-12 12:14:22.744 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-06-12 12:14:22.759 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-06-12 12:14:22.775 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:14:22.776 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:14:22.777 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:14:22.777 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:14:22.789 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:14:22.794 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:14:22.794 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24624:b15e8135 successfully announced in 6.5878 ms
+2021-06-12 12:14:22.795 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:14:22.796 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:14:22.798 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24624:b15e8135 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:14:22.815 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24624:997e05c8 successfully announced in 6.3833 ms
+2021-06-12 12:14:22.819 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24624:997e05c8 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:14:22.942 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24624:b15e8135 all the dispatchers started
+2021-06-12 12:14:22.966 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24624:997e05c8 all the dispatchers started
+2021-06-12 12:14:23.195 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-06-12 12:14:23.195 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-06-12 12:14:23.196 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-06-12 12:14:23.196 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-06-12 12:14:23.531 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:14:23.711 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:14:25.186 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:14:32.949 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value 'key=AAAAAV1C7Os:APA91bEJEYZO1hlKlbuKjrgq4R58oqyF3bwHzAcK9rxRxRkjAVsId8cQSbHRUX3_p6QfWILq1dFOjEHqrx5OTU1a-EvKNebKjtF-pxrXlr2Cnobd4PCAT1ldeArKpReh1OQZbR5QIHNx' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(PushNotificationDto notification) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\NotificationSevice.cs:line 437
+2021-06-12 12:14:32.965 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 9438.3023ms
+2021-06-12 12:15:03.203 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:15:03.204 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:15:04.573 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:17:01.135 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:17:01.228 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:17:01.229 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:17:01.229 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:17:01.280 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:24404:aa31162c successfully announced in 20.8072 ms
+2021-06-12 12:17:01.295 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:24404:aa31162c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:17:01.326 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 3 servers were removed due to timeout
+2021-06-12 12:17:01.417 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:24404:aa31162c all the dispatchers started
+2021-06-12 12:17:01.775 +07:00 [WRN] [Hangfire.AutomaticRetryAttribute.] Failed to process the job '60c4434dd56573d30c3e2e64': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:30.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at HLS.Paygate.Common.Domain.Services.CommonAppService..ctor(IConfiguration configuration, ICommonMongoRepository reportMongoRepository, ILogger`1 logger, IDateTimeHelper dateHepper, INotificationSevice notification, IBotMessageService bot, IEmailSender emailSender) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\CommonAppService.cs:line 50
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetServiceOrCreateInstance(IServiceProvider provider, Type type)
+   at Hangfire.AspNetCore.AspNetCoreJobActivatorScope.Resolve(Type type)
+   at Hangfire.Server.CoreBackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_0.<PerformJobWithFilters>b__0()
+   at Hangfire.Server.BackgroundJobPerformer.InvokePerformFilter(IServerFilter filter, PerformingContext preContext, Func`1 continuation)
+   at Hangfire.Server.BackgroundJobPerformer.<>c__DisplayClass9_1.<PerformJobWithFilters>b__2()
+   at Hangfire.Server.BackgroundJobPerformer.PerformJobWithFilters(PerformContext context, IEnumerable`1 filters)
+   at Hangfire.Server.BackgroundJobPerformer.Perform(PerformContext context)
+   at Hangfire.Server.Worker.PerformJob(BackgroundProcessContext context, IStorageConnection connection, String jobId)
+2021-06-12 12:17:02.545 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-06-12 12:17:03.586 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-06-12 12:17:03.625 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-06-12 12:17:03.647 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-06-12 12:17:03.655 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:17:03.657 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:17:03.660 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:17:03.661 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:17:03.668 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:17:03.669 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:17:03.669 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:17:03.669 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:17:03.673 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24404:f0c5141f successfully announced in 4.4425 ms
+2021-06-12 12:17:03.676 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24404:f0c5141f is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:17:03.680 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24404:39c1eab6 successfully announced in 4.3197 ms
+2021-06-12 12:17:03.684 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24404:39c1eab6 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:17:03.825 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24404:f0c5141f all the dispatchers started
+2021-06-12 12:17:03.854 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:24404:39c1eab6 all the dispatchers started
+2021-06-12 12:17:03.924 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-06-12 12:17:03.925 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-06-12 12:17:03.926 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-06-12 12:17:03.926 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-06-12 12:17:08.442 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:17:08.514 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:17:09.897 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:18:01.970 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value 'key=AAAAAV1C7Os:APA91bEJEYZO1hlKlbuKjrgq4R58oqyF3bwHzAcK9rxRxRkjAVsId8cQSbHRUX3_p6QfWILq1dFOjEHqrx5OTU1a-EvKNebKjtF-pxrXlr2Cnobd4PCAT1ldeArKpReh1OQZbR5QIHNx' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at ServiceStack.JsonHttpClient.CreateRequest(String httpMethod, String absoluteUrl, Object request) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack.HttpClient\JsonHttpClient.cs:line 334
+   at ServiceStack.JsonHttpClient.SendAsync[TResponse](String httpMethod, String absoluteUrl, Object request, CancellationToken token) in C:\BuildAgent\work\3481147c480f4a2f\src\ServiceStack.HttpClient\JsonHttpClient.cs:line 245
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(PushNotificationDto notification) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\NotificationSevice.cs:line 456
+2021-06-12 12:18:10.983 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 62540.7487ms
+2021-06-12 12:18:10.993 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.CommonAppService.] Begin_AutoCheckPayBill
+2021-06-12 12:19:40.437 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:19:40.516 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:19:40.516 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:19:40.517 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:19:40.589 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:25944:45095c79 successfully announced in 22.821 ms
+2021-06-12 12:19:40.592 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:25944:45095c79 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:19:40.621 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 3 servers were removed due to timeout
+2021-06-12 12:19:40.681 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:25944:45095c79 all the dispatchers started
+2021-06-12 12:19:41.014 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-06-12 12:19:41.538 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-06-12 12:19:41.571 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-06-12 12:19:41.588 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-06-12 12:19:41.596 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:19:41.597 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:19:41.598 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:19:41.598 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:19:41.601 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:19:41.601 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:19:41.601 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:19:41.609 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:19:41.614 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:25944:44f20de1 successfully announced in 4.1347 ms
+2021-06-12 12:19:41.656 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:25944:44f20de1 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:19:41.660 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:25944:3d26e825 successfully announced in 4.863 ms
+2021-06-12 12:19:41.663 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:25944:3d26e825 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:19:41.800 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:25944:3d26e825 all the dispatchers started
+2021-06-12 12:19:41.803 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:25944:44f20de1 all the dispatchers started
+2021-06-12 12:19:41.990 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-06-12 12:19:41.991 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-06-12 12:19:41.991 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-06-12 12:19:41.992 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-06-12 12:19:51.770 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:19:51.836 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:19:52.001 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:20:04.727 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The header name format is invalid.
+   at System.Net.Http.Headers.HttpHeaders.GetHeaderDescriptor(String name)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(PushNotificationDto notification) in E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Domain\Services\NotificationSevice.cs:line 437
+2021-06-12 12:20:04.736 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 12966.1430ms
+2021-06-12 12:20:18.841 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:20:18.854 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:20:18.884 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:20:21.402 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value ' key=AAAAAV1C7Os:APA91bEJEYZO1hlKlbuKjrgq4R58oqyF3bwHzAcK9rxRxRkjAVsId8cQSbHRUX3_p6QfWILq1dFOjEHqrx5OTU1a-EvKNebKjtF-pxrXlr2Cnobd4PCAT1ldeArKpReh1OQZbR5QIHNx' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(PushNotificationDto notification)
+2021-06-12 12:20:21.403 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 2562.2521ms
+2021-06-12 12:20:22.566 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:20:22.570 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:20:22.587 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:20:24.873 +07:00 [ERR] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification to FCM error:System.FormatException: The format of value ' key=AAAAAV1C7Os:APA91bEJEYZO1hlKlbuKjrgq4R58oqyF3bwHzAcK9rxRxRkjAVsId8cQSbHRUX3_p6QfWILq1dFOjEHqrx5OTU1a-EvKNebKjtF-pxrXlr2Cnobd4PCAT1ldeArKpReh1OQZbR5QIHNx' is invalid.
+   at System.Net.Http.Headers.HttpHeaderParser.ParseValue(String value, Object storeValue, Int32& index)
+   at System.Net.Http.Headers.HttpHeaders.ParseAndAddValue(HeaderDescriptor descriptor, HeaderStoreItemInfo info, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(HeaderDescriptor descriptor, String value)
+   at System.Net.Http.Headers.HttpHeaders.Add(String name, String value)
+   at HLS.Paygate.Common.Domain.Services.NotificationSevice.PuslishNotification(PushNotificationDto notification)
+2021-06-12 12:20:24.875 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 2308.9959ms
+2021-06-12 12:21:17.472 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:21:17.575 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:21:17.575 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:21:17.576 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:21:17.625 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19484:3d4b53c2 successfully announced in 20.934 ms
+2021-06-12 12:21:17.629 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19484:3d4b53c2 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:21:17.655 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 3 servers were removed due to timeout
+2021-06-12 12:21:17.739 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19484:3d4b53c2 all the dispatchers started
+2021-06-12 12:21:18.810 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-06-12 12:21:19.328 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-06-12 12:21:19.423 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-06-12 12:21:19.440 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-06-12 12:21:19.446 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:21:19.447 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:21:19.447 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:21:19.447 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:21:19.450 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:21:19.450 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:21:19.451 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:21:19.451 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:21:19.469 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19484:2483a444 successfully announced in 10.5177 ms
+2021-06-12 12:21:19.469 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19484:f1124e36 successfully announced in 14.3707 ms
+2021-06-12 12:21:19.473 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19484:f1124e36 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:21:19.473 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19484:2483a444 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:21:19.646 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19484:f1124e36 all the dispatchers started
+2021-06-12 12:21:19.651 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19484:2483a444 all the dispatchers started
+2021-06-12 12:21:19.848 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-06-12 12:21:19.849 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-06-12 12:21:19.849 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-06-12 12:21:19.849 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-06-12 12:21:23.785 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:21:23.856 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:21:24.020 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:21:28.703 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification response:OK
+2021-06-12 12:21:31.300 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification return:{"multicast_id":1846633822203841655,"success":1,"failure":0,"canonical_ids":0,"results":[{"message_id":"0:1623475288166425%e609af1cf9fd7ecd"}]}
+2021-06-12 12:21:33.138 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 9353.0983ms
+2021-06-12 12:22:10.811 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:22:10.812 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:22:10.832 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:22:16.633 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification response:OK
+2021-06-12 12:22:22.502 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification return:{"multicast_id":8767224923258588976,"success":1,"failure":0,"canonical_ids":0,"results":[{"message_id":"0:1623475335121927%e609af1cf9fd7ecd"}]}
+2021-06-12 12:22:24.478 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 13667.8272ms
+2021-06-12 12:24:59.910 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:24:59.978 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:24:59.978 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:24:59.979 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:25:00.068 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19636:1066e827 successfully announced in 33.9965 ms
+2021-06-12 12:25:00.080 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19636:1066e827 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:25:00.096 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 3 servers were removed due to timeout
+2021-06-12 12:25:00.160 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19636:1066e827 all the dispatchers started
+2021-06-12 12:25:02.114 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-06-12 12:25:02.671 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-06-12 12:25:02.710 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-06-12 12:25:02.732 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-06-12 12:25:02.740 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:25:02.741 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:25:02.741 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:25:02.741 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:25:02.751 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:25:02.752 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:25:02.752 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:25:02.752 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:25:02.763 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:246974ee successfully announced in 6.6563 ms
+2021-06-12 12:25:02.763 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:6a216618 successfully announced in 11.9462 ms
+2021-06-12 12:25:02.764 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:246974ee is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:25:02.766 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:6a216618 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:25:02.905 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:246974ee all the dispatchers started
+2021-06-12 12:25:02.905 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:6a216618 all the dispatchers started
+2021-06-12 12:25:03.091 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-06-12 12:25:03.092 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-06-12 12:25:03.093 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-06-12 12:25:03.093 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-06-12 12:25:16.042 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:25:16.124 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:25:16.286 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:25:20.299 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification response:OK
+2021-06-12 12:25:28.497 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification return:HLS.Paygate.Common.Model.Dtos.FcmResultDto
+2021-06-12 12:25:29.071 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 13028.6658ms
+2021-06-12 12:25:34.368 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:246974ee caught stopping signal...
+2021-06-12 12:25:34.373 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:246974ee caught stopped signal...
+2021-06-12 12:25:34.782 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application is shutting down...
+2021-06-12 12:25:35.028 +07:00 [INF] [MassTransit.] Bus stopped: rabbitmq://103.109.43.93/paygate
+2021-06-12 12:25:35.030 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19636:1066e827 caught stopping signal...
+2021-06-12 12:25:35.033 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19636:1066e827 caught stopped signal...
+2021-06-12 12:25:35.297 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19636:1066e827 All dispatchers stopped
+2021-06-12 12:25:35.299 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:246974ee All dispatchers stopped
+2021-06-12 12:25:35.313 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19636:1066e827 successfully reported itself as stopped in 4.4651 ms
+2021-06-12 12:25:35.313 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:246974ee successfully reported itself as stopped in 4.463 ms
+2021-06-12 12:25:35.313 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:19636:1066e827 has been stopped in total 282.953 ms
+2021-06-12 12:25:35.313 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:19636:246974ee has been stopped in total 944.3827 ms
+2021-06-12 12:26:40.656 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:26:40.741 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:26:40.742 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:26:40.742 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:26:40.795 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:21372:fedaf3b4 successfully announced in 19.9014 ms
+2021-06-12 12:26:40.800 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:21372:fedaf3b4 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:26:40.879 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 3 servers were removed due to timeout
+2021-06-12 12:26:40.996 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server gunner:21372:fedaf3b4 all the dispatchers started
+2021-06-12 12:26:41.257 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://103.109.43.93/paygate
+2021-06-12 12:26:41.767 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered service with Consul Paygate.Discovery.Consul.ConsulServiceRegistration
+2021-06-12 12:26:41.795 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-Heartbeat`
+2021-06-12 12:26:41.811 +07:00 [INF] [Paygate.Discovery.Consul.ConsulClient.] Registered health check with Consul `SS-HealthCheck`
+2021-06-12 12:26:41.819 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:26:41.819 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:26:41.820 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:26:41.821 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:26:41.830 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateCommon, prefix: hangfire'
+2021-06-12 12:26:41.830 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-06-12 12:26:41.831 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-06-12 12:26:41.831 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-06-12 12:26:41.835 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21372:f1ee2584 successfully announced in 4.9528 ms
+2021-06-12 12:26:41.837 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21372:f1ee2584 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:26:41.842 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21372:413a37f6 successfully announced in 5.7538 ms
+2021-06-12 12:26:41.844 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21372:413a37f6 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-06-12 12:26:41.974 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21372:f1ee2584 all the dispatchers started
+2021-06-12 12:26:41.981 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server commonservice-gunner:21372:413a37f6 all the dispatchers started
+2021-06-12 12:26:42.188 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.25:6790"
+2021-06-12 12:26:42.189 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-06-12 12:26:42.189 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-06-12 12:26:42.189 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Common.Hosting"
+2021-06-12 12:26:42.474 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request starting HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2
+2021-06-12 12:26:42.676 +07:00 [INF] [HLS.Paygate.Common.Interface.Services.CommonService.] SendNotificationRequest:{"title":"Tiêu đề","body":"Body","notificationId":"00000000000000000000000000000000","icon":"logo.png","totalUnRead":0,"type":"Notification","accountCode":"NT951709"}
+2021-06-12 12:26:42.840 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification :HLS.Paygate.Common.Model.Dtos.PushNotificationDto
+2021-06-12 12:26:47.054 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification response:OK
+2021-06-12 12:26:55.388 +07:00 [INF] [HLS.Paygate.Common.Domain.Services.NotificationSevice.] PuslishNotification return:HLS.Paygate.Common.Model.Dtos.FcmResultDto
+2021-06-12 12:26:55.995 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://10.8.0.25:6790/api/v1/common/notification/send?Title=Ti%C3%AAu%20%C4%91%E1%BB%81&Body=Body&AccountCode=NT951709 application/json 2 - 200 - application/json;+charset=utf-8 13524.8573ms

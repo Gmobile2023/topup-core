@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Redis\**"/>
+        <Compile Remove="ServiceDiscovery\**"/>
+        <Compile Remove="Logging\LoggingConfigExtensions.cs"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Redis\**"/>
+        <EmbeddedResource Remove="ServiceDiscovery\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Redis\**"/>
+        <None Remove="ServiceDiscovery\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Paygate.Contracts\Paygate.Contracts.csproj"/>
+    </ItemGroup>
+</Project>

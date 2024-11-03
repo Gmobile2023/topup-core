@@ -1,0 +1,68 @@
+2020-12-21 01:48:46.146 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportBalanceConsumer" (using supplied consumer factory)
+2020-12-21 01:48:46.216 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportItemConsumer" (using supplied consumer factory)
+2020-12-21 01:48:46.219 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.ReportCardStockConsumer" (using supplied consumer factory)
+2020-12-21 01:48:46.220 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.CardStockNotificationConsumer" (using supplied consumer factory)
+2020-12-21 01:48:46.221 +07:00 [DBG] [MassTransit.] Subscribing Consumer: "HLS.Paygate.Report.Interface.Consumers.BotSendMessageConsumer" (using supplied consumer factory)
+2020-12-21 01:48:46.530 +07:00 [DBG] [MassTransit.] Starting host: rabbitmq://103.109.43.93/paygate
+2020-12-21 01:48:46.579 +07:00 [INF] [MassTransit.] Connect: "paygate@103.109.43.93:5672/paygate"
+2020-12-21 01:48:46.634 +07:00 [DBG] [MassTransit.] Connected: "paygate@103.109.43.93:5672/paygate" (address: "amqp://103.109.43.93:5672", local: 52227)
+2020-12-21 01:48:46.692 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-balance, type: fanout, durable"
+2020-12-21 01:48:46.692 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-card-stock, type: fanout, durable"
+2020-12-21 01:48:46.695 +07:00 [DBG] [MassTransit.] Declare exchange: "name: report-item, type: fanout, durable"
+2020-12-21 01:48:46.701 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, type: fanout, durable"
+2020-12-21 01:48:46.701 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, type: fanout, durable"
+2020-12-21 01:48:46.701 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, type: fanout, durable"
+2020-12-21 01:48:46.703 +07:00 [DBG] [MassTransit.] Declare exchange: "name: card-stock-notification, type: fanout, durable"
+2020-12-21 01:48:46.704 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, type: fanout, durable"
+2020-12-21 01:48:46.705 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportBalanceHistoriesMessage, destination: report-balance"
+2020-12-21 01:48:46.705 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportCardStockMessage, destination: report-card-stock"
+2020-12-21 01:48:46.708 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, type: fanout, durable"
+2020-12-21 01:48:46.708 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportSaleMessage, destination: report-item"
+2020-12-21 01:48:46.710 +07:00 [DBG] [MassTransit.] Declare exchange: "name: bot-send-message, type: fanout, durable"
+2020-12-21 01:48:46.711 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:StockInventoryNotificationEvent, destination: card-stock-notification"
+2020-12-21 01:48:46.713 +07:00 [DBG] [MassTransit.] Declare exchange: "name: HLS.Paygate.Gw.Model.Events:SendBotMessage, type: fanout, durable"
+2020-12-21 01:48:46.713 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:ReportPayRefMessage, destination: report-item"
+2020-12-21 01:48:46.714 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-balance, durable"
+2020-12-21 01:48:46.714 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-card-stock, durable"
+2020-12-21 01:48:46.715 +07:00 [DBG] [MassTransit.] Declare queue: "name: card-stock-notification, durable"
+2020-12-21 01:48:46.716 +07:00 [DBG] [MassTransit.] Bind exchange: "source: HLS.Paygate.Gw.Model.Events:SendBotMessage, destination: bot-send-message"
+2020-12-21 01:48:46.719 +07:00 [DBG] [MassTransit.] Declare queue: "name: report-item, durable"
+2020-12-21 01:48:46.720 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-balance, destination: report-balance"
+2020-12-21 01:48:46.720 +07:00 [DBG] [MassTransit.] Bind queue: "source: card-stock-notification, destination: card-stock-notification"
+2020-12-21 01:48:46.720 +07:00 [DBG] [MassTransit.] Declare queue: "name: bot-send-message, durable"
+2020-12-21 01:48:46.720 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-card-stock, destination: report-card-stock"
+2020-12-21 01:48:46.722 +07:00 [DBG] [MassTransit.] Bind queue: "source: report-item, destination: report-item"
+2020-12-21 01:48:46.723 +07:00 [DBG] [MassTransit.] Bind queue: "source: bot-send-message, destination: bot-send-message"
+2020-12-21 01:48:46.729 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2020-12-21 01:48:46.729 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2020-12-21 01:48:46.729 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2020-12-21 01:48:46.729 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2020-12-21 01:48:46.729 +07:00 [DBG] [MassTransit.] Prefetch Count: 16
+2020-12-21 01:48:46.764 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag--torhBcSLQJfI8L4QxzCOw"
+2020-12-21 01:48:46.771 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-k2QtBukiM9cgo3DerOKClg"
+2020-12-21 01:48:46.771 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag-CW2W7uOnTYBxPpZXt4YJ1w"
+2020-12-21 01:48:46.771 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-OEQFQDJnSG4g1TpT0_ra_w"
+2020-12-21 01:48:46.771 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-AJWLSfHuyJXOFUZDxT4aJw"
+2020-12-21 01:48:47.261 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://localhost:6780"
+2020-12-21 01:48:47.263 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2020-12-21 01:48:47.265 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2020-12-21 01:48:47.266 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "E:\Source\TopupCard\topup_gate_core\HLS.Paygate.Report.Hosting"
+2020-12-21 01:50:03.121 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application is shutting down...
+2020-12-21 01:50:03.130 +07:00 [DBG] [MassTransit.] Stopping host
+2020-12-21 01:50:03.136 +07:00 [DBG] [MassTransit.] Stopping Consumer: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag-CW2W7uOnTYBxPpZXt4YJ1w"
+2020-12-21 01:50:03.144 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Cancel Ok: rabbitmq://103.109.43.93/paygate/report-balance - "amq.ctag-CW2W7uOnTYBxPpZXt4YJ1w"
+2020-12-21 01:50:03.150 +07:00 [DBG] [MassTransit.] Consumer completed "amq.ctag-CW2W7uOnTYBxPpZXt4YJ1w": 0 received, 0 concurrent
+2020-12-21 01:50:03.158 +07:00 [DBG] [MassTransit.] Stopping Consumer: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag--torhBcSLQJfI8L4QxzCOw"
+2020-12-21 01:50:03.162 +07:00 [DBG] [MassTransit.] Consumer completed "amq.ctag--torhBcSLQJfI8L4QxzCOw": 0 received, 0 concurrent
+2020-12-21 01:50:03.162 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Cancel Ok: rabbitmq://103.109.43.93/paygate/report-item - "amq.ctag--torhBcSLQJfI8L4QxzCOw"
+2020-12-21 01:50:03.163 +07:00 [DBG] [MassTransit.] Stopping Consumer: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-OEQFQDJnSG4g1TpT0_ra_w"
+2020-12-21 01:50:03.169 +07:00 [DBG] [MassTransit.] Consumer completed "amq.ctag-OEQFQDJnSG4g1TpT0_ra_w": 0 received, 0 concurrent
+2020-12-21 01:50:03.169 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Cancel Ok: rabbitmq://103.109.43.93/paygate/report-card-stock - "amq.ctag-OEQFQDJnSG4g1TpT0_ra_w"
+2020-12-21 01:50:03.173 +07:00 [DBG] [MassTransit.] Stopping Consumer: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-k2QtBukiM9cgo3DerOKClg"
+2020-12-21 01:50:03.176 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Cancel Ok: rabbitmq://103.109.43.93/paygate/card-stock-notification - "amq.ctag-k2QtBukiM9cgo3DerOKClg"
+2020-12-21 01:50:03.177 +07:00 [DBG] [MassTransit.] Consumer completed "amq.ctag-k2QtBukiM9cgo3DerOKClg": 0 received, 0 concurrent
+2020-12-21 01:50:03.177 +07:00 [DBG] [MassTransit.] Stopping Consumer: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-AJWLSfHuyJXOFUZDxT4aJw"
+2020-12-21 01:50:03.181 +07:00 [DBG] [MassTransit.ReceiveTransport.] Consumer Cancel Ok: rabbitmq://103.109.43.93/paygate/bot-send-message - "amq.ctag-AJWLSfHuyJXOFUZDxT4aJw"
+2020-12-21 01:50:03.181 +07:00 [DBG] [MassTransit.] Consumer completed "amq.ctag-AJWLSfHuyJXOFUZDxT4aJw": 0 received, 0 concurrent
+2020-12-21 01:50:03.197 +07:00 [INF] [MassTransit.] Disconnect: "paygate@103.109.43.93:5672/paygate"
+2020-12-21 01:50:03.212 +07:00 [INF] [MassTransit.] Disconnected: "paygate@103.109.43.93:5672/paygate"
