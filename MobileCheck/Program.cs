@@ -1,6 +1,6 @@
 using System;
 using System.Net;
-using HLS.Paygate.Shared;
+using GMB.Topup.Shared;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using MobileCheck.Data;

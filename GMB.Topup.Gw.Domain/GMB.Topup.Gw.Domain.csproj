@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\GMB.Topup.Gw.Model\GMB.Topup.Gw.Model.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Shared\GMB.Topup.Shared.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Discovery.Requests\GMB.Topup.Discovery.Requests.csproj" />
+        <PackageReference Include="MongoDbGenericRepository" Version="1.4.8" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Microsoft.Extensions.Identity.Stores">
+            <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.identity.stores\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Identity.Stores.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Services\ISimService.cs"/>
+        <Compile Remove="Services\SimService.cs"/>
+        <Compile Remove="Entities\Sim.cs"/>
+        <Compile Remove="Entities\SimSms.cs"/>
+        <Compile Remove="Entities\SimTransactions.cs"/>
+        <Compile Remove="Repositories\ISimRepository.cs"/>
+        <Compile Remove="Repositories\SimRepository.cs"/>
+        <Compile Remove="Entities\LevelDiscountRecord.cs"/>
+        <Compile Remove="Entities\WorkerAppComPort.cs"/>
+        <Compile Remove="Entities\WorkerApp.cs"/>
+        <Compile Remove="Entities\Command.cs"/>
+        <Compile Remove="Repositories\CommandRepository.cs"/>
+        <Compile Remove="Repositories\ICommandRepository.cs"/>
+        <Compile Remove="Entities\ServiceConfigs.cs"/>
+        <Compile Remove="Entities\Suppliers.cs"/>
+        <Compile Remove="Entities\Games.cs"/>
+        <Compile Remove="Entities\Categoryses.cs"/>
+        <Compile Remove="Entities\Products.cs"/>
+        <Compile Remove="Repositories\SystemRepository.cs"/>
+        <Compile Remove="Repositories\ISystemRepository.cs"/>
+        <Compile Remove="Entities\CardRequest.cs"/>
+        <Compile Remove="Entities\Providers.cs"/>
+    </ItemGroup>
+
+</Project>

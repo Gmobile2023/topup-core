@@ -3,8 +3,8 @@ using System.Net;
 using System.Reflection;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
-using Paygate.Contracts.Commands.Commons;
-using Paygate.Contracts.Requests.Commons;
+using GMB.Topup.Contracts.Commands.Commons;
+using GMB.Topup.Contracts.Requests.Commons;
 
 namespace Infrastructure.AppVersion;
 

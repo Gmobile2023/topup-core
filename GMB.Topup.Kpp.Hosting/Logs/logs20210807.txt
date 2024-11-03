@@ -1,0 +1,56 @@
+2021-08-07 07:12:52.789 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateKpp, prefix: hangfire'
+2021-08-07 07:12:52.873 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-08-07 07:12:52.874 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-08-07 07:12:52.874 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-08-07 07:12:52.985 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server desktop-1o5us8d:21376:48115f4d successfully announced in 49.4744 ms
+2021-08-07 07:12:52.999 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server desktop-1o5us8d:21376:48115f4d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-08-07 07:12:53.091 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 3 servers were removed due to timeout
+2021-08-07 07:12:53.401 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server desktop-1o5us8d:21376:48115f4d all the dispatchers started
+2021-08-07 07:12:54.375 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateKpp, prefix: hangfire'
+2021-08-07 07:12:54.376 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-08-07 07:12:54.376 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-08-07 07:12:54.376 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-08-07 07:12:54.395 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.26.39.137:27017, database name: PaygateKpp, prefix: hangfire'
+2021-08-07 07:12:54.395 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2021-08-07 07:12:54.396 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2021-08-07 07:12:54.396 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-08-07 07:12:54.405 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:725fe8fd successfully announced in 10.338 ms
+2021-08-07 07:12:54.409 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:725fe8fd is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-08-07 07:12:54.445 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:d5dbde93 successfully announced in 19.8997 ms
+2021-08-07 07:12:54.483 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:d5dbde93 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoNotificationObserver, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-08-07 07:12:55.022 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:725fe8fd all the dispatchers started
+2021-08-07 07:12:55.060 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:d5dbde93 all the dispatchers started
+2021-08-07 07:12:55.459 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://10.8.0.4:6781"
+2021-08-07 07:12:55.460 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2021-08-07 07:12:55.461 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2021-08-07 07:12:55.462 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "G:\PROJECT\DevServer\HLSolution\TopupCore\HLS.Paygate.Kpp.Hosting"
+2021-08-07 07:13:05.109 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:d5dbde93 caught stopping signal...
+2021-08-07 07:13:05.115 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:d5dbde93 caught stopped signal...
+2021-08-07 07:13:05.355 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application is shutting down...
+2021-08-07 07:13:05.458 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server desktop-1o5us8d:21376:48115f4d caught stopping signal...
+2021-08-07 07:13:05.462 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server desktop-1o5us8d:21376:48115f4d caught stopped signal...
+2021-08-07 07:13:05.728 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:d5dbde93 All dispatchers stopped
+2021-08-07 07:13:05.736 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:d5dbde93 successfully reported itself as stopped in 5.4668 ms
+2021-08-07 07:13:05.737 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:d5dbde93 has been stopped in total 625.3875 ms
+2021-08-07 07:13:06.415 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server desktop-1o5us8d:21376:48115f4d All dispatchers stopped
+2021-08-07 07:13:06.421 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server desktop-1o5us8d:21376:48115f4d successfully reported itself as stopped in 4.074 ms
+2021-08-07 07:13:06.421 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server desktop-1o5us8d:21376:48115f4d has been stopped in total 961.2938 ms
+2021-08-07 07:13:06.425 +07:00 [WRN] [Hangfire.Server.BackgroundProcessingServer.] Stopping the server due to DomainUnload or ProcessExit event...
+2021-08-07 07:13:06.425 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:725fe8fd caught stopping signal...
+2021-08-07 07:13:06.426 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:725fe8fd caught stopped signal...
+2021-08-07 07:13:06.427 +07:00 [WRN] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:725fe8fd caught shutdown signal...
+2021-08-07 07:13:06.430 +07:00 [WRN] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:725fe8fd stopped non-gracefully due to MongoExpirationManager, MongoNotificationObserver. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+2021-08-07 07:13:06.435 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:725fe8fd successfully reported itself as stopped in 3.8134 ms
+2021-08-07 07:13:06.435 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-desktop-1o5us8d:21376:725fe8fd has been stopped in total 9.5642 ms

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using MobileCheck.Services;
-using Paygate.Discovery.Requests.Tool;
+using GMB.Topup.Discovery.Requests.Tool;
 using ServiceStack;
 
 namespace MobileCheck.Services;

@@ -338,19 +338,11 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-HLS.Paygate.Backend.Hosting/Logs/
-HLS.Paygate.Report.Hosting/Logs/
-HLS.Paygate.Stock.Hosting/Logs/
-HLS.Paygate.Balance.Hosting/Logs/
-HLS.Paygate.Gw.Hosting/Logs/
-TW.Worker.Hosting/Logs/
-HLS.Paygate.TopupGw.Hosting/Logs/
-HLS.Paygate.Report.Hosting/ReportFiles/
-HLS.Paygate.Common.Hosting/Logs/
-/HLS.Paygate.Kpp.Hosting/KppFiles/KPP.ACCOUNT.20211012.1022.xls
-/HLS.Paygate.Kpp.Hosting/KppFiles/KPP.ACCOUNT.20211010.1024.xls
-/HLS.Paygate.Kpp.Hosting/Logs
-/HLS.Paygate.TopupGw.Hosting/files
-/Orleans.Providers.MongoDB/Orleans - Backup (1).Providers.MongoDB.csproj
-/Orleans.Providers.MongoDB/Orleans - Backup (2).Providers.MongoDB.csproj
-/HLS.Paygate.Worker.Hosting/Logs/logs20221222.txt
+GMB.Topup.Backend.Hosting/Logs/
+GMB.Topup.Report.Hosting/Logs/
+GMB.Topup.Stock.Hosting/Logs/
+GMB.Topup.Balance.Hosting/Logs/
+GMB.Topup.Gw.Hosting/Logs/
+GMB.Topup.TopupGw.Hosting/Logs/
+GMB.Topup.Report.Hosting/ReportFiles/
+GMB.Topup.Common.Hosting/Logs/

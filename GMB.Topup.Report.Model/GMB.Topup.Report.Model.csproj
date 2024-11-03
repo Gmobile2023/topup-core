@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="MongoDB.Bson" Version="2.21.0" />
+        <PackageReference Include="MongoDbGenericRepository" Version="1.4.8" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\GMB.Topup.Gw.Model\GMB.Topup.Gw.Model.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Shared\GMB.Topup.Shared.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Contracts\GMB.Topup.Contracts.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Events\**" />
+        <Compile Remove="Dtos\ReportItemDto.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="Events\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Events\**" />
+    </ItemGroup>
+</Project>

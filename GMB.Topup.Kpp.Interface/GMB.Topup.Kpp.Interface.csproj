@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="MassTransit.MongoDb" Version="8.1.0" />
+        <PackageReference Include="Microsoft.Orleans.Core" Version="7.2.1" />
+        <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Services\ChatbotService.cs" />
+        <Compile Remove="Services\NotificationService.cs" />
+        <Compile Remove="Services\AuditLogService.cs" />
+        <Compile Remove="Services\TransactionReportService.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="TW.Paygate.Report.Interface.DotSettings" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\GMB.Topup.Kpp.Domain\GMB.Topup.Kpp.Domain.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Shared\GMB.Topup.Shared.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Configs\" />
+    </ItemGroup>
+
+</Project>

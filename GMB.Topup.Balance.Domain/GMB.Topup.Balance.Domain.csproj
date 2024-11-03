@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MassTransit" Version="8.2.2" />
+        <PackageReference Include="MongoDbGenericRepository" Version="1.6.1" />
+        <PackageReference Include="NLog" Version="5.3.2" />
+        <PackageReference Include="ServiceStack.Redis" Version="8.2.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+        <PackageReference Include="Microsoft.Orleans.EventSourcing" Version="8.1.0" />
+        <PackageReference Include="Microsoft.Orleans.Sdk" Version="8.1.0" />
+        <PackageReference Include="Microsoft.Orleans.Transactions" Version="8.1.0" />
+        <PackageReference Include="ServiceStack.Text" Version="8.2.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\GMB.Topup.Balance.Models\GMB.Topup.Balance.Models.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Shared\GMB.Topup.Shared.csproj" />
+        <ProjectReference Include="..\Orleans.Sagas\Orleans.Sagas.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Discovery.Requests\GMB.Topup.Discovery.Requests.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Grains\TransferGrain.cs" />
+      <Compile Remove="Activities\ModifyBalanceActivity.cs" />
+    </ItemGroup>
+
+</Project>

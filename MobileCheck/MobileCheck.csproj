@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
         <UserSecretsId>00a834e8-33b7-498b-abac-27ee05a57f9f</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
@@ -34,13 +34,9 @@
     
 
     <ItemGroup>
-      <ProjectReference Include="..\HLS.Paygate.Shared\HLS.Paygate.Shared.csproj" />
-      <ProjectReference Include="..\Paygate.Discovery.Requests\Paygate.Discovery.Requests.csproj" />
+      <ProjectReference Include="..\GMB.Topup.Shared\GMB.Topup.Shared.csproj" />
+      <ProjectReference Include="..\GMB.Topup.Discovery.Requests\GMB.Topup.Discovery.Requests.csproj" />
     </ItemGroup>
     
-
-    <ItemGroup>
-      <ProjectReference Include="..\HLS.Paygate.Shared\HLS.Paygate.Shared.csproj" />
-    </ItemGroup>
 
 </Project>

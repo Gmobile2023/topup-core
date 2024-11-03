@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\GMB.Topup.Shared\GMB.Topup.Shared.csproj" />
+        <ProjectReference Include="..\GMB.Topup.TopupGw.Contacts\GMB.Topup.TopupGw.Contacts.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Contracts\GMB.Topup.Contracts.csproj" />
+        <PackageReference Include="MongoDbGenericRepository" Version="1.4.8" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="BusinessServices\CardRequestService.cs" />
+        <Compile Remove="BusinessServices\ICardRequestService.cs" />
+        <Compile Remove="Entities\CardRequest.cs" />
+    </ItemGroup>
+
+</Project>

@@ -1,8 +1,7 @@
 ﻿using System;
-using HLS.Paygate.Shared.ConfigDtos;
+using GMB.Topup.Shared.ConfigDtos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ServiceStack.Logging;
 using ServiceStack.Redis;
 
 namespace Infrastructure.RedisSentinel;

@@ -1,0 +1,70 @@
+2023-01-06 18:55:47.728 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "KppService" took 877.8633ms. No errors detected.
+2023-01-06 18:55:47.984 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001, http://localhost:5000"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2023-01-06 18:55:47.995 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:3791"
+2023-01-06 18:55:48.003 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.105.33.70:27100, database name: PaygateKpp, prefix: hangfire'
+2023-01-06 18:55:48.003 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2023-01-06 18:55:48.004 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2023-01-06 18:55:48.005 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2023-01-06 18:55:48.014 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2023-01-06 18:55:48.014 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2023-01-06 18:55:48.015 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "D:\Source\HLS\NT\nt-core\HLS.Paygate.Kpp.Hosting"
+2023-01-06 18:55:48.041 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server -gunner:8480:cf980a20 successfully announced in 25.9011 ms
+2023-01-06 18:55:48.044 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server -gunner:8480:cf980a20 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoJobQueueWatcher, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2023-01-06 18:55:48.053 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server -gunner:8480:cf980a20 all the dispatchers started
+2023-01-06 18:55:48.056 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 2 servers were removed due to timeout
+2023-01-06 18:56:47.211 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/ - -
+2023-01-06 18:56:47.291 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/ - - - 404 0 - 81.1751ms
+2023-01-06 18:56:53.601 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui - -
+2023-01-06 18:56:53.813 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui - - - 302 0 - 212.2394ms
+2023-01-06 18:56:53.825 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/ - -
+2023-01-06 18:56:53.871 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/ - - - 200 4466 text/html;+charset=utf-8 46.5844ms
+2023-01-06 18:56:53.892 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/css/typography.css - -
+2023-01-06 18:56:53.894 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/css/reset.css - -
+2023-01-06 18:56:53.895 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/css/screen.css - -
+2023-01-06 18:56:53.895 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/object-assign-pollyfill.js - -
+2023-01-06 18:56:53.896 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jquery-1.8.0.min.js - -
+2023-01-06 18:56:53.896 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jquery.slideto.min.js - -
+2023-01-06 18:56:53.918 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/object-assign-pollyfill.js - - - 200 349 text/javascript 22.7608ms
+2023-01-06 18:56:53.920 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jquery.wiggle.min.js - -
+2023-01-06 18:56:53.936 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/css/reset.css - - - 200 773 text/css 42.0321ms
+2023-01-06 18:56:53.936 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/css/typography.css - - - 200 0 text/css 44.1252ms
+2023-01-06 18:56:53.938 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jquery.ba-bbq.min.js - -
+2023-01-06 18:56:53.938 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/handlebars-4.0.5.js - -
+2023-01-06 18:56:53.955 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jquery.slideto.min.js - - - 200 365 text/javascript 60.2594ms
+2023-01-06 18:56:53.955 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jquery.wiggle.min.js - - - 200 536 text/javascript 35.6404ms
+2023-01-06 18:56:53.956 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/css/screen.css - - - 200 43644 text/css 60.1124ms
+2023-01-06 18:56:53.957 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/lodash.min.js - -
+2023-01-06 18:56:53.958 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/backbone-min.js - -
+2023-01-06 18:56:53.958 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/swagger-ui.js - -
+2023-01-06 18:56:53.964 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jquery.ba-bbq.min.js - - - 200 3518 text/javascript 26.1909ms
+2023-01-06 18:56:53.966 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/highlight.9.1.0.pack.js - -
+2023-01-06 18:56:53.969 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/lodash.min.js - - - 200 51894 text/javascript 11.2451ms
+2023-01-06 18:56:53.970 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/highlight.9.1.0.pack_extended.js - -
+2023-01-06 18:56:53.971 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/highlight.9.1.0.pack_extended.js - - - 200 310 text/javascript 0.7378ms
+2023-01-06 18:56:53.972 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jsoneditor.min.js - -
+2023-01-06 18:56:53.973 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/highlight.9.1.0.pack.js - - - 200 10962 text/javascript 7.0910ms
+2023-01-06 18:56:53.973 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/backbone-min.js - - - 200 19371 text/javascript 15.4495ms
+2023-01-06 18:56:53.974 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/marked.js - -
+2023-01-06 18:56:53.975 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/swagger-oauth.js - -
+2023-01-06 18:56:53.981 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/marked.js - - - 200 15724 text/javascript 6.9363ms
+2023-01-06 18:56:53.982 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/swagger-oauth.js - - - 200 7042 text/javascript 7.8217ms
+2023-01-06 18:56:53.986 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jsoneditor.min.js - - - 200 129835 text/javascript 13.5152ms
+2023-01-06 18:56:53.986 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/jquery-1.8.0.min.js - - - 200 92032 text/javascript 90.0430ms
+2023-01-06 18:56:53.986 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/lib/handlebars-4.0.5.js - - - 200 71504 text/javascript 47.6863ms
+2023-01-06 18:56:53.996 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/images/logo_small.png - -
+2023-01-06 18:56:54.003 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/images/logo_small.png - - - 200 2912 image/png 7.5020ms
+2023-01-06 18:56:54.007 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/css/print.css - -
+2023-01-06 18:56:54.014 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/css/print.css - - - 200 41666 text/css 7.3609ms
+2023-01-06 18:56:54.028 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/swagger-ui.js - - - 200 2704477 text/javascript 69.6959ms
+2023-01-06 18:56:54.083 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/openapi - -
+2023-01-06 18:56:54.093 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/images/favicon-32x32.png - -
+2023-01-06 18:56:54.095 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/images/favicon-32x32.png - - - 200 1141 image/png 1.2165ms
+2023-01-06 18:56:54.319 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/openapi - - - 200 - application/json;+charset=utf-8 235.9498ms
+2023-01-06 18:57:01.055 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/swagger-ui/images/throbber.gif - -
+2023-01-06 18:57:01.056 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request starting HTTP/1.1 GET http://localhost:3791/api/v1/kpp/AccountInfoRequest - -
+2023-01-06 18:57:01.057 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/swagger-ui/images/throbber.gif - - - 200 9257 image/gif 1.9755ms
+2023-01-06 18:57:01.618 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.GET] Request finished HTTP/1.1 GET http://localhost:3791/api/v1/kpp/AccountInfoRequest - - - 200 - application/json;+charset=utf-8 561.7345ms

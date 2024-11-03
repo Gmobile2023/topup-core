@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\GMB.Topup.Gw.Domain\GMB.Topup.Gw.Domain.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Gw.Model\GMB.Topup.Gw.Model.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Contracts\GMB.Topup.Contracts.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Discovery.Requests\GMB.Topup.Discovery.Requests.csproj" />
+    </ItemGroup>
+    <!--  <ItemGroup>-->
+    <!--    <Reference Include="Orleans.Core">-->
+    <!--      <HintPath>C:\Users\n3t3h\.nuget\packages\microsoft.orleans.core\2.3.6\lib\netstandard2.0\Orleans.Core.dll</HintPath>-->
+    <!--    </Reference>-->
+    <!--  </ItemGroup>-->
+    <ItemGroup>
+        <Compile Remove="Services\TopupProviderService.cs"/>
+        <Compile Remove="Filters\ResponseTransFilter.cs"/>
+        <Compile Remove="Middleware\VerifyRequestMiddleware.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Middleware"/>
+    </ItemGroup>
+
+</Project>

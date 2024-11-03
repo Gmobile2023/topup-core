@@ -1,0 +1,27 @@
+2022-12-23 17:04:52.005 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001, http://localhost:5000"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2022-12-23 17:04:52.033 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:4791"
+2022-12-23 17:04:52.034 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:3791"
+2022-12-23 17:04:52.040 +07:00 [INF] [Hangfire.BackgroundJobServer.] Starting Hangfire Server using job storage: 'Connection string: mongodb://<username>:<password>@10.105.33.70:27100, database name: PaygateKpp, prefix: hangfire'
+2022-12-23 17:04:52.041 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Mongo DB job storage:
+2022-12-23 17:04:52.041 +07:00 [INF] [Hangfire.BackgroundJobServer.]     Prefix: hangfire.
+2022-12-23 17:04:52.042 +07:00 [INF] [Hangfire.BackgroundJobServer.] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2022-12-23 17:04:52.053 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
+2022-12-23 17:04:52.053 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Hosting environment: "Development"
+2022-12-23 17:04:52.053 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Content root path: "D:\Source\HLS\NT\nt-core\HLS.Paygate.Kpp.Hosting"
+2022-12-23 17:04:52.068 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-gunner:21764:4e9d977e successfully announced in 14.0845 ms
+2022-12-23 17:04:52.071 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-gunner:21764:4e9d977e is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, MongoExpirationManager, MongoJobQueueWatcher, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2022-12-23 17:04:52.080 +07:00 [INF] [Hangfire.Server.ServerWatchdog.] 2 servers were removed due to timeout
+2022-12-23 17:04:52.092 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-gunner:21764:4e9d977e all the dispatchers started
+2022-12-23 17:04:52.446 +07:00 [INF] [HLS.Paygate.Kpp.Domain.Services.AutoKppService.] Start SysAutoFilePayment Process
+2022-12-23 17:04:52.448 +07:00 [INF] [HLS.Paygate.Kpp.Domain.Services.ExportingService.] Start ProcessKppFile Process
+2022-12-23 17:04:52.559 +07:00 [INF] [HLS.Paygate.Kpp.Domain.Services.ExportingService.] ProcessKppFile 
+2022-12-23 17:04:57.435 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application is shutting down...
+2022-12-23 17:04:57.441 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-gunner:21764:4e9d977e caught stopping signal...
+2022-12-23 17:04:57.442 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-gunner:21764:4e9d977e caught stopped signal...
+2022-12-23 17:04:58.365 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-gunner:21764:4e9d977e All dispatchers stopped
+2022-12-23 17:04:58.371 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-gunner:21764:4e9d977e successfully reported itself as stopped in 4.2561 ms
+2022-12-23 17:04:58.371 +07:00 [INF] [Hangfire.Server.BackgroundServerProcess.] Server kpp-gunner:21764:4e9d977e has been stopped in total 929.1357 ms

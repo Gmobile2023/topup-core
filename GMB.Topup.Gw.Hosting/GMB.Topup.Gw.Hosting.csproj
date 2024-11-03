@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <LangVersion>default</LangVersion>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+        <Version>1.0.0</Version>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="wwwroot\**" />
+        <Content Remove="wwwroot\**" />
+        <EmbeddedResource Remove="wwwroot\**" />
+        <None Remove="wwwroot\**" />
+        <Compile Remove="Migration\**" />
+        <EmbeddedResource Remove="Migration\**" />
+        <None Remove="Migration\**" />
+        <Content Remove="Migration\**" />
+        <None Update="NT_PrivateKey.pem">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="public.pem">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="PY_PublicKey.pem">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="NT_PrivateKey_Production.pem">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <Compile Remove="AppHost.cs" />
+        <Compile Remove="Configurations\Configure.Consul.cs" />
+        <Compile Remove="Startup.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\GMB.Topup.Gw.Domain\GMB.Topup.Gw.Domain.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Gw.Interface\GMB.Topup.Gw.Interface.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Gw.Model\GMB.Topup.Gw.Model.csproj" />
+        <ProjectReference Include="..\GMB.Topup.Shared\GMB.Topup.Shared.csproj" />
+        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Update="nlog.config">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+</Project>

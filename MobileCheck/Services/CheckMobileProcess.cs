@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using HLS.Paygate.Shared;
+using GMB.Topup.Shared;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using MobileCheck.Services;
@@ -49,7 +49,7 @@ public class CheckMobileProcess
         }
     }
 
-    public async Task<NewMessageReponseBase<string>> CheckMobile(string mobile, string telco)
+    public async Task<NewMessageResponseBase<string>> CheckMobile(string mobile, string telco)
     {
         var mobileInfos = await DB.Find<MobileCheck.Models.MobileInfo>().Match(p => p.Mobile == mobile).ExecuteAsync();
 
@@ -63,7 +63,7 @@ public class CheckMobileProcess
                 {
                     if (mobileInfo.MobileType == "NOT_VALID")
                     {
-                        return new NewMessageReponseBase<string>
+                        return new NewMessageResponseBase<string>
                         {
                             Results = "NOT_VALID",
                             ResponseStatus = new ResponseStatusApi()
@@ -74,7 +74,7 @@ public class CheckMobileProcess
                         };
                     }
 
-                    return new NewMessageReponseBase<string>
+                    return new NewMessageResponseBase<string>
                     {
                         Results = mobileInfo?.Telco + "|" + mobileInfo?.MobileType + "|" + "SYSTEM",
                         ResponseStatus = new ResponseStatusApi()

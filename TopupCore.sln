@@ -5,55 +5,55 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CC45B695-D510-4E1B-9110-65CADC1FF72B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Gw.Domain", "HLS.Paygate.Gw.Domain\HLS.Paygate.Gw.Domain.csproj", "{6F09FA2A-5F6F-40A1-B71E-506C3DC4007C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Gw.Domain", "GMB.Topup.Gw.Domain\GMB.Topup.Gw.Domain.csproj", "{6F09FA2A-5F6F-40A1-B71E-506C3DC4007C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Gw.Hosting", "HLS.Paygate.Gw.Hosting\HLS.Paygate.Gw.Hosting.csproj", "{75E39E05-7C80-440E-9CEF-180EB718A287}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Gw.Hosting", "GMB.Topup.Gw.Hosting\GMB.Topup.Gw.Hosting.csproj", "{75E39E05-7C80-440E-9CEF-180EB718A287}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Gw.Interface", "HLS.Paygate.Gw.Interface\HLS.Paygate.Gw.Interface.csproj", "{D606582C-A938-44E7-8FD9-2C444B18D62E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Gw.Interface", "GMB.Topup.Gw.Interface\GMB.Topup.Gw.Interface.csproj", "{D606582C-A938-44E7-8FD9-2C444B18D62E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Gw.Model", "HLS.Paygate.Gw.Model\HLS.Paygate.Gw.Model.csproj", "{9E911AEA-4A19-4BF7-9DCB-B754C69C9FB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Gw.Model", "GMB.Topup.Gw.Model\GMB.Topup.Gw.Model.csproj", "{9E911AEA-4A19-4BF7-9DCB-B754C69C9FB7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Shared", "HLS.Paygate.Shared\HLS.Paygate.Shared.csproj", "{694E4292-D815-4D3E-9067-07A757A01546}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Shared", "GMB.Topup.Shared\GMB.Topup.Shared.csproj", "{694E4292-D815-4D3E-9067-07A757A01546}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Backend.Interface", "HLS.Paygate.Backend.Interface\HLS.Paygate.Backend.Interface.csproj", "{C0FBDDCE-43C8-4683-9000-E0814EC42C68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Backend.Interface", "GMB.Topup.Backend.Interface\GMB.Topup.Backend.Interface.csproj", "{C0FBDDCE-43C8-4683-9000-E0814EC42C68}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Backend.Hosting", "HLS.Paygate.Backend.Hosting\HLS.Paygate.Backend.Hosting.csproj", "{FEBE70DD-C214-4CA7-B98D-46839682CE31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Backend.Hosting", "GMB.Topup.Backend.Hosting\GMB.Topup.Backend.Hosting.csproj", "{FEBE70DD-C214-4CA7-B98D-46839682CE31}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{59AB7CDD-12A8-47B7-BF9F-0D8715524E8D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Balance.Domain", "HLS.Paygate.Balance.Domain\HLS.Paygate.Balance.Domain.csproj", "{3E477152-A273-412B-A3EF-09D9B43B27DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Balance.Domain", "GMB.Topup.Balance.Domain\GMB.Topup.Balance.Domain.csproj", "{3E477152-A273-412B-A3EF-09D9B43B27DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Balance.Models", "HLS.Paygate.Balance.Models\HLS.Paygate.Balance.Models.csproj", "{4927D9EC-2745-47FA-AD71-F5C998B5BF65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Balance.Models", "GMB.Topup.Balance.Models\GMB.Topup.Balance.Models.csproj", "{4927D9EC-2745-47FA-AD71-F5C998B5BF65}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Balance.Components", "HLS.Paygate.Balance.Components\HLS.Paygate.Balance.Components.csproj", "{988838E4-963E-4A94-8D0C-245A84C3D992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Balance.Components", "GMB.Topup.Balance.Components\GMB.Topup.Balance.Components.csproj", "{988838E4-963E-4A94-8D0C-245A84C3D992}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Balance.Hosting", "HLS.Paygate.Balance.Hosting\HLS.Paygate.Balance.Hosting.csproj", "{B517C648-15A5-4754-BB98-75A105194782}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Balance.Hosting", "GMB.Topup.Balance.Hosting\GMB.Topup.Balance.Hosting.csproj", "{B517C648-15A5-4754-BB98-75A105194782}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Stock.Hosting", "HLS.Paygate.Stock.Hosting\HLS.Paygate.Stock.Hosting.csproj", "{3F86B4A2-622C-4F1D-B747-2720EB59784E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Stock.Hosting", "GMB.Topup.Stock.Hosting\GMB.Topup.Stock.Hosting.csproj", "{3F86B4A2-622C-4F1D-B747-2720EB59784E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Stock.Components", "HLS.Paygate.Stock.Components\HLS.Paygate.Stock.Components.csproj", "{73DBAC43-A82F-48B8-A969-DE65EA10A44E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Stock.Components", "GMB.Topup.Stock.Components\GMB.Topup.Stock.Components.csproj", "{73DBAC43-A82F-48B8-A969-DE65EA10A44E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Stock.Contracts", "HLS.Paygate.Stock.Contracts\HLS.Paygate.Stock.Contracts.csproj", "{CA6AF451-529E-4CEF-8A28-AB49B146EE9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Stock.Contracts", "GMB.Topup.Stock.Contracts\GMB.Topup.Stock.Contracts.csproj", "{CA6AF451-529E-4CEF-8A28-AB49B146EE9A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Stock.Domains", "HLS.Paygate.Stock.Domains\HLS.Paygate.Stock.Domains.csproj", "{725E4644-7E49-495E-8752-E02E91812C1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Stock.Domains", "GMB.Topup.Stock.Domains\GMB.Topup.Stock.Domains.csproj", "{725E4644-7E49-495E-8752-E02E91812C1F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Report.Hosting", "HLS.Paygate.Report.Hosting\HLS.Paygate.Report.Hosting.csproj", "{6FFAB0B9-EF25-4455-ACF6-58D9F4ADF561}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Report.Hosting", "GMB.Topup.Report.Hosting\GMB.Topup.Report.Hosting.csproj", "{6FFAB0B9-EF25-4455-ACF6-58D9F4ADF561}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Report.Domain", "HLS.Paygate.Report.Domain\HLS.Paygate.Report.Domain.csproj", "{966A0FDE-2365-45F9-96A4-3D80AC93CC7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Report.Domain", "GMB.Topup.Report.Domain\GMB.Topup.Report.Domain.csproj", "{966A0FDE-2365-45F9-96A4-3D80AC93CC7D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Report.Model", "HLS.Paygate.Report.Model\HLS.Paygate.Report.Model.csproj", "{330D7EC4-1456-461C-A018-34227EAE0083}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Report.Model", "GMB.Topup.Report.Model\GMB.Topup.Report.Model.csproj", "{330D7EC4-1456-461C-A018-34227EAE0083}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Report.Interface", "HLS.Paygate.Report.Interface\HLS.Paygate.Report.Interface.csproj", "{175F472C-9E6C-417E-B2E6-1F6E67D18F09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Report.Interface", "GMB.Topup.Report.Interface\GMB.Topup.Report.Interface.csproj", "{175F472C-9E6C-417E-B2E6-1F6E67D18F09}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{386BADE5-02DF-466C-B647-ED1381B56371}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{FD355389-C212-4F90-B8C8-9181584F84C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.UnitTest", "HLS.Paygate.UnitTest\HLS.Paygate.UnitTest.csproj", "{C9B447D0-CCD5-4C6A-A71B-0953A87679E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.UnitTest", "GMB.Topup.UnitTest\GMB.Topup.UnitTest.csproj", "{C9B447D0-CCD5-4C6A-A71B-0953A87679E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.TestBase", "HLS.Paygate.TestBase\HLS.Paygate.TestBase.csproj", "{594CC00D-2DE0-48A8-ACFC-AE42299917D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.TestBase", "GMB.Topup.TestBase\GMB.Topup.TestBase.csproj", "{594CC00D-2DE0-48A8-ACFC-AE42299917D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.AutomationTest", "HLS.Paygate.AutomationTest\HLS.Paygate.AutomationTest.csproj", "{A2BC0D52-4F19-497C-87CE-F7564BCC58C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.AutomationTest", "GMB.Topup.AutomationTest\GMB.Topup.AutomationTest.csproj", "{A2BC0D52-4F19-497C-87CE-F7564BCC58C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{55EBF26B-936F-4600-9906-F14BE6B69758}"
 EndProject
@@ -69,53 +69,53 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Worker", "Worker", "{23AF2D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TopupGw", "TopupGw", "{086945C6-37A0-41CC-988A-87D8532BDD2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.TopupGw.Contacts", "HLS.Paygate.TopupGw.Contacts\HLS.Paygate.TopupGw.Contacts.csproj", "{1FEAD0D2-F2EA-4383-A04A-4EBC6CED17B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.TopupGw.Contacts", "GMB.Topup.TopupGw.Contacts\GMB.Topup.TopupGw.Contacts.csproj", "{1FEAD0D2-F2EA-4383-A04A-4EBC6CED17B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.TopupGw.Domains", "HLS.Paygate.TopupGw.Domains\HLS.Paygate.TopupGw.Domains.csproj", "{24FDCB29-000D-4A25-9A6F-7CE9B117E11D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.TopupGw.Domains", "GMB.Topup.TopupGw.Domains\GMB.Topup.TopupGw.Domains.csproj", "{24FDCB29-000D-4A25-9A6F-7CE9B117E11D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.TopupGw.Components", "HLS.Paygate.TopupGw.Components\HLS.Paygate.TopupGw.Components.csproj", "{9BCE1B71-B817-4B2A-9E47-1279777BF71B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.TopupGw.Components", "GMB.Topup.TopupGw.Components\GMB.Topup.TopupGw.Components.csproj", "{9BCE1B71-B817-4B2A-9E47-1279777BF71B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.TopupGw.Hosting", "HLS.Paygate.TopupGw.Hosting\HLS.Paygate.TopupGw.Hosting.csproj", "{6B069FBA-9F1D-4F36-80B7-DF30CCA3B903}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.TopupGw.Hosting", "GMB.Topup.TopupGw.Hosting\GMB.Topup.TopupGw.Hosting.csproj", "{6B069FBA-9F1D-4F36-80B7-DF30CCA3B903}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A8E0C5F4-809F-4C43-B164-B4FA78FB2A70}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Common.Domain", "HLS.Paygate.Common.Domain\HLS.Paygate.Common.Domain.csproj", "{3F43F35D-DD69-4E33-B71F-BB919750BF03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Common.Domain", "GMB.Topup.Common.Domain\GMB.Topup.Common.Domain.csproj", "{3F43F35D-DD69-4E33-B71F-BB919750BF03}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Common.Interface", "HLS.Paygate.Common.Interface\HLS.Paygate.Common.Interface.csproj", "{EF4B2E04-FACD-4D2E-B377-518A5C1DF0FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Common.Interface", "GMB.Topup.Common.Interface\GMB.Topup.Common.Interface.csproj", "{EF4B2E04-FACD-4D2E-B377-518A5C1DF0FF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Common.Model", "HLS.Paygate.Common.Model\HLS.Paygate.Common.Model.csproj", "{251DE302-FDD4-4D67-A4B9-1F46442B7D7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Common.Model", "GMB.Topup.Common.Model\GMB.Topup.Common.Model.csproj", "{251DE302-FDD4-4D67-A4B9-1F46442B7D7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Common.Hosting", "HLS.Paygate.Common.Hosting\HLS.Paygate.Common.Hosting.csproj", "{5FF03B88-73BF-469D-A900-EE4037E65AFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Common.Hosting", "GMB.Topup.Common.Hosting\GMB.Topup.Common.Hosting.csproj", "{5FF03B88-73BF-469D-A900-EE4037E65AFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Worker.Model", "HLS.Paygate.Worker.Model\HLS.Paygate.Worker.Model.csproj", "{E3A8775D-B86B-4A65-BC75-5D7C51DA1C92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Worker.Model", "GMB.Topup.Worker.Model\GMB.Topup.Worker.Model.csproj", "{E3A8775D-B86B-4A65-BC75-5D7C51DA1C92}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paygate.Discovery.Requests", "Paygate.Discovery.Requests\Paygate.Discovery.Requests.csproj", "{A62E8A7C-5F74-4622-88A6-B8C8C64D3856}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Discovery.Requests", "GMB.Topup.Discovery.Requests\GMB.Topup.Discovery.Requests.csproj", "{A62E8A7C-5F74-4622-88A6-B8C8C64D3856}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paygate.Contracts", "Paygate.Contracts\Paygate.Contracts.csproj", "{200693AE-03DC-4A66-A62F-60F68B7D5982}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Contracts", "GMB.Topup.Contracts\GMB.Topup.Contracts.csproj", "{200693AE-03DC-4A66-A62F-60F68B7D5982}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KppData", "KppData", "{8EB5D0F4-295D-4558-A968-36D0C152E120}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Kpp.Domain", "HLS.Paygate.Kpp.Domain\HLS.Paygate.Kpp.Domain.csproj", "{7A773A05-1267-4955-9592-26B6A9626368}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Kpp.Domain", "GMB.Topup.Kpp.Domain\GMB.Topup.Kpp.Domain.csproj", "{7A773A05-1267-4955-9592-26B6A9626368}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Kpp.Interface", "HLS.Paygate.Kpp.Interface\HLS.Paygate.Kpp.Interface.csproj", "{343C4762-DCB0-41D5-BC8D-7ED7F3F07335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Kpp.Interface", "GMB.Topup.Kpp.Interface\GMB.Topup.Kpp.Interface.csproj", "{343C4762-DCB0-41D5-BC8D-7ED7F3F07335}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Kpp.Hosting", "HLS.Paygate.Kpp.Hosting\HLS.Paygate.Kpp.Hosting.csproj", "{ABD59B36-E9D7-42DC-B022-AAD0F586B237}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Kpp.Hosting", "GMB.Topup.Kpp.Hosting\GMB.Topup.Kpp.Hosting.csproj", "{ABD59B36-E9D7-42DC-B022-AAD0F586B237}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commission", "Commission", "{42D46D95-9C10-40F2-823E-BB0D470D4C40}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Commission.Model", "HLS.Paygate.Commission.Model\HLS.Paygate.Commission.Model.csproj", "{8D0185CE-246A-4DDE-B373-659EE3F13559}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Commission.Model", "GMB.Topup.Commission.Model\GMB.Topup.Commission.Model.csproj", "{8D0185CE-246A-4DDE-B373-659EE3F13559}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Commission.Domain", "HLS.Paygate.Commission.Domain\HLS.Paygate.Commission.Domain.csproj", "{83037E40-2B8F-49ED-936D-40959FCB01EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Commission.Domain", "GMB.Topup.Commission.Domain\GMB.Topup.Commission.Domain.csproj", "{83037E40-2B8F-49ED-936D-40959FCB01EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Commission.Hosting", "HLS.Paygate.Commission.Hosting\HLS.Paygate.Commission.Hosting.csproj", "{306F2B43-EDE2-4E6D-B9A0-DDD088BFB859}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Commission.Hosting", "GMB.Topup.Commission.Hosting\GMB.Topup.Commission.Hosting.csproj", "{306F2B43-EDE2-4E6D-B9A0-DDD088BFB859}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Commission.Interface", "HLS.Paygate.Commission.Interface\HLS.Paygate.Commission.Interface.csproj", "{6ECD03B6-4B5D-4E2B-9CC1-D6452A84B6CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Commission.Interface", "GMB.Topup.Commission.Interface\GMB.Topup.Commission.Interface.csproj", "{6ECD03B6-4B5D-4E2B-9CC1-D6452A84B6CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.Sagas", "Orleans.Sagas\Orleans.Sagas.csproj", "{38FC231F-590F-41BB-9232-266D401199DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Worker.Hosting", "HLS.Paygate.Worker.Hosting\HLS.Paygate.Worker.Hosting.csproj", "{5B9E3DED-CD73-42DB-9640-FDF7F5C5CC95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Worker.Hosting", "GMB.Topup.Worker.Hosting\GMB.Topup.Worker.Hosting.csproj", "{5B9E3DED-CD73-42DB-9640-FDF7F5C5CC95}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HLS.Paygate.Worker.Components", "HLS.Paygate.Worker.Components\HLS.Paygate.Worker.Components.csproj", "{C357EA85-928D-4BAC-9DBF-0F77ADCC4AB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMB.Topup.Worker.Components", "GMB.Topup.Worker.Components\GMB.Topup.Worker.Components.csproj", "{C357EA85-928D-4BAC-9DBF-0F77ADCC4AB2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MobileCheck", "MobileCheck", "{980F4AB8-CB89-4832-AF05-4DD12206F228}"
 EndProject

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using HLS.Paygate.Shared;
-using HLS.Paygate.Shared.ConfigDtos;
-using HLS.Paygate.Shared.Helpers;
+using GMB.Topup.Shared;
+using GMB.Topup.Shared.ConfigDtos;
+using GMB.Topup.Shared.Helpers;
 using Microsoft.Extensions.Configuration;
 using MobileCheck.Models;
-using Paygate.Discovery.Requests.TopupGateways;
+using GMB.Topup.Discovery.Requests.TopupGateways;
 
 namespace MobileCheck.Services;
 
@@ -20,7 +20,7 @@ public class CheckMobileHttpClient
         _config = config;
     }
 
-    public async Task<(NewMessageReponseBase<string>, MobileInfo)> CheckMobile(string transCode, MobileInfo mobileInfo)
+    public async Task<(NewMessageResponseBase<string>, MobileInfo)> CheckMobile(string transCode, MobileInfo mobileInfo)
     {
         try
         {
@@ -57,7 +57,7 @@ public class CheckMobileHttpClient
         }
         catch (Exception e)
         {
-            return (new NewMessageReponseBase<string>()
+            return (new NewMessageResponseBase<string>()
             {
                 ResponseStatus = new ResponseStatusApi()
                 {
