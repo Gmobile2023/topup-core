@@ -56,7 +56,7 @@ public class AppHost : AppHostBase, IHostingStartup
                 services.AddTransient<GrpcClientHepper>();
                 services.AddHostedService<QueuedHostedService>();
                 services.AddSingleton<IBackgroundTaskQueue>(_ => new BackgroundTaskQueue(1000));
-                services.AddSingleton(c => c.Resolve<IRedisClientsManager>().GetCacheClient());
+                //services.AddSingleton(c => c.Resolve<IRedisClientsManager>().GetCacheClient());
             })
             .Configure((context, app) =>
             {

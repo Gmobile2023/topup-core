@@ -8,7 +8,8 @@
         <ProjectReference Include="..\GMB.Topup.Gw.Model\GMB.Topup.Gw.Model.csproj" />
         <ProjectReference Include="..\GMB.Topup.Shared\GMB.Topup.Shared.csproj" />
         <ProjectReference Include="..\GMB.Topup.Discovery.Requests\GMB.Topup.Discovery.Requests.csproj" />
-        <PackageReference Include="MongoDbGenericRepository" Version="1.4.8" />
+        <PackageReference Include="MongoDbGenericRepository" Version="1.6.1" />
+        <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
     </ItemGroup>
 
     <ItemGroup>

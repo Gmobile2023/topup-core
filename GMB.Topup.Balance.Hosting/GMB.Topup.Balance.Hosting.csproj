@@ -12,14 +12,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.2" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.1" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Orleans.Server" Version="8.1.0" />
-        <PackageReference Include="Microsoft.Orleans.Clustering.Redis" Version="8.1.0" />
-        <PackageReference Include="Microsoft.Orleans.Persistence.Redis" Version="8.1.0" />
+        <PackageReference Include="Microsoft.Orleans.Server" Version="8.2.0" />
+        <PackageReference Include="Microsoft.Orleans.Clustering.Redis" Version="8.2.0" />
+        <PackageReference Include="Microsoft.Orleans.Persistence.Redis" Version="8.2.0" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
         <PackageReference Include="OrleansDashboard" Version="8.0.0" />
-        <PackageReference Include="ServiceStack.Api.OpenApi" Version="8.2.2" />
+        <PackageReference Include="ServiceStack.Api.OpenApi" Version="8.4.0" />
         <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.9.0" />
         <PackageReference Include="Quartz.Extensions.Hosting" Version="3.9.0" />
         <PackageReference Include="Quartz.Plugins.TimeZoneConverter" Version="3.9.0" />
@@ -64,10 +64,6 @@
     <ItemGroup>
         <_ContentIncludedByDefault Remove="temp\nlog.config" />
         <_ContentIncludedByDefault Remove="temp\appsettings.json" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Configurations\" />
     </ItemGroup>
 
 </Project>

@@ -25,11 +25,11 @@
         <Compile Remove="Configurations\Configure.Consul.cs" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.0" />
         <PackageReference Include="Hangfire" Version="1.8.5" />
         <PackageReference Include="Hangfire.Core" Version="1.8.5" />
         <PackageReference Include="Hangfire.Mongo" Version="1.9.8" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.0" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     </ItemGroup>
 

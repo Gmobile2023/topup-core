@@ -37,11 +37,11 @@
         <Compile Remove="Startup.cs" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     </ItemGroup>
 
     <ItemGroup>

@@ -2,22 +2,23 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
 using MongoDbGenericRepository;
-using ServiceStack;
 
 [assembly: HostingStartup(typeof(ConfigureMongoDb))]
 namespace GMB.Topup.Balance.Hosting.Configurations;
 
-[Priority(-1)]
+//[Priority(-1)]
 public class ConfigureMongoDb : IHostingStartup
 {
     public void Configure(IWebHostBuilder builder)
     {
         builder.ConfigureServices((context, services) =>
         {
-            services.AddSingleton<IMongoDbContext>(_ =>
-                new MongoDbContext(context.Configuration.GetConnectionString("Mongodb"),
-                    context.Configuration["ConnectionStrings:MongoDatabaseName"]));
+            var mongoClient = new MongoClient(context.Configuration.GetConnectionString("Mongodb"));
+            var mongoDatabase = mongoClient.GetDatabase(context.Configuration["ConnectionStrings:MongoDatabaseName"]);
+            services.AddSingleton(mongoDatabase);
+            services.AddSingleton<IMongoDbContext>(p => new MongoDbContext(mongoDatabase));
         });
     }
 }

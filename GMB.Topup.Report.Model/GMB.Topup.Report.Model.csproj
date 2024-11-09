@@ -5,8 +5,9 @@
         <LangVersion>default</LangVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="MongoDB.Bson" Version="2.21.0" />
-        <PackageReference Include="MongoDbGenericRepository" Version="1.4.8" />
+        <PackageReference Include="MongoDB.Bson" Version="3.0.0" />
+        <PackageReference Include="MongoDbGenericRepository" Version="1.6.1" />
+        <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\GMB.Topup.Gw.Model\GMB.Topup.Gw.Model.csproj" />

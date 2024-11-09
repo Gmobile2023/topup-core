@@ -22,16 +22,16 @@
         <Compile Remove="Startup.cs" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="AspNetCore.HealthChecks.UI" Version="7.0.2" />
-        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
-        <PackageReference Include="AspNetCore.HealthChecks.UI.Core" Version="7.0.0" />
-        <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="7.0.0" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI" Version="8.0.2" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Core" Version="8.0.1" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="8.0.1" />
         <PackageReference Include="Hangfire" Version="1.8.5" />
         <PackageReference Include="Hangfire.Core" Version="1.8.5" />
         <PackageReference Include="Hangfire.Mongo" Version="1.9.8" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
-        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     </ItemGroup>
 
     <ItemGroup>

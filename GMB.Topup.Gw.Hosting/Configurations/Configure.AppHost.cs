@@ -50,7 +50,7 @@ public class AppHost : AppHostBase, IHostingStartup
                 services.AddScoped<ExternalServiceConnector>();
                 services.AddTransient<AlarmAppVersion>();
                 services.AddTransient<GrpcClientHepper>();
-                services.AddSingleton(c => c.Resolve<IRedisClientsManager>().GetCacheClient());
+                //services.AddSingleton(c => c.Resolve<IRedisClientsManager>().GetCacheClient());
             })
             .ConfigureAppHost(appHost => { })
             .Configure((context, app) =>
