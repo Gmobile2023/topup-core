@@ -15,25 +15,16 @@ namespace GMB.Topup.Shared.AbpConnector;
 public class ExternalServiceConnector
 {
     private readonly string _apiUrl;
-
-    //private IConfiguration _configuration;
-    //private readonly Logger _logger = LogManager.GetLogger("ExternalServiceConnector");
     private readonly ILogger<ExternalServiceConnector> _logger;
-
     private readonly ICacheManager _cacheManager;
-
-    private readonly ICacheClientAsync _cacheClient;
-
-    //private RoundRobinList<ServiceConfiguation> _roundRobinList = null;
     private static int _indexRoundRobinTrans;
 
     public ExternalServiceConnector(IConfiguration configuration, ILogger<ExternalServiceConnector> logger,
-        ICacheManager cacheManager, ICacheClient cacheClient)
+        ICacheManager cacheManager)
     {
         _logger = logger;
         _apiUrl = configuration["ServiceUrlConfig:GatewayPrivate"];
         _cacheManager = cacheManager;
-        _cacheClient = cacheClient.AsAsync();
     }
 
     /// <summary>
@@ -290,7 +281,7 @@ public class ExternalServiceConnector
                 foreach (var item2 in n2)
                 {
                     item2.RateRunning = item2.RateRunning / total * 100;
-                    item2.TransCount = _cacheClient.GetAsync<long>(
+                    item2.TransCount = _cacheManager.GetEntity<long>(
                         $"PayGate_RatingTrans:Items:{item2.ProviderCode}:{item2.AccountCode}:{item2.ServiceCode}:{item2.CategoryCode}:{item2.ProductCode}_{true}").Result;
                     totalTransCount += item2.TransCount;
                 }

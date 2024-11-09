@@ -201,7 +201,7 @@
 2024-03-21 17:27:24.745 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 17:27:24.745 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 17:27:24.746 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
-2024-03-21 17:27:24.932 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://192.168.33.7/test
+2024-03-21 17:27:24.932 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-21 17:27:25.173 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-21 17:27:25.449 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
 2024-03-21 17:27:25.545 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 610.9084ms. No errors detected.
@@ -413,7 +413,7 @@
 2024-03-21 17:34:42.466 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 17:34:42.467 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 17:34:42.473 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
-2024-03-21 17:34:42.658 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://192.168.33.7/test
+2024-03-21 17:34:42.658 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-21 17:34:42.800 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-21 17:34:43.107 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
 2024-03-21 17:34:43.164 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 502.8291ms. No errors detected.
@@ -565,7 +565,7 @@
    at ServiceStack.GrpcServiceClient.Execute[TResponse](Object requestDto, String methodName, CancellationToken token)
    at HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.TopupRequest(WorkerTopupRequest request, ConsumeContext`1 context) in D:\SourceCode\HLS\NT\nt-core\HLS.Paygate.Worker.Components\WorkerProcess\TopupProcess.cs:line 408
 2024-03-21 18:21:33.867 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/1.1 POST http://localhost:9801/api/v1/worker/topup?ReceiverInfo=0969898836&Amount=1000&TransCode=G453253454351&CategoryCode=VTE_TOPUP&Channel=API&ServiceCode=TOPUP&ProductCode=VTE_TOPUP_10&PartnerCode=NT954479&CurrencyCode=VND application/json 2 - 200 - application/json;+charset=utf-8 36357.0692ms
-2024-03-21 22:37:20.695 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:37:20.695 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -586,7 +586,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:37:37.889 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:37:37.889 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -607,7 +607,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:37:58.445 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:37:58.445 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -628,7 +628,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:38:21.975 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:38:21.975 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -654,7 +654,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:39:01.898 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:39:01.898 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -675,7 +675,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:39:43.498 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:39:43.498 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -696,7 +696,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:40:25.089 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:40:25.089 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -717,7 +717,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:41:06.734 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:41:06.734 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -738,7 +738,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:41:48.259 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:41:48.259 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -759,7 +759,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:42:29.826 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:42:29.826 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -780,7 +780,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:43:11.429 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:43:11.429 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -801,7 +801,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:43:53.095 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:43:53.095 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -822,7 +822,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:44:34.658 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:44:34.658 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -843,7 +843,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:45:16.263 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:45:16.263 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -864,7 +864,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:45:58.106 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:45:58.106 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -885,7 +885,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:46:39.805 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:46:39.805 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -906,7 +906,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:47:21.341 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:47:21.341 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -927,7 +927,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:48:02.849 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:48:02.849 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -948,7 +948,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:48:44.447 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:48:44.447 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -969,7 +969,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
    --- End of inner exception stack trace ---
    at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
    at MassTransit.RabbitMqTransport.ConnectionContextFactory.CreateConnection(ISupervisor supervisor) in /_/src/Transports/MassTransit.RabbitMqTransport/RabbitMqTransport/ConnectionContextFactory.cs:line 79
-2024-03-21 22:49:26.014 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://192.168.33.7/test
+2024-03-21 22:49:26.014 +07:00 [WRN] [MassTransit.] Connection Failed: rabbitmq://10.105.33.70/test
 RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> System.AggregateException: One or more errors occurred. (Connection failed)
  ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
@@ -1194,7 +1194,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2024-03-21 22:57:06.029 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 22:57:06.031 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 22:57:06.043 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
-2024-03-21 22:57:06.543 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://192.168.33.7/test
+2024-03-21 22:57:06.543 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-21 22:57:06.664 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-21 22:57:06.897 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
 2024-03-21 22:57:06.943 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 397.365ms. No errors detected.
@@ -1497,7 +1497,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2024-03-21 23:33:46.886 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 23:33:46.886 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 23:33:46.886 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
-2024-03-21 23:33:47.402 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://192.168.33.7/test
+2024-03-21 23:33:47.402 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-21 23:33:47.582 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-21 23:33:47.894 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
 2024-03-21 23:33:47.944 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 539.6158ms. No errors detected.
@@ -1749,7 +1749,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2024-03-21 23:38:01.011 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 23:38:01.011 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 23:38:01.012 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
-2024-03-21 23:38:01.502 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://192.168.33.7/test
+2024-03-21 23:38:01.502 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-21 23:38:01.629 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-21 23:38:01.862 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
 2024-03-21 23:38:01.910 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 405.0032ms. No errors detected.
@@ -1981,7 +1981,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2024-03-21 23:39:13.278 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 23:39:13.278 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 23:39:13.278 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
-2024-03-21 23:39:13.772 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://192.168.33.7/test
+2024-03-21 23:39:13.772 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-21 23:39:13.898 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-21 23:39:14.149 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
 2024-03-21 23:39:14.198 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 422.9284ms. No errors detected.
@@ -2213,7 +2213,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2024-03-21 23:43:10.205 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 23:43:10.205 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
 2024-03-21 23:43:10.215 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Waiting background task...
-2024-03-21 23:43:10.691 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://192.168.33.7/test
+2024-03-21 23:43:10.691 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-21 23:43:10.812 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-21 23:43:11.046 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
 2024-03-21 23:43:11.093 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 399.7887ms. No errors detected.
