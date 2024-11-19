@@ -23,7 +23,7 @@ namespace GMB.Topup.Commission.Hosting.Configurations;
 
 public class AppHost : AppHostBase, IHostingStartup
 {
-    public AppHost() : base("NT_Commission", typeof(CommissionService).Assembly)
+    public AppHost() : base("Commission", typeof(CommissionService).Assembly)
     {
     }
 

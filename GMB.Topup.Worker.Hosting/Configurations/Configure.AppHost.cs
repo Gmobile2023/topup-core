@@ -28,7 +28,7 @@ namespace GMB.Topup.Worker.Hosting.Configurations;
 
 public class AppHost : AppHostBase, IHostingStartup
 {
-    public AppHost() : base("NT_Worker", typeof(WorkerService).Assembly)
+    public AppHost() : base("Worker", typeof(WorkerService).Assembly)
     {
     }
     

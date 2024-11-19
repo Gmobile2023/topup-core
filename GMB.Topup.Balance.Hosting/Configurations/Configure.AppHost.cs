@@ -22,7 +22,7 @@ namespace GMB.Topup.Balance.Hosting.Configurations;
 
 public class AppHost : AppHostBase, IHostingStartup
 {
-    public AppHost() : base("NT_Balance", typeof(MainService).Assembly)
+    public AppHost() : base("Balance", typeof(MainService).Assembly)
     {
     }
 

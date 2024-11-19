@@ -25,7 +25,7 @@ namespace GMB.Topup.Report.Hosting.Configurations;
 
 public class AppHost : AppHostBase, IHostingStartup
 {
-    public AppHost() : base("NT_Report", typeof(ReportService).Assembly)
+    public AppHost() : base("Report", typeof(ReportService).Assembly)
     {
     }
 

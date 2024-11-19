@@ -62,7 +62,7 @@ namespace GMB.Topup.TopupGw.Hosting.Configurations;
 
 public class AppHost : AppHostBase, IHostingStartup
 {
-    public AppHost() : base("NT_TopupGw", typeof(MainService).Assembly)
+    public AppHost() : base("TopupGw", typeof(MainService).Assembly)
     {
     }
 

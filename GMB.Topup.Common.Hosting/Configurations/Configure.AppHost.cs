@@ -28,7 +28,7 @@ namespace GMB.Topup.Common.Hosting.Configurations;
 
 public class AppHost : AppHostBase, IHostingStartup
 {
-    public AppHost() : base("NT_Common", typeof(CommonService).Assembly)
+    public AppHost() : base("Common", typeof(CommonService).Assembly)
     {
     }
 
@@ -74,9 +74,7 @@ public class AppHost : AppHostBase, IHostingStartup
                         config.MapHealthChecksUI();
                     });
                 if (healthCheckConfig.HealthChecksEnabled && healthCheckConfig.HealthChecksUI.HealthChecksUIEnabled)
-                    app.UseHealthChecksUI(config =>
-                    {
-                    });
+                    app.UseHealthChecksUI(config => { });
                 var hangfireConfig = new CommonHangFireConfig();
                 context.Configuration.GetSection("Hangfire").Bind(hangfireConfig);
                 //hangfire=> chỗ này bind ra object
@@ -95,6 +93,7 @@ public class AppHost : AppHostBase, IHostingStartup
                             hangfireConfig.AutoCheckMinBalance.CronExpression);
                     }
                 }
+
                 app.UseHangfireDashboard();
             });
     }
@@ -103,26 +102,19 @@ public class AppHost : AppHostBase, IHostingStartup
     {
         SetConfig(new HostConfig
         {
+            WebHostUrl = AppSettings.GetString("HostConfig:Url"),
+            ApiVersion = AppSettings.GetString("HostConfig:Version"),
             DefaultContentType = MimeTypes.Json,
-            DebugMode = AppSettings.Get(nameof(HostConfig.DebugMode), false),
-            UseSameSiteCookies = true,
             GlobalResponseHeaders = new Dictionary<string, string>
             {
-                { "Server", "nginx/1.4.7" },
                 { "Vary", "Accept" },
-                { "X-Powered-By", "NT_Common" }
+                { "X-Powered-By", "JustForCode" }
             },
             EnableFeatures = Feature.All.Remove(
                 Feature.Csv | Feature.Soap11 | Feature.Soap12) // | Feature.Metadata),
         });
-
-        ConfigurePlugin<PredefinedRoutesFeature>(feature => feature.JsonApiRoute = null);
-        Plugins.Add(new GrpcFeature(App));
         Plugins.Add(new OpenApiFeature());
-
-        JsConfig.Init(new Config
-        {
-            ExcludeTypeInfo = true
-        });
+        ConfigurePlugin<PredefinedRoutesFeature>(feature => feature.JsonApiRoute = null);
     }
+
 }

@@ -25,7 +25,7 @@ namespace GMB.Topup.Backend.Hosting.Configurations;
 
 public class AppHost : AppHostBase, IHostingStartup
 {
-    public AppHost() : base("NT_Backend", typeof(BackendService).Assembly)
+    public AppHost() : base("Backend", typeof(BackendService).Assembly)
     {
     }
 
@@ -89,22 +89,19 @@ public class AppHost : AppHostBase, IHostingStartup
     {
         SetConfig(new HostConfig
         {
+            WebHostUrl = AppSettings.GetString("HostConfig:Url"),
+            ApiVersion = AppSettings.GetString("HostConfig:Version"),
             DefaultContentType = MimeTypes.Json,
-            DebugMode = AppSettings.Get(nameof(HostConfig.DebugMode), false),
-            UseSameSiteCookies = true,
             GlobalResponseHeaders = new Dictionary<string, string>
             {
-                { "Server", "nginx/1.4.7" },
-                { "Vary", "Accept" },
-                { "X-Powered-By", "NT_Backend" }
+                {"Vary", "Accept"},
+                {"X-Powered-By", "JustForCode"}
             },
             EnableFeatures = Feature.All.Remove(
                 Feature.Csv | Feature.Soap11 | Feature.Soap12) // | Feature.Metadata),
         });
-
-        ConfigurePlugin<PredefinedRoutesFeature>(feature => feature.JsonApiRoute = null);
-        Plugins.Add(new GrpcFeature(App));
         Plugins.Add(new OpenApiFeature());
+        ConfigurePlugin<PredefinedRoutesFeature>(feature => feature.JsonApiRoute = null);
 
         JsConfig.Init(new Config
         {
