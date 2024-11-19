@@ -66,6 +66,22 @@ builder.Host.UseOrleans(siloBuilder =>
         {
             configuration.Password = builder.Configuration["Silo:RedisClusterPassword"];
         }
+        
+        
+        var name = Dns.GetHostName(); // get container id
+        var ip = Dns.GetHostEntry(name).AddressList
+            .FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork);
+
+        Console.WriteLine($"IP in cluster {ip}");
+
+        siloBuilder.ConfigureEndpoints(ip,
+                int.Parse(builder.Configuration["Silo:SiloPort"] ?? string.Empty),
+                int.Parse(builder.Configuration["Silo:GatewayPort"] ?? string.Empty))
+            .Configure<ClusterOptions>(opts =>
+            {
+                opts.ClusterId = builder.Configuration["Silo:ClusterId"];
+                opts.ServiceId = builder.Configuration["Silo:ServiceId"];
+            });
 
         siloBuilder.UseRedisClustering(otp => { otp.ConfigurationOptions = configuration; });
     }
@@ -73,28 +89,6 @@ builder.Host.UseOrleans(siloBuilder =>
     {
         siloBuilder.UseLocalhostClustering();
     }
-
-    var name = Dns.GetHostName(); // get container id
-    var ip = Dns.GetHostEntry(name).AddressList
-        .FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork);
-
-    Console.WriteLine($"IP in cluster {ip}");
-
-    siloBuilder.ConfigureEndpoints(ip,
-            int.Parse(builder.Configuration["Silo:SiloPort"] ?? string.Empty),
-            int.Parse(builder.Configuration["Silo:GatewayPort"] ?? string.Empty))
-        .UseDashboard(options =>
-        {
-            options.HideTrace = true;
-            options.Port = 8081;
-            options.Username = "admin";
-            options.Password = "nt@2024!";
-        })
-        .Configure<ClusterOptions>(opts =>
-        {
-            opts.ClusterId = builder.Configuration["Silo:ClusterId"];
-            opts.ServiceId = builder.Configuration["Silo:ServiceId"];
-        });
 });
 
 builder.Logging.AddSerilog();
