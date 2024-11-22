@@ -283,7 +283,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 SumData = sumData,
                 Total = total,
@@ -297,7 +297,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                 $"KeyCode= {keyCode} .Tong thoi gian den khi Exception Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -404,7 +404,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                         });
                         return new MessagePagedResponseBase
                         {
-                            ResponseCode = "01",
+                            ResponseCode = ResponseCodeConst.Success,
                             ResponseMessage = linkFile,
                             Payload = null,
                             ExtraInfo = "Downloadlink"
@@ -453,7 +453,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                     $"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = linkFile,
                     Payload = null,
                     ExtraInfo = "Downloadlink"
@@ -467,7 +467,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             $"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "",
             Payload = list,
             ExtraInfo = ""
@@ -756,7 +756,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
                         return new MessagePagedResponseBase
                         {
-                            ResponseCode = "01",
+                            ResponseCode = ResponseCodeConst.Success,
                             ResponseMessage = linkFile,
                             Total = total,
                             SumData = sumData,
@@ -772,7 +772,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 SumData = sumData,
                 Total = total,
@@ -784,7 +784,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             _logger.LogError($"ReportServiceDetailGetList error: {e}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -940,7 +940,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                                 $"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
                             return new MessagePagedResponseBase
                             {
-                                ResponseCode = "01",
+                                ResponseCode = ResponseCodeConst.Success,
                                 ResponseMessage = linkFile,
                                 Total = total,
                                 SumData = sumTotal,
@@ -990,7 +990,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                         $"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
                     return new MessagePagedResponseBase
                     {
-                        ResponseCode = "01",
+                        ResponseCode = ResponseCodeConst.Success,
                         ResponseMessage = linkFile,
                         Total = total,
                         SumData = sumTotal,
@@ -1006,7 +1006,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumTotal,
@@ -1019,7 +1019,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             _logger.LogInformation($"KeyCode= {keyCode} .Tong thoi gian den khi Exception Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -1425,7 +1425,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumData,
@@ -1440,7 +1440,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -1603,7 +1603,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             {
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Payload = msgList
                 };
@@ -1646,7 +1646,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                                 $"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
                             return new MessagePagedResponseBase
                             {
-                                ResponseCode = "01",
+                                ResponseCode = ResponseCodeConst.Success,
                                 ResponseMessage = linkFile,
 
                                 Payload = new object(),
@@ -1697,7 +1697,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                         $"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
                     return new MessagePagedResponseBase
                     {
-                        ResponseCode = "01",
+                        ResponseCode = ResponseCodeConst.Success,
                         ResponseMessage = linkFile,
                         Payload = null,
                         ExtraInfo = "Downloadlink"
@@ -1712,7 +1712,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Payload = msgList
             };
@@ -1725,7 +1725,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -2037,7 +2037,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumData,
@@ -2049,7 +2049,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             _logger.LogError($"ReportServiceTotalGetList error: {e}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -2224,7 +2224,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumData,
@@ -2236,7 +2236,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             _logger.LogError($"ReportServiceTotalProviderGetList error: {e}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -2393,7 +2393,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 SumData = sumData,
                 Total = total,
@@ -2407,7 +2407,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                 $"KeyCode= {keyCode} .Tong thoi gian den khi Exception Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -2491,7 +2491,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                         });
                         return new MessagePagedResponseBase
                         {
-                            ResponseCode = "01",
+                            ResponseCode = ResponseCodeConst.Success,
                             ResponseMessage = linkFile,
                             Payload = null,
                             ExtraInfo = "Downloadlink"
@@ -2540,7 +2540,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                     $"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = linkFile,
                     Payload = null,
                     ExtraInfo = "Downloadlink"
@@ -2555,7 +2555,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             $"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "",
             Payload = list,
             ExtraInfo = ""
@@ -2716,13 +2716,13 @@ public partial class ElasticReportRepository : IElasticReportRepository
                 };
                 return new NewMessageResponseBase<ItemMobileCheckDto>()
                 {
-                    ResponseStatus = new ResponseStatusApi("01", "Thành công"),
+                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Success, "Thành công"),
                     Results = dataItem
                 };
             }
             else return new NewMessageResponseBase<ItemMobileCheckDto>()
             {
-                ResponseStatus = new ResponseStatusApi("00", "Không có dữ liệu"),
+                ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error, "Không có dữ liệu"),
             };
 
         }
@@ -2732,7 +2732,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             _logger.LogInformation($"Tong thoi gian den khi Exception Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
             return new NewMessageResponseBase<ItemMobileCheckDto>()
             {
-                ResponseStatus = new ResponseStatusApi("00", "Truy vấn thất bại"),
+                ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error, "Truy vấn thất bại"),
             };
         }
     }

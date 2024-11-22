@@ -162,7 +162,7 @@ public class NhatTranStockConnector : IGatewayConnector
                 "/api/v1/ngate/kpp_control", request, timeout: TimeSpan.FromSeconds(providerInfo.Timeout));
             _logger.LogInformation($"{providerCode} kpp_control Reponse: {result.ToJson()}");
 
-            if (result != null && result.responseStatus.errorCode == "00")
+            if (result != null && result.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Giao dịch thành công";

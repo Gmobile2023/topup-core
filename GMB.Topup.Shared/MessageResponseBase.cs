@@ -36,33 +36,33 @@ public class MessageResponseBase
 
     public static MessageResponseBase Error()
     {
-        return new MessageResponseBase("00", "Error");
+        return new MessageResponseBase(ResponseCodeConst.Error, "Error");
     }
 
     public static MessageResponseBase Error(string message)
     {
-        return new MessageResponseBase("00", message);
+        return new MessageResponseBase(ResponseCodeConst.Error, message);
     }
 
     //public static MessageResponseBase Error(object data)
     //{
-    //    var rs = new MessageResponseBase("00", "Error") { Payload = data };
+    //    var rs = new MessageResponseBase(ResponseCodeConst.Error, "Error") { Payload = data };
     //    return rs;
     //}
 
     public static MessageResponseBase Success()
     {
-        return new MessageResponseBase("01", "Success");
+        return new MessageResponseBase(ResponseCodeConst.Success, "Success");
     }
 
     public static MessageResponseBase Success(string message)
     {
-        return new MessageResponseBase("01", message);
+        return new MessageResponseBase(ResponseCodeConst.Success, message);
     }
 
     public static MessageResponseBase Success(object data)
     {
-        var rs = new MessageResponseBase("01", "Success") { Payload = data };
+        var rs = new MessageResponseBase(ResponseCodeConst.Success, "Success") { Payload = data };
         return rs;
     }
 }

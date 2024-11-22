@@ -50,7 +50,7 @@ public class CheckLimitTransaction
         if (detail == null)
             return new MessageResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công"
             };
         if (detail.LimitQuantity != null && totalQuantity > detail.LimitQuantity)
@@ -77,7 +77,7 @@ public class CheckLimitTransaction
 
         return new MessageResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Thành công"
         };
     }

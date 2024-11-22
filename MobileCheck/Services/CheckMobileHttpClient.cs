@@ -51,7 +51,7 @@ public class CheckMobileHttpClient
             }
 
             if (check.ResponseStatus.ErrorCode == ResponseCodeConst.Success)
-                check.ResponseStatus.ErrorCode = "00";//convert lại mã TC
+                check.ResponseStatus.ErrorCode = ResponseCodeConst.Error;//convert lại mã TC
 
             return (check, mobileInfo);
         }

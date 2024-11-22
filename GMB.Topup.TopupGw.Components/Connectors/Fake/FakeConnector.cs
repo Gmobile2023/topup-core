@@ -72,7 +72,7 @@ public class FakeConnector : IGatewayConnector
             case "0969898836":
                 //await Task.Delay(TimeSpan.FromMinutes(1));
                 topupRequestLog.Status = TransRequestStatus.Success; //ok
-                responseMessage.ResponseCode = "01";
+                responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Giao dịch thành công";
                 responseMessage.ProviderResponseTransCode = DateTime.Now.ToString("yyyyMMddHHmmssfff");
                 responseMessage.ReceiverType = "TS";
@@ -80,7 +80,7 @@ public class FakeConnector : IGatewayConnector
             case "0969898837":
                 await Task.Delay(TimeSpan.FromMinutes(1));
                 topupRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = "00";
+                responseMessage.ResponseCode = ResponseCodeConst.Error;
                 responseMessage.ResponseMessage = "Giao dịch lỗi";
                 break;
             case "0969898838":
@@ -176,7 +176,7 @@ public class FakeConnector : IGatewayConnector
             var responseMessage = new MessageResponseBase();
             responseMessage.ResponseCode = ResponseCodeConst.Success;
             responseMessage.ResponseMessage = "Giao dịch thành công";
-            responseMessage.ProviderResponseCode = "01";
+            responseMessage.ProviderResponseCode = ResponseCodeConst.Success;
             responseMessage.ProviderResponseMessage = "Thành công";
             responseMessage.ProviderResponseTransCode = "";
             var rdm = new Random();

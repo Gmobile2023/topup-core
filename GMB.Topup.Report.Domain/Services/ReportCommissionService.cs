@@ -165,7 +165,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                 return Task.FromResult(new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     SumData = sumTotal,
@@ -177,7 +177,7 @@ namespace GMB.Topup.Report.Domain.Services
                 _logger.LogError($"ReportCommissionDetailGetList error: {e}");
                 return Task.FromResult(new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 });
             }
         }
@@ -255,7 +255,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                 return Task.FromResult(new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     SumData = sumTotal,
@@ -267,7 +267,7 @@ namespace GMB.Topup.Report.Domain.Services
                 _logger.LogError($"ReportCommissionTotalGetList error: {e}");
                 return Task.FromResult(new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 });
             }
         }
@@ -430,7 +430,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                 return Task.FromResult(new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     SumData = sumTotal,
@@ -442,7 +442,7 @@ namespace GMB.Topup.Report.Domain.Services
                 _logger.LogError($"ReportCommissionAgentDetailGetList error: {e}");
                 return Task.FromResult(new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 });
             }
         }
@@ -561,7 +561,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                 return Task.FromResult(new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = total,
                     SumData = sumTotal,
@@ -573,7 +573,7 @@ namespace GMB.Topup.Report.Domain.Services
                 _logger.LogError($"ReportCommissionAgentTotalGetList error: {e}");
                 return Task.FromResult(new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 });
             }
         }
@@ -714,7 +714,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     SumData = sumtotal,
@@ -726,7 +726,7 @@ namespace GMB.Topup.Report.Domain.Services
                 _logger.LogError($"ReportAgentGeneralDayGetDash error: {e}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
             }
         }

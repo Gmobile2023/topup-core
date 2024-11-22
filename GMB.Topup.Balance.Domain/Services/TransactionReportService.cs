@@ -35,7 +35,7 @@ namespace GMB.Topup.Balance.Domain.Services;
 //             await _balanceMongoRepository.AddOneAsync(GetBalanceHistoryInsert(transaction, settlement));
 //             return new MessageResponseBase
 //             {
-//                 ResponseCode = "01",
+//                 ResponseCode = ResponseCodeConst.Success,
 //                 ResponseMessage = "Thành công"
 //             };
 //         }
@@ -79,7 +79,7 @@ namespace GMB.Topup.Balance.Domain.Services;
 //             var lst = await _balanceMongoRepository.GetAllAsync<BalanceHistories, Guid>(query);
 //             return new ResponseMesssageObject<string>
 //             {
-//                 ResponseCode = "01",
+//                 ResponseCode = ResponseCodeConst.Success,
 //                 ResponseMessage = "Thành công",
 //                 Total = lst.Count(),
 //                 Payload = lst.ToJson()
@@ -104,7 +104,7 @@ namespace GMB.Topup.Balance.Domain.Services;
 //             x.TransCode == request.TransCode);
 //         return new MessageResponseBase
 //         {
-//             ResponseCode = "01",
+//             ResponseCode = ResponseCodeConst.Success,
 //             Payload = item.ConvertTo<BalanceHistoryDto>()
 //         };
 //     }

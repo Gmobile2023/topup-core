@@ -299,13 +299,13 @@
 2023-04-26 18:55:19.783 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] T5453453455-GetDiscount return:{"productValue":500000.00,"discountAmount":0,"paymentAmount":500000.00,"toDate":"\/Date(-62135596800000-0000)\/"}
 2023-04-26 18:55:22.087 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] CheckLimitAccount reuqest: -0--
 2023-04-26 18:55:22.101 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] amountConfig:--
-2023-04-26 18:55:22.104 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] T5453453455-CheckLimit return:{"responseCode":"01","responseMessage":"","paymentAmount":0,"requestAmount":0}
+2023-04-26 18:55:22.104 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] T5453453455-CheckLimit return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"","paymentAmount":0,"requestAmount":0}
 2023-04-26 18:55:22.106 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] T5453453455 CheckLimitProductPerDay request:T5453453455 - NT965120-APOTA_GAME_500-500000.00-1
 2023-04-26 18:55:22.475 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] T5453453455 GetLimitProductTransPerDay return:{"totalQuantity":0,"totalAmount":0}
 2023-04-26 18:55:22.478 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay request: T5453453455 - NT965120-APOTA_GAME_500-500000.00-1
 2023-04-26 18:55:23.103 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay response: T5453453455  True-
 2023-04-26 18:55:23.106 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] T5453453455 - CheckLimitProductPerDay return:{"success":true}
-2023-04-26 18:55:23.106 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] T5453453455-CheckLimitProductPerDay return:{"responseCode":"01","responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
+2023-04-26 18:55:23.106 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] T5453453455-CheckLimitProductPerDay return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
 2023-04-26 18:55:23.305 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Create topup request success: NT23042600000434-T5453453455
 2023-04-26 18:55:27.565 +07:00 [ERR] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] T5453453455-CardSaleRequest: Grpc.Core.RpcException: Status(StatusCode="Unavailable", Detail="Error starting gRPC call. HttpRequestException: No connection could be made because the target machine actively refused it. (localhost:6791) SocketException: No connection could be made because the target machine actively refused it.", DebugException="System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (localhost:6791)
  ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.

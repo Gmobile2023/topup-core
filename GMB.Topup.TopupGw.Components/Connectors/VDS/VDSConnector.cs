@@ -94,7 +94,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.VDS
                     responseMessage.ProviderResponseMessage = result?.Data.ErrorMsg;
 
                     //_logger.LogInformation($"{topupRequestLog.ProviderCode}-{topupRequestLog.TransCode} ViettelVtt2Connector return: {topupRequestLog.TransCode}-{topupRequestLog.TransRef}-{result.Data.ToJson()}");
-                    if (result.Data.ErrorCode == "00")
+                    if (result.Data.ErrorCode == ResponseCodeConst.Error)
                     {
                         topupRequestLog.Status = TransRequestStatus.Success;
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -212,9 +212,9 @@ namespace GMB.Topup.TopupGw.Components.Connectors.VDS
                 {
                     _logger.LogInformation(
                         $"{providerCode}-{transCodeToCheck} VDSConnector Check trans return: {transCodeToCheck}-{transCode}-{result.Data.ToJson()}");
-                    if (result.Data.ErrorCode == "00")
+                    if (result.Data.ErrorCode == ResponseCodeConst.Error)
                     {
-                        if (result.Data.ReferenceCode == "00")
+                        if (result.Data.ReferenceCode == ResponseCodeConst.Error)
                         {
                             responseMessage.ResponseCode = ResponseCodeConst.Success;
                             responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -330,7 +330,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.VDS
             {
                 _logger.LogInformation(
                     $"{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode} VDSConnector return: {payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.Data.ToJson()}");
-                if (result.Data.ErrorCode == "00")
+                if (result.Data.ErrorCode == ResponseCodeConst.Error)
                 {
                     var dto = new InvoiceResultDto()
                     {
@@ -428,7 +428,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.VDS
                     $"Card return: {cardRequestLog.TransCode}-{cardRequestLog.TransRef}-{result.Data.ToJson()}");
                 cardRequestLog.ModifiedDate = DateTime.Now;
                 cardRequestLog.ResponseInfo = result.Data.ToJson();
-                if (result.Data.ErrorCode == "00")
+                if (result.Data.ErrorCode == ResponseCodeConst.Error)
                 {
                     cardRequestLog.Status = TransRequestStatus.Success;
                     responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -550,7 +550,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.VDS
                 {
                     responseMessage.ProviderResponseCode = result.Data.ErrorCode;
                     responseMessage.ProviderResponseMessage = result.Data.ErrorMsg;
-                    if (result.Data.ErrorCode == "00")
+                    if (result.Data.ErrorCode == ResponseCodeConst.Error)
                     {
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
                         responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -649,7 +649,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.VDS
                 _logger.LogInformation($"Deposit return: {request.TransCode}-{result.ToJson()}");
                 responseMessage.ProviderResponseCode = result.Data.ErrorCode;
                 responseMessage.ProviderResponseMessage = result.Data.ErrorMsg;
-                if (result.Data.ErrorCode == "00")
+                if (result.Data.ErrorCode == ResponseCodeConst.Error)
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Success;
                     responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -728,7 +728,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.VDS
             {
                 _logger.LogInformation(
                     $"{providerCode}-{transCodeToCheck} VDSConnector GetPinCodeAsync return: {transCodeToCheck}-{transCode}-{result.Data.ToJson()}");
-                if (result.Data.ErrorCode == "00")
+                if (result.Data.ErrorCode == ResponseCodeConst.Error)
                 {
                     try
                     {

@@ -107,7 +107,7 @@ public class HLSConnector : IGatewayConnector
 
             var respDto = resp.FromJson<QueryResult>();
 
-            if (respDto.ResponseCode == "00")
+            if (respDto.ResponseCode == ResponseCodeConst.Error)
             {
                 var dto = new InvoiceResultDto
                 {

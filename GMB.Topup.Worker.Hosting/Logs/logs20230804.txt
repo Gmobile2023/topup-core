@@ -751,7 +751,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2023-08-04 00:58:16.247 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] "T432434234" - GetServiceConfiguration success: 1 ==> "[\"CG2022\"]"
 2023-08-04 00:58:18.156 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Create topup request success: NT23080400000002-T432434234
 2023-08-04 00:58:21.451 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] ValidateTelco request: NT23080400000002-0969898836-VTE
-2023-08-04 00:58:39.045 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] ValidateTelco return: {"responseStatus":{"errorCode":"01","message":"Thất bại"}}-NT23080400000002-0969898836-VTE
+2023-08-04 00:58:39.045 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] ValidateTelco return: {"responseStatus":{"errorCode":ResponseCodeConst.Success,"message":"Thất bại"}}-NT23080400000002-0969898836-VTE
 2023-08-04 01:00:34.855 +07:00 [INF] [MassTransit.] Configured endpoint "topup-request", Consumer: "HLS.Paygate.Worker.Components.Consumers.TopupRequestConsumer"
 2023-08-04 01:00:34.897 +07:00 [INF] [MassTransit.] Configured endpoint "update-status-request", Consumer: "HLS.Paygate.Worker.Components.Consumers.UpdateStatusRequestConsumer"
 2023-08-04 01:00:35.332 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Queued Hosted Service is starting.
@@ -975,4 +975,4 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2023-08-04 01:01:05.236 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] "T4324342341" - GetServiceConfiguration success: 1 ==> "[\"CG2022\"]"
 2023-08-04 01:01:05.404 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Create topup request success: NT23080400000003-T4324342341
 2023-08-04 01:01:09.236 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] ValidateTelco request: NT23080400000003-0969898836-VTE
-2023-08-04 01:01:36.920 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] ValidateTelco return: {"responseStatus":{"errorCode":"01","message":"Thất bại"}}-NT23080400000003-0969898836-VTE
+2023-08-04 01:01:36.920 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] ValidateTelco return: {"responseStatus":{"errorCode":ResponseCodeConst.Success,"message":"Thất bại"}}-NT23080400000003-0969898836-VTE

@@ -151,7 +151,7 @@ namespace GMB.Topup.Report.Domain.Repositories
                 var vList = groupList.Skip(request.Offset).Take(request.Limit).ToList();
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = total,
                     SumData = sumtotal,
@@ -164,7 +164,7 @@ namespace GMB.Topup.Report.Domain.Repositories
                 _logger.LogError($"ReportBalanceGroupTotalGetList error {e}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
             }
         }
@@ -271,7 +271,7 @@ namespace GMB.Topup.Report.Domain.Repositories
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     SumData = sumtotal,
@@ -284,7 +284,7 @@ namespace GMB.Topup.Report.Domain.Repositories
                 _logger.LogError($"ReportBalanceTotalGetList error {ex}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
             }
         }
@@ -489,7 +489,7 @@ namespace GMB.Topup.Report.Domain.Repositories
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = total,
                     SumData = sumTotal,
@@ -501,7 +501,7 @@ namespace GMB.Topup.Report.Domain.Repositories
                 _logger.LogError($"CardStockImExPort error {ex}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
 
             }
@@ -747,7 +747,7 @@ namespace GMB.Topup.Report.Domain.Repositories
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = total,
                     SumData = sumTotal,
@@ -760,7 +760,7 @@ namespace GMB.Topup.Report.Domain.Repositories
                 _logger.LogError($"CardStockImExPortProvider error {ex}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
             }
         }
@@ -941,7 +941,7 @@ namespace GMB.Topup.Report.Domain.Repositories
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     SumData = sumData,
@@ -953,7 +953,7 @@ namespace GMB.Topup.Report.Domain.Repositories
                 _logger.LogError($"ReportDetailGetList error: {e}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
             }
         }
@@ -1059,7 +1059,7 @@ namespace GMB.Topup.Report.Domain.Repositories
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = total,
                     SumData = sumtotal,
@@ -1071,7 +1071,7 @@ namespace GMB.Topup.Report.Domain.Repositories
                 _logger.LogError($"ReportTotalDebtGetList error: {e}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
             }
         }
@@ -1173,7 +1173,7 @@ namespace GMB.Topup.Report.Domain.Repositories
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     Payload = searchData.OrderBy(x => x.CreatedDate).ThenBy(x => x.StockCode).ThenBy(x => x.Vendor)
@@ -1185,7 +1185,7 @@ namespace GMB.Topup.Report.Domain.Repositories
                 _logger.LogError($"CardStockInventory error {ex}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
             }
         }
@@ -1585,7 +1585,7 @@ namespace GMB.Topup.Report.Domain.Repositories
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     Payload = searchData.OrderBy(x => x.CreatedDate).ThenBy(x => x.StockCode).ThenBy(x => x.Vendor)
@@ -1597,7 +1597,7 @@ namespace GMB.Topup.Report.Domain.Repositories
                 _logger.LogError($"GetCardStockHistories error {ex}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
             }
         }

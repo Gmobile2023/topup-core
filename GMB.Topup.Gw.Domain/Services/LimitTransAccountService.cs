@@ -67,7 +67,7 @@ public class LimitTransAccountService : ILimitTransAccountService
         if (amountConfig == null)
             return new MessageResponseBase
             {
-                ResponseCode = "01"
+                ResponseCode = ResponseCodeConst.Success
             };
         // if (amount > amountConfig.LimitPerTrans)
         //     return new MessageResponseBase
@@ -88,7 +88,7 @@ public class LimitTransAccountService : ILimitTransAccountService
             };
         return new MessageResponseBase
         {
-            ResponseCode = "01"
+            ResponseCode = ResponseCodeConst.Success
         };
     }
 

@@ -81,7 +81,7 @@ public class CG2022Connector : IGatewayConnector
                 responseMessage.ProviderResponseCode = result?.responseStatus?.errorCode;
                 responseMessage.ProviderResponseMessage = result?.responseStatus?.message;
 
-                if (result.responseStatus.errorCode is "00" or "501102")
+                if (result.responseStatus.errorCode is ResponseCodeConst.Error or "501102")
                 {
                     var begin = DateTime.Now;
                     Thread.Sleep(1500);
@@ -98,8 +98,8 @@ public class CG2022Connector : IGatewayConnector
                             (responseCache.Status is TransRequestStatus.Success or TransRequestStatus.Fail))
                         {
                             result.responseStatus.errorCode = responseCache.Status == TransRequestStatus.Success
-                                ? "00"
-                                : "01";
+                                ? ResponseCodeConst.Error
+                                : ResponseCodeConst.Success;
                             result.responseStatus.transCode = responseCache.TransCode;
                             result.responseStatus.message = "Ket qua tu cache callBack_NCC";
                             _logger.LogInformation(request.TxnId +
@@ -128,8 +128,8 @@ public class CG2022Connector : IGatewayConnector
                                 {
                                     _logger.Log(LogLevel.Information, "Get TopupLog reponse : " + timmeQuery.ToJson());
                                     result.responseStatus.errorCode = responseCache.Status == TransRequestStatus.Success
-                                        ? "00"
-                                        : "01";
+                                        ? ResponseCodeConst.Error
+                                        : ResponseCodeConst.Success;
                                     result.responseStatus.transCode = responseCache.TransCode;
                                     result.responseStatus.message = "Ket qua tu cache callBack_NCC";
                                 }
@@ -144,7 +144,7 @@ public class CG2022Connector : IGatewayConnector
 
                     try
                     {
-                        if (result.responseStatus.errorCode == "00")
+                        if (result.responseStatus.errorCode == ResponseCodeConst.Error)
                         {
                             topupRequestLog.ModifiedDate = DateTime.Now;
                             topupRequestLog.TransAmount = topupRequestLog.TransAmount;
@@ -205,7 +205,7 @@ public class CG2022Connector : IGatewayConnector
                     _logger.LogInformation(
                         $"CG2022Connector Topup return:{topupRequestLog.ProviderCode}-{topupRequestLog.TransCode}-{topupRequestLog.TransRef}-{result.ToJson()}");
                     var reResult =
-                        await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.CG2022, "01",
+                        await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.CG2022, ResponseCodeConst.Success,
                             providerInfo.ProviderCode);
                     topupRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
@@ -287,7 +287,7 @@ public class CG2022Connector : IGatewayConnector
             responseMessage.ProviderResponseCode = checkResult?.responseStatus?.errorCode;
             responseMessage.ProviderResponseMessage = checkResult?.responseStatus?.message;
 
-            if (checkResult.responseStatus.errorCode == "00")
+            if (checkResult.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Thành công";

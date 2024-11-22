@@ -120,7 +120,7 @@ public class AuditLogService : IAuditLogService
 
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Thành công",
             Total = (int) total,
             Payload = lst.ConvertTo<List<AuditAccountActivityDto>>()

@@ -68,7 +68,7 @@ public class CheckMobileProcess
                             Results = "NOT_VALID",
                             ResponseStatus = new ResponseStatusApi()
                             {
-                                ErrorCode = "01",
+                                ErrorCode = ResponseCodeConst.Success,
                                 Message = "Fail"
                             }
                         };
@@ -79,7 +79,7 @@ public class CheckMobileProcess
                         Results = mobileInfo?.Telco + "|" + mobileInfo?.MobileType + "|" + "SYSTEM",
                         ResponseStatus = new ResponseStatusApi()
                         {
-                            ErrorCode = "00",
+                            ErrorCode = ResponseCodeConst.Error,
                             Message = "Success"
                         }
                     };

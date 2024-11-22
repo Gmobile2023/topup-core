@@ -682,13 +682,13 @@ Code: Not Found, Message:
 2022-12-24 15:06:22.426 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122404-ServiceConfiguration:[{"priority":1,"providerCode":"FAKE","providerName":"Kênh Fake","name":"Thanh toán hóa đơn_Truyền hình K+","description":"","serviceCode":"PAY_BILL","categoryCode":"TV_BILL","isOpened":true,"transCodeConfig":"TEST","isSlowTrans":false,"isEnableResponseWhenJustReceived":false,"waitingTimeResponseWhenJustReceived":0}]
 2022-12-24 15:06:23.890 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] CheckLimitAccount reuqest: NT954783-0--
 2022-12-24 15:06:23.920 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] amountConfig:--
-2022-12-24 15:06:24.405 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122404-CheckLimit return:{"responseCode":"01","responseMessage":"","paymentAmount":0,"requestAmount":0}
+2022-12-24 15:06:24.405 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122404-CheckLimit return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"","paymentAmount":0,"requestAmount":0}
 2022-12-24 15:06:25.948 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122404 CheckLimitProductPerDay request:2022122404 - NT954783-KPLUS_BILL-12000-1
 2022-12-24 15:06:26.250 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122404 GetLimitProductTransPerDay return:{"totalQuantity":0,"totalAmount":0}
 2022-12-24 15:06:26.252 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay request: 2022122404 - NT954783-KPLUS_BILL-12000-1
 2022-12-24 15:06:28.049 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay response: 2022122404  True-
 2022-12-24 15:06:28.052 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122404 - CheckLimitProductPerDay return:{"success":true}
-2022-12-24 15:06:28.856 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122404-CheckLimitProductPerDay return:{"responseCode":"01","responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
+2022-12-24 15:06:28.856 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122404-CheckLimitProductPerDay return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
 2022-12-24 15:06:29.644 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] GetProductFee request:2022122404 - NT954783-KPLUS_BILL-12000
 2022-12-24 15:06:46.558 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckProductDiscount request:2022122404- NT954783-KPLUS_BILL
 2022-12-24 15:06:46.739 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckProductDiscount request:2022122404- NT954783-KPLUS_BILL from API => {"productValue":1.00,"productCode":"KPLUS_BILL","productName":"Truyền hình K+","discountAmount":0.0,"paymentAmount":1.00,"toDate":"\/Date(-62135596800000-0000)\/"}
@@ -720,13 +720,13 @@ System.InvalidCastException: Unable to cast object of type 'ServiceStack.Respons
 2022-12-24 15:08:06.754 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122405-ServiceConfiguration:[{"priority":1,"providerCode":"FAKE","providerName":"Kênh Fake","name":"Thanh toán hóa đơn_Truyền hình K+","description":"","serviceCode":"PAY_BILL","categoryCode":"TV_BILL","isOpened":true,"transCodeConfig":"TEST","isSlowTrans":false,"isEnableResponseWhenJustReceived":false,"waitingTimeResponseWhenJustReceived":0}]
 2022-12-24 15:08:08.440 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] CheckLimitAccount reuqest: NT954783-0--
 2022-12-24 15:08:08.465 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] amountConfig:--
-2022-12-24 15:08:09.122 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122405-CheckLimit return:{"responseCode":"01","responseMessage":"","paymentAmount":0,"requestAmount":0}
+2022-12-24 15:08:09.122 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122405-CheckLimit return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"","paymentAmount":0,"requestAmount":0}
 2022-12-24 15:08:10.598 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122405 CheckLimitProductPerDay request:2022122405 - NT954783-KPLUS_BILL-12000-1
 2022-12-24 15:08:10.760 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122405 GetLimitProductTransPerDay return:{"totalQuantity":0,"totalAmount":0}
 2022-12-24 15:08:10.761 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay request: 2022122405 - NT954783-KPLUS_BILL-12000-1
 2022-12-24 15:08:10.901 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay response: 2022122405  True-
 2022-12-24 15:08:10.901 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122405 - CheckLimitProductPerDay return:{"success":true}
-2022-12-24 15:10:09.309 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122405-CheckLimitProductPerDay return:{"responseCode":"01","responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
+2022-12-24 15:10:09.309 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122405-CheckLimitProductPerDay return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
 2022-12-24 15:10:11.117 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] GetProductFee request:2022122405 - NT954783-KPLUS_BILL-12000
 2022-12-24 15:10:11.242 +07:00 [ERR] [ServiceStack.AsyncServiceClient.] System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
    at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
@@ -760,10 +760,10 @@ Code: Not Found, Message:
 2022-12-24 15:10:55.961 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckProductDiscount request:2022122405- NT954783-KPLUS_BILL from API => {"productValue":1.00,"productCode":"KPLUS_BILL","productName":"Truyền hình K+","discountAmount":0.0,"paymentAmount":1.00,"toDate":"\/Date(-62135596800000-0000)\/"}
 2022-12-24 15:11:08.306 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122405-GetDiscount return:{"productValue":1.00,"discountAmount":0,"paymentAmount":12000,"toDate":"\/Date(-62135596800000-0000)\/"}
 2022-12-24 15:11:10.518 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Create topup request success: NT22122400000002-2022122405
-2022-12-24 15:11:59.609 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] NT22122400000002-NT22122400000002-FAKE CallPayBillGate Return: {"results":{"responsed":false},"responseStatus":{"errorCode":"01","message":"Giao dịch thành công"}}
-2022-12-24 15:12:05.959 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] NT22122400000002|NT22122400000002|FAKE CallPayBillGate reponse : {"results":{"responsed":false},"responseStatus":{"errorCode":"01","message":"Giao dịch thành công"}}
-2022-12-24 15:12:19.492 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] NT22122400000002-2022122405-GatePayBillRequest return:{"results":{"responsed":false},"responseStatus":{"errorCode":"01","message":"Giao dịch thành công"}}-{"providerCode":"FAKE","transCodeProvider":"NT22122400000002"}
-2022-12-24 15:12:24.228 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Call topupgate response:{"results":{"responsed":false},"responseStatus":{"errorCode":"01","message":"Giao dịch thành công"}}
+2022-12-24 15:11:59.609 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] NT22122400000002-NT22122400000002-FAKE CallPayBillGate Return: {"results":{"responsed":false},"responseStatus":{"errorCode":ResponseCodeConst.Success,"message":"Giao dịch thành công"}}
+2022-12-24 15:12:05.959 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] NT22122400000002|NT22122400000002|FAKE CallPayBillGate reponse : {"results":{"responsed":false},"responseStatus":{"errorCode":ResponseCodeConst.Success,"message":"Giao dịch thành công"}}
+2022-12-24 15:12:19.492 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] NT22122400000002-2022122405-GatePayBillRequest return:{"results":{"responsed":false},"responseStatus":{"errorCode":ResponseCodeConst.Success,"message":"Giao dịch thành công"}}-{"providerCode":"FAKE","transCodeProvider":"NT22122400000002"}
+2022-12-24 15:12:24.228 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Call topupgate response:{"results":{"responsed":false},"responseStatus":{"errorCode":ResponseCodeConst.Success,"message":"Giao dịch thành công"}}
 2022-12-24 15:12:36.586 +07:00 [ERR] [Grpc.AspNetCore.Server.ServerCallHandler.] Error when executing service method '"PostWorkerPayBillRequest"'.
 System.InvalidCastException: Unable to cast object of type 'ServiceStack.ResponseStatus' to type 'HLS.Paygate.Shared.ResponseStatusApi'.
    at _SetProperty_ResponseStatus_(Object, Object)
@@ -1375,13 +1375,13 @@ System.InvalidCastException: Unable to cast object of type 'ServiceStack.Respons
 2022-12-24 16:22:53.601 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122408-ServiceConfiguration:[{"priority":1,"providerCode":"FAKE","providerName":"Kênh Fake","name":"Thanh toán hóa đơn_Truyền hình K+","description":"","serviceCode":"PAY_BILL","categoryCode":"TV_BILL","isOpened":true,"transCodeConfig":"TEST","isSlowTrans":false,"isEnableResponseWhenJustReceived":false,"waitingTimeResponseWhenJustReceived":0}]
 2022-12-24 16:22:53.604 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] CheckLimitAccount reuqest: NT954783-0--
 2022-12-24 16:22:53.617 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] amountConfig:--
-2022-12-24 16:22:53.620 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122408-CheckLimit return:{"responseCode":"01","responseMessage":"","paymentAmount":0,"requestAmount":0}
+2022-12-24 16:22:53.620 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122408-CheckLimit return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"","paymentAmount":0,"requestAmount":0}
 2022-12-24 16:22:53.624 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122408 CheckLimitProductPerDay request:2022122408 - NT954783-KPLUS_BILL-12000-1
 2022-12-24 16:22:53.871 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122408 GetLimitProductTransPerDay return:{"totalQuantity":1,"totalAmount":12000}
 2022-12-24 16:22:53.873 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay request: 2022122408 - NT954783-KPLUS_BILL-24000-2
 2022-12-24 16:22:54.093 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay response: 2022122408  True-
 2022-12-24 16:22:54.096 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122408 - CheckLimitProductPerDay return:{"success":true}
-2022-12-24 16:22:54.096 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122408-CheckLimitProductPerDay return:{"responseCode":"01","responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
+2022-12-24 16:22:54.096 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122408-CheckLimitProductPerDay return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
 2022-12-24 16:22:54.099 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] GetProductFee request:2022122408 - NT954783-KPLUS_BILL-12000
 2022-12-24 16:22:54.271 +07:00 [INF] [Microsoft.AspNetCore.Routing.EndpointMiddleware.] Executed endpoint '"gRPC - /GrpcServices/PostWorkerPayBillRequest"'
 2022-12-24 16:22:54.277 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/2 POST http://localhost:9791/GrpcServices/PostWorkerPayBillRequest application/grpc - - 200 - application/grpc 1700.0861ms
@@ -1612,13 +1612,13 @@ System.InvalidCastException: Unable to cast object of type 'ServiceStack.Respons
 2022-12-24 16:39:24.326 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122409-ServiceConfiguration:[{"priority":1,"providerCode":"FAKE","providerName":"Kênh Fake","name":"Thanh toán hóa đơn_Truyền hình K+","description":"","serviceCode":"PAY_BILL","categoryCode":"TV_BILL","isOpened":true,"transCodeConfig":"TEST","isSlowTrans":false,"isEnableResponseWhenJustReceived":false,"waitingTimeResponseWhenJustReceived":0}]
 2022-12-24 16:39:25.924 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] CheckLimitAccount reuqest: NT954783-0--
 2022-12-24 16:39:25.969 +07:00 [INF] [HLS.Paygate.Gw.Domain.Services.LimitTransAccountService.] amountConfig:--
-2022-12-24 16:39:26.760 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122409-CheckLimit return:{"responseCode":"01","responseMessage":"","paymentAmount":0,"requestAmount":0}
+2022-12-24 16:39:26.760 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122409-CheckLimit return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"","paymentAmount":0,"requestAmount":0}
 2022-12-24 16:39:30.948 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122409 CheckLimitProductPerDay request:2022122409 - NT954783-KPLUS_BILL-12000-1
 2022-12-24 16:39:31.240 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122409 GetLimitProductTransPerDay return:{"totalQuantity":1,"totalAmount":12000}
 2022-12-24 16:39:31.242 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay request: 2022122409 - NT954783-KPLUS_BILL-24000-2
 2022-12-24 16:39:31.427 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] CheckLimitProductPerDay response: 2022122409  True-
 2022-12-24 16:39:31.429 +07:00 [INF] [HLS.Paygate.Worker.Components.Connectors.CheckLimitTransaction.] 2022122409 - CheckLimitProductPerDay return:{"success":true}
-2022-12-24 16:39:32.316 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122409-CheckLimitProductPerDay return:{"responseCode":"01","responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
+2022-12-24 16:39:32.316 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] 2022122409-CheckLimitProductPerDay return:{"responseCode":ResponseCodeConst.Success,"responseMessage":"Thành công","paymentAmount":0,"requestAmount":0}
 2022-12-24 16:39:43.896 +07:00 [INF] [HLS.Paygate.Shared.AbpConnector.ExternalServiceConnector.] GetProductFee request:2022122409 - NT954783-KPLUS_BILL-12000
 2022-12-24 16:40:09.627 +07:00 [INF] [Microsoft.AspNetCore.Routing.EndpointMiddleware.] Executed endpoint '"gRPC - /GrpcServices/PostWorkerPayBillRequest"'
 2022-12-24 16:40:09.633 +07:00 [INF] [Microsoft.AspNetCore.Hosting.Diagnostics.POST] Request finished HTTP/2 POST http://localhost:9791/GrpcServices/PostWorkerPayBillRequest application/grpc - - 200 - application/grpc 61032.2351ms

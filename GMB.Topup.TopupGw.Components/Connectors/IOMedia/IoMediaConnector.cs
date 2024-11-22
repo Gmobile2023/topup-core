@@ -175,7 +175,7 @@ public class IoMediaConnector : IGatewayConnector
                     responseMessage.ProviderResponseCode = result?.ResCode;
                     responseMessage.ProviderResponseMessage = result?.ResMessage;
 
-                    if (result.ResCode == "00")
+                    if (result.ResCode == ResponseCodeConst.Error)
                     {
                         topupRequestLog.Status = TransRequestStatus.Success;
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -291,7 +291,7 @@ public class IoMediaConnector : IGatewayConnector
                     $"{providerCode}-{transCodeToCheck} IoMediaConnector check return:{transCode}-{transCodeToCheck} => {result.ToJson()}");
                 //responseMessage.ExtraInfo = string.Join("|", result.ResCode, result.ResMessage);
                 //var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("IOMEDIA", result.ResCode, transCode);
-                if (result.ResCode == "00")
+                if (result.ResCode == ResponseCodeConst.Error)
                 {
                     if (result.TransStatus == 0)
                     {
@@ -423,7 +423,7 @@ public class IoMediaConnector : IGatewayConnector
             _logger.LogInformation(
                 $"{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode} IoMediaConnector Query return: {payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
 
-            if (result.ResCode == "00")
+            if (result.ResCode == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseStatus.ErrorCode = ResponseCodeConst.Success;
                 responseMessage.ResponseStatus.Message = "Giao dịch thành công";
@@ -535,7 +535,7 @@ public class IoMediaConnector : IGatewayConnector
             _logger.Log(LogLevel.Information,
                 $"{cardRequestLog.ProviderCode}-{cardRequestLog.TransCode} Card return: {cardRequestLog.TransCode}-{cardRequestLog.TransRef}-{result.ToJson()}");
 
-            if (result.ResCode == "00")
+            if (result.ResCode == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -650,7 +650,7 @@ public class IoMediaConnector : IGatewayConnector
         {
             _logger.Log(LogLevel.Information, $"Balance return: {providerCode}-{transCode}-{result.ToJson()}");
 
-            if (result.ResCode == "00")
+            if (result.ResCode == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -766,7 +766,7 @@ public class IoMediaConnector : IGatewayConnector
             responseMessage.ProviderResponseCode = result?.ResCode;
             responseMessage.ProviderResponseMessage = result?.ResMessage;
 
-            if (result.ResCode == "00")
+            if (result.ResCode == ResponseCodeConst.Error)
             {
                 payBillRequestLog.Status = TransRequestStatus.Success;
                 responseMessage.ResponseCode = ResponseCodeConst.Success;

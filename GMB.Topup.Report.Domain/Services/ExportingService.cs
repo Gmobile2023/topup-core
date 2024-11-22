@@ -700,12 +700,12 @@ namespace GMB.Topup.Report.Domain.Services
                     };
                     //var reponseCardBatch = await client.GetAsync<ResponseMesssageObject<string>>(new GetReportCardBatchRequest { Date = date });
                     ////var reponseCardBatch = await _grpcClient.GetClientCluster(GrpcServiceName.Backend).SendAsync<ResponseMesssageObject<string>>(new GetCardBatchRequest { Date = date });
-                    //cardBatchs = reponseCardBatch.ResponseCode == "01"
+                    //cardBatchs = reponseCardBatch.ResponseCode == ResponseCodeConst.Success
                     //   ? reponseCardBatch.Payload.FromJson<List<CardBatchRequestDto>>()
                     //   : new List<CardBatchRequestDto>();
 
                     var reponseCardBatch = await client.GetAsync<ResponseMesssageObject<string>>(new GetCardBatchSaleProviderRequest { Date = date });
-                    cardBatchs = reponseCardBatch.ResponseCode == "01"
+                    cardBatchs = reponseCardBatch.ResponseCode == ResponseCodeConst.Success
                        ? reponseCardBatch.Payload.FromJson<List<StockTransRequestDto>>()
                        : new List<StockTransRequestDto>();
                 }
@@ -790,7 +790,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                 return new MessageResponseBase()
                 {
-                    ProviderCode = "01",
+                    ProviderCode = ResponseCodeConst.Success,
                     ResponseMessage = "Đã xuất file"
                 };
             }
@@ -799,7 +799,7 @@ namespace GMB.Topup.Report.Domain.Services
                 _log.LogError($"ExportFile Exception: {ex.Message}|{ex.StackTrace}|{ex.InnerException}");
                 return new MessageResponseBase()
                 {
-                    ProviderCode = "00",
+                    ProviderCode = ResponseCodeConst.Error,
                     ResponseMessage = "Lỗi xuất file"
                 };
             }
@@ -1986,7 +1986,7 @@ namespace GMB.Topup.Report.Domain.Services
                             ? await _elasticReportService.ReportAgentBalanceGetList(agentRequest)
                             : await _balanceReportSvc.ReportAgentBalanceGetList(agentRequest);
 
-                            if (rsAgent.ResponseCode == "01" && rsAgent.Total >= 1)
+                            if (rsAgent.ResponseCode == ResponseCodeConst.Success && rsAgent.Total >= 1)
                             {
                                 var sumDataAgent = rsAgent.SumData.ConvertTo<ReportAgentBalanceDto>();
                                 if (getData == null)
@@ -2028,7 +2028,7 @@ namespace GMB.Topup.Report.Domain.Services
                         ? await _elasticReportService.ReportDetailGetList(request)
                         : await _balanceReportSvc.ReportDetailGetList(request);
 
-                        if (reponsePayment.ResponseCode == "01" && reponsePayment.Total >= 1)
+                        if (reponsePayment.ResponseCode == ResponseCodeConst.Success && reponsePayment.Total >= 1)
                         {
                             var sumDataPayment = reponsePayment.SumData.ConvertTo<ReportTransactionDetailDto>();
                             if (getData == null)

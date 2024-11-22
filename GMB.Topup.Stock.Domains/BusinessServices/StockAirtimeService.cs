@@ -93,7 +93,7 @@ public class StockAirtimeService : BusinessServiceBase, IStockAirtimeService
         _logger.LogInformation("GetAllStockAirtimePagedAsync: total " + total);
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Thành công",
             Total = (int) total,
             Payload = stocks.ConvertTo<List<StockDto>>()
@@ -218,7 +218,7 @@ public class StockAirtimeService : BusinessServiceBase, IStockAirtimeService
 
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Thành công",
             Total = (int) total,
             Payload = data

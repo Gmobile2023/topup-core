@@ -499,7 +499,7 @@ public partial class ReportService : Service
 
         return new NewMessageResponseBase<ItemMobileCheckDto>()
         {
-            ResponseStatus=new ResponseStatusApi("00", "Truy vấn thất bại"),
+            ResponseStatus=new ResponseStatusApi(ResponseCodeConst.Error, "Truy vấn thất bại"),
         };     
     }   
 }

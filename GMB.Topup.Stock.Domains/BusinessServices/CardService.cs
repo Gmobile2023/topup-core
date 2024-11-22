@@ -74,7 +74,7 @@ public class CardService : BusinessServiceBase, ICardService
             if (e.Message.Contains("dup key"))
                 throw new PaygateException("109", "Card is already exist");
 
-            throw new PaygateException("00");
+            throw new PaygateException(ResponseCodeConst.Error);
         }
     }
 
@@ -270,7 +270,7 @@ public class CardService : BusinessServiceBase, ICardService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 Payload = data
@@ -358,7 +358,7 @@ public class CardService : BusinessServiceBase, ICardService
             await _cardMongoRepository.UpdateOneAsync(cardBatch);
             return new CardResponseMesssage
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công"
             };
         }
@@ -402,7 +402,7 @@ public class CardService : BusinessServiceBase, ICardService
                 _logger.LogInformation("CardBatchUpdateItemTransAsync: " + reason);
                 return new CardResponseMesssage
                 {
-                    ResponseCode = reason ? "01" : "00",
+                    ResponseCode = reason ? ResponseCodeConst.Success : ResponseCodeConst.Error,
                     ResponseMessage = reason ? "Thành công" : "Lỗi"
                 };
             }
@@ -446,7 +446,7 @@ public class CardService : BusinessServiceBase, ICardService
             try
             {
                 await _cardMongoRepository.DeleteOneAsync(cardBatch);
-                returnMessage.ResponseCode = "01";
+                returnMessage.ResponseCode = ResponseCodeConst.Success;
                 returnMessage.ResponseMessage = "Thành công!";
             }
             catch (Exception ex)
@@ -475,7 +475,7 @@ public class CardService : BusinessServiceBase, ICardService
         try
         {
             await _cardMongoRepository.DeleteOneAsync(cardBatch);
-            returnMessage.ResponseCode = "01";
+            returnMessage.ResponseCode = ResponseCodeConst.Success;
             returnMessage.ResponseMessage = "Thành công!";
         }
         catch (Exception ex)
@@ -571,7 +571,7 @@ public class CardService : BusinessServiceBase, ICardService
 
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Thành công",
             Total = (int)total,
             Payload = cardBatches.OrderByDescending(x => x.CreatedDate).ThenBy(x => x.BatchCode)
@@ -769,7 +769,7 @@ public class CardService : BusinessServiceBase, ICardService
 
             var reponse = new ResponseMesssageObject<string>
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 Total = result.Count(),
                 Payload = result.ToJson(),
             };
@@ -1196,7 +1196,7 @@ public class CardService : BusinessServiceBase, ICardService
 
             var reponse = new ResponseMesssageObject<string>
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 Total = result.Count(),
                 Payload = result.ToJson(),
             };
@@ -1248,7 +1248,7 @@ public class CardService : BusinessServiceBase, ICardService
 
             var reponse = new ResponseMesssageObject<string>
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 Payload = result.ToJson(),
             };
             return await Task.FromResult(reponse);
@@ -1294,7 +1294,7 @@ public class CardService : BusinessServiceBase, ICardService
 
             var reponse = new ResponseMesssageObject<string>
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 Payload = result.ToJson(),
             };
             return await Task.FromResult(reponse);

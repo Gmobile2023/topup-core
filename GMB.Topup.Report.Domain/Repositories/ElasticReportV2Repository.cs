@@ -142,7 +142,7 @@ public partial class ElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 SumData = sumData,
                 Total = total,
@@ -154,7 +154,7 @@ public partial class ElasticReportRepository
             _logger.LogError($"ReportCommissionDetailGetList error: {e}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -249,7 +249,7 @@ public partial class ElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumData,
@@ -261,7 +261,7 @@ public partial class ElasticReportRepository
             _logger.LogError($"ReportCommissionTotalGetList error: {e}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -396,7 +396,7 @@ public partial class ElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 SumData = sumData,
                 Total = total,
@@ -408,7 +408,7 @@ public partial class ElasticReportRepository
             _logger.LogError($"ReportCommissionDetailGetList error: {e}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -527,7 +527,7 @@ public partial class ElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumtotal,
@@ -539,7 +539,7 @@ public partial class ElasticReportRepository
             _logger.LogError($"ReportRevenueDashBoardDayGetList error: {e}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -635,7 +635,7 @@ public partial class ElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumtotal,
@@ -647,7 +647,7 @@ public partial class ElasticReportRepository
             _logger.LogError($"ReportAgentGeneralDayGetDash error: {e}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -771,7 +771,7 @@ public partial class ElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumTotal,
@@ -785,7 +785,7 @@ public partial class ElasticReportRepository
             _logger.LogError($"ReportCommissionAgentTotalGetList error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -855,7 +855,7 @@ public partial class ElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 SumData = sumTotal,
                 Total = (int)total,
@@ -868,7 +868,7 @@ public partial class ElasticReportRepository
             _logger.LogError($"ReportDepositDetailGetList error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }

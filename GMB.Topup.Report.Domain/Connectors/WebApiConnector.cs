@@ -281,7 +281,7 @@ namespace GMB.Topup.Report.Domain.Connectors
                 });
                 _logger.LogInformation($"{providerCode} GetBalanceTopupDtoAsync response:{result.Results}");
 
-                if (result.ResponseStatus.ErrorCode == "01")
+                if (result.ResponseStatus.ErrorCode == ResponseCodeConst.Success)
                     return Convert.ToDecimal(result.Results);
 
                 return 0;

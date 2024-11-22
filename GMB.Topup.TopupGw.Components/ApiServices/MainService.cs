@@ -50,7 +50,7 @@ public partial class MainService : Service
             return new NewMessageResponseBase<ProviderInfoDto>
             {
                 Results = providerInfo,
-                ResponseStatus = new ResponseStatusApi("01", "Success")
+                ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Success, "Success")
             };
 
         return new NewMessageResponseBase<ProviderInfoDto>
@@ -71,7 +71,7 @@ public partial class MainService : Service
             return new NewMessageResponseBase<ProviderInfoDto>
             {
                 Results = providerInfo,
-                ResponseStatus = new ResponseStatusApi("01", "Success")
+                ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Success, "Success")
             };
 
         return new NewMessageResponseBase<ProviderInfoDto>
@@ -91,12 +91,12 @@ public partial class MainService : Service
             return new NewMessageResponseBase<ProviderInfoDto>
             {
                 Results = providerInfo,
-                ResponseStatus = new ResponseStatusApi("01", "Success")
+                ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Success, "Success")
             };
 
         return new NewMessageResponseBase<ProviderInfoDto>
         {
-            ResponseStatus = new ResponseStatusApi("00", "NCC không tồn tại")
+            ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error, "NCC không tồn tại")
         };
     }
 
@@ -108,12 +108,12 @@ public partial class MainService : Service
             return new NewMessageResponseBase<ProviderTopupInfoDto>
             {
                 Results = providerInfo.ConvertTo<ProviderTopupInfoDto>(),
-                ResponseStatus = new ResponseStatusApi("01", "Success")
+                ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Success, "Success")
             };
 
         return new NewMessageResponseBase<ProviderTopupInfoDto>
         {
-            ResponseStatus = new ResponseStatusApi("00", "Không tồn tại")
+            ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error, "Không tồn tại")
         };
     }
 
@@ -284,8 +284,8 @@ public partial class MainService : Service
             ProviderCode = ProviderConst.CG2022,
             Status = request.ResponseCode switch
             {
-                "00" => 1,
-                "01" => 2,
+                ResponseCodeConst.Error => 1,
+                ResponseCodeConst.Success => 2,
                 _ => 0
             },
             TransCode = request.TxnId,
@@ -309,8 +309,8 @@ public partial class MainService : Service
             ProviderCode = request.ProviderCode,
             Status = request.ResponseCode switch
             {
-                "00" => 1,
-                "01" => 2,
+                ResponseCodeConst.Error => 1,
+                ResponseCodeConst.Success => 2,
                 _ => 0
             },
             TransCode = request.TxnId,
@@ -437,12 +437,12 @@ public partial class MainService : Service
             return new NewMessageResponseBase<List<ProviderSalePriceDto>>
             {
                 Results = providerInfo,
-                ResponseStatus = new ResponseStatusApi("01", "Success")
+                ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Success, "Success")
             };
 
         return new NewMessageResponseBase<ProviderInfoDto>
         {
-            ResponseStatus = new ResponseStatusApi("00", "NCC không tồn tại")
+            ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error, "NCC không tồn tại")
         };
     }
 }

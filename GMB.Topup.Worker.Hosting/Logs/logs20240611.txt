@@ -504,7 +504,7 @@
 2024-06-11 22:44:26.049 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Request Balance return: 01-Success NT24061100003038-423432424324
 2024-06-11 22:44:26.258 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Update topup item payment success: NT24061100003038-423432424324-Paid
 2024-06-11 22:44:26.261 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Processing parital topup with slow is: False: NT24061100003038-423432424324 : Provider : FAKE
-2024-06-11 22:44:26.388 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] TEST_NT24061100003038|NT24061100003038|FAKE CallTopupGate reponse : {"results":{"responsed":false,"providerResponseTransCode":"20240611224425516","receiverType":"TS"},"responseStatus":{"errorCode":"01","message":"Giao dịch thành công"}}
+2024-06-11 22:44:26.388 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] TEST_NT24061100003038|NT24061100003038|FAKE CallTopupGate reponse : {"results":{"responsed":false,"providerResponseTransCode":"20240611224425516","receiverType":"TS"},"responseStatus":{"errorCode":ResponseCodeConst.Success,"message":"Giao dịch thành công"}}
 2024-06-11 22:46:21.316 +07:00 [INF] [MassTransit.] Configured endpoint "topup-request", Consumer: "HLS.Paygate.Worker.Components.Consumers.TopupRequestConsumer"
 2024-06-11 22:46:21.336 +07:00 [INF] [MassTransit.] Configured endpoint "update-status-request", Consumer: "HLS.Paygate.Worker.Components.Consumers.UpdateStatusRequestConsumer"
 2024-06-11 22:46:21.565 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Queued Hosted Service is starting.
@@ -752,7 +752,7 @@
 2024-06-11 22:47:11.469 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Request Balance return: 01-Success NT24061100003050-423432424325
 2024-06-11 22:47:11.671 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Update topup item payment success: NT24061100003050-423432424325-Paid
 2024-06-11 22:47:11.674 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Processing parital topup with slow is: False: NT24061100003050-423432424325 : Provider : FAKE
-2024-06-11 22:47:11.795 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] TEST_NT24061100003050|NT24061100003050|FAKE CallTopupGate reponse : {"results":{"responsed":false,"providerResponseTransCode":"20240611224710933","receiverType":"TS"},"responseStatus":{"errorCode":"01","message":"Giao dịch thành công"}}
+2024-06-11 22:47:11.795 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] TEST_NT24061100003050|NT24061100003050|FAKE CallTopupGate reponse : {"results":{"responsed":false,"providerResponseTransCode":"20240611224710933","receiverType":"TS"},"responseStatus":{"errorCode":ResponseCodeConst.Success,"message":"Giao dịch thành công"}}
 2024-06-11 22:52:36.164 +07:00 [INF] [MassTransit.] Configured endpoint "topup-request", Consumer: "HLS.Paygate.Worker.Components.Consumers.TopupRequestConsumer"
 2024-06-11 22:52:36.185 +07:00 [INF] [MassTransit.] Configured endpoint "update-status-request", Consumer: "HLS.Paygate.Worker.Components.Consumers.UpdateStatusRequestConsumer"
 2024-06-11 22:52:36.421 +07:00 [INF] [HLS.Paygate.Worker.Hosting.QueuedHostedService.] Queued Hosted Service is starting.
@@ -1003,4 +1003,4 @@
 2024-06-11 22:53:32.949 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Request Balance return: 01-Success NT24061100003062-423432424326
 2024-06-11 22:53:33.141 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Update topup item payment success: NT24061100003062-423432424326-Paid
 2024-06-11 22:53:33.143 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] Processing parital topup with slow is: False: NT24061100003062-423432424326 : Provider : FAKE
-2024-06-11 22:53:33.255 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] TEST_NT24061100003062|NT24061100003062|FAKE CallTopupGate reponse : {"results":{"responsed":false,"providerResponseTransCode":"20240611225332395","receiverType":"TS"},"responseStatus":{"errorCode":"01","message":"Giao dịch thành công"}}
+2024-06-11 22:53:33.255 +07:00 [INF] [HLS.Paygate.Worker.Components.WorkerProcess.WorkerProcess.] TEST_NT24061100003062|NT24061100003062|FAKE CallTopupGate reponse : {"results":{"responsed":false,"providerResponseTransCode":"20240611225332395","receiverType":"TS"},"responseStatus":{"errorCode":ResponseCodeConst.Success,"message":"Giao dịch thành công"}}

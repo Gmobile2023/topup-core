@@ -143,7 +143,7 @@ public class TransactionService : ITransactionService
 
             var reponse = new ResponseMesssageObject<string>
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 Total = result.Count(),
                 Payload = result.ToJson(),
             };
@@ -223,7 +223,7 @@ public class TransactionService : ITransactionService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumTotal,
@@ -271,7 +271,7 @@ public class TransactionService : ITransactionService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 Payload = newList
@@ -438,7 +438,7 @@ public class TransactionService : ITransactionService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 Payload = lst
@@ -585,7 +585,7 @@ public class TransactionService : ITransactionService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 Payload = lst.ConvertTo<List<SaleOffsetRequestDto>>()

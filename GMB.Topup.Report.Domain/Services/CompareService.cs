@@ -131,7 +131,7 @@ public class CompareService : ICompareService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 SumData = sumTotal,
@@ -143,7 +143,7 @@ public class CompareService : ICompareService
             _logger.LogError($"ReportCompareGetList error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -206,7 +206,7 @@ public class CompareService : ICompareService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 Payload = listView
@@ -217,7 +217,7 @@ public class CompareService : ICompareService
             _logger.LogError($"ReportCompareGetDetail error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -273,7 +273,7 @@ public class CompareService : ICompareService
 
             return Task.FromResult(new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = 4,
                 Payload = list
@@ -284,7 +284,7 @@ public class CompareService : ICompareService
             _logger.LogError($"ReportCompareReonseList error {ex}");
             return Task.FromResult(new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             });
         }
     }
@@ -338,7 +338,7 @@ public class CompareService : ICompareService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 Payload = mlist
@@ -349,7 +349,7 @@ public class CompareService : ICompareService
             _logger.LogError($"ReportCompareRefundDetail error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -417,7 +417,7 @@ public class CompareService : ICompareService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumTotal,
@@ -429,7 +429,7 @@ public class CompareService : ICompareService
             _logger.LogError($"ReportCompareGetList error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -446,7 +446,7 @@ public class CompareService : ICompareService
             //if (single == null)
             //    return new MessageResponseBase
             //    {
-            //        ResponseCode = "00",
+            //        ResponseCode = ResponseCodeConst.Error,
             //        ResponseMessage = "Không có dữ liệu",
             //        Payload = null
             //    };
@@ -463,7 +463,7 @@ public class CompareService : ICompareService
 
             //return new MessageResponseBase
             //{
-            //    ResponseCode = "01",
+            //    ResponseCode = ResponseCodeConst.Success,
             //    ResponseMessage = "Thành công",
             //    Payload = viewData,
             //    ExtraInfo = viewData.ToJson(),
@@ -479,7 +479,7 @@ public class CompareService : ICompareService
             if (list == null)
                 return Task.FromResult(new MessageResponseBase
                 {
-                    ResponseCode = "00",
+                    ResponseCode = ResponseCodeConst.Error,
                     ResponseMessage = "Không có dữ liệu",
                     Payload = null
                 });
@@ -496,7 +496,7 @@ public class CompareService : ICompareService
 
             return Task.FromResult(new MessageResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Payload = viewData,
                 ExtraInfo = viewData.ToJson()
@@ -507,7 +507,7 @@ public class CompareService : ICompareService
             _logger.LogError($"ReportCompareRefundSingle error {ex}");
             return Task.FromResult(new MessageResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             });
         }
     }
@@ -523,7 +523,7 @@ public class CompareService : ICompareService
             var total = await _reportMongoRepository.CountAsync(query);
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 Payload = total.ToString()
@@ -534,7 +534,7 @@ public class CompareService : ICompareService
             _logger.LogError($"ReportCheckCompareGet error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -549,12 +549,12 @@ public class CompareService : ICompareService
                 ProviderCode = request.ProviderCode
             });
 
-            if (checkCompare.ResponseCode == "01")
+            if (checkCompare.ResponseCode == ResponseCodeConst.Success)
             {
                 if (Convert.ToInt32(checkCompare.Payload) > 0)
                     return new MessagePagedResponseBase
                     {
-                        ResponseCode = "00",
+                        ResponseCode = ResponseCodeConst.Error,
                         ResponseMessage =
                             $"Nhà cung cấp này đã được đối soát của ngày {request.TransDate:dd/MM/yyyy}"
                     };
@@ -659,14 +659,14 @@ public class CompareService : ICompareService
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Lưu thông tin đối soát thành công."
                 };
             }
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00",
+                ResponseCode = ResponseCodeConst.Error,
                 ResponseMessage = "Lưu thông tin đối soát không thành công."
             };
         }
@@ -675,7 +675,7 @@ public class CompareService : ICompareService
             _logger.LogError($"ReportCompareGetList error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -699,7 +699,7 @@ public class CompareService : ICompareService
                     Limit = int.MaxValue
                 });
 
-                if (reponseSerach.ResponseCode == "01")
+                if (reponseSerach.ResponseCode == ResponseCodeConst.Success)
                 {
                     var list = reponseSerach.Payload.ConvertTo<List<CompareRefunDetailDto>>();
                     items.AddRange(list.Select(c => c.TransCode).Distinct().ToList());
@@ -759,7 +759,7 @@ public class CompareService : ICompareService
                                 _logger.LogInformation(
                                     $"PaymenyRefund return: {refundResponse.ToJson()} {saleRequest.TransCode}-{saleRequest.TransRef}");
 
-                                if (refundResponse.ResponseStatus.ErrorCode == "01")
+                                if (refundResponse.ResponseStatus.ErrorCode == ResponseCodeConst.Success)
                                 {
                                     dtoRefund.Quantity += 1;
                                     dtoRefund.Amount += saleRequest.PaymentAmount;
@@ -862,14 +862,14 @@ public class CompareService : ICompareService
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Lưu thông tin đối soát thành công."
                 };
             }
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00",
+                ResponseCode = ResponseCodeConst.Error,
                 ResponseMessage = "Không có dữ liệu hoàn tiền."
             };
         }
@@ -878,7 +878,7 @@ public class CompareService : ICompareService
             _logger.LogError($"RefundCompareData error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -918,7 +918,7 @@ public class CompareService : ICompareService
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     ExtraInfo = dateCompare
                 };
@@ -926,7 +926,7 @@ public class CompareService : ICompareService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00",
+                ResponseCode = ResponseCodeConst.Error,
                 ResponseMessage = "Cập nhật thất bại"
             };
         }
@@ -935,7 +935,7 @@ public class CompareService : ICompareService
             _logger.LogError($"RefundSetCompareData error {ex}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }

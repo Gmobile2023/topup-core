@@ -372,7 +372,7 @@ public class CommonAppService : ICommonAppService
         foreach (var item in lst) item.CreatedDate = _dateHepper.ConvertToUserTime(item.CreatedDate, DateTimeKind.Utc);
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Thành công",
             Total = (int)total,
             Payload = lst.ConvertTo<List<AlarmBalanceConfigDto>>()

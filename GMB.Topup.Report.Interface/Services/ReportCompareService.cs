@@ -20,7 +20,7 @@ namespace GMB.Topup.Report.Interface.Services
             if (string.IsNullOrEmpty(request.AgentCode))
                 return new MessagePagedResponseBase()
                 {
-                    ResponseCode = "00",
+                    ResponseCode = ResponseCodeConst.Error,
                     ResponseMessage = "Chưa truyền mã đại lý."
                 };
 
@@ -42,7 +42,7 @@ namespace GMB.Topup.Report.Interface.Services
             if (string.IsNullOrEmpty(intput.AgentCode))
                 return new MessagePagedResponseBase()
                 {
-                    ResponseCode = "00",
+                    ResponseCode = ResponseCodeConst.Error,
                     ResponseMessage = "Chưa truyền mã đại lý để thực hiện gửi mail."
                 };
 
@@ -429,7 +429,7 @@ namespace GMB.Topup.Report.Interface.Services
                     var reponse = _searchElastich
                          ? await _elasticReportService.ReportDetailGetList(request)
                          : await _balanceReportService.ReportDetailGetList(request);
-                    if (reponse.ResponseCode == "01" && reponse.Total >= 1)
+                    if (reponse.ResponseCode == ResponseCodeConst.Success && reponse.Total >= 1)
                     {
                         var sumData = reponse.SumData.ConvertTo<ReportTransactionDetailDto>();
                         await _balanceReportService.SysAccountBalanceAfter(accountCode, "VND", textDay, sumData);

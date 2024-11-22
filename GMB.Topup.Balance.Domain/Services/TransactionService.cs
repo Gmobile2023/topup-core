@@ -87,7 +87,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        depositResponse.ResponseCode = "01";
+        depositResponse.ResponseCode = ResponseCodeConst.Success;
         depositResponse.ResponseMessage = "Success";
         depositResponse.Payload = transactionDto;
 
@@ -147,7 +147,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        transferResponse.ResponseCode = "01";
+        transferResponse.ResponseCode = ResponseCodeConst.Success;
         transferResponse.ResponseMessage = "Success";
         transferResponse.Payload = transactionDto;
 
@@ -209,7 +209,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        cashOutResponse.ResponseCode = "01";
+        cashOutResponse.ResponseCode = ResponseCodeConst.Success;
         cashOutResponse.ResponseMessage = "Success";
         cashOutResponse.Payload = transactionDto;
 
@@ -274,7 +274,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        paymentResponse.ResponseCode = "01";
+        paymentResponse.ResponseCode = ResponseCodeConst.Success;
         paymentResponse.ResponseMessage = "Success";
         paymentResponse.TransCode = transactionDto.TransactionCode;
         paymentResponse.Payload = transactionDto;
@@ -337,7 +337,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        paymentResponse.ResponseCode = "01";
+        paymentResponse.ResponseCode = ResponseCodeConst.Success;
         paymentResponse.ResponseMessage = "Success";
         paymentResponse.Payload = transactionDto;
 
@@ -405,7 +405,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        paymentResponse.ResponseCode = "01";
+        paymentResponse.ResponseCode = ResponseCodeConst.Success;
         paymentResponse.ResponseMessage = "Success";
         paymentResponse.Payload = transactionDto;
 
@@ -477,7 +477,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement1, settlement2 };
 
-        paymentResponse.ResponseCode = "01";
+        paymentResponse.ResponseCode = ResponseCodeConst.Success;
         paymentResponse.ResponseMessage = "Success";
         paymentResponse.Payload = transactionDto;
 
@@ -538,7 +538,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        response.ResponseCode = "01";
+        response.ResponseCode = ResponseCodeConst.Success;
         response.ResponseMessage = "Success";
         response.Payload = transactionDto;
 
@@ -600,7 +600,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        paymentResponse.ResponseCode = "01";
+        paymentResponse.ResponseCode = ResponseCodeConst.Success;
         paymentResponse.ResponseMessage = "Success";
         paymentResponse.Payload = transactionDto;
 
@@ -678,7 +678,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        response.ResponseCode = "01";
+        response.ResponseCode = ResponseCodeConst.Success;
         response.ResponseMessage = "Success";
         response.Payload = transactionDto;
 
@@ -744,7 +744,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        response.ResponseCode = "01";
+        response.ResponseCode = ResponseCodeConst.Success;
         response.ResponseMessage = "Success";
         response.Payload = transactionDto;
 
@@ -801,7 +801,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        response.ResponseCode = "01";
+        response.ResponseCode = ResponseCodeConst.Success;
         response.ResponseMessage = "Success";
         response.Payload = transactionDto;
 
@@ -878,7 +878,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement1, settlement2 };
 
-        response.ResponseCode = "01";
+        response.ResponseCode = ResponseCodeConst.Success;
         response.ResponseMessage = "Success";
         response.Payload = transactionDto;
 
@@ -938,7 +938,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        depositResponse.ResponseCode = "01";
+        depositResponse.ResponseCode = ResponseCodeConst.Success;
         depositResponse.ResponseMessage = "Success";
         depositResponse.Payload = transactionDto;
 
@@ -996,7 +996,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        response.ResponseCode = "01";
+        response.ResponseCode = ResponseCodeConst.Success;
         response.ResponseMessage = "Success";
         response.Payload = transactionDto;
 
@@ -1054,7 +1054,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        response.ResponseCode = "01";
+        response.ResponseCode = ResponseCodeConst.Success;
         response.ResponseMessage = "Success";
         response.Payload = transactionDto;
 
@@ -1113,7 +1113,7 @@ public class TransactionService : ITransactionService
 
         transactionDto.Settlements = new List<SettlementDto> { settlement };
 
-        transferResponse.ResponseCode = "01";
+        transferResponse.ResponseCode = ResponseCodeConst.Success;
         transferResponse.ResponseMessage = "Success";
         transferResponse.Payload = transactionDto;
 
@@ -1178,7 +1178,7 @@ public class TransactionService : ITransactionService
 
         var transactionDto = transaction.ConvertTo<TransactionDto>();
         transactionDto.Settlements = new List<SettlementDto> { settlement };
-        response.ResponseCode = "01";
+        response.ResponseCode = ResponseCodeConst.Success;
         response.ResponseMessage = "Success";
         response.Payload = transactionDto;
         return response;

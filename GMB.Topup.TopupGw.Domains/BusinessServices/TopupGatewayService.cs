@@ -475,7 +475,7 @@ public class TopupGatewayService : BusinessServiceBase, ITopupGatewayService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 Payload = result.OrderBy(x => x.Provider).ThenBy(x => x.Code).ThenBy(x => x.Name)

@@ -112,7 +112,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.Vinnet
                     _logger.LogInformation($"VinnetConnector return: {topupRequestLog.ProviderCode}-{topupRequestLog.TransCode}-{result.ToJson()}");
                     responseMessage.ProviderResponseCode = result?.resCode;
                     responseMessage.ProviderResponseMessage = result?.resMesg;
-                    if (result.resCode == "00")
+                    if (result.resCode == ResponseCodeConst.Error)
                     {
                         topupRequestLog.Status = TransRequestStatus.Success;
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -203,7 +203,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.Vinnet
                 {
                     responseMessage.ProviderResponseCode = result.resCode;
                     responseMessage.ProviderResponseMessage = result.resMesg;
-                    if (result.resCode == "00")
+                    if (result.resCode == ResponseCodeConst.Error)
                     {
                         var repDataDecrypt = Decrypt(result.resData, providerInfo.PrivateKeyFile);
                         var resData = repDataDecrypt.FromJson<resDataReponse>();
@@ -353,7 +353,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.Vinnet
 
             responseMessage.ProviderResponseCode = result.resCode;
             responseMessage.ProviderResponseMessage = result.resMesg;
-            if (result.resCode == "00")
+            if (result.resCode == ResponseCodeConst.Error)
             {
                 cardRequestLog.Status = TransRequestStatus.Success;
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -441,7 +441,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.Vinnet
             if (result != null)
             {
                 _logger.LogInformation($"{transCode} Balance return: {transCode}-{result.ToJson()}");
-                if (result.resCode == "00")
+                if (result.resCode == ResponseCodeConst.Error)
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Success;
                     responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -578,7 +578,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.Vinnet
             }
 
             var response = await CallApi(providerInfo, function, token, request, transCode);
-            if (response.resCode is "01" or "02" or "03")
+            if (response.resCode is ResponseCodeConst.Success or "02" or "03")
             {
                 token = await GetToken(providerInfo, reLogin: true);
                 response = await CallApi(providerInfo, function, token, request, transCode);
@@ -640,7 +640,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.Vinnet
 
                 var result = await CallApi(providerInfo, "authen", string.Empty, request.ToJson(), request.merchantCode);
                 _logger.LogInformation($"VinnetConnector login return : {result.ToJson()}");
-                if (result.resCode == "00")
+                if (result.resCode == ResponseCodeConst.Error)
                 {
                     var repData = Decrypt(result.resData, providerInfo.PrivateKeyFile);
                     var rs = repData.FromJson<vinetToken>();

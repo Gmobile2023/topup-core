@@ -94,7 +94,7 @@ public class VimoConnector : IGatewayConnector
 
         try
         {
-            if (result != null && result.error_code == "00")
+            if (result != null && result.error_code == ResponseCodeConst.Error)
             {
                 topupRequestLog.ModifiedDate = DateTime.Now;
                 topupRequestLog.ResponseInfo = result.ToJson();
@@ -214,7 +214,7 @@ public class VimoConnector : IGatewayConnector
             var result = await CallApi(providerInfo, request, transCodeToCheck);
             _logger.LogInformation($"{transCodeToCheck}-{transCode} VimoConnector CheckTran Reponse: " + result.ToJson());
 
-            if (result != null && result.error_code == "00")
+            if (result != null && result.error_code == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Thành công";
@@ -338,7 +338,7 @@ public class VimoConnector : IGatewayConnector
         _logger.LogInformation(
             $"{payBillRequestLog.ReceiverInfo}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef} VimoConnector return: " +
             reponse.ToJson());
-        if (reponse.error_code == "00")
+        if (reponse.error_code == ResponseCodeConst.Error)
         {
             var responseData = reponse.data.ConvertTo<VbillInfo>();
             responseMessage.ResponseStatus =
@@ -461,7 +461,7 @@ public class VimoConnector : IGatewayConnector
 
         try
         {
-            if (result != null && result.error_code == "00")
+            if (result != null && result.error_code == ResponseCodeConst.Error)
             {
                 cardRequestLog.ModifiedDate = DateTime.Now;
                 cardRequestLog.ResponseInfo = "";
@@ -571,13 +571,13 @@ public class VimoConnector : IGatewayConnector
         };
 
         var reponse = await CallApi(providerInfo, request, transCode);
-        if (reponse.error_code == "00")
+        if (reponse.error_code == ResponseCodeConst.Error)
         {
             var balance = reponse.data.ConvertTo<BalanceDto>();
             responseMessage.ExtraInfo = Math.Round(Convert.ToDouble(balance.balance), 0).ToString();
             responseMessage.Payload = responseMessage.ExtraInfo;
             responseMessage.ResponseMessage = "Thành công";
-            responseMessage.ResponseCode = "01";
+            responseMessage.ResponseCode = ResponseCodeConst.Success;
         }
 
         return responseMessage;
@@ -716,7 +716,7 @@ public class VimoConnector : IGatewayConnector
 
         try
         {
-            if (result != null && result.error_code == "00")
+            if (result != null && result.error_code == ResponseCodeConst.Error)
             {
                 payBillRequestLog.ModifiedDate = DateTime.Now;
                 payBillRequestLog.ResponseInfo = result.ToJson();

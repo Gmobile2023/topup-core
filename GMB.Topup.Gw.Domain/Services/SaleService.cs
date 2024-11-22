@@ -224,7 +224,7 @@ namespace GMB.Topup.Gw.Domain.Services
                     switch (saleRequest.Status)
                     {
                         case SaleRequestStatus.Success:
-                            returnMessage.ResponseCode = "01";
+                            returnMessage.ResponseCode = ResponseCodeConst.Success;
                             returnMessage.ResponseMessage = "Thành công!";
                             returnMessage.Payload = saleRequest.TransCode + "|" + saleRequest.Amount;
                             break;
@@ -552,7 +552,7 @@ namespace GMB.Topup.Gw.Domain.Services
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     Payload = lst
@@ -812,7 +812,7 @@ namespace GMB.Topup.Gw.Domain.Services
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     Payload = lst
@@ -939,7 +939,7 @@ namespace GMB.Topup.Gw.Domain.Services
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = (int)total,
                     SumData = sumTotat,
@@ -1002,7 +1002,7 @@ namespace GMB.Topup.Gw.Domain.Services
 
                     return new MessagePagedResponseBase
                     {
-                        ResponseCode = "01",
+                        ResponseCode = ResponseCodeConst.Success,
                         ResponseMessage = "Thành công",
                     };
                 }
@@ -1253,7 +1253,7 @@ namespace GMB.Topup.Gw.Domain.Services
                         if (saleRequest.PaymentAmount > 0 && saleRequest.RevertAmount <= 0 &&
                             !string.IsNullOrEmpty(saleRequest.PaymentTransCode))
                         {
-                            response.ResponseCode = "01";
+                            response.ResponseCode = ResponseCodeConst.Success;
                             response.ResponseMessage = "Thành công. Hoàn tiền thành công!";
                             var revertAmount = saleRequest.PaymentAmount;
                             saleRequest.RevertAmount = revertAmount;
@@ -1852,7 +1852,7 @@ namespace GMB.Topup.Gw.Domain.Services
                                 saleResponse.cards = await GetPartnerPinCodeHistoriesAsync(saleRequest, secrectkey);
                             }
 
-                            returnMessage.ResponseCode = "01";
+                            returnMessage.ResponseCode = ResponseCodeConst.Success;
                             returnMessage.ResponseMessage = "Thành công!";
                             returnMessage.Payload = saleResponse;
                             break;

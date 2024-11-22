@@ -114,7 +114,7 @@ public class ExportingService : IExportingService
             _emailSender.SendEmailReportAuto(listMail, tille, tille, desPath);
             return new MessageResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Xuất file thành công."
             };
         }
@@ -223,7 +223,7 @@ public class ExportingService : IExportingService
             _emailSender.SendEmailReportAuto(listMail, tille, tille, desPath);
             return new MessageResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Xuất file thành công."
             };
         }
@@ -355,7 +355,7 @@ public class ExportingService : IExportingService
                 _emailSender.SendEmailReportAuto(listMail, tille, tille, desPath);
                 return new MessageResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Xuất file thành công."
                 };
             }
@@ -644,7 +644,7 @@ public class ExportingService : IExportingService
         var fileAccount = await _kppRepository.GetKppAccount(accountCode);
         return new MessageResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Thành công",
             ExtraInfo = fileAccount.ToJson(),
             Payload = fileAccount

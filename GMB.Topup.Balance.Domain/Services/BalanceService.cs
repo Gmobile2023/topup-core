@@ -1639,7 +1639,7 @@ public class BalanceService : IBalanceService
             var lit = list.ConvertTo<List<SettlementDto>>();
             return new ResponseMesssageObject<string>()
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Payload = lit.ToJson(),
                 Total = lit.Count(),
@@ -1650,7 +1650,7 @@ public class BalanceService : IBalanceService
             _logger.LogError($"FromDate= {request.FromDate.ToString("yyyy-MM-dd HH:mm:ss")}|ToDate= {request.ToDate.ToString("yyyy-MM-dd HH:mm:ss")}|AccountCode= {request.AccountCode}|TransCode= {request.TransCode} => GetSettlementSelectByAsync Exception: {ex}");
             return new ResponseMesssageObject<string>()
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Lỗi",
                 Payload = "",
                 Total = 0,
@@ -1689,7 +1689,7 @@ public class BalanceService : IBalanceService
 
             return new ResponseMesssageObject<string>()
             {
-                ResponseCode = "00",
+                ResponseCode = ResponseCodeConst.Error,
                 ResponseMessage = "Thành công",
                 Payload = lst != null ? (lst.ConvertTo<SettlementDto>()).ToJson() : string.Empty,
                 Total = 1,
@@ -1700,7 +1700,7 @@ public class BalanceService : IBalanceService
             _logger.LogError($"Date= {request.Date.ToString("yyyy-MM-dd")}|AccountCode= {request.AccountCode} => GetSettlementBalanceDayByAsync Exception: {ex}");
             return new ResponseMesssageObject<string>()
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Lỗi",
                 Payload = "",
                 Total = 0,

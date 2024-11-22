@@ -96,7 +96,7 @@ public class MainService : Service
     //     {
     //         returnMessage.Payload = cardBatchDto;
     //         returnMessage.ResponseCode = "Thành công!";
-    //         returnMessage.ResponseCode = "01";
+    //         returnMessage.ResponseCode = ResponseCodeConst.Success;
     //     }
     //
     //     _logger.Info($"CardBatchCreateRequest return:{returnMessage.ToJson()}");
@@ -135,7 +135,7 @@ public class MainService : Service
         {
             returnMessage.Payload = cardBatch;
             returnMessage.ResponseCode = "Thành công!";
-            returnMessage.ResponseCode = "01";
+            returnMessage.ResponseCode = ResponseCodeConst.Success;
         }
 
         _logger.LogInformation($"CardBatchGetRequest return:{returnMessage.ToJson()}");
@@ -187,7 +187,7 @@ public class MainService : Service
     //
     //         if (null != card)
     //         {
-    //             returnMessage.ResponseCode = "01";
+    //             returnMessage.ResponseCode = ResponseCodeConst.Success;
     //             returnMessage.ResponseMessage = "Thêm thẻ thành công!";
     //             //Tăng tồn kho khi import thẻ
     //             var id = NewId.NextGuid();
@@ -270,7 +270,7 @@ public class MainService : Service
 
             if (result)
             {
-                returnMessage.ResponseCode = "01";
+                returnMessage.ResponseCode = ResponseCodeConst.Success;
                 returnMessage.ResponseMessage = "Cập nhật thẻ thành công!";
             }
         }
@@ -299,7 +299,7 @@ public class MainService : Service
         };
         if (null != rerult)
         {
-            returnMessage.ResponseCode = "01";
+            returnMessage.ResponseCode = ResponseCodeConst.Success;
             returnMessage.ResponseMessage = "Thành công!";
             rerult.CardCode = "... encrypted ...";
             rerult.ExpiredDate = _dateTimeHelper.ConvertToUserTime(rerult.ExpiredDate, DateTimeKind.Utc);
@@ -322,7 +322,7 @@ public class MainService : Service
         if (null != rerult)
         {
             rerult.CardCode = rerult.CardCode.DecryptTripleDes();
-            returnMessage.ResponseCode = "01";
+            returnMessage.ResponseCode = ResponseCodeConst.Success;
             returnMessage.ResponseMessage = "Thành công!";
             rerult.CardCode = rerult.CardCode;
             rerult.ExpiredDate = _dateTimeHelper.ConvertToUserTime(rerult.ExpiredDate, DateTimeKind.Utc);
@@ -343,7 +343,7 @@ public class MainService : Service
         };
         if (null != rerult)
         {
-            returnMessage.ResponseCode = "01";
+            returnMessage.ResponseCode = ResponseCodeConst.Success;
             returnMessage.ResponseMessage = "Thành công!";
             rerult.CardCode = rerult.CardCode.DecryptTripleDes();
             rerult.ExpiredDate = _dateTimeHelper.ConvertToUserTime(rerult.ExpiredDate, DateTimeKind.Utc);
@@ -372,7 +372,7 @@ public class MainService : Service
         };
         if (result)
         {
-            returnMessage.ResponseCode = "01";
+            returnMessage.ResponseCode = ResponseCodeConst.Success;
             returnMessage.ResponseMessage = "Thành công!";
         }
 
@@ -423,7 +423,7 @@ public class MainService : Service
 
         return new MessageResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Success"
         };
     }
@@ -450,7 +450,7 @@ public class MainService : Service
 
         return new MessageResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Success"
         };
     }
@@ -480,14 +480,14 @@ public class MainService : Service
             //chỗ này cảnh báo thêm nếu k update dc db
             return new MessageResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Success"
             };
         }
 
         return new MessageResponseBase
         {
-            ResponseCode = "00",
+            ResponseCode = ResponseCodeConst.Error,
             ResponseMessage = "Không thể update tồn kho"
         };
     }
@@ -504,7 +504,7 @@ public class MainService : Service
         };
         if (null != stock)
         {
-            returnMessage.ResponseCode = "01";
+            returnMessage.ResponseCode = ResponseCodeConst.Success;
             returnMessage.ResponseMessage = "Thành công!";
             returnMessage.Payload = stock;
         }

@@ -300,7 +300,7 @@ public class CardStockService : BusinessServiceBase, ICardStockService
             .ThenBy(x => x.ItemValue);
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Thành công",
             Total = (int)total,
             SumData = totalSum,
@@ -407,7 +407,7 @@ public class CardStockService : BusinessServiceBase, ICardStockService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 Payload = data

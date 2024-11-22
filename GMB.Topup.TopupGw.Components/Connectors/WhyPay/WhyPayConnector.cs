@@ -165,7 +165,7 @@ public class WhyPayConnector : GatewayConnectorBase
                             //    }
                             //    else if (new[]
                             //             {
-                            //                 "0", "01", "10", "71", "75", "97", "KH5", "1005", "P02", "1002",
+                            //                 "0", ResponseCodeConst.Success, "10", "71", "75", "97", "KH5", "1005", "P02", "1002",
                             //                 "K03", "1003", "230", "231", "232", "233"
                             //             }.Contains(errorCode))
                             //    {
@@ -501,7 +501,7 @@ public class WhyPayConnector : GatewayConnectorBase
             _logger.LogInformation($"providerCode= {providerCode}|providerInfo is null");
             return new MessageResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
 

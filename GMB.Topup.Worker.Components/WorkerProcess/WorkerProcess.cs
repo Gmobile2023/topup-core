@@ -144,7 +144,7 @@ public partial class WorkerProcess : IWorkerProcess
                 _logger.LogInformation($"ValidateTelco return: {check.ToJson()}-{transCode}-{phoneNumber}-{vendor}");
                 if (check.ResponseStatus.ErrorCode == ResponseCodeConst.Success)
                 {
-                    check.ResponseStatus.ErrorCode = "00"; // chỗ này đổi tạm để nó đồng nhất mã lỗi với NGate
+                    check.ResponseStatus.ErrorCode = ResponseCodeConst.Error; // chỗ này đổi tạm để nó đồng nhất mã lỗi với NGate
                 }
             }
 
@@ -153,7 +153,7 @@ public partial class WorkerProcess : IWorkerProcess
                 {
                     ResponseStatus = new ResponseStatusApi("9999")
                 };
-            if (check.ResponseStatus.ErrorCode != "00" || string.IsNullOrEmpty(check.Results))
+            if (check.ResponseStatus.ErrorCode != ResponseCodeConst.Error || string.IsNullOrEmpty(check.Results))
                 return new NewMessageResponseBase<string>
                 {
                     ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_PhoneNotValid,

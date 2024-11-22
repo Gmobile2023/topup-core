@@ -79,7 +79,7 @@ namespace GMB.Topup.Backend.Interface.Services
 
                 if (result)
                 {
-                    message.ResponseCode = "01";
+                    message.ResponseCode = ResponseCodeConst.Success;
                     message.ResponseMessage = "Success";
                     if (topupUpdateStatusRequest.Status == SaleRequestStatus.Success)
                     {
@@ -142,7 +142,7 @@ namespace GMB.Topup.Backend.Interface.Services
 
                 if (result != null)
                 {
-                    message.ResponseCode = "01";
+                    message.ResponseCode = ResponseCodeConst.Success;
                     message.ResponseMessage = "Success";
                 }
                 else
@@ -322,7 +322,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Quý khách chưa truyền mã giao dịch",
                     };
                     return reponseMage;
@@ -333,7 +333,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Giao dịch {transCode} không tồn tại",
                     };
                     return reponseMage;
@@ -343,7 +343,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 // {
                 //     reponseMage.ResponseStatus = new ResponseStatusApi()
                 //     {
-                //         ErrorCode = "00",
+                //         ErrorCode = ResponseCodeConst.Error,
                 //         Message = $"Giao dịch {transCode} chưa ở trạng thái thành công !",
                 //     };
                 //     return reponseMage;
@@ -353,7 +353,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Giao dịch {transCode} không phải là giao dịch mua mã thẻ !",
                     };
                     return reponseMage;
@@ -364,7 +364,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Giao dịch {transCode} mã thẻ đã tồn tại !",
                     };
                     return reponseMage;
@@ -401,7 +401,7 @@ namespace GMB.Topup.Backend.Interface.Services
                         isBackend: true);
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "01",
+                        ErrorCode = ResponseCodeConst.Success,
                         Message = $"Giao dịch {transCode} cập nhật thành công !",
                     };
                 }
@@ -409,7 +409,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Giao dịch {transCode} không thể cập nhật, quý khách check lại giao dịch !",
                     };
                 }
@@ -419,7 +419,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 _logger.LogError($"{transCode} UpdateCardCodeRequest_Exception: {ex}");
                 reponseMage.ResponseStatus = new ResponseStatusApi()
                 {
-                    ErrorCode = "00",
+                    ErrorCode = ResponseCodeConst.Error,
                     Message = $"Xử lý giao dịch {transCode} sảy ra sự cố. Vui lòng kiểm tra lại.",
                 };
             }
@@ -440,7 +440,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Giao dịch {transCode} không tồn tại",
                     };
 
@@ -451,7 +451,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Giao dịch {transCode} không phải là giao dịch nạp chậm",
                     };
 
@@ -462,7 +462,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Giao dịch {transCode} đã thành công. Nên không thể nạp bù",
                     };
                     return reponseMage;
@@ -471,7 +471,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     reponseMage.ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Giao dịch {transCode} đã lỗi đã hoàn tiền, nên không xử lý nạp bù nữa",
                     };
                     return reponseMage;
@@ -489,7 +489,7 @@ namespace GMB.Topup.Backend.Interface.Services
                         {
                             ResponseStatus = new ResponseStatusApi()
                             {
-                                ErrorCode = "00",
+                                ErrorCode = ResponseCodeConst.Error,
                                 Message = "Giao dịch nạp bù đang xử lý, chưa có kết quả cuối."
                             }
                         };
@@ -536,7 +536,7 @@ namespace GMB.Topup.Backend.Interface.Services
                         });
                         reponseMage.ResponseStatus = new ResponseStatusApi()
                         {
-                            ErrorCode = "01",
+                            ErrorCode = ResponseCodeConst.Success,
                             Message = $"Nạp bù cho giao dịch {dtoTemp.TransCode} thành công"
                         };
                         await _bus.Publish(new ReportTransStatusMessage()
@@ -552,7 +552,7 @@ namespace GMB.Topup.Backend.Interface.Services
                         saleOffsetDto.Status = SaleRequestStatus.ProcessTimeout;
                         reponseMage.ResponseStatus = new ResponseStatusApi()
                         {
-                            ErrorCode = "00",
+                            ErrorCode = ResponseCodeConst.Error,
                             Message = $"Nạp bù cho giao dịch {dtoTemp.TransCode} chưa có kết quả."
                         };
                         break;
@@ -575,7 +575,7 @@ namespace GMB.Topup.Backend.Interface.Services
                         });
                         reponseMage.ResponseStatus = new ResponseStatusApi()
                         {
-                            ErrorCode = "00",
+                            ErrorCode = ResponseCodeConst.Error,
                             Message = $"Nạp bù cho giao dịch {dtoTemp.TransCode} lỗi."
                         };
                         break;
@@ -591,7 +591,7 @@ namespace GMB.Topup.Backend.Interface.Services
                 {
                     ResponseStatus = new ResponseStatusApi()
                     {
-                        ErrorCode = "00",
+                        ErrorCode = ResponseCodeConst.Error,
                         Message = $"Xử lý giao dịch {transCode} sảy ra sự cố. Vui lòng kiểm tra lại."
                     },
                 };

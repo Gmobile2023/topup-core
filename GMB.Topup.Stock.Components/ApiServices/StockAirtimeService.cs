@@ -94,7 +94,7 @@ public class StockAirtimeService : Service
         await _stockAirtimeService.StockUpdateAsync(stock);
         return new MessageResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Success"
         };
     }
@@ -120,7 +120,7 @@ public class StockAirtimeService : Service
         await _stockAirtimeService.StockUpdateAsync(stock);
         return new MessageResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Success"
         };
     }

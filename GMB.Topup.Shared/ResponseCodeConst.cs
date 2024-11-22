@@ -2,9 +2,9 @@
 
 public class ResponseCodeConst
 {
-    public const string Success = "01"; //Thành công
+    public const string Success = "1"; //Thành công
 
-    public const string Error = "00"; //Lỗi
+    public const string Error = "0"; //Lỗi
     public const string InvalidAuthen = "401";
     public const string InvalidSignature = "2001";
     public const string PartnerNotFound = "2002";
@@ -14,9 +14,9 @@ public class ResponseCodeConst
     public const string InvalidSecretKey = "2006";
 
     //
-    public const string ResponseCode_Success = "01";
+    public const string ResponseCode_Success = "1";
 
-    public const string ResponseCode_00 = "00";
+    public const string ResponseCode_00 = "0";
     //Phần topup
 
     public const string ResponseCode_RequestReceived = "4000"; //Đã tiếp nhận giao dịch
@@ -37,7 +37,9 @@ public class ResponseCodeConst
     public const string ResponseCode_PhoneNotValid = "4012"; //Số điện thoại k hợp lệ
     public const string ResponseCode_NotEzpay = "4013"; //Chưa có TK ezpay
     public const string ResponseCode_PhoneLockTopup = "4014"; //Khóa chiều nạp
-    public const string ResponseCode_NotValidStatus = "4044"; //Giao dịch không thành công. Vui lòng kiểm tra thông tin của thuê bao
+
+    public const string
+        ResponseCode_NotValidStatus = "4044"; //Giao dịch không thành công. Vui lòng kiểm tra thông tin của thuê bao
 
     //Thêm mới
     public const string ResponseCode_ErrorProvider = "4023"; //Lỗi từ phía nhà cc
@@ -47,7 +49,7 @@ public class ResponseCodeConst
     public const string ResponseCode_ProductNotFound = "4027"; //Sản phẩm không được hỗ trợ
     public const string ResponseCode_InvalidPostpaid = "4028"; //Không phải thuê bao trả sau
 
-   // public const string ResponseCode_ProductValueNotValid = "4029"; //Mệnh giá nạp không hợp lệ
+    // public const string ResponseCode_ProductValueNotValid = "4029"; //Mệnh giá nạp không hợp lệ
 
     public const string
         ResponseCode_TransactionError =

@@ -315,7 +315,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.Payoo
                     ResponseStatus = new ResponseStatusApi()
                     {
                         Message = reponse,
-                        ErrorCode = "01",
+                        ErrorCode = ResponseCodeConst.Success,
                     }
                 };
             }
@@ -328,7 +328,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.Payoo
                     ResponseStatus = new ResponseStatusApi()
                     {
                         Message = lst.ToJson(),
-                        ErrorCode = "01",
+                        ErrorCode = ResponseCodeConst.Success,
                     }
                 };
             }

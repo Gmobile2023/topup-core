@@ -314,7 +314,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                 return new MessageResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công"
                 };
             }
@@ -324,7 +324,7 @@ namespace GMB.Topup.Report.Domain.Services
                     $"{request.Transaction.TransRef}|{request.Transaction.TransactionCode} BalanceHistoryCreateAsync error: {ex}");
                 return new MessageResponseBase
                 {
-                    ResponseCode = "00",
+                    ResponseCode = ResponseCodeConst.Error,
                     ResponseMessage = "BalanceHistoryCreateAsync error: " + ex
                 };
             }

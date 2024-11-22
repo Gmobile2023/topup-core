@@ -91,7 +91,7 @@ public class NhattranConnector : IGatewayConnector
         {
             responseMessage.ProviderResponseCode = result?.responseStatus.errorCode;
             responseMessage.ProviderResponseMessage = result?.responseStatus.message;
-            if (result != null && result.responseStatus.errorCode == "00")
+            if (result != null && result.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 topupRequestLog.ModifiedDate = DateTime.Now;
                 topupRequestLog.ResponseInfo = result.ToJson();
@@ -101,7 +101,7 @@ public class NhattranConnector : IGatewayConnector
                 responseMessage.ProviderResponseCode = result.responseStatus.transCode;
                 responseMessage.ReceiverType = result.receiverType;
             }
-            else if (result != null && result.responseStatus.errorCode != "00" &&
+            else if (result != null && result.responseStatus.errorCode != ResponseCodeConst.Error &&
                      extraInfo.Contains(result.responseStatus.errorCode))
             {
                 topupRequestLog.ModifiedDate = DateTime.Now;
@@ -183,14 +183,14 @@ public class NhattranConnector : IGatewayConnector
             _logger.LogInformation($"{transCode} checkTranTopup return: {resultCheckTrans.ToJson()}");
 
             //responseMessage.ExtraInfo = string.Join("|", resultCheckTrans.responseStatus.errorCode, resultCheckTrans.responseStatus.message);
-            if (resultCheckTrans.responseStatus.errorCode == "00")
+            if (resultCheckTrans.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Thành công";
                 responseMessage.ProviderResponseCode = resultCheckTrans.responseStatus.transCode;
                 responseMessage.ReceiverType = resultCheckTrans.receiverType;
             }
-            else if (resultCheckTrans.responseStatus.errorCode == "01")
+            else if (resultCheckTrans.responseStatus.errorCode == ResponseCodeConst.Success)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
                 responseMessage.ResponseMessage = !string.IsNullOrEmpty(resultCheckTrans.responseStatus.message)
@@ -286,7 +286,7 @@ public class NhattranConnector : IGatewayConnector
                     $"{payBillRequestLog.ReceiverInfo} NhattranConnector check_phone_debit Reponse: {providerInfo.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
             }
 
-            if (result != null && result.responseStatus.errorCode == "00")
+            if (result != null && result.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 var res = (result.Results ?? string.Empty).Split('|');
                 var lst = new List<PeriodDto>();
@@ -409,7 +409,7 @@ public class NhattranConnector : IGatewayConnector
                 "/api/v1/ngate/kpp_control", request, timeout: TimeSpan.FromSeconds(providerInfo.Timeout));
             _logger.LogInformation($"{providerCode} kpp_control Reponse: {result.ToJson()}");
 
-            if (result != null && result.responseStatus.errorCode == "00")
+            if (result != null && result.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -549,7 +549,7 @@ public class NhattranConnector : IGatewayConnector
         {
             responseMessage.ProviderResponseCode = result?.responseStatus.errorCode;
             responseMessage.ProviderResponseMessage = result?.responseStatus.message;
-            if (result != null && result.responseStatus.errorCode == "00")
+            if (result != null && result.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 payBillRequestLog.ModifiedDate = DateTime.Now;
                 payBillRequestLog.ResponseInfo = result.ToJson();
@@ -561,7 +561,7 @@ public class NhattranConnector : IGatewayConnector
                 responseMessage.ProviderResponseCode = result.responseStatus.transCode;
                 responseMessage.ReceiverType = result.receiverType;
             }
-            else if (result != null && result.responseStatus.errorCode != "00" &&
+            else if (result != null && result.responseStatus.errorCode != ResponseCodeConst.Error &&
                      extraInfo.Contains(result.responseStatus.errorCode))
             {
                 payBillRequestLog.ModifiedDate = DateTime.Now;
@@ -617,7 +617,7 @@ public class NhattranConnector : IGatewayConnector
                         $"/api/v1/ngate/bill/{receiverInfo}?ServiceCode={sv[0]}&WaterCode={sv[1]}");
             _logger.LogInformation($"{receiverInfo} NhattranConnector Bill Reponse: {result.ToJson()}");
 
-            if (result != null && result.responseStatus.errorCode == "00")
+            if (result != null && result.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 var res = (result.Results ?? string.Empty).Split('|');
                 var dto = new BillinfoDto
@@ -821,7 +821,7 @@ public class NhattranConnector : IGatewayConnector
             _logger.LogInformation(
                 $"{mobile} check_phone_provider Reponse: {providerInfo.ProviderCode}-{result.ToJson()}");
 
-            return result != null && result.Results == "VT" && result.responseStatus.errorCode == "00";
+            return result != null && result.Results == "VT" && result.responseStatus.errorCode == ResponseCodeConst.Error;
         }
         catch (Exception ex)
         {

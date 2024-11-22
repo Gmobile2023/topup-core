@@ -190,7 +190,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                     return new MessagePagedResponseBase
                     {
-                        ResponseCode = "01",
+                        ResponseCode = ResponseCodeConst.Success,
                         ResponseMessage = "Thành công",
                         Total = 1,
                         Payload = balanceItems,
@@ -269,7 +269,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                     return new MessagePagedResponseBase
                     {
-                        ResponseCode = "01",
+                        ResponseCode = ResponseCodeConst.Success,
                         ResponseMessage = "Thành công",
                         Total = (int)total,
                         SumData = sumTotal,
@@ -282,7 +282,7 @@ namespace GMB.Topup.Report.Domain.Services
                 _logger.LogError($"ReportComparePartnerGetList error: {e}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00"
+                    ResponseCode = ResponseCodeConst.Error
                 };
             }
         }
@@ -369,7 +369,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công."
                 };
             }
@@ -378,7 +378,7 @@ namespace GMB.Topup.Report.Domain.Services
                 _logger.LogError($"SysAgentBalance return: {e.Message}|{e.InnerException}|{e.StackTrace}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00",
+                    ResponseCode = ResponseCodeConst.Error,
                     ResponseMessage = "Thất bại."
                 };
             }

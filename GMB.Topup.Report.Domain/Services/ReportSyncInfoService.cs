@@ -614,7 +614,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                         return new MessagePagedResponseBase()
                         {
-                            ResponseCode = "01",
+                            ResponseCode = ResponseCodeConst.Success,
                             ResponseMessage = $"Dong bo so du thanh cong: {transCode}.",
                         };
                     }
@@ -627,7 +627,7 @@ namespace GMB.Topup.Report.Domain.Services
 
             return new MessagePagedResponseBase()
             {
-                ResponseCode = "00",
+                ResponseCode = ResponseCodeConst.Error,
                 ResponseMessage = $"Dong bo so du that bai: {transCode}.",
             };
         }
@@ -939,7 +939,7 @@ namespace GMB.Topup.Report.Domain.Services
 
             return new MessagePagedResponseBase()
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 //ExtraInfo = checkList,
                 //ResponseMessage = checkList2,
             };
@@ -961,7 +961,7 @@ namespace GMB.Topup.Report.Domain.Services
 
             return new MessagePagedResponseBase()
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
 
             };
         }
@@ -1038,7 +1038,7 @@ namespace GMB.Topup.Report.Domain.Services
                 //                Status = SaleRequestStatus.WaitForResult,
                 //            });
 
-                //            if (reponseStatus.ResponseCode == "01")
+                //            if (reponseStatus.ResponseCode == ResponseCodeConst.Success)
                 //            {
                 //                await _bus.Publish<TransactionRefundCommand>(new
                 //                {
@@ -1051,7 +1051,7 @@ namespace GMB.Topup.Report.Domain.Services
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                 };
             }
@@ -1060,7 +1060,7 @@ namespace GMB.Topup.Report.Domain.Services
                 _logger.LogError($"SyncInfoOnjectRequest error: {e}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "00",
+                    ResponseCode = ResponseCodeConst.Error,
                     ResponseMessage = $"{e.Message}|{e.StackTrace}|{e.InnerException}"
                 };
             }

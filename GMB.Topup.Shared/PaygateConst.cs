@@ -128,8 +128,8 @@ public static class StockCodeConst
 
 public static class ResponseCode
 {
-    public const string Success = "01"; //Thành công
-    public const string Error = "00"; //Lỗi
+    public const string Success = ResponseCodeConst.Success; //Thành công
+    public const string Error = ResponseCodeConst.Error; //Lỗi
     public const string ResponseReceived = "004";
     public const string InvalidPartner = "006";
     public const string InvalidSignature = "011";

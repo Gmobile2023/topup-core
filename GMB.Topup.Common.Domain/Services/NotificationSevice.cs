@@ -135,7 +135,7 @@ public class NotificationSevice : INotificationSevice
 
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "Thành công",
             Total = (int) total,
             Payload = lst.ConvertTo<List<NotificationAppOutDto>>()

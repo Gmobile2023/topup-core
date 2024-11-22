@@ -102,7 +102,7 @@ public class IrisConnector : GatewayConnectorBase
 
                 if (result.Code == "200")
                 {
-                    if (result.Data.Code == "00")
+                    if (result.Data.Code == ResponseCodeConst.Error)
                     {
                         topupRequestLog.Status = TransRequestStatus.Success;
                         responseMessage.ProviderResponseTransCode = string.Empty;
@@ -227,7 +227,7 @@ public class IrisConnector : GatewayConnectorBase
                 responseMessage.ProviderResponseMessage = result.Data != null ? result.Data.Message : string.Empty;
                 if (result.Code == "200")
                 {
-                    if (result.Data.Code == "00")
+                    if (result.Data.Code == ResponseCodeConst.Error)
                     {
                         cardRequestLog.Status = TransRequestStatus.Success;
                         responseMessage.ProviderResponseTransCode = string.Empty;
@@ -455,7 +455,7 @@ public class IrisConnector : GatewayConnectorBase
         if (result != null)
         {
             _logger.LogInformation($"{transCode} Balance return: {transCode}-{result.ToJson()}");
-            if (result.Code == "00" || result.Code == "0")
+            if (result.Code == ResponseCodeConst.Error || result.Code == "0")
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -645,7 +645,7 @@ public class IrisConnector : GatewayConnectorBase
                 if (result.Code == "200")
                 {
                     var ignoreCode = (providerInfo.IgnoreCode ?? string.Empty).Split(';', ',', '|');
-                    if (result.Data.SoftpinResult.Code == "00")
+                    if (result.Data.SoftpinResult.Code == ResponseCodeConst.Error)
                     {
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
                         responseMessage.ResponseMessage = "Giao dịch thành công";

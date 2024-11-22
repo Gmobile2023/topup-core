@@ -108,7 +108,7 @@ public class VnptPayConnector : GatewayConnectorBase
             request.SecureCode = dataSign;
 
             var response = await CallApiRequest(providerInfo.ApiUrl, function, providerInfo.ApiPassword, request);
-            if (response.ResponseCode == "00")
+            if (response.ResponseCode == ResponseCodeConst.Error)
             {
                 responseMessage.TransCode = response.TransRequestId;
                 responseMessage.PaymentAmount = topupRequestLog.TransAmount;
@@ -325,7 +325,7 @@ public class VnptPayConnector : GatewayConnectorBase
         request.SecureCode = dataSign;
 
         var reporse = await CallApiRequest(providerInfo.ApiUrl, function, providerInfo.ApiPassword, request);
-        if (reporse.ResponseCode == "00")
+        if (reporse.ResponseCode == ResponseCodeConst.Error)
         {
             responseMessage.ResponseCode = ResponseCodeConst.Success;
             responseMessage.ResponseMessage = "Giao dịch thành công";

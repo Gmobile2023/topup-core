@@ -269,7 +269,7 @@ public partial class ElasticReportRepository
 
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = "Thành công",
                     Total = 1,
                     Payload = balanceItems
@@ -365,7 +365,7 @@ public partial class ElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumTotal,
@@ -377,7 +377,7 @@ public partial class ElasticReportRepository
             _logger.LogError($"ReportComparePartnerGetList error: {e}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -486,7 +486,7 @@ public partial class ElasticReportRepository
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 SumData = sumData,
                 Total = total,
@@ -500,7 +500,7 @@ public partial class ElasticReportRepository
                 $"KeyCode= {keyCode} .Tong thoi gian den khi Exception Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
             return new MessagePagedResponseBase
             {
-                ResponseCode = "00"
+                ResponseCode = ResponseCodeConst.Error
             };
         }
     }
@@ -555,7 +555,7 @@ public partial class ElasticReportRepository
                         });
                         return new MessagePagedResponseBase
                         {
-                            ResponseCode = "01",
+                            ResponseCode = ResponseCodeConst.Success,
                             ResponseMessage = linkFile,
                             Payload = null,
                             ExtraInfo = "Downloadlink"
@@ -601,7 +601,7 @@ public partial class ElasticReportRepository
                 _logger.LogInformation($"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
                 return new MessagePagedResponseBase
                 {
-                    ResponseCode = "01",
+                    ResponseCode = ResponseCodeConst.Success,
                     ResponseMessage = linkFile,
                     Payload = null,
                     ExtraInfo = "Downloadlink"
@@ -614,7 +614,7 @@ public partial class ElasticReportRepository
         _logger.LogInformation($"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
         return new MessagePagedResponseBase
         {
-            ResponseCode = "01",
+            ResponseCode = ResponseCodeConst.Success,
             ResponseMessage = "",
             Payload = list,
             ExtraInfo = ""

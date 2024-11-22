@@ -58,7 +58,7 @@ public class SHTConnector : IGatewayConnector
         try
         {
             var extraInfo = providerInfo.ExtraInfo ?? string.Empty;
-            if (result.responseStatus.errorCode == "00")
+            if (result.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 topupRequestLog.ModifiedDate = DateTime.Now;
                 topupRequestLog.TransAmount = topupRequestLog.TransAmount;
@@ -151,7 +151,7 @@ public class SHTConnector : IGatewayConnector
             responseMessage.ProviderResponseCode = checkResult?.responseStatus?.errorCode;
             responseMessage.ProviderResponseMessage = checkResult?.responseStatus?.message;
             var extraInfo = providerInfo.ExtraInfo ?? string.Empty;
-            if (checkResult.responseStatus.errorCode == "00")
+            if (checkResult.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Thành công";
@@ -233,7 +233,7 @@ public class SHTConnector : IGatewayConnector
                 "/api/v1/sht/control", request, timeout: TimeSpan.FromSeconds(providerInfo.Timeout));
             _logger.LogInformation($"{providerCode} sht_control Reponse: {result.ToJson()}");
 
-            if (result != null && result.responseStatus.errorCode == "00")
+            if (result != null && result.responseStatus.errorCode == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Giao dịch thành công";

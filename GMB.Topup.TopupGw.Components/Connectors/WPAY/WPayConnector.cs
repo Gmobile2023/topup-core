@@ -107,7 +107,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.WPay
                     responseMessage.ProviderResponseMessage = result?.resMessage;
                     _logger.LogInformation(
                         $"{topupRequestLog.ProviderCode}{topupRequestLog.TransCode} WPayConnector return: {topupRequestLog.TransCode}-{topupRequestLog.TransRef}-{result.ToJson()}");
-                    if (result.resCode == "00")
+                    if (result.resCode == ResponseCodeConst.Error)
                     {
                         topupRequestLog.Status = TransRequestStatus.Success;
                         responseMessage.ProviderResponseTransCode = string.Empty;
@@ -201,7 +201,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.WPay
                     _logger.LogInformation(
                         $"{providerCode}-{transCodeToCheck}  WPayConnector Check trans return: {transCodeToCheck}-{transCode}-{result.ToJson()}");
 
-                    if (result.resCode == "00")
+                    if (result.resCode == ResponseCodeConst.Error)
                     {
                         if (result.status == 0)
                         {
@@ -323,7 +323,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.WPay
             {
                 _logger.LogInformation(
                     $"{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode} WPayConnector return: {payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
-                if (result.resCode == "00")
+                if (result.resCode == ResponseCodeConst.Error)
                 {
                     var dto = new InvoiceResultDto()
                     {
@@ -424,7 +424,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.WPay
                     $"WPAY Card return: {cardRequestLog.TransCode}-{cardRequestLog.TransRef}-{result.ToJson()}");
                 cardRequestLog.ModifiedDate = DateTime.Now;
                 cardRequestLog.ResponseInfo = result.ToJson();
-                if (result.resCode == "00")
+                if (result.resCode == ResponseCodeConst.Error)
                 {
                     cardRequestLog.ResponseInfo = "";
                     cardRequestLog.Status = TransRequestStatus.Success;
@@ -499,7 +499,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.WPay
             if (result != null)
             {
                 _logger.LogInformation($"{transCode} Balance return: {transCode}-{result.ToJson()}");
-                if (result.resCode == "00")
+                if (result.resCode == ResponseCodeConst.Error)
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Success;
                     responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -549,7 +549,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.WPay
             {
                 _logger.LogInformation(
                     $"TransCodeCheck= {transCodeCheck}|GetCardRetrieveAsync_Return: {result.ToJson()}");
-                if (result.resCode == "00")
+                if (result.resCode == ResponseCodeConst.Error)
                 {
                     var payload = DecryptCard(result.cardList, transCodeCheck, 0, providerInfo.PrivateKeyFile);
                     foreach (var item in payload)
@@ -621,7 +621,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.WPay
                 $"CallApi return: {payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
             try
             {
-                if (result.resCode == "00")
+                if (result.resCode == ResponseCodeConst.Error)
                 {
                     payBillRequestLog.ModifiedDate = DateTime.Now;
                     payBillRequestLog.ResponseInfo = result.ToJson();

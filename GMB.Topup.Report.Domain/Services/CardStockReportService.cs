@@ -57,7 +57,7 @@ public class CardStockReportService : ICardStockReportService
             await _reportMongoRepository.AddOneAsync(item);
             return new CardResponseMesssage
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Success"
             };
         }
@@ -147,7 +147,7 @@ public class CardStockReportService : ICardStockReportService
 
             return new MessageResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Success"
             };
         }
@@ -255,7 +255,7 @@ public class CardStockReportService : ICardStockReportService
 
             return new MessageResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Success"
             };
         }
@@ -344,7 +344,7 @@ public class CardStockReportService : ICardStockReportService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 Payload = lst.OrderBy(x => x.CreatedDate).ThenBy(x => x.StockCode).ThenBy(x => x.Vendor)
@@ -446,7 +446,7 @@ public class CardStockReportService : ICardStockReportService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = (int)total,
                 Payload = lst.OrderBy(x => x.CreatedDate).ThenBy(x => x.StockCode).ThenBy(x => x.Vendor)
@@ -739,7 +739,7 @@ public class CardStockReportService : ICardStockReportService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumTotal,
@@ -1011,7 +1011,7 @@ public class CardStockReportService : ICardStockReportService
 
             return new MessagePagedResponseBase
             {
-                ResponseCode = "01",
+                ResponseCode = ResponseCodeConst.Success,
                 ResponseMessage = "Thành công",
                 Total = total,
                 SumData = sumTotal,
