@@ -82,7 +82,7 @@ jobs:
     - name: gateway
       if: ${{ github.event.inputs.service == 'gateway' || github.event.inputs.service == 'all' }}
       uses: docker/build-push-action@v2
-      id: docker_build_backend
+      id: docker_build_gateway
       with:
         context: ./
         file: ./Topup.Gw.Hosting/Dockerfile
