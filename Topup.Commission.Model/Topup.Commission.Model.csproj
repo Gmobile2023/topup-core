@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="8.2.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Topup.Shared\Topup.Shared.csproj" />
+        <ProjectReference Include="..\Topup.Contracts\Topup.Contracts.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Events\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="Events\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Events\**" />
+    </ItemGroup>
+</Project>

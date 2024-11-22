@@ -3,7 +3,7 @@ using Hangfire;
 using Hangfire.Mongo;
 using Hangfire.Mongo.Migration.Strategies;
 using Hangfire.Mongo.Migration.Strategies.Backup;
-using GMB.Topup.Shared.ConfigDtos;
+using Topup.Shared.ConfigDtos;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using MobileCheck.Configurations;

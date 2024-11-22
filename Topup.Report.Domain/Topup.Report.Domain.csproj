@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EPPlus" Version="6.2.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+        <PackageReference Include="MongoDbGenericRepository" Version="1.6.1" />
+        <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
+        <PackageReference Include="NEST" Version="7.17.5" />
+        <PackageReference Include="NPOI" Version="2.6.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Topup.Report.Model\Topup.Report.Model.csproj" />
+        <ProjectReference Include="..\Topup.Shared\Topup.Shared.csproj" />
+        <ProjectReference Include="..\Topup.Contracts\Topup.Contracts.csproj" />
+        <ProjectReference Include="..\Topup.Discovery.Requests\Topup.Discovery.Requests.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Services\ISimBalanceReportService.cs" />
+        <Compile Remove="Services\SimBalanceReportService.cs" />
+        <Compile Remove="Repositories\ISimReportMongoRepository.cs" />
+        <Compile Remove="Repositories\SimReportMongoRepository.cs" />
+        <Compile Remove="Entities\SimBalanceByDate.cs" />
+        <Compile Remove="Entities\SimBalanceHistories.cs" />
+        <Compile Remove="Services\BotMessageService.cs" />
+        <Compile Remove="Services\IBotMessageService.cs" />
+        <Compile Remove="IPaygateConnectionFactory.cs" />
+        <Compile Remove="Repositories\IReportPosgresqlRepository.cs" />
+    </ItemGroup>
+
+</Project>

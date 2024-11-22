@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using MobileCheck.Services;
-using GMB.Topup.Discovery.Requests.Tool;
+using Topup.Discovery.Requests.Tool;
 using ServiceStack;
 
 namespace MobileCheck.Services;

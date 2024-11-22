@@ -34,8 +34,8 @@
     
 
     <ItemGroup>
-      <ProjectReference Include="..\GMB.Topup.Shared\GMB.Topup.Shared.csproj" />
-      <ProjectReference Include="..\GMB.Topup.Discovery.Requests\GMB.Topup.Discovery.Requests.csproj" />
+      <ProjectReference Include="..\Topup.Shared\Topup.Shared.csproj" />
+      <ProjectReference Include="..\Topup.Discovery.Requests\Topup.Discovery.Requests.csproj" />
     </ItemGroup>
     
 

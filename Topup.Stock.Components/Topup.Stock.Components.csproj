@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Orleans.Sdk" Version="8.2.0" />
+        <PackageReference Include="Microsoft.Orleans.Core" Version="8.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Topup.Stock.Contracts\Topup.Stock.Contracts.csproj" />
+        <ProjectReference Include="..\Topup.Stock.Domains\Topup.Stock.Domains.csproj" />
+        <ProjectReference Include="..\Topup.Discovery.Requests\Topup.Discovery.Requests.csproj" />
+
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Consumers\CardCallBackConsumer.cs" />
+        <Compile Remove="Consumers\CardConfirmConsumer.cs" />
+        <Compile Remove="Consumers\CardRequestConsumer.cs" />
+        <Compile Remove="Consumers\StockCardsImportConsumer.cs" />
+        <Compile Remove="Consumers\StockCommandConsumer.cs" />
+        <Compile Remove="StateMachines\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="StateMachines\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="StateMachines\**" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MassTransit" Version="8.3.1" />
+        <PackageReference Include="Quartz" Version="3.9.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Topup.Balance.Domain\Topup.Balance.Domain.csproj" />
+        <ProjectReference Include="..\Topup.Balance.Models\Topup.Balance.Models.csproj" />
+        <ProjectReference Include="..\Topup.Shared\Topup.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Consumers\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Grains\**" />
+        <Compile Remove="Consumers\CollectDiscountConsumer.cs" />
+        <Compile Remove="StateMachines\BalanceTransState.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Grains\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Grains\**" />
+    </ItemGroup>
+
+</Project>

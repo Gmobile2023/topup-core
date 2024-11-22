@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GMB.Topup.Shared;
-using GMB.Topup.Shared.ConfigDtos;
-using GMB.Topup.Shared.Helpers;
+using Topup.Shared;
+using Topup.Shared.ConfigDtos;
+using Topup.Shared.Helpers;
 using Microsoft.Extensions.Configuration;
 using MobileCheck.Models;
-using GMB.Topup.Discovery.Requests.TopupGateways;
+using Topup.Discovery.Requests.TopupGateways;
 
 namespace MobileCheck.Services;
 

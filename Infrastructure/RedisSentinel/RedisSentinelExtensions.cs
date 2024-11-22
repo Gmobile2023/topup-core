@@ -1,5 +1,5 @@
 ﻿using System;
-using GMB.Topup.Shared.ConfigDtos;
+using Topup.Shared.ConfigDtos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceStack.Redis;

@@ -1,6 +1,6 @@
 using System;
 using System.Net;
-using GMB.Topup.Shared;
+using Topup.Shared;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using MobileCheck.Data;

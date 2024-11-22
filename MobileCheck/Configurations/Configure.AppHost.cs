@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Hangfire;
-using GMB.Topup.Shared.Helpers;
+using Topup.Shared.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;

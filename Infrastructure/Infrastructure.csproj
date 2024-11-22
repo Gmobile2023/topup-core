@@ -26,6 +26,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\GMB.Topup.Contracts\GMB.Topup.Contracts.csproj" />
+        <ProjectReference Include="..\Topup.Contracts\Topup.Contracts.csproj" />
     </ItemGroup>
 </Project>

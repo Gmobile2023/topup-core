@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Remove="Consumers\ReportSimBalanceConsumer.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Topup.Common.Domain\Topup.Common.Domain.csproj" />
+        <ProjectReference Include="..\Topup.Contracts\Topup.Contracts.csproj" />
+        <ProjectReference Include="..\Topup.Discovery.Requests\Topup.Discovery.Requests.csproj" />
+        <ProjectReference Include="..\Topup.Shared\Topup.Shared.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="TW.Paygate.Report.Interface.DotSettings"/>
+    </ItemGroup>
+
+</Project>

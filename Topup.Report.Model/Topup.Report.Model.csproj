@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Topup.Gw.Model\Topup.Gw.Model.csproj" />
+        <ProjectReference Include="..\Topup.Shared\Topup.Shared.csproj" />
+        <ProjectReference Include="..\Topup.Contracts\Topup.Contracts.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Events\**" />
+        <Compile Remove="Dtos\ReportItemDto.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="Events\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Events\**" />
+    </ItemGroup>
+</Project>

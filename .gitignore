@@ -338,11 +338,11 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-GMB.Topup.Backend.Hosting/Logs/
-GMB.Topup.Report.Hosting/Logs/
-GMB.Topup.Stock.Hosting/Logs/
-GMB.Topup.Balance.Hosting/Logs/
-GMB.Topup.Gw.Hosting/Logs/
-GMB.Topup.TopupGw.Hosting/Logs/
-GMB.Topup.Report.Hosting/ReportFiles/
-GMB.Topup.Common.Hosting/Logs/
+Topup.Backend.Hosting/Logs/
+Topup.Report.Hosting/Logs/
+Topup.Stock.Hosting/Logs/
+Topup.Balance.Hosting/Logs/
+Topup.Gw.Hosting/Logs/
+Topup.TopupGw.Hosting/Logs/
+Topup.Report.Hosting/ReportFiles/
+Topup.Common.Hosting/Logs/
