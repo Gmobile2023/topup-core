@@ -1,33 +1,39 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
+# This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
+
+# This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["HLS.Paygate.Balance.Hosting/HLS.Paygate.Balance.Hosting.csproj", "HLS.Paygate.Balance.Hosting/"]
-COPY ["HLS.Paygate.Balance.Components/HLS.Paygate.Balance.Components.csproj", "HLS.Paygate.Balance.Components/"]
-COPY ["HLS.Paygate.Balance.Domain/HLS.Paygate.Balance.Domain.csproj", "HLS.Paygate.Balance.Domain/"]
-COPY ["HLS.Paygate.Balance.Models/HLS.Paygate.Balance.Models.csproj", "HLS.Paygate.Balance.Models/"]
-COPY ["HLS.Paygate.Shared/HLS.Paygate.Shared.csproj", "HLS.Paygate.Shared/"]
+COPY ["Topup.Balance.Hosting/Topup.Balance.Hosting.csproj", "Topup.Balance.Hosting/"]
+COPY ["Topup.Balance.Components/Topup.Balance.Components.csproj", "Topup.Balance.Components/"]
+COPY ["Topup.Balance.Domain/Topup.Balance.Domain.csproj", "Topup.Balance.Domain/"]
+COPY ["Topup.Balance.Models/Topup.Balance.Models.csproj", "Topup.Balance.Models/"]
+COPY ["Topup.Shared/Topup.Shared.csproj", "Topup.Shared/"]
 COPY ["Orleans.Sagas/Orleans.Sagas.csproj", "Orleans.Sagas/"]
-COPY ["Paygate.Discovery.Requests/Paygate.Discovery.Requests.csproj", "Paygate.Discovery.Requests/"]
-COPY ["Paygate.Contracts/Paygate.Contracts.csproj", "Paygate.Contracts/"]
+COPY ["Topup.Discovery.Requests/Topup.Discovery.Requests.csproj", "Topup.Discovery.Requests/"]
+COPY ["Topup.Gw.Model/Topup.Gw.Model.csproj", "Topup.Gw.Model/"]
+COPY ["Topup.Contracts/Topup.Contracts.csproj", "Topup.Contracts/"]
 COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
-RUN dotnet restore "./HLS.Paygate.Balance.Hosting/HLS.Paygate.Balance.Hosting.csproj"
+RUN dotnet restore "./Topup.Balance.Hosting/Topup.Balance.Hosting.csproj"
 COPY . .
-WORKDIR "/src/HLS.Paygate.Balance.Hosting"
-RUN dotnet build "./HLS.Paygate.Balance.Hosting.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/Topup.Balance.Hosting"
+RUN dotnet build "./Topup.Balance.Hosting.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
+# This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./HLS.Paygate.Balance.Hosting.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Topup.Balance.Hosting.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
+# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "HLS.Paygate.Balance.Hosting.dll"]
+ENTRYPOINT ["dotnet", "Topup.Balance.Hosting.dll"]
