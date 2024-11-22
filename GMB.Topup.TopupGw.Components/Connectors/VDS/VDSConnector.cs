@@ -590,7 +590,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.VDS
             catch (Exception e)
             {
                 _logger.LogInformation($"{transCode} VDSConnector checkbalance error:{e}");
-                responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_NT_CODE;
+                responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_GMB_CODE;
                 //responseMessage.ProviderResponseMessage = e.Message;
                 responseMessage.ResponseMessage = e.Message;
             }

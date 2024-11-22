@@ -628,7 +628,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.PayPoo
             catch (Exception e)
             {
                 _logger.LogInformation($"{transCode} PayPooConnector checkbalance error:{e}");
-                responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_NT_CODE;
+                responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_GMB_CODE;
                 //responseMessage.ProviderResponseMessage = e.Message;
                 responseMessage.ResponseMessage = e.Message;
             }

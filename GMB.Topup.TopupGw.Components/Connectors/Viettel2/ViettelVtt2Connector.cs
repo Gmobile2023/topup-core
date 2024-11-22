@@ -629,7 +629,7 @@ namespace GMB.Topup.TopupGw.Components.Connectors.Viettel2
             catch (Exception e)
             {
                 _logger.LogInformation($"{transCode} Viettel2Connector checkbalance error:{e}");
-                responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_NT_CODE;
+                responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_GMB_CODE;
                 //responseMessage.ProviderResponseMessage = e.Message;
                 responseMessage.ResponseMessage = e.Message;
             }

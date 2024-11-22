@@ -255,7 +255,7 @@ public partial class TopupGwProcess : ITopupGwProcess
             var isSend = true;
             if (string.IsNullOrEmpty(response.ProviderResponseCode))
                 response.ProviderResponseCode =
-                    ResponseCodeConst.ResponseCode_NT_CODE; //neu k co ma loi ncc. lay ma loi NT
+                    ResponseCodeConst.ResponseCode_GMB_CODE; //neu k co ma loi ncc. lay ma loi NT
             if (!string.IsNullOrEmpty(providerInfoDto.ErrorCodeNotAlarm) &&
                 !string.IsNullOrEmpty(response.ProviderResponseCode))
             {

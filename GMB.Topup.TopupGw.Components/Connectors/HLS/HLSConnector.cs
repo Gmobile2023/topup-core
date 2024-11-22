@@ -39,7 +39,7 @@ public class HLSConnector : IGatewayConnector
         topupRequestLog.Status = TransRequestStatus.Timeout;
         responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
         responseMessage.ResponseMessage = "Giao dịch chưa có kết quả";
-        responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_NT_CODE;
+        responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_GMB_CODE;
         responseMessage.ProviderResponseMessage =
             $"Giao dịch {topupRequestLog.CategoryCode}-{topupRequestLog.ProductCode} vào kênh HLS chưa có KQ. Vui lòng xử lý giao dịch";
         if (providerInfo == null)
@@ -60,7 +60,7 @@ public class HLSConnector : IGatewayConnector
         {
             ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ",
             ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult,
-            ProviderResponseCode = ResponseCodeConst.ResponseCode_NT_CODE,
+            ProviderResponseCode = ResponseCodeConst.ResponseCode_GMB_CODE,
             ProviderResponseMessage = "Giao dịch không thể check KQ. Vui lòng xử lý bằng tay",
             Exception = "Hàm chưa sẵn sàng"
         });
@@ -172,7 +172,7 @@ public class HLSConnector : IGatewayConnector
         payBillRequestLog.Status = TransRequestStatus.Timeout;
         responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
         responseMessage.ResponseMessage = "Giao dịch chưa có kết quả";
-        responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_NT_CODE;
+        responseMessage.ProviderResponseCode = ResponseCodeConst.ResponseCode_GMB_CODE;
         responseMessage.ProviderResponseMessage =
             $"Giao dịch {payBillRequestLog.CategoryCode}-{payBillRequestLog.ProductCode} vào kênh HLS chưa có KQ. Vui lòng xử lý giao dịch";
         await _topupGatewayService.PayBillRequestLogUpdateAsync(payBillRequestLog);
