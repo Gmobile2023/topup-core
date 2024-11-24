@@ -1,0 +1,67 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/common/cms/categories",
+      "DownstreamPathTemplate": "/api/v1/common/cms/categories",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "common",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "CommonService",
+      "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/common/cms/posts",
+      "DownstreamPathTemplate": "/api/v1/common/cms/posts",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "common",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "CommonService",
+      "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/common/cms/post",
+      "DownstreamPathTemplate": "/api/v1/common/cms/post",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "common",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "CommonService",
+      "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

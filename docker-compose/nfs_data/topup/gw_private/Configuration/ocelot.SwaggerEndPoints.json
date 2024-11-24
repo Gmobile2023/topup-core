@@ -1,0 +1,143 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "BackendService",
+      "Config": [
+        {
+          "Name": "Paygate BackendService",
+          "Version": "v1",
+          "Url": "http://backend:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "BalanceService",
+      "Config": [
+        {
+          "Name": "Paygate BalanceService",
+          "Version": "v1",
+          "Url": "http://balance:8080/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "GatewayService",
+      "Config": [
+        {
+          "Name": "Paygate GatewayService",
+          "Version": "v1",
+          "Url": "http://gateway:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "StockService",
+      "Config": [
+        {
+          "Name": "Paygate StockService",
+          "Version": "v1",
+          "Url": "http://stock:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "ReportService",
+      "Config": [
+        {
+          "Name": "Paygate ReportService",
+          "Version": "v1",
+          "Url": "http://report:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "CommonService",
+      "Config": [
+        {
+          "Name": "Paygate CommonService",
+          "Version": "v1",
+          "Url": "http://common:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "KppReport",
+      "Config": [
+        {
+          "Name": "Paygate Kpp Report",
+          "Version": "v1",
+          "Url": "http://kpp_report:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "TopupGateService",
+      "Config": [
+        {
+          "Name": "Paygate TopupGateService",
+          "Version": "v1",
+          "Url": "http://topup_gate:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "API",
+      "Config": [
+        {
+          "Name": "API",
+          "Version": "v1",
+          "Url": "http://api:80/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Authentication",
+      "Config": [
+        {
+          "Name": "Paygate Authentication",
+          "Version": "v1"
+        }
+      ]
+    },
+	{
+      "Key": "ngate",
+      "Config": [
+        {
+          "Name": "Ngate",
+          "Version": "v1",
+          "Url": "http://ngate:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "ngate1",
+      "Config": [
+        {
+          "Name": "Ngate1",
+          "Version": "v1",
+          "Url": "http://10.10.227.228:9981/openapi"
+        }
+      ]
+    },
+	{
+      "Key": "Sms",
+      "Config": [
+        {
+          "Name": "SMS",
+          "Version": "v1",
+          "Url": ""
+        }
+      ]
+    },
+    {
+      "Key": "Sht",
+      "Config": [
+        {
+          "Name": "SHT",
+          "Version": "v1",
+          "Url": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+version: "3.8"
+
+networks:
+  net:
+
+volumes:
+  api_data:
+
+services:
+  api:
+    image: hls2020/gmobile:topup_api
+    environment:
+      - REGISTRY_CONFIG_FILE=appsettings.Production.json
+      - ASPNETCORE_ENVIRONMENT=Production
+      - TZ=Asia/Ho_Chi_Minh
+      - ConnectionStrings__Default=User Id=topup;Password=topup_2024#!&;Host=postgres;Port=5432;Database=TopupGate;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - ConnectionStrings__Hangfire=User Id=topup;Password=topup_2024#!&;Host=postgres;Port=5432;Database=HangFire;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+
+      - Abp__RedisCache__ConnectionString=10.10.227.248:6379
+      - Abp__RedisCache__DatabaseId=0
+      #- Abp__RedisCache__IsEnable=true
+      #- Abp__RedisCache__IsSentinel=false
+      - Abp__RedisCache__RedisServer=10.10.227.248:6379
+      - Abp__RedisCache__MasterName=mymaster
+
+      - EventBus__IsEnabled=true
+      - EventBus__IsConsumer=false
+      - EventBus__RabbitMq__Host=worker01
+      - EventBus__RabbitMq__Clusters=worker01;worker02;worker03
+      - EventBus__RabbitMq__VirtualHost=topup
+      - EventBus__RabbitMq__Username=topup
+      - EventBus__RabbitMq__Password=gmobile_topup2024#
+
+      - App__AllowHangFireServer=false
+      - App__SwichProviderConfigValue=4
+
+      - TopupService__ServiceApi=http://gw_private:5000
+      - TopupService__Timeout=300
+
+      - SmsConfigs__MobileNetSms__IsSendSms=false
+      - SmsConfigs__MobileNetSms__IsUseAllSmsMobileGo=false
+      - SmsConfigs__MobileGoSms__Url=https://shared.gmobile.vn
+      - SmsConfigs__MobileGoSms__IsSendSms=false
+      - SmsConfigs__MobileNetSmsBrandName__IsSendSms=false
+      
+      - FtpServer__Url=ftp://192.168.11.247
+      - FtpServer__UrlViewFile=https://files-daily-topup.gmobile.vn
+      - FtpServer__UserName=ftp_pro
+      - FtpServer__Password=Ftp@z0ta2022
+      
+      - CmsConfig__Url=https://gmobile.vn/wp-json/
+      - CmsConfig__PageAdvertiseAcfMobileId=5
+      - CmsConfig__PageFaqsAcfMobileId=67
+
+      - ValidateSearch__Enable=true
+      - ValidateSearch__DayDetail=60
+      - ValidateSearch__DayTotal=90
+
+      - sol__host=https://ocrcorev1.gosol.com.vn/ekyc/
+      - sol__recognition=/recognition
+      - sol__apiKey=5dabd636-636f-11ea-b479-b42e99011dd9
+      - sol__contentType=application/json
+      
+      - LoggingConfig__LogServer=http://elasticsearch:9200
+      - LoggingConfig__LogFileUrl=Logs/logs.txt
+      - LoggingConfig__OutputTemplate={Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}.{Method}] {Message}{NewLine}{Exception}
+      - LoggingConfig__RollingInterval=Day
+      - LoggingConfig__IndexFormat=gmb-topup-log-{0:yyyy.MM}
+      - LoggingConfig__AutoRegisterTemplate=true
+      - LoggingConfig__Application=api
+      - LoggingConfig__IsDisableElk=false 
+      - LoggingConfig__UserName=elastic
+      - LoggingConfig__Password=123423434a@   
+    networks:
+      - net
+
+    extra_hosts:
+      - "worker01:10.10.227.228"
+      - "worker02:10.10.227.229"
+      - "worker03:10.10.227.230"
+  
+      - "NTN-TOPUP-MONGO01:10.10.227.245"
+      - "NTN-TOPUP-MONGO02:10.10.227.246"
+      - "NTN-TOPUP-MONGO03:10.10.227.247"
+      - "postgres:10.10.227.248"
+    deploy:
+      restart_policy:
+        condition: on-failure
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.report!=1
+      resources:
+        limits:
+          cpus: "4"
+          memory: "4000M"
+        reservations:
+          memory: "500M"
+    volumes:
+      - api_data:/app/Logs
+

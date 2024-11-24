@@ -1,0 +1,28 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/{everything}",
+      "DownstreamPathTemplate": "/api/services/app/{everything}",
+      "DownstreamScheme": "http",
+       "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "API",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

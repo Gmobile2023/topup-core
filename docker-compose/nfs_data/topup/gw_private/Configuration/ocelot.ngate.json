@@ -1,0 +1,26 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/ngate/{everything}",
+      "DownstreamPathTemplate": "/api/v1/ngate/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ngate",
+          "Port": 80
+        }
+      ],
+
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "ngate",
+      "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+  ]
+}

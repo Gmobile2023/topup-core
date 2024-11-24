@@ -1,0 +1,91 @@
+version: "3.8"
+
+networks:
+  net:
+
+volumes:
+  topup_gate_data:
+
+services:
+  topup_gate:
+    image: hls2020/gmobile:topup_gate
+    networks:
+      - net
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - REGISTRY_CONFIG_FILE=appsettings.json
+      - TZ=Asia/Ho_Chi_Minh
+      - ConnectionStrings__Mongodb=mongodb://topup:app_topup_2024#!&@NTN-TOPUP-MONGO01:27017,NTN-TOPUP-MONGO02:27017,NTN-TOPUP-MONGO03:27017/?replicaSet=rs0
+      - ConnectionStrings__MongoDatabaseName=topup_gw
+
+      - Kestrel__Endpoints__Http__Url=http://topup_gate:80
+      - Kestrel__Endpoints__Http__Protocols=Http1
+      - Kestrel__Endpoints__GrpcInsecure__Url=http://topup_gate:5000
+      - Kestrel__Endpoints__GrpcInsecure__Protocols=Http2
+
+      - ServiceUrlConfig__GrpcServices__Common=http://common:5000
+      - ServiceUrlConfig__GrpcServices__Backend=http://backend:5000
+      - ServiceUrlConfig__GrpcServices__Report=http://report:5000
+      - ServiceUrlConfig__GrpcServices__TopupGateway=http://topup_gate:5000
+      - ServiceUrlConfig__GrpcServices__Commission=http://commission:5000
+      - ServiceUrlConfig__GrpcServices__Balance=http://balance:5000
+      - ServiceUrlConfig__GrpcServices__Stock=http://stock:5000
+      - ServiceUrlConfig__GrpcServices__KppData=http://kpp_report:5000
+      - ServiceUrlConfig__GrpcServices__Gateway=http://gateway:5000
+      - ServiceUrlConfig__GrpcServices__Worker=http://worker:5000
+      
+      - RedisConfig__SentinelHosts__0=10.10.227.248:6379
+      #- RedisConfig__SentinelHosts__1=10.10.227.248:6379
+      #- RedisConfig__SentinelHosts__2=10.10.227.248:6379
+      - RedisConfig__IsSentinel=false
+      - RedisConfig__IsEnable=true
+      - RedisConfig__MasterName=mymaster
+
+      - MassTransitConfig__IsUseGrpc=false
+      - MassTransitConfig__RabbitMqConfig__Host=worker01
+      - MassTransitConfig__RabbitMqConfig__Clusters=worker01;worker02;worker03
+      - MassTransitConfig__RabbitMqConfig__VirtualHost=topup
+      - MassTransitConfig__RabbitMqConfig__Username=topup
+      - MassTransitConfig__RabbitMqConfig__Password=gmobile_topup2024#
+
+      - LoggingConfig__LogServer=http://elasticsearch:9200
+      - LoggingConfig__LogFileUrl=Logs/logs.txt
+      - LoggingConfig__OutputTemplate={Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}.{Method}] {Message}{NewLine}{Exception}
+      - LoggingConfig__RollingInterval=Day
+      - LoggingConfig__IndexFormat=gmb-topup-log-{0:yyyy.MM}
+      - LoggingConfig__AutoRegisterTemplate=true
+      - LoggingConfig__Application=topup_gate
+      - LoggingConfig__IsDisableElk=false 
+      - LoggingConfig__UserName=elastic
+      - LoggingConfig__Password=123423434a@   
+
+    deploy:
+      restart_policy:
+        condition: on-failure
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.report!=1
+      #resources:
+        #limits:
+          #cpus: "3.5"
+          #memory: "2000M"
+        #reservations:
+          #memory: "500M"
+    extra_hosts:
+      - "worker01:10.10.227.228"
+      - "worker02:10.10.227.229"
+      - "worker03:10.10.227.230"
+   
+      - "NTN-TOPUP-MONGO01:10.10.227.245"
+      - "NTN-TOPUP-MONGO02:10.10.227.246"
+      - "NTN-TOPUP-MONGO03:10.10.227.247"
+      - "postgres:10.10.227.248"
+      #- "api.mytopup.top:192.168.0.6"
+ 
+    volumes:
+      - topup_gate_data:/app/Logs
+      - type: bind
+        source: /var/nfs_data/topup/topup_gate
+        target: /app/files

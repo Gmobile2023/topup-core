@@ -1,0 +1,49 @@
+﻿{
+  "Routes": [
+   {
+      "UpstreamPathTemplate": "/api/v1/sht/topup",
+      "DownstreamPathTemplate": "/api/v1/sht/topup",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.8.0.34",
+          "Port": 9986
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/sht/topup",
+      "DownstreamPathTemplate": "/api/v1/sht/topup",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.8.0.34",
+          "Port": 9986
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/sht/control",
+      "DownstreamPathTemplate": "/api/v1/sht/control",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.8.0.34",
+          "Port": 9986
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    }
+ ]
+}

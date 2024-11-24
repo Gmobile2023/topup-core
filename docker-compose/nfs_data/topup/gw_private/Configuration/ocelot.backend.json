@@ -1,0 +1,41 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/common/transcodegenerate",
+      "DownstreamPathTemplate": "/api/v1/common/transcodegenerate",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "backend",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "BackendService",
+      "Priority": 1
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/backend/{everything}",
+      "DownstreamPathTemplate": "/api/v1/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "backend",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "BackendService",
+      "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

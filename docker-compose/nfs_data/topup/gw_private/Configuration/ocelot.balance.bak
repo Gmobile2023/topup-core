@@ -1,0 +1,25 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/balance/{everything}",
+      "DownstreamPathTemplate": "/api/v1/balance/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "balance",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "BalanceService",
+      "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

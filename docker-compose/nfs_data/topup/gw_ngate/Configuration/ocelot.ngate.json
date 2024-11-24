@@ -1,0 +1,52 @@
+﻿{
+  "Routes": [
+  	{
+      "UpstreamPathTemplate": "/api/v1/ngate/check_phone_provider_combine_all_channel",
+      "DownstreamPathTemplate": "/api/v1/ngate/check_phone_provider_combine",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ngate",
+          "Port": 80
+        },
+		{
+          "Host": "10.10.227.228",
+          "Port": 9981
+        }
+      ],
+
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "ngate",
+      "Priority": 2,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/ngate/{everything}",
+      "DownstreamPathTemplate": "/api/v1/ngate/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ngate",
+          "Port": 80
+        }
+      ],
+
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "ngate",
+      "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

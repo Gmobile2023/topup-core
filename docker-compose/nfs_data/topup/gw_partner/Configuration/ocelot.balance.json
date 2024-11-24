@@ -1,0 +1,26 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/balance/check-balance",
+      "DownstreamPathTemplate": "/api/v1/balance/check-balance",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "balance",
+          "Port": 8080
+        }
+      ],
+      "SwaggerKey": "BalanceService",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "def2edf7-5d42-4edc-a84a-30136c340e13",
+        "AllowedScopes": []
+      },
+      "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

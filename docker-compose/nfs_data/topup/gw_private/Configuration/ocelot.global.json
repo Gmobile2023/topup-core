@@ -1,0 +1,10 @@
+﻿{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://gw_private:8000",
+    "ServiceDiscoveryProvider": {
+      "Host": "consul",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

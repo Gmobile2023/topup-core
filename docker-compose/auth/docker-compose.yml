@@ -1,0 +1,95 @@
+version: "3.8"
+
+networks:
+  net:
+
+volumes:
+  auth_01_data:
+  auth_02_data:
+  
+secrets:
+  auth_appsettings:
+    file: ./app/appsettings.json
+  cert_pfx:
+    file: ../ssl/gmobile.vn.pfx
+services:
+  auth_01:
+    image: hls2020/gmobile:topup_web
+    environment:
+      - REGISTRY_CONFIG_FILE=appsettings.Production.json
+      - ASPNETCORE_ENVIRONMENT=Production
+      - TZ=Asia/Ho_Chi_Minh 
+    networks:
+      - net
+    deploy:
+      #mode: global
+       # condition: on-failure
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.worker01== 1
+      resources:
+        limits:
+          cpus: "0.70"
+          memory: "2000M"
+        reservations:
+          memory: "500M"
+    ports:
+      - 7004:7000
+    volumes:
+      - auth_01_data:/app/Logs
+      #- type: bind
+        #source: /var/nfs_data/topup/ssl/gmobile.vn.pfx
+        #target: /app/gmobile.vn.pfx
+    secrets:
+      - source: auth_appsettings
+        target: /app/appsettings.Production.json
+      - source: cert_pfx
+        target: /app/gmobile.vn.pfx
+    extra_hosts:
+      - "worker01:10.10.227.228"
+      - "worker02:10.10.227.229"
+      - "worker03:10.10.227.230"
+      - "postgres:10.10.227.248"
+        
+  auth_02:
+    image: hls2020/gmobile:topup_web
+    environment:
+      - REGISTRY_CONFIG_FILE=appsettings.Production.json
+      - ASPNETCORE_ENVIRONMENT=Production
+      - TZ=Asia/Ho_Chi_Minh 
+    networks:
+      - net
+    deploy:
+      #mode: global
+       # condition: on-failure
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.worker02== 1
+      resources:
+        limits:
+          cpus: "0.70"
+          memory: "2000M"
+        reservations:
+          memory: "500M"
+    ports:
+      - 7005:7000
+    volumes:
+      - auth_02_data:/app/Logs
+      #- type: bind
+        #source: /var/nfs_data/topup/ssl/gmobile.vn.pfx
+        #target: /app/gmobile.vn.pfx
+    secrets:
+      - source: auth_appsettings
+        target: /app/appsettings.Production.json
+      - source: cert_pfx
+        target: /app/gmobile.vn.pfx
+    extra_hosts:
+      - "worker01:10.10.227.228"
+      - "worker02:10.10.227.229"
+      - "worker03:10.10.227.230"
+      - "postgres:10.10.227.248"
+

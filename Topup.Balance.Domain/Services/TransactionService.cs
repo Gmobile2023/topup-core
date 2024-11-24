@@ -23,13 +23,12 @@ public class TransactionService : ITransactionService
     private readonly ILogger<TransactionService> _logger;
 
     //private readonly Logger _logger = LogManager.GetLogger("TransactionService");
-    private readonly ITransCodeGenerator _transCodeGenerator;
+    //private readonly ITransCodeGenerator _transCodeGenerator;
 
-    public TransactionService(IBalanceMongoRepository balanceMongoRepository,
-        ITransCodeGenerator transCodeGenerator, ILogger<TransactionService> logger)
+    public TransactionService(IBalanceMongoRepository balanceMongoRepository,ILogger<TransactionService> logger)
     {
         _balanceMongoRepository = balanceMongoRepository;
-        _transCodeGenerator = transCodeGenerator;
+        //_transCodeGenerator = transCodeGenerator;
         _logger = logger;
     }
 
@@ -51,7 +50,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.Deposit,
             TransNote = depositRequest.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("D")
+            TransactionCode = Guid.NewGuid().ToString(),
         };
 
         try
@@ -110,7 +109,7 @@ public class TransactionService : ITransactionService
             TransType = TransactionType.Transfer,
             CreatedDate = DateTime.Now,
             TransNote = transferRequest.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync()
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -172,7 +171,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.Cashout,
             TransNote = cashOutRequest.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("C")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -236,7 +235,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.Payment,
             TransNote = paymentRequest.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("P")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -300,7 +299,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.FeePriority,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("P")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -368,7 +367,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.CancelPayment,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("P")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -428,7 +427,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.MasterTopup,
             TransNote = masterTopupRequest.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("M")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -502,7 +501,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.CollectDiscount,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("D")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -563,7 +562,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.Revert,
             TransNote = transactionRevert.Description,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("P")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -642,7 +641,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.CardCharges,
             TransNote = chargingRequest.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("D")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -707,7 +706,7 @@ public class TransactionService : ITransactionService
                 : TransactionType.AdjustmentIncrease,
             CreatedDate = DateTime.Now,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync()
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -766,7 +765,7 @@ public class TransactionService : ITransactionService
             TransType = TransactionType.ClearDebt,
             CreatedDate = DateTime.Now,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync()
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -825,7 +824,7 @@ public class TransactionService : ITransactionService
             TransType = TransactionType.SaleDeposit,
             CreatedDate = createdDate,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync()
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -902,7 +901,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.PayBatch,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("D")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -962,7 +961,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.Block,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("D")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -1020,7 +1019,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.Unblock,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("D")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -1076,7 +1075,7 @@ public class TransactionService : ITransactionService
             TransType = TransactionType.SystemTransfer,
             CreatedDate = DateTime.Now,
             TransNote = transferRequest.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync()
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try
@@ -1144,7 +1143,7 @@ public class TransactionService : ITransactionService
             Status = TransStatus.Done,
             TransType = TransactionType.PayCommission,
             TransNote = request.TransNote,
-            TransactionCode = await _transCodeGenerator.TransCodeGeneratorAsync("D")
+            TransactionCode = Guid.NewGuid().ToString()
         };
 
         try

@@ -1,0 +1,24 @@
+{
+  "SwaggerEndPoints": [
+	{
+      "Key": "ngate",
+      "Config": [
+        {
+          "Name": "Ngate",
+          "Version": "v1",
+          "Url": "http://ngate:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "ngate1",
+      "Config": [
+        {
+          "Name": "Ngate1",
+          "Version": "v1",
+          "Url": "http://10.10.227.228:9981/openapi"
+        }
+      ]
+    }
+  ]
+}

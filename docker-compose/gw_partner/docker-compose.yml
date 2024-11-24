@@ -1,0 +1,71 @@
+version: "3.8"
+
+networks:
+  net:
+
+volumes:
+  gw_partner_data:
+
+services:
+  gw_partner:
+    image: hls2020/common:api_gw
+    networks:
+      - net
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - REGISTRY_CONFIG_FILE=appsettings.json
+      - HostConfig__Url=http://*:5000
+      - TZ=Asia/Ho_Chi_Minh
+      - ApplicationOptions__IsCheckIP=false
+      - ApplicationOptions__IsEnableLogging=true
+
+      - Kestrel__IsEnable=false
+      #- Kestrel__Endpoints__Http__Url=http://*:5000
+      - Kestrel__Endpoints__Https__Url=https://*:5001
+      - Kestrel__Endpoints__Https__Certificate__Path=gmobile.vn.pfx
+
+      - OAuth__IdentityServer__AuthorizeUrl=https://id-topup.gmobile.vn/
+      - OAuth__IdentityServer__AuthRealm=https://id-topup.gmobile.vn/
+      - OAuth__IdentityServer__ClientId=default-api      
+      - OAuth__IdentityServer__Audience=default-api            
+      - OAuth__IdentityServer__ClientSecret=def2edf7-5d42-4edc-a84a-30136c340e13
+      - OAuth__IdentityServer__ProviderOcelotKey=def2edf7-5d42-4edc-a84a-30136c340e13
+
+      - LoggingConfig__LogServer=http://elasticsearch:9200
+      - LoggingConfig__LogFileUrl=Logs/logs.txt
+      - LoggingConfig__OutputTemplate={Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}.{Method}] {Message}{NewLine}{Exception}
+      - LoggingConfig__RollingInterval=Day
+      - LoggingConfig__IndexFormat=rewards-log-{0:yyyy.MM}
+      - LoggingConfig__AutoRegisterTemplate=true
+      - LoggingConfig__Application=gw_partner
+      - LoggingConfig__UserName=elastic
+      - LoggingConfig__Password=123423434a@
+      - LoggingConfig__IsDisableElk=true 
+
+    deploy:
+      restart_policy:
+        condition: on-failure
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.report!=1
+      #resources:
+        #limits:
+          #cpus: "2"
+          #memory: "2000M"
+        #reservations:
+          #memory: "500M"
+    ports:
+      - 8001:5001
+      #- 8002:5001
+    extra_hosts: 
+      - "id-topup.gmobile.vn:10.10.227.248"
+    volumes:
+      - gw_partner_data:/app/Logs
+      - type: bind
+        source: /var/nfs_data/topup/gw_partner/Configuration
+        target: /app/Configuration
+      - type: bind
+        source: /var/nfs_data/topup/ssl/gmobile.vn.pfx
+        target: /app/gmobile.vn.pfx

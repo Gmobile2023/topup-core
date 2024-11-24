@@ -1,0 +1,388 @@
+version: "3.8"
+
+networks:
+  net:
+
+volumes:
+  identity_server_01_data:
+  identity_server_02_data:
+  identity_server_03_data:
+  
+secrets:
+  auth_server_pfx:
+    file: ../ssl/server.pfx
+  cert_pfx:
+    file: ../ssl/gmobile.vn.pfx
+services:
+  identity_server_01:
+    image: hls2020/gmobile:topup_topup_web
+    environment:
+      - REGISTRY_CONFIG_FILE=appsettings.Production.json
+      - ASPNETCORE_ENVIRONMENT=Production
+      - TZ=Asia/Ho_Chi_Minh
+      
+      - ConnectionStrings__Default=User Id=topup;Password=topup_2024#!&;Host=10.10.227.248;Port=5432;Database=TopupGate;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - ConnectionStrings__HangFire=User Id=topup;Password=topup_2024#!&;Host=10.10.227.248;Port=5432;Database=HangFire;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - ConnectionStrings__IdentityServer=User Id=topup;Password=topup_2024#!&;Host=10.10.227.248;Port=5432;Database=identity_server_management;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - AbpZeroLicenseCode=LicenseCodePlaceHolderToReplace
+      
+      - Abp__RedisCache__ConnectionString=10.10.227.248:6379
+      - Abp__RedisCache__DatabaseId=-1
+      - Abp__RedisCache__RedisServer=10.10.227.248:6379
+      - Abp__RedisCache__MasterName=mymaster
+      - App__WebSiteRootAddress=https://id-topup.gmobile.vn/
+      - App__RedirectAllowedExternalWebSites=https://localhost:44303/
+      - App__SwaggerEndPoint=/swagger/v1/swagger.json
+      - App__AllowHangFireServer=false
+      - App__HangServerName=GMB-Web01
+      - App__DownloadApp=
+      - App__AppVersion=10.0.0.1
+      - App__FileExtentions=.jpg,.jpeg,.gif,.png,.pdf,.dox,.docx,.xls,.xlsx,.tiff,.tif,.bmp,.BMPf,.ico,.cur,.xbm,.svg
+      - App__FileKnownTypes=image/jpeg,image/png,image/gif,image/png,application/pdf,application/msword,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/svg+xml
+      - App__SwichProviderConfigValue=3
+      - App__ExportPerPage=5000
+      - App__ApiLinkPayment=https://api-topup-partner.gmobile.vn
+      - App__Environment=Production
+      - App__EmailCCTech=admin@gmobile.vn;kythuat@gmobile.vn;letienhoang@hotmail.com
+      - App__SwichLoadUserRateValue=admin;admin;supporter;supporter02
+      
+      - IdentityServer__IsEnabled=true
+      - IdentityServer__Authority=https://id-topup.gmobile.vn/
+      - IdentityServer__ApiName=default-api
+      - IdentityServer__ApiSecret=secret
+      - IdentityServer__CertificateConfiguration__UseTemporarySigningKeyForDevelopment=false
+      - IdentityServer__CertificateConfiguration__CertificateStoreLocation=LocalMachine
+      - IdentityServer__CertificateConfiguration__CertificateValidOnly=true
+      - IdentityServer__CertificateConfiguration__UseSigningCertificatePfxFile=true
+      - IdentityServer__CertificateConfiguration__SigningCertificatePfxFilePath=server.pfx
+      - IdentityServer__CertificateConfiguration__SigningCertificatePfxFilePassword=123456
+      - IdentityServer__CertificateConfiguration__UseValidationCertificatePfxFile=true
+      - IdentityServer__CertificateConfiguration__ValidationCertificatePfxFilePath=server.pfx
+      - IdentityServer__CertificateConfiguration__ValidationCertificatePfxFilePassword=123456
+      
+      - HealthChecks__HealthChecksEnabled=false
+      - KestrelServer__IsEnabled=true
+      - Kestrel__Endpoints__Https__Url=https://*:7000
+      - Kestrel__Endpoints__Https__Certificate__Path=gmobile.vn.pfx
+      
+      - TopupService__ServiceApi=http://gw_private:5000
+      - TopupService__ViettelApi=https://viettel.vn
+      - TopupService__TokenServer__Server=https://id-topup.gmobile.vn/
+      - TopupService__TokenServer__ClientId=web
+      - TopupService__TokenServer__SecrectKey=def2edf7-5d42-4edc-a84a-30136c340e13
+      - TopupService__TokenServer__ApiName=default-api
+      - TopupService__Timeout=3000
+      
+      - LoggingConfig__LogServer=http://elasticsearch:9200
+      - LoggingConfig__LogFileUrl=Logs/logs.txt
+      - LoggingConfig__OutputTemplate={Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}.{Method}] {Message}{NewLine}{Exception}
+      - LoggingConfig__RollingInterval=Day
+      - LoggingConfig__IndexFormat=gmb-topup-log-{0:yyyy.MM}
+      - LoggingConfig__Application=auth
+      - LoggingConfig__UserName=elactic
+      
+      - LoggingConfig__Password=123423434a@
+      - FtpServer__Url=ftp://192.168.11.247
+      - FtpServer__UrlViewFile=https://files.gmobile.vn
+      - FtpServer__UserName=ftp_user
+      - FtpServer__Password=tpCMPf62dgydENwHwaX2yT6
+      - CmsConfig__Url=https://gmobile.vn/wp-json/
+      - CmsConfig__PageAdvertiseAcfMobileId=5
+      - EventBus__IsEnabled=true
+      - EventBus__IsConsumer=false
+      - EventBus__RabbitMq__Host=worker01
+      - EventBus__RabbitMq__Clusters=worker01;worker02;worker03
+      - EventBus__RabbitMq__VirtualHost=topup
+      - EventBus__RabbitMq__Username=topup
+      - EventBus__RabbitMq__Password=gmobile_topup2024#
+      
+      - HangfireConfig__DeleteBinaryObject__IsRun=false
+      - HangfireConfig__DeleteBinaryObject__TimeRun=1
+      - HangfireConfig__MinStockAirtime__IsRun=false
+      - HangfireConfig__MinStockAirtime__TimeRun=5
+      - HangfireConfig__TimeAutoUnLockProvider=30
+      - ValidateSearch__Enable=true
+      - ValidateSearch__DayDetail=60
+      - ValidateSearch__DayTotal=90  
+    networks:
+      - net
+    deploy:
+      #mode: global
+       # condition: on-failure
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.worker01== 1
+      resources:
+        limits:
+          cpus: "0.70"
+          memory: "2000M"
+        reservations:
+          memory: "500M"
+    ports:
+      - 7005:7000
+    volumes:
+      - identity_server_01_data:/app/Logs
+      #- type: bind
+        #source: /var/nfs_data/topup/ssl/gmobile.vn.pfx
+        #target: /app/gmobile.vn.pfx
+    secrets:
+      - source: auth_server_pfx
+        target: /app/server.pfx
+      - source: cert_pfx
+        target: /app/gmobile.vn.pfx
+    extra_hosts:
+      - "worker01:10.10.227.228"
+      - "worker02:10.10.227.229"
+      - "worker03:10.10.227.230"
+      - "postgres:10.10.227.248"
+      
+  identity_server_02:
+    image: hls2020/gmobile:topup_topup_web
+    environment:
+      - REGISTRY_CONFIG_FILE=appsettings.Production.json
+      - ASPNETCORE_ENVIRONMENT=Production
+      - TZ=Asia/Ho_Chi_Minh
+      
+      - ConnectionStrings__Default=User Id=topup;Password=topup_2024#!&;Host=10.10.227.248;Port=5432;Database=TopupGate;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - ConnectionStrings__HangFire=User Id=topup;Password=topup_2024#!&;Host=10.10.227.248;Port=5432;Database=HangFire;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - ConnectionStrings__IdentityServer=User Id=topup;Password=topup_2024#!&;Host=10.10.227.248;Port=5432;Database=identity_server_management;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - AbpZeroLicenseCode=LicenseCodePlaceHolderToReplace
+      
+      - Abp__RedisCache__ConnectionString=10.10.227.248:6379
+      - Abp__RedisCache__DatabaseId=-1
+      - Abp__RedisCache__RedisServer=10.10.227.248:6379
+      - Abp__RedisCache__MasterName=mymaster
+      - App__WebSiteRootAddress=https://id-topup.gmobile.vn/
+      - App__RedirectAllowedExternalWebSites=https://localhost:44303/
+      - App__SwaggerEndPoint=/swagger/v1/swagger.json
+      - App__AllowHangFireServer=false
+      - App__HangServerName=GMB-Web01
+      - App__DownloadApp=
+      - App__AppVersion=10.0.0.1
+      - App__FileExtentions=.jpg,.jpeg,.gif,.png,.pdf,.dox,.docx,.xls,.xlsx,.tiff,.tif,.bmp,.BMPf,.ico,.cur,.xbm,.svg
+      - App__FileKnownTypes=image/jpeg,image/png,image/gif,image/png,application/pdf,application/msword,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/svg+xml
+      - App__SwichProviderConfigValue=3
+      - App__ExportPerPage=5000
+      - App__ApiLinkPayment=https://api-topup-partner.gmobile.vn
+      - App__Environment=Production
+      - App__EmailCCTech=admin@gmobile.vn;kythuat@gmobile.vn;letienhoang@hotmail.com
+      - App__SwichLoadUserRateValue=admin;admin;supporter;supporter02
+      
+      - IdentityServer__IsEnabled=true
+      - IdentityServer__Authority=https://id-topup.gmobile.vn/
+      - IdentityServer__ApiName=default-api
+      - IdentityServer__ApiSecret=secret
+      - IdentityServer__CertificateConfiguration__UseTemporarySigningKeyForDevelopment=false
+      - IdentityServer__CertificateConfiguration__CertificateStoreLocation=LocalMachine
+      - IdentityServer__CertificateConfiguration__CertificateValidOnly=true
+      - IdentityServer__CertificateConfiguration__UseSigningCertificatePfxFile=true
+      - IdentityServer__CertificateConfiguration__SigningCertificatePfxFilePath=server.pfx
+      - IdentityServer__CertificateConfiguration__SigningCertificatePfxFilePassword=123456
+      - IdentityServer__CertificateConfiguration__UseValidationCertificatePfxFile=true
+      - IdentityServer__CertificateConfiguration__ValidationCertificatePfxFilePath=server.pfx
+      - IdentityServer__CertificateConfiguration__ValidationCertificatePfxFilePassword=123456
+      
+      - HealthChecks__HealthChecksEnabled=false
+      - KestrelServer__IsEnabled=true
+      - Kestrel__Endpoints__Https__Url=https://*:7000
+      - Kestrel__Endpoints__Https__Certificate__Path=gmobile.vn.pfx
+      
+      - TopupService__ServiceApi=http://gw_private:5000
+      - TopupService__ViettelApi=https://viettel.vn
+      - TopupService__TokenServer__Server=https://id-topup.gmobile.vn/
+      - TopupService__TokenServer__ClientId=web
+      - TopupService__TokenServer__SecrectKey=def2edf7-5d42-4edc-a84a-30136c340e13
+      - TopupService__TokenServer__ApiName=default-api
+      - TopupService__Timeout=3000
+      
+      - LoggingConfig__LogServer=http://elasticsearch:9200
+      - LoggingConfig__LogFileUrl=Logs/logs.txt
+      - LoggingConfig__OutputTemplate={Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}.{Method}] {Message}{NewLine}{Exception}
+      - LoggingConfig__RollingInterval=Day
+      - LoggingConfig__IndexFormat=gmb-topup-log-{0:yyyy.MM}
+      - LoggingConfig__Application=auth
+      - LoggingConfig__UserName=elactic
+      
+      - LoggingConfig__Password=123423434a@
+      - FtpServer__Url=ftp://192.168.11.247
+      - FtpServer__UrlViewFile=https://files.gmobile.vn
+      - FtpServer__UserName=ftp_user
+      - FtpServer__Password=tpCMPf62dgydENwHwaX2yT6
+      - CmsConfig__Url=https://gmobile.vn/wp-json/
+      - CmsConfig__PageAdvertiseAcfMobileId=5
+      - EventBus__IsEnabled=true
+      - EventBus__IsConsumer=false
+      - EventBus__RabbitMq__Host=worker01
+      - EventBus__RabbitMq__Clusters=worker01;worker02;worker03
+      - EventBus__RabbitMq__VirtualHost=topup
+      - EventBus__RabbitMq__Username=topup
+      - EventBus__RabbitMq__Password=gmobile_topup2024#
+      
+      - HangfireConfig__DeleteBinaryObject__IsRun=false
+      - HangfireConfig__DeleteBinaryObject__TimeRun=1
+      - HangfireConfig__MinStockAirtime__IsRun=false
+      - HangfireConfig__MinStockAirtime__TimeRun=5
+      - HangfireConfig__TimeAutoUnLockProvider=30
+      - ValidateSearch__Enable=true
+      - ValidateSearch__DayDetail=60
+      - ValidateSearch__DayTotal=90  
+    networks:
+      - net
+    deploy:
+      #mode: global
+       # condition: on-failure
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.worker01== 1
+      resources:
+        limits:
+          cpus: "0.70"
+          memory: "2000M"
+        reservations:
+          memory: "500M"
+    ports:
+      - 7006:7000
+    volumes:
+      - identity_server_02_data:/app/Logs
+      #- type: bind
+        #source: /var/nfs_data/topup/ssl/gmobile.vn.pfx
+        #target: /app/gmobile.vn.pfx
+    secrets:
+      - source: auth_server_pfx
+        target: /app/server.pfx
+      - source: cert_pfx
+        target: /app/gmobile.vn.pfx
+    extra_hosts:
+      - "worker01:10.10.227.228"
+      - "worker02:10.10.227.229"
+      - "worker03:10.10.227.230"
+      - "postgres:10.10.227.248"
+      
+  identity_server_03:
+    image: hls2020/gmobile:topup_topup_web
+    environment:
+      - REGISTRY_CONFIG_FILE=appsettings.Production.json
+      - ASPNETCORE_ENVIRONMENT=Production
+      - TZ=Asia/Ho_Chi_Minh
+      
+      - ConnectionStrings__Default=User Id=topup;Password=topup_2024#!&;Host=10.10.227.248;Port=5432;Database=TopupGate;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - ConnectionStrings__HangFire=User Id=topup;Password=topup_2024#!&;Host=10.10.227.248;Port=5432;Database=HangFire;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - ConnectionStrings__IdentityServer=User Id=topup;Password=topup_2024#!&;Host=10.10.227.248;Port=5432;Database=identity_server_management;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - AbpZeroLicenseCode=LicenseCodePlaceHolderToReplace
+      
+      - Abp__RedisCache__ConnectionString=10.10.227.248:6379
+      - Abp__RedisCache__DatabaseId=-1
+      - Abp__RedisCache__RedisServer=10.10.227.248:6379
+      - Abp__RedisCache__MasterName=mymaster
+      - App__WebSiteRootAddress=https://id-topup.gmobile.vn/
+      - App__RedirectAllowedExternalWebSites=https://localhost:44303/
+      - App__SwaggerEndPoint=/swagger/v1/swagger.json
+      - App__AllowHangFireServer=false
+      - App__HangServerName=GMB-Web01
+      - App__DownloadApp=
+      - App__AppVersion=10.0.0.1
+      - App__FileExtentions=.jpg,.jpeg,.gif,.png,.pdf,.dox,.docx,.xls,.xlsx,.tiff,.tif,.bmp,.BMPf,.ico,.cur,.xbm,.svg
+      - App__FileKnownTypes=image/jpeg,image/png,image/gif,image/png,application/pdf,application/msword,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/svg+xml
+      - App__SwichProviderConfigValue=3
+      - App__ExportPerPage=5000
+      - App__ApiLinkPayment=https://api-topup-partner.gmobile.vn
+      - App__Environment=Production
+      - App__EmailCCTech=admin@gmobile.vn;kythuat@gmobile.vn;letienhoang@hotmail.com
+      - App__SwichLoadUserRateValue=admin;admin;supporter;supporter02
+      
+      - IdentityServer__IsEnabled=true
+      - IdentityServer__Authority=https://id-topup.gmobile.vn/
+      - IdentityServer__ApiName=default-api
+      - IdentityServer__ApiSecret=secret
+      - IdentityServer__CertificateConfiguration__UseTemporarySigningKeyForDevelopment=false
+      - IdentityServer__CertificateConfiguration__CertificateStoreLocation=LocalMachine
+      - IdentityServer__CertificateConfiguration__CertificateValidOnly=true
+      - IdentityServer__CertificateConfiguration__UseSigningCertificatePfxFile=true
+      - IdentityServer__CertificateConfiguration__SigningCertificatePfxFilePath=server.pfx
+      - IdentityServer__CertificateConfiguration__SigningCertificatePfxFilePassword=123456
+      - IdentityServer__CertificateConfiguration__UseValidationCertificatePfxFile=true
+      - IdentityServer__CertificateConfiguration__ValidationCertificatePfxFilePath=server.pfx
+      - IdentityServer__CertificateConfiguration__ValidationCertificatePfxFilePassword=123456
+      
+      - HealthChecks__HealthChecksEnabled=false
+      - KestrelServer__IsEnabled=true
+      - Kestrel__Endpoints__Https__Url=https://*:7000
+      - Kestrel__Endpoints__Https__Certificate__Path=gmobile.vn.pfx
+      
+      - TopupService__ServiceApi=http://gw_private:5000
+      - TopupService__ViettelApi=https://viettel.vn
+      - TopupService__TokenServer__Server=https://id-topup.gmobile.vn/
+      - TopupService__TokenServer__ClientId=web
+      - TopupService__TokenServer__SecrectKey=def2edf7-5d42-4edc-a84a-30136c340e13
+      - TopupService__TokenServer__ApiName=default-api
+      - TopupService__Timeout=3000
+      
+      - LoggingConfig__LogServer=http://elasticsearch:9200
+      - LoggingConfig__LogFileUrl=Logs/logs.txt
+      - LoggingConfig__OutputTemplate={Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}.{Method}] {Message}{NewLine}{Exception}
+      - LoggingConfig__RollingInterval=Day
+      - LoggingConfig__IndexFormat=gmb-topup-log-{0:yyyy.MM}
+      - LoggingConfig__Application=auth
+      - LoggingConfig__UserName=elactic
+      
+      - LoggingConfig__Password=123423434a@
+      - FtpServer__Url=ftp://192.168.11.247
+      - FtpServer__UrlViewFile=https://files.gmobile.vn
+      - FtpServer__UserName=ftp_user
+      - FtpServer__Password=tpCMPf62dgydENwHwaX2yT6
+      - CmsConfig__Url=https://gmobile.vn/wp-json/
+      - CmsConfig__PageAdvertiseAcfMobileId=5
+      - EventBus__IsEnabled=true
+      - EventBus__IsConsumer=false
+      - EventBus__RabbitMq__Host=worker01
+      - EventBus__RabbitMq__Clusters=worker01;worker02;worker03
+      - EventBus__RabbitMq__VirtualHost=topup
+      - EventBus__RabbitMq__Username=topup
+      - EventBus__RabbitMq__Password=gmobile_topup2024#
+      
+      - HangfireConfig__DeleteBinaryObject__IsRun=false
+      - HangfireConfig__DeleteBinaryObject__TimeRun=1
+      - HangfireConfig__MinStockAirtime__IsRun=false
+      - HangfireConfig__MinStockAirtime__TimeRun=5
+      - HangfireConfig__TimeAutoUnLockProvider=30
+      - ValidateSearch__Enable=true
+      - ValidateSearch__DayDetail=60
+      - ValidateSearch__DayTotal=90  
+    networks:
+      - net
+    deploy:
+      #mode: global
+       # condition: on-failure
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.worker01== 1
+      resources:
+        limits:
+          cpus: "0.70"
+          memory: "2000M"
+        reservations:
+          memory: "500M"
+    ports:
+      - 7007:7000
+    volumes:
+      - identity_server_03_data:/app/Logs
+      #- type: bind
+        #source: /var/nfs_data/topup/ssl/gmobile.vn.pfx
+        #target: /app/gmobile.vn.pfx
+    secrets:
+      - source: auth_server_pfx
+        target: /app/server.pfx
+      - source: cert_pfx
+        target: /app/gmobile.vn.pfx
+    extra_hosts:
+      - "worker01:10.10.227.228"
+      - "worker02:10.10.227.229"
+      - "worker03:10.10.227.230"
+      - "postgres:10.10.227.248"
+

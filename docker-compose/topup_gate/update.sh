@@ -1,0 +1,1 @@
+docker service update --image hls2020/gmobile:topup_topup_gate --update-parallelism 1 --update-delay 10s vas_topup_gate

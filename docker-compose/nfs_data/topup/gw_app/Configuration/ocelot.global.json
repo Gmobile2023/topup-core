@@ -1,0 +1,10 @@
+﻿{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://api-daily-topup.gmobile.vn",
+    "ServiceDiscoveryProvider": {
+      "Host": "consul",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

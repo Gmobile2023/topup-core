@@ -1,0 +1,188 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/gateway/topup",
+      "DownstreamPathTemplate": "/api/v1/transactions/topup",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gateway",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "GatewayService",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "def2edf7-5d42-4edc-a84a-30136c340e13",
+        "AllowedScopes": []
+      },
+      "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+	{
+      "UpstreamPathTemplate": "/api/v1/gateway/bill-query",
+      "DownstreamPathTemplate": "/api/v1/transactions/bill-query",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gateway",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "GatewayService",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "def2edf7-5d42-4edc-a84a-30136c340e13",
+        "AllowedScopes": []
+      },
+	  "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/gateway/pay-bill",
+      "DownstreamPathTemplate": "/api/v1/transactions/pay-bill",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gateway",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "GatewayService",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "def2edf7-5d42-4edc-a84a-30136c340e13",
+        "AllowedScopes": []
+      },
+	  "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/gateway/pincode",
+      "DownstreamPathTemplate": "/api/v1/transactions/pincode",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gateway",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "GatewayService",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "def2edf7-5d42-4edc-a84a-30136c340e13",
+        "AllowedScopes": []
+      },
+	  "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/gateway/checktrans",
+      "DownstreamPathTemplate": "/api/v1/transactions/check",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gateway",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "GatewayService",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "def2edf7-5d42-4edc-a84a-30136c340e13",
+        "AllowedScopes": []
+      },
+	  "Priority": 1,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+	{
+	  "UpstreamPathTemplate": "/api/v2/gateway/checktrans",
+	  "DownstreamPathTemplate": "/api/v2/transactions/checktrans",
+	  "DownstreamScheme": "http",
+	  "UpstreamHttpMethod": [
+		"Get"
+	  ],
+	  "DownstreamHostAndPorts": [
+		{
+		  "Host": "gateway",
+		  "Port": 80
+		}
+	  ],
+	  "LoadBalancerOptions": {
+		"Type": "RoundRobin"
+	  },
+	  "SwaggerKey": "GatewayService",
+	  "AuthenticationOptions": {
+		"AuthenticationProviderKey": "def2edf7-5d42-4edc-a84a-30136c340e13",
+		"AllowedScopes": []
+	  },
+	  "Priority": 1,
+	  "QoSOptions": {
+		"ExceptionsAllowedBeforeBreaking": 3,
+		"DurationOfBreak": 0,
+		"TimeoutValue": 30000000
+	  }
+	},
+	{
+      "UpstreamPathTemplate": "/api/v1/gateway/checktrans_v2",
+      "DownstreamPathTemplate": "/api/v1/transactions/checktrans_v2",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "gateway",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "GatewayService",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "def2edf7-5d42-4edc-a84a-30136c340e13",
+        "AllowedScopes": []
+      },
+	  "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

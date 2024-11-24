@@ -1,0 +1,28 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/authentication",
+      "DownstreamPathTemplate": "/connect/token",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "id-topup.gmobile.vn",
+          "Port": 443
+        }
+      ],
+      "Priority": 1
+    },
+    {
+      "UpstreamPathTemplate": "/connect/token",
+      "DownstreamPathTemplate": "/connect/token",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "id-topup.gmobile.vn",
+          "Port": 443
+        }
+      ],
+      "Priority": 1
+    }
+  ]
+}

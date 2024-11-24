@@ -1,0 +1,129 @@
+version: "3.8"
+
+networks:
+  net:
+
+volumes:
+  report_data:
+
+services:
+  report:
+    image: hls2020/gmobile:topup_report
+    networks:
+      - net
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - REGISTRY_CONFIG_FILE=appsettings.json
+      - TZ=Asia/Ho_Chi_Minh
+      - ConnectionStrings__Mongodb=mongodb://topup:app_topup_2024#!&@NTN-TOPUP-MONGO01:27017,NTN-TOPUP-MONGO02:27017,NTN-TOPUP-MONGO03:27017/?replicaSet=rs0
+      - ConnectionStrings__MongoDatabaseName=topup_report
+
+      - Kestrel__Endpoints__Http__Url=http://report:80
+      - Kestrel__Endpoints__Http__Protocols=Http1
+      - Kestrel__Endpoints__GrpcInsecure__Url=http://report:5000
+      - Kestrel__Endpoints__GrpcInsecure__Protocols=Http2
+
+      - ServiceUrlConfig__GrpcServices__Common=http://common:5000
+      - ServiceUrlConfig__GrpcServices__Backend=http://backend:5000
+      - ServiceUrlConfig__GrpcServices__Report=http://report:5000
+      - ServiceUrlConfig__GrpcServices__TopupGateway=http://topup_gate:5000
+      - ServiceUrlConfig__GrpcServices__Commission=http://commission:5000
+      - ServiceUrlConfig__GrpcServices__Balance=http://balance:5000
+      - ServiceUrlConfig__GrpcServices__Stock=http://stock:5000
+      - ServiceUrlConfig__GrpcServices__KppData=http://kpp_report:5000
+      - ServiceUrlConfig__GrpcServices__Gateway=http://gateway:5000
+      - ServiceUrlConfig__GatewayPrivate=http://gw_private:5000
+
+
+      - RedisConfig__SentinelHosts__0=10.10.227.248:6379
+      #- RedisConfig__SentinelHosts__1=10.10.227.248:6379
+      #- RedisConfig__SentinelHosts__2=10.10.227.248:6379
+      - RedisConfig__IsSentinel=false
+      - RedisConfig__IsEnable=true
+      - RedisConfig__MasterName=mymaster
+
+      - MassTransitConfig__IsUseGrpc=false
+      - MassTransitConfig__RabbitMqConfig__Host=worker01
+      - MassTransitConfig__RabbitMqConfig__Clusters=worker01;worker02;worker03
+      - MassTransitConfig__RabbitMqConfig__VirtualHost=topup
+      - MassTransitConfig__RabbitMqConfig__Username=topup
+      - MassTransitConfig__RabbitMqConfig__Password=gmobile_topup2024#
+
+      - Hangfire__IsRun=false
+      - Hangfire__EnableHangfire=false
+      - Hangfire__ServcerName=ReportService
+      - Hangfire__ReportCardStockInDay__IsRun=false
+      - Hangfire__ReportCardStockInDay__TimeRun=19
+      - Hangfire__ReportBlanceAccountInDay__IsRun=false
+      - Hangfire__ReportBlanceAccountInDay__TimeRun=18     
+      - Hangfire__ReportAuto0h__IsRun=true
+      - Hangfire__ReportAuto0h__TimeRunTest=19
+      
+      - Telegram__CompareChatId=-638614732
+
+      - EmailConfig__SmtpServer=smtp.bizflycloud.vn        
+      - EmailConfig__EmailAddress=hotro@gmobile.vn        
+      - EmailConfig__EmailPassword=Abc@321a        
+      - EmailConfig__EmailDisplay=hotro@gmobile.vn    
+      - EmailConfig__EnableSsl=true
+      - EmailConfig__Port=25    
+      - EmailConfig__SendEmailLimitMinInventory__IsSendMail=false       
+      - EmailConfig__SendEmailLimitMinInventory__IsBotMessage=true       
+      - EmailConfig__SendEmailLimitMinInventory__EmailReceive=kythuat@gmobile.vn       
+      - EmailConfig__SendEmailLimitMinInventory__TimeReSend=60      
+      - EmailConfig__SendEmailLimitMinInventory__SendCount=3      
+      - EmailConfig__SendEmailMinLimitBalance__IsSendMail=false      
+      - EmailConfig__SendEmailMinLimitBalance__IsBotMessage=true
+            
+      - ElasticSearch__Url=http://elasticsearch:9200    
+      - ElasticSearch__UserName=elastic
+      - ElasticSearch__Password=123423434a@
+      - ElasticSearch__IsSearch=true
+
+      - ServiceConfig__GatewayPrivate=http://api:80
+      - ServiceConfig__GatewayTopup=http://topup_gate:80
+      - ServiceConfig__BalancePrivate=http://balance:80
+      
+      - FtpServer__Url=ftp://192.168.11.247
+      - FtpServer__UrlViewFile=https://files-daily-topup.gmobile.vn
+      - FtpServer__UserName=ftp_user
+      - FtpServer__Password=tpCMPf62dgydENwHwaX2yT6
+      - FtpServer__UserNameReport=ftp_report
+      - FtpServer__PasswordReport=ftp_report@123abc
+
+      - LoggingConfig__LogServer=http://elasticsearch:9200
+      - LoggingConfig__LogFileUrl=Logs/logs.txt
+      - LoggingConfig__OutputTemplate={Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}.{Method}] {Message}{NewLine}{Exception}
+      - LoggingConfig__RollingInterval=Day
+      - LoggingConfig__IndexFormat=gmb-topup-log-{0:yyyy.MM}
+      - LoggingConfig__AutoRegisterTemplate=true
+      - LoggingConfig__Application=report
+      - LoggingConfig__IsDisableElk=false 
+      - LoggingConfig__UserName=elastic
+      - LoggingConfig__Password=123423434a@   
+
+    deploy:
+      restart_policy:
+        condition: on-failure
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.report!=1
+      resources:
+        limits:
+          cpus: "3.5"
+          memory: "4000M"
+        reservations:
+          memory: "500M"
+    extra_hosts:
+      - "worker01:10.10.227.228"
+      - "worker02:10.10.227.229"
+      - "worker03:10.10.227.230"
+      - "NTN-TOPUP-MONGO01:10.10.227.245"
+      - "NTN-TOPUP-MONGO02:10.10.227.246"
+      - "NTN-TOPUP-MONGO03:10.10.227.247"
+      - "postgres:10.10.227.248"
+ 
+    volumes:
+      - report_data:/app/Logs

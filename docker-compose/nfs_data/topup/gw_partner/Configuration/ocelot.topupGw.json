@@ -1,0 +1,70 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/topup-gateway/123card/call-back",
+      "DownstreamPathTemplate": "/api/v1/callBack",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "topup_gate",
+          "Port": 80
+        }
+      ],
+	  "SwaggerKey": "TopupGateService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "Priority": 1,
+	  "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/topup-gateway/zota/call-back",
+      "DownstreamPathTemplate": "/api/v1/callBackZoTa",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "topup_gate",
+          "Port": 80
+        }
+      ],
+	  "SwaggerKey": "TopupGateService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "Priority": 1,
+	"QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/topup-gateway/cg/call-back",
+      "DownstreamPathTemplate": "/api/v1/callBackCG2022",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "topup_gate",
+          "Port": 80
+        }
+      ],
+	  "SwaggerKey": "TopupGateService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "Priority": 1,
+	"QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

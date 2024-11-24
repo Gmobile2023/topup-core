@@ -13,6 +13,7 @@ public partial class MainService
 {
     public async Task<object> GetAsync(AccountBalanceGetRequest accountBalanceCheckRequest)
     {
+        await _balanceService.CurrencyCreateAsync("VND");
         //_logger.LogInformation("ReceivedAccountBalanceCheckRequest: {Request}", accountBalanceCheckRequest.ToJson());
         if (accountBalanceCheckRequest == null || string.IsNullOrEmpty(accountBalanceCheckRequest.PartnerCode))
             return new NewMessageResponseBase<decimal>

@@ -1,0 +1,19 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/http/send-message",
+      "DownstreamPathTemplate": "/http/send-message",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.8.0.21",
+          "Port": 9710
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    }   
+ ]
+}

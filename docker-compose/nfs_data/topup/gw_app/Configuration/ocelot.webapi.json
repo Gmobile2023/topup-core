@@ -1,0 +1,974 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Private/HandlerDepositSmsReceiver",
+      "DownstreamPathTemplate": "/api/services/app/Private/HandlerDepositSmsReceiver",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/CommonLookup/{everything}",
+      "DownstreamPathTemplate": "/api/services/app/CommonLookup/{everything}",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Common/CheckAccountActivities",
+      "DownstreamPathTemplate": "/api/services/app/Common/CheckAccountActivities",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Common/AppSetting",
+      "DownstreamPathTemplate": "/api/services/app/Common/AppSetting",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    
+    {
+      "UpstreamPathTemplate": "/api/v1/app/File/UploadFile",
+      "DownstreamPathTemplate": "/api/services/app/File/UploadFile",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/File/DetectImage",
+      "DownstreamPathTemplate": "/api/services/app/File/DetectImage",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/File/UploadProfileAvatar",
+      "DownstreamPathTemplate": "/api/services/app/File/UploadProfileAvatar",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/GetSavePayBills",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/GetSavePayBills",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/RemoveSavePayBill",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/RemoveSavePayBill",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/BillQueryRequest",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/BillQueryRequest",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/PayBillRequest",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/PayBillRequest",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/GetTransactionByCode",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/GetTransactionByCode",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/GetTransactionDetail",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/GetTransactionDetail",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/TransferMoney",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/TransferMoney",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/GetLimitAmountBalance",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/GetLimitAmountBalance",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/GetBalance",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/GetBalance",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/CreateTopupRequest",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/CreateTopupRequest",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/CreatePinCodeRequest",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/CreatePinCodeRequest",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Transactions/GetTotalWaitingBill",
+      "DownstreamPathTemplate": "/api/services/app/Transactions/GetTotalWaitingBill",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Deposits/DepositRequest",
+      "DownstreamPathTemplate": "/api/services/app/Deposits/DepositRequest",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    
+    
+    {
+      "UpstreamPathTemplate": "/api/v1/app/NotificationManagement/{everything}",
+      "DownstreamPathTemplate": "/api/services/app/NotificationManagement/{everything}",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Account/Register",
+      "DownstreamPathTemplate": "/api/services/app/Account/Register",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Account/SendOtp",
+      "DownstreamPathTemplate": "/api/services/app/Account/SendOtp",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Account/VerifyOtp",
+      "DownstreamPathTemplate": "/api/services/app/Account/VerifyOtp",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Account/ResetPassword",
+      "DownstreamPathTemplate": "/api/services/app/Account/ResetPassword",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Account/SendPasswordResetCode",
+      "DownstreamPathTemplate": "/api/services/app/Account/SendPasswordResetCode",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Account/ValidateAccount",
+      "DownstreamPathTemplate": "/api/services/app/Account/ValidateAccount",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v1/app/TokenAuth/Authenticate",
+      "DownstreamPathTemplate": "/api/services/app/TokenAuth/Authenticate",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v1/app/AgentService/GetListUserStaff",
+      "DownstreamPathTemplate": "/api/services/app/AgentService/GetListUserStaff",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/AgentService/GetTotalStaffUser",
+      "DownstreamPathTemplate": "/api/services/app/AgentService/GetTotalStaffUser",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/AgentService/UpdateUserStaff",
+      "DownstreamPathTemplate": "/api/services/app/AgentService/UpdateUserStaff",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/AgentService/LockUnLockAccount",
+      "DownstreamPathTemplate": "/api/services/app/AgentService/LockUnLockAccount",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/AgentService/CreateUserStaff",
+      "DownstreamPathTemplate": "/api/services/app/AgentService/CreateUserStaff",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v1/app/Profile/{everything}",
+      "DownstreamPathTemplate": "/api/services/app/Profile/{everything}",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v1/app/ReportSystem/GetRevenueInDayRequest",
+      "DownstreamPathTemplate": "/api/services/app/ReportSystem/GetRevenueInDayRequest",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/ReportSystem/GetReportTransInfoRequest",
+      "DownstreamPathTemplate": "/api/services/app/ReportSystem/GetReportTransInfoRequest",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/ReportSystem/GetReportTransDetailList",
+      "DownstreamPathTemplate": "/api/services/app/ReportSystem/GetReportTransDetailList",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/ReportSystem/GetReportRevenueDashboardList",
+      "DownstreamPathTemplate": "/api/services/app/ReportSystem/GetReportRevenueDashboardList",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/app/ReportSystem/GetDashboardListRevenue",
+      "DownstreamPathTemplate": "/api/services/app/ReportSystem/GetDashboardListRevenue",
+      "DownstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api",
+          "Port": 80
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+{
+      "UpstreamPathTemplate": "/api/v1/app/Common/DeleteUser",
+      "DownstreamPathTemplate": "/api/services/app/Common/DeleteUser",
+      "DownstreamScheme": "https",
+      "AuthenticationOptions": {
+        "AllowedScopes": []
+      },
+	 "DownstreamHostAndPorts": [
+        {
+          "Host": "daily-topup.gmobile.vn",
+          "Port": 443
+        }
+      ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "SwaggerKey": "MobileGo",
+      "Priority": 0,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

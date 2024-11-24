@@ -1,0 +1,70 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v1/topup-gateway/gate/call-back",
+      "DownstreamPathTemplate": "/api/v1/callBackCardGate",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "topup_gate",
+          "Port": 80
+        }
+      ],
+	  "SwaggerKey": "TopupGateService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "Priority": 1,
+	  "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/v1/topup-gateway/mobi-gps/call-back",
+      "DownstreamPathTemplate": "/api/v1/callBackAdvance",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "topup_gate",
+          "Port": 80
+        }
+      ],
+	  "SwaggerKey": "TopupGateService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "Priority": 1,
+	  "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    },
+	{
+      "UpstreamPathTemplate": "/api/v1/topup-gateway/cg/call-back/{ProviderCode}",
+      "DownstreamPathTemplate": "/api/v1/callBackCG2022/{ProviderCode}",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": ["Post"],
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "topup_gate",
+          "Port": 80
+        }
+      ],
+	  "SwaggerKey": "TopupGateService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "Priority": 1,
+	"QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 30000000
+      }
+    }
+  ]
+}

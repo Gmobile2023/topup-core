@@ -1,0 +1,24 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "MobileGo",
+      "Config": [
+        {
+          "Name": "Mobile API",
+          "Version": "v1",
+          "Url": "http://api:80/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "CommonService",
+      "Config": [
+        {
+          "Name": "Paygate CommonService",
+          "Version": "v1",
+          "Url": "http://common:80/openapi"
+        }
+      ]
+    }
+  ]
+}

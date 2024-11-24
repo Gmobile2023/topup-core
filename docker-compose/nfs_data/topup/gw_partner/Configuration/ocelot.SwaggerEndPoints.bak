@@ -1,0 +1,34 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "BalanceService",
+      "Config": [
+        {
+          "Name": "Paygate BalanceService",
+          "Version": "v1",
+          "Url": "http://balance:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "GatewayService",
+      "Config": [
+        {
+          "Name": "Paygate GatewayService",
+          "Version": "v1",
+          "Url": "http://gateway:80/openapi"
+        }
+      ]
+    },
+    {
+      "Key": "TopupGateService",
+      "Config": [
+        {
+          "Name": "Paygate TopupGateService",
+          "Version": "v1",
+          "Url": "http://topup_gate:80/openapi"
+        }
+      ]
+    }
+  ]
+}
