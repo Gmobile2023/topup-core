@@ -15,7 +15,6 @@ public class ConfigureMongoDb : IHostingStartup
     {
         builder.ConfigureServices((context, services) =>
         {
-            //BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.CSharpLegacy));
             var mongoClient = new MongoClient(context.Configuration.GetConnectionString("Mongodb"));
             var mongoDatabase = mongoClient.GetDatabase(context.Configuration["ConnectionStrings:MongoDatabaseName"]);
             services.AddSingleton(mongoDatabase);
