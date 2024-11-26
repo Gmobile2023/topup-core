@@ -70,7 +70,7 @@ namespace Topup.Gw.Domain.Services
 
                 //if (!string.IsNullOrEmpty(saleRequestDto.TransCode))
                 saleRequestDto.TransCode =
-                    await _transCodeGenerator.TransCodeGeneratorAsync("NT");
+                    await _transCodeGenerator.SaleTransCodeGeneratorAsync();
                 var saleRequest = saleRequestDto.ConvertTo<SaleRequest>();
                 if (string.IsNullOrEmpty(saleRequest.Vendor) || string.IsNullOrEmpty(saleRequestDto.Vendor))
                 {
@@ -110,7 +110,7 @@ namespace Topup.Gw.Domain.Services
                 };
 
                 if (string.IsNullOrEmpty(batchRequestDto.BatchCode))
-                    batchRequestDto.BatchCode = await _transCodeGenerator.TransCodeGeneratorAsync("L");
+                    batchRequestDto.BatchCode = Guid.NewGuid().ToString();
                 var batchRequestEnt = batchRequestDto.ConvertTo<BatchLotRequest>();
                 batchRequestEnt.BatchCode = batchRequestDto.BatchCode;
                 batchRequestEnt.EndProcessTime = DateTime.Now;
@@ -122,7 +122,7 @@ namespace Topup.Gw.Domain.Services
                 {
                     var detail = item.ConvertTo<BatchDetail>();
                     detail.BatchCode = batchRequestDto.BatchCode;
-                    detail.TransRef = await _transCodeGenerator.TransCodeGeneratorAsync("PL");
+                    detail.TransRef = Guid.NewGuid().ToString();
                     detail.BatchStatus = BatchLotRequestStatus.Init;
                     detail.Status = SaleRequestStatus.Init;
                     detail.SaleRequestType = batchRequestDto.SaleRequestType;
@@ -196,7 +196,7 @@ namespace Topup.Gw.Domain.Services
             try
             {
                 var topupItem = topupItemDto.ConvertTo<List<SaleItem>>();
-                foreach (var item in topupItem) item.TransCode = await _transCodeGenerator.TransCodeGeneratorAsync("T");
+                foreach (var item in topupItem) item.TransCode = Guid.NewGuid().ToString();
 
                 await _paygateMongoRepository.AddManyAsync(topupItem);
                 return true;
@@ -1358,7 +1358,7 @@ namespace Topup.Gw.Domain.Services
                     Math.Round(
                         (100 - cardBatchRequestDto.DiscountRate ?? 0) / 100 * cardBatchRequestDto.Amount *
                         cardBatchRequestDto.Quantity, 0);
-                cardBatchRequestDto.TransCode = await _transCodeGenerator.TransCodeGeneratorAsync("C");
+                cardBatchRequestDto.TransCode = Guid.NewGuid().ToString();
                 var saleRequest = cardBatchRequestDto.ConvertTo<CardBatchRequest>();
                 if (string.IsNullOrEmpty(saleRequest.Vendor) || string.IsNullOrEmpty(cardBatchRequestDto.Vendor))
                 {
@@ -1743,7 +1743,7 @@ namespace Topup.Gw.Domain.Services
                     ServiceCode = saleRequestDto.ServiceCode,
                     PartnerCode = partnerCode,
                 };
-                saleOffsetDto.TransRef = await _transCodeGenerator.TransCodeGeneratorAsync("B");
+                saleOffsetDto.TransRef = Guid.NewGuid().ToString();
                 var saleOffsetRequest = saleOffsetDto.ConvertTo<SaleOffsetRequest>();
                 saleOffsetRequest.PartnerCode = partnerCode;
                 await _paygateMongoRepository.AddOneAsync(saleOffsetRequest);

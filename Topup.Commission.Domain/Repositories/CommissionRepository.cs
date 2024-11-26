@@ -11,21 +11,19 @@ public class CommissionRepository : ICommissionRepository
 {
     private readonly ICommissionMongoRepository _commissionMongoRepository;
     private readonly ILogger<CommissionRepository> _logger;
-    private readonly ITransCodeGenerator _transCodeGenerator;
 
     public CommissionRepository(ICommissionMongoRepository commissionMongoRepository,
-        ILogger<CommissionRepository> logger, ITransCodeGenerator transCodeGenerator)
+        ILogger<CommissionRepository> logger)
     {
         _commissionMongoRepository = commissionMongoRepository;
         _logger = logger;
-        _transCodeGenerator = transCodeGenerator;
     }
 
     public async Task<CommissionTransaction> CommissionInsertAsync(CommissionTransaction item)
     {
         try
         {
-            item.TransCode = await _transCodeGenerator.TransCodeGeneratorAsync("P");
+            item.TransCode = Guid.NewGuid().ToString();
             item.CreatedDate = DateTime.UtcNow;
             await _commissionMongoRepository.AddOneAsync(item);
             return item;

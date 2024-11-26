@@ -15,42 +15,22 @@ public class TransCodeGenerator : ITransCodeGenerator
         _logger = logger;
         _redisClientsManager = redisClientsManager;
     }
-
-    // public async Task<string> GenerateCode(string prefix)
-    // {
-    //     try
-    //     {
-    //         _logger.LogInformation($"GenerateCode request:{prefix}");
-    //         var client = new JsonServiceClient(_configuration["ServiceConfig:GatewayPrivate"]);
-    //
-    //         var rs= await client.GetAsync(new TranscodeGenerateRequest
-    //         {
-    //             Key = prefix,
-    //             Prefix = prefix
-    //         });
-    //         _logger.LogInformation($"GenerateCode return:{rs}");
-    //         return rs;
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         _logger.LogError($"GenerateCode error:{e}");
-    //         var code = Guid.NewGuid().ToString().GetHashCode().ToString("x").ToUpper();
-    //         var rand = new Random();
-    //         var date = DateTime.Now.ToString("yy");
-    //         return prefix + date + rand.Next(000000000, 999999999) + code;
-    //     }
-    // }
-    public async Task<string> TransCodeGeneratorAsync(string prefix = "T")
+    /// <summary>
+    /// chir dung de sinh ma giao dich sale
+    /// </summary>
+    /// <param name="prefix"></param>
+    /// <returns></returns>
+    public async Task<string> SaleTransCodeGeneratorAsync(string prefix=null)
     {
         try
         {
             var dateParam = DateTime.Now.ToString("yyMMdd");
             await using var client = await _redisClientsManager.GetClientAsync();
-            var key = $"PayGate_TransCode:Items:{prefix + dateParam}";
+            var key = $"PayGate_Sale_TransCode:Items:{prefix + dateParam}";
             var id = await client.IncrementValueAsync(key);
             if (id == 1) //Bắt đầu ngày mới
             {
-                var oldkey = $"PayGate_TransCode:Items:{prefix + DateTime.Now.AddDays(-1).ToString("yyMMdd")}";
+                var oldkey = $"PayGate_Sale_TransCode:Items:{prefix + DateTime.Now.AddDays(-1).ToString("yyMMdd")}";
                 await client.RemoveAsync(oldkey); //xóa key cũ
             }
 
