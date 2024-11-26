@@ -1,6 +1,7 @@
-﻿using Topup.Shared.Dtos;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.Collections.Generic;
+
+namespace Topup.Shared.Dtos;
 [DataContract]
 public class WorkerResult
 {

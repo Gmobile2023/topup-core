@@ -152,6 +152,14 @@ public class MessageResponseTopup : MessageResponseBase
 [DataContract]
 public class NewMessageResponseBase<T>
 {
+    public NewMessageResponseBase()
+    {
+    }
+
+    public NewMessageResponseBase(string code, string message)
+    {
+        ResponseStatus = new ResponseStatusApi(code, message);
+    }
     [DataMember(Order = 1)] public T Results { get; set; }
     [DataMember(Order = 2)] public ResponseStatusApi ResponseStatus { get; set; }
     [DataMember(Order = 3)] public string Signature { get; set; }

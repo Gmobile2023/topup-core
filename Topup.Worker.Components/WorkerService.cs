@@ -1,39 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Topup.Gw.Model.Commands;
 using Topup.Shared;
-using Topup.Worker.Components.Consumers;
 using Microsoft.Extensions.Logging;
-using Topup.Discovery.Requests.Backends;
 using Topup.Discovery.Requests.Workers;
 using ServiceStack;
+using Topup.Shared.Dtos;
 using Topup.Worker.Components.WorkerProcess;
 
 namespace Topup.Worker.Components;
-
 public class WorkerService : Service
 {
     private readonly ILogger<WorkerService> _logger;
     private readonly IWorkerProcess _workerProcess;
-   // private readonly UpdateStatusRequestConsumer _consumer;
+    // private readonly UpdateStatusRequestConsumer _consumer;
 
     public WorkerService(IWorkerProcess workerProcess, ILogger<WorkerService> logger
-       // UpdateStatusRequestConsumer consumer
-        )
+        // UpdateStatusRequestConsumer consumer
+    )
     {
         _workerProcess = workerProcess;
-     //   _consumer = consumer;
+        //   _consumer = consumer;
         _logger = logger;
     }
+
     public async Task<object> PostAsync(WorkerTopupRequest request)
     {
-
-        _logger.LogDebug("WorkerTopupRequest:{Request}", request.ToJson());
-        Console.WriteLine($"GateCardRequest: {Request}", request.TransCode);
-        var rs = await _workerProcess.TopupRequest(request);
-        _logger.LogDebug("WorkerTopupRequest:{Response}", rs.ToJson());
-        return rs;
+        try
+        {
+            _logger.LogDebug("WorkerTopupRequest:{Request}", request.ToJson());
+            Console.WriteLine($"GateCardRequest: {Request}", request.TransCode);
+            var rs = await _workerProcess.TopupRequest(request);
+            _logger.LogDebug("WorkerTopupRequest:{Response}", rs.ToJson());
+            return rs;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public async Task<object> GetAsync(WorkerBillQueryRequest request)

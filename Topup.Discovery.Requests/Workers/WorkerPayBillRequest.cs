@@ -4,6 +4,7 @@ using Topup.Shared;
 using System.Runtime.Serialization;
 using ServiceStack;
 using ServiceStack.DataAnnotations;
+using Topup.Shared.Dtos;
 
 namespace Topup.Discovery.Requests.Workers;
 [DataContract]

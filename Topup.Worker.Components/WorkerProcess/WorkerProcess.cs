@@ -33,20 +33,18 @@ public partial class WorkerProcess : IWorkerProcess
     private readonly ILimitTransAccountService _limitTransAccountService;
     private readonly ILogger<WorkerProcess> _logger;
     private readonly ISaleService _saleService;
-    private readonly TelcoConnector _telcoConnector;
     private readonly WorkerConfig _workerConfig;
     private readonly GrpcClientHepper _grpcClient;
-    private readonly ISystemService _systemService;
-    private ICacheClientAsync _cacheClient;
     private readonly ICommonService _commonService;
+    private readonly ITransCodeGenerator _transCodeGenerator;
 
     public WorkerProcess(ILogger<WorkerProcess> logger, ExternalServiceConnector externalServiceConnector,
         ISaleService saleService,
         ILimitTransAccountService limitTransAccountService,
         CheckLimitTransaction checkLimit,
-        IBus bus, IConfiguration configuration, TelcoConnector telcoConnector, IBackgroundTaskQueue queue,
-        GrpcClientHepper grpcClient, ISystemService systemService, ICacheClient cacheClient,
-        ICommonService commonService)
+        IBus bus, IBackgroundTaskQueue queue,
+        GrpcClientHepper grpcClient,
+        ICommonService commonService, ITransCodeGenerator transCodeGenerator)
     {
         _logger = logger;
         _externalServiceConnector = externalServiceConnector;
@@ -54,13 +52,10 @@ public partial class WorkerProcess : IWorkerProcess
         _limitTransAccountService = limitTransAccountService;
         _checkLimit = checkLimit;
         _bus = bus;
-        _telcoConnector = telcoConnector;
         _queue = queue;
         _grpcClient = grpcClient;
-        _systemService = systemService;
         _commonService = commonService;
-        _cacheClient = cacheClient.AsAsync();
-        //configuration.GetSection("WorkerConfig").Bind(_workerConfig);
+        _transCodeGenerator = transCodeGenerator;
         _workerConfig = _commonService.GetWorkerConfigAsync().Result;
     }
 

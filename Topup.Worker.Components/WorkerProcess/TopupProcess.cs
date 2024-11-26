@@ -731,9 +731,8 @@ namespace Topup.Worker.Components.WorkerProcess
             try
             {
                 if (mustCount)
-                    await _cacheClient.IncrementAsync(
-                        $"PayGate_RatingTrans:Items:{topup.ProviderCode}:{topup.PartnerCode}:{topup.ServiceCode}:{topup.CategoryCode}:{topup.ProductCode}_{true}",
-                        1);
+                    await _transCodeGenerator.IncrementValueAsync(
+                        $"PayGate_RatingTrans:Items:{topup.ProviderCode}:{topup.PartnerCode}:{topup.ServiceCode}:{topup.CategoryCode}:{topup.ProductCode}_{true}");
 
                 var response = await _grpcClient.GetClientCluster(GrpcServiceName.TopupGateway).SendAsync(topup);
                 //_logger.LogInformation($"{topup.TransCodeProvider}-{topup.TransRef}-{topup.ProviderCode} CallTopupGate Return: {response?.ToJson()}");

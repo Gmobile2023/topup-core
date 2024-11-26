@@ -66,6 +66,12 @@ public class TransCodeGenerator : ITransCodeGenerator
         return await Task.FromResult(prefix + date + rand.Next(000000000, 999999999));
     }
 
+    public async Task<long> IncrementValueAsync(string key)
+    {
+        await using var client = await _redisClientsManager.GetClientAsync();
+        return await client.IncrementValueAsync(key);
+    }
+
     public async Task<long> AutoCloseIndex(string provider, bool success)
     {
         try

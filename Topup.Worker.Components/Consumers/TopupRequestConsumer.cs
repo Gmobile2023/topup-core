@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Topup.Contracts.Commands.Worker;
 using Topup.Discovery.Requests.Workers;
 using ServiceStack;
+using Topup.Shared.Dtos;
 using Topup.Worker.Components.WorkerProcess;
 
 namespace Topup.Worker.Components.Consumers;
