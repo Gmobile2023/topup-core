@@ -474,7 +474,7 @@ namespace Topup.Gw.Domain.Services
 
                 if (topupListGetRequest.FromDate != null)
                 {
-                    var fromdate = $"NT{topupListGetRequest.FromDate.Value.ToString("yMMdd")}";
+                    var fromdate = $"{topupListGetRequest.FromDate.Value:yMMdd}";
 
                     Expression<Func<SaleRequest, bool>> newQuery = p =>
                         p.TransCode.CompareTo(fromdate) >= 0;
