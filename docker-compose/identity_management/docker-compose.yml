@@ -4,21 +4,21 @@ networks:
   net:
 secrets:
   cert_pfx:
-    file: ../ssl/gmobile.vn.pfx
+    file: ../../ssl/gmobile.pfx
 services:
-  identity_server_management:
-    image: hls2020/gmobile:topup_identity_admin
+  topup_id_management:
+    image: hls2020/nt:identity_admin
     networks:
       - net
     environment:
       - TZ=Asia/Ho_Chi_Minh
       - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__ConfigurationDbConnection=Server=10.10.227.248;Port=5432;Database=identity_server_management;User Id=topup;Pwd=topup_2024#!&
-      - ConnectionStrings__PersistedGrantDbConnection=Server=10.10.227.248;Port=5432;Database=identity_server_management;User Id=topup;Pwd=topup_2024#!&
-      - ConnectionStrings__IdentityDbConnection=Server=10.10.227.248;Port=5432;Database=identity_server_management;User Id=topup;Pwd=topup_2024#!&
-      - ConnectionStrings__AdminLogDbConnection=Server=10.10.227.248;Port=5432;Database=identity_server_management;User Id=topup;Pwd=topup_2024#!&
-      - ConnectionStrings__AdminAuditLogDbConnection=Server=10.10.227.248;Port=5432;Database=identity_server_management;User Id=topup;Pwd=topup_2024#!&
-      - ConnectionStrings__DataProtectionDbConnection=Server=10.10.227.248;Port=5432;Database=identity_server_management;User Id=topup;Pwd=topup_2024#!&
+      - ConnectionStrings__ConfigurationDbConnection=Server=postgres;Port=5432;Database=topup_id_management;User Id=dev;Pwd=123456
+      - ConnectionStrings__PersistedGrantDbConnection=Server=postgres;Port=5432;Database=topup_id_management;User Id=dev;Pwd=123456
+      - ConnectionStrings__IdentityDbConnection=Server=postgres;Port=5432;Database=topup_id_management;User Id=dev;Pwd=123456
+      - ConnectionStrings__AdminLogDbConnection=Server=postgres;Port=5432;Database=topup_id_management;User Id=dev;Pwd=123456
+      - ConnectionStrings__AdminAuditLogDbConnection=Server=postgres;Port=5432;Database=topup_id_management;User Id=dev;Pwd=123456
+      - ConnectionStrings__DataProtectionDbConnection=Server=postgres;Port=5432;Database=topup_id_management;User Id=dev;Pwd=123456
       
       - SeedConfiguration__ApplySeed=false
       - DatabaseMigrationsConfiguration__ApplyDatabaseMigrations=false
@@ -26,13 +26,13 @@ services:
       
       - Kestrel__Endpoints__Http__Url=http://*:5000
       - Kestrel__Endpoints__Https__Url=https://*:5001
-      - Kestrel__Endpoints__Https__Certificate__Path=gmobile.vn.pfx
+      - Kestrel__Endpoints__Https__Certificate__Path=gmobile.pfx
       - Kestrel__Endpoints__Https__Certificate__Password=
       
-      - AdminConfiguration__PageTitle=NT IdentityServer4 Admin
+      - AdminConfiguration__PageTitle=Gmobile IdentityServer Admin
       - AdminConfiguration__FaviconUri=~/favicon.ico
-      - AdminConfiguration__IdentityAdminRedirectUri=https://10.10.227.231:7010/signin-oidc
-      - AdminConfiguration__IdentityServerBaseUrl=https://id-topup.gmobile.vn
+      - AdminConfiguration__IdentityAdminRedirectUri=https://10.105.33.70:6062/signin-oidc
+      - AdminConfiguration__IdentityServerBaseUrl=https://sandbox-id-topup.gmobile.vn
       - AdminConfiguration__IdentityAdminCookieName=IdentityServerAdmin
       - AdminConfiguration__IdentityAdminCookieExpiresUtcHours=12
       - AdminConfiguration__RequireHttpsMetadata=false
@@ -81,25 +81,21 @@ services:
       replicas: 1
       placement:
         constraints:
-          - node.role == worker
-          - node.labels.report!=1
-          - node.labels.job!=1
+          - node.role == manager
+          #- node.labels.report!=1
       resources:
         limits:
           cpus: "1"
           memory: "1000M"
         reservations:
           memory: "500M"
-    extra_hosts:
-      - "worker01:10.10.227.228"
-      - "worker02:10.10.227.229"
-      - "worker03:10.10.227.230"
-      - "postgres:10.10.227.248"
-      - "id-topup.gmobile.vn:10.10.227.248"
     ports:
-      - 7010:5001          
+      - 6062:5001          
 
     secrets:
       - source: cert_pfx
         target: /app/gmobile.vn.pfx
+        
+    extra_hosts:
+      - "sandbox-id-topup.gmobile.vn:10.105.33.70"
    

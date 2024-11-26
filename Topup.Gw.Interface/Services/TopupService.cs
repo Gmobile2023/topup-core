@@ -8,7 +8,6 @@ using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Topup.Contracts.Commands.Backend;
-using Topup.Contracts.Commands.Worker;
 using Topup.Discovery.Requests.Workers;
 using Topup.Shared;
 using Topup.Shared.ConfigDtos;
@@ -21,29 +20,20 @@ public partial class TopupService : Service
 {
     private readonly IBusControl _bus;
 
-    //private readonly IRequestClient<CardSaleRequestCommand> _cardSaleRequestClient;
-    private readonly IConfiguration _configuration;
     private readonly ILogger<TopupService> _logger;
     private readonly IPayBatchService _payBatchService;
     private readonly ISaleService _saleService;
-    private readonly IRequestClient<TopupRequestCommand> _topupRequestClient;
-    private readonly ISystemService _systemService;
-            private readonly GrpcClientHepper _grpcClient;
+    private readonly GrpcClientHepper _grpcClient;
+
     public TopupService(
-        //IRequestClient<CardSaleRequestCommand> cardSaleRequestClient,
-        IConfiguration configuration,
         ILogger<TopupService> logger,
         IBusControl bus, ISaleService saleService, IPayBatchService payBatchService,
-        IRequestClient<TopupRequestCommand> topupRequestClient, ISystemService systemService, GrpcClientHepper grpcClient)
+        GrpcClientHepper grpcClient)
     {
-        //_cardSaleRequestClient = cardSaleRequestClient;
-        _configuration = configuration;
         _logger = logger;
         _bus = bus;
         _saleService = saleService;
         _payBatchService = payBatchService;
-        _topupRequestClient = topupRequestClient;
-        _systemService = systemService;
         _grpcClient = grpcClient;
     }
 
@@ -52,50 +42,13 @@ public partial class TopupService : Service
         try
         {
             _logger.LogInformation("TopupRequest {Request}", topupRequest.ToJson());
-            var useQueueTopup = true;
-            var useQueueTopupConfig = _configuration["RabbitMq:UseQueueTopup"];
-            if (!string.IsNullOrEmpty(useQueueTopupConfig))
-                useQueueTopup = bool.Parse(_configuration["RabbitMq:UseQueueTopup"]);
-
             var returnMessage = new NewMessageResponseBase<object>();
-            if (useQueueTopup)
-            {
-                var rs = await _topupRequestClient.GetResponse<NewMessageResponseBase<WorkerResult>>(new
-                {
-                    topupRequest.Amount,
-                    topupRequest.Channel,
-                    topupRequest.CategoryCode,
-                    topupRequest.ProductCode,
-                    topupRequest.PartnerCode,
-                    topupRequest.ReceiverInfo,
-                    RequestIp = Request.UserHostAddress,
-                    topupRequest.ServiceCode,
-                    topupRequest.StaffAccount,
-                    topupRequest.AgentType,
-                    topupRequest.AccountType,
-                    RequestDate = DateTime.Now,
-                    topupRequest.TransCode,
-                    topupRequest.ParentCode
-                }, CancellationToken.None, RequestTimeout.After(m: 10));
-                var mess = rs.Message;
-                _logger.LogInformation($"{topupRequest.TransCode}-Topup web GetResponse:{mess.ToJson()}");
-                returnMessage = new NewMessageResponseBase<object>
-                {
-                    ResponseStatus = new ResponseStatusApi(mess.ResponseStatus.ErrorCode, mess.ResponseStatus.Message)
-                    {
-                        TransCode = topupRequest.TransCode
-                    }
-                };
-            }
-            else
-            {
-                var request = topupRequest.ConvertTo<WorkerTopupRequest>();
-                request.RequestDate = DateTime.Now;
-                request.RequestIp = Request.UserHostAddress;
-                var getApi = await _grpcClient.GetClientCluster(GrpcServiceName.Worker).SendAsync(request);
-                returnMessage.ResponseStatus = getApi.ResponseStatus;
-                returnMessage.ResponseStatus.TransCode = topupRequest.TransCode;
-            }
+            var request = topupRequest.ConvertTo<WorkerTopupRequest>();
+            request.RequestDate = DateTime.Now;
+            request.RequestIp = Request.UserHostAddress;
+            var getApi = await _grpcClient.GetClientCluster(GrpcServiceName.Worker).SendAsync(request);
+            returnMessage.ResponseStatus = getApi.ResponseStatus;
+            returnMessage.ResponseStatus.TransCode = topupRequest.TransCode;
 
             _logger.LogInformation($"{topupRequest.TransCode}-TopupRequest return:{returnMessage.ToJson()}");
             return returnMessage;

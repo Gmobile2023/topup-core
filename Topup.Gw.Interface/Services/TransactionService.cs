@@ -122,11 +122,6 @@ public partial class TopupService
 
         try
         {
-            var useQueueTopup = true;
-            var useQueueTopupConfig = _configuration["RabbitMq:UseQueueTopup"];
-            if (!string.IsNullOrEmpty(useQueueTopupConfig))
-                useQueueTopup = bool.Parse(_configuration["RabbitMq:UseQueueTopup"]);
-
             var response = new NewMessageResponseBase<SaleResult>
             {
                 Results = new SaleResult
@@ -137,80 +132,40 @@ public partial class TopupService
                     "Giao dịch chưa có kết quả. Vui lòng liên hệ CSKH để được hỗ trợ")
             };
             var serviceCode = SaleCommon.GetTopupService(topupRequest.CategoryCode);
-            if (useQueueTopup)
+
+            var getApi = await _grpcClient.GetClientCluster(GrpcServiceName.Worker).SendAsync(new WorkerTopupRequest
             {
-                var rs = await _topupRequestClient.GetResponse<NewMessageResponseBase<WorkerResult>>(new
-                {
-                    topupRequest.Amount,
-                    Channel = Channel.API,
-                    AgentType = AgentType.AgentApi,
-                    AccountType = SystemAccountType.MasterAgent,
-                    topupRequest.CategoryCode,
-                    topupRequest.ProductCode,
-                    topupRequest.PartnerCode,
-                    topupRequest.ReceiverInfo,
-                    RequestIp = Request.RemoteIp,
-                    ServiceCode = serviceCode,
-                    StaffAccount = topupRequest.PartnerCode,
-                    StaffUser = topupRequest.PartnerCode,
-                    topupRequest.TransCode,
-                    RequestDate = DateTime.Now,
-                    topupRequest.IsCheckReceiverType,
-                    topupRequest.IsNoneDiscount,
-                    topupRequest.DefaultReceiverType,
-                    topupRequest.IsCheckAllowTopupReceiverType
-                }, CancellationToken.None, RequestTimeout.After(m: 10));
-                var mess = rs.Message;
-                //_logger.LogInformation($"{topupRequest.TransCode}-GetResponse:{mess.ToJson()}");
-                response.ResponseStatus = new ResponseStatusApi
-                {
-                    ErrorCode = mess.ResponseStatus.ErrorCode,
-                    Message = mess.ResponseStatus.Message,
-                    TransCode = topupRequest.TransCode
-                };
-                response.Results.PaymentAmount = mess.Results.PaymentAmount;
-                response.Results.TransCode = mess.Results.TransRef;
-                response.Results.ReferenceCode = mess.Results.TransCode;
-                response.Results.ReceiverType = mess.Results.ReceiverType;
-                response.Results.Discount = mess.Results.Discount;
-                response.Results.ServiceCode = serviceCode;
-            }
-            else
+                Amount = topupRequest.Amount,
+                Channel = Channel.API,
+                AgentType = AgentType.AgentApi,
+                AccountType = SystemAccountType.MasterAgent,
+                CategoryCode = topupRequest.CategoryCode,
+                ProductCode = topupRequest.ProductCode,
+                PartnerCode = topupRequest.PartnerCode,
+                ReceiverInfo = topupRequest.ReceiverInfo,
+                RequestIp = Request.RemoteIp,
+                ServiceCode = serviceCode,
+                StaffAccount = topupRequest.PartnerCode,
+                StaffUser = topupRequest.PartnerCode,
+                TransCode = topupRequest.TransCode,
+                RequestDate = DateTime.Now,
+                IsCheckReceiverType = topupRequest.IsCheckReceiverType,
+                IsNoneDiscount = topupRequest.IsNoneDiscount,
+                DefaultReceiverType = topupRequest.DefaultReceiverType,
+                IsCheckAllowTopupReceiverType = topupRequest.IsCheckAllowTopupReceiverType
+            });
+            response.ResponseStatus = new ResponseStatusApi
             {
-                var getApi = await _grpcClient.GetClientCluster(GrpcServiceName.Worker).SendAsync(new WorkerTopupRequest
-                {
-                    Amount = topupRequest.Amount,
-                    Channel = Channel.API,
-                    AgentType = AgentType.AgentApi,
-                    AccountType = SystemAccountType.MasterAgent,
-                    CategoryCode = topupRequest.CategoryCode,
-                    ProductCode = topupRequest.ProductCode,
-                    PartnerCode = topupRequest.PartnerCode,
-                    ReceiverInfo = topupRequest.ReceiverInfo,
-                    RequestIp = Request.RemoteIp,
-                    ServiceCode = serviceCode,
-                    StaffAccount = topupRequest.PartnerCode,
-                    StaffUser = topupRequest.PartnerCode,
-                    TransCode = topupRequest.TransCode,
-                    RequestDate = DateTime.Now,
-                    IsCheckReceiverType = topupRequest.IsCheckReceiverType,
-                    IsNoneDiscount = topupRequest.IsNoneDiscount,
-                    DefaultReceiverType = topupRequest.DefaultReceiverType,
-                    IsCheckAllowTopupReceiverType = topupRequest.IsCheckAllowTopupReceiverType
-                });
-                response.ResponseStatus = new ResponseStatusApi
-                {
-                    ErrorCode = getApi.ResponseStatus.ErrorCode,
-                    Message = getApi.ResponseStatus.Message,
-                    TransCode = topupRequest.TransCode
-                };
-                response.Results.PaymentAmount = getApi.Results.PaymentAmount;
-                response.Results.TransCode = getApi.Results.TransRef;
-                response.Results.ReferenceCode = getApi.Results.TransCode;
-                response.Results.ReceiverType = getApi.Results.ReceiverType;
-                response.Results.Discount = getApi.Results.Discount;
-                response.Results.ServiceCode = serviceCode;
-            }
+                ErrorCode = getApi.ResponseStatus.ErrorCode,
+                Message = getApi.ResponseStatus.Message,
+                TransCode = topupRequest.TransCode
+            };
+            response.Results.PaymentAmount = getApi.Results.PaymentAmount;
+            response.Results.TransCode = getApi.Results.TransRef;
+            response.Results.ReferenceCode = getApi.Results.TransCode;
+            response.Results.ReceiverType = getApi.Results.ReceiverType;
+            response.Results.Discount = getApi.Results.Discount;
+            response.Results.ServiceCode = serviceCode;
 
             _logger.LogInformation("{TransRef}: TopupPartnerRequest response: {Response}", topupRequest.TransCode,
                 response.ToJson());

@@ -24,8 +24,8 @@ services:
       - Kestrel__Endpoints__Https__Url=https://*:5001
       - Kestrel__Endpoints__Https__Certificate__Path=gmobile.vn.pfx
 
-      - OAuth__IdentityServer__AuthorizeUrl=https://id-topup.gmobile.vn/
-      - OAuth__IdentityServer__AuthRealm=https://id-topup.gmobile.vn/
+      - OAuth__IdentityServer__AuthorizeUrl=https://sandbox-id-topup.gmobile.vn/
+      - OAuth__IdentityServer__AuthRealm=https://sandbox-id-topup.gmobile.vn/
       - OAuth__IdentityServer__ClientId=default-api      
       - OAuth__IdentityServer__Audience=default-api            
       - OAuth__IdentityServer__ClientSecret=def2edf7-5d42-4edc-a84a-30136c340e13
@@ -39,17 +39,17 @@ services:
       - LoggingConfig__AutoRegisterTemplate=true
       - LoggingConfig__Application=gw_partner
       - LoggingConfig__UserName=elastic
-      - LoggingConfig__Password=123423434a@
+      - LoggingConfig__Password=123456a@
       - LoggingConfig__IsDisableElk=true 
 
     deploy:
       restart_policy:
         condition: on-failure
-      replicas: 3
+      replicas: 1
       placement:
         constraints:
           - node.role == worker
-          - node.labels.report!=1
+          #- node.labels.report!=1
       #resources:
         #limits:
           #cpus: "2"
@@ -60,7 +60,7 @@ services:
       - 8001:5001
       #- 8002:5001
     extra_hosts: 
-      - "id-topup.gmobile.vn:10.10.227.248"
+      - "sandbox-id-topup.gmobile.vn:10.10.227.248"
     volumes:
       - gw_partner_data:/app/Logs
       - type: bind

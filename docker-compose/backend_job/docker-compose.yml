@@ -15,9 +15,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
       - REGISTRY_CONFIG_FILE=appsettings.json
       - TZ=Asia/Ho_Chi_Minh
-      - ConnectionStrings__Mongodb=mongodb://topup:app_topup_2024#!&@NTN-TOPUP-MONGO01:27017,NTN-TOPUP-MONGO02:27017,NTN-TOPUP-MONGO03:27017/?replicaSet=rs0
+      - ConnectionStrings__Mongodb=mongodb://dev:123456@mongo0:27017,mongo1:27017,mongo2:27017?replicaSet=rs
       - ConnectionStrings__MongoDatabaseName=topup
-      - ConnectionStrings__MongoHangFire=mongodb://topup:app_topup_2024#!&@NTN-TOPUP-MONGO01:27017,NTN-TOPUP-MONGO02:27017,NTN-TOPUP-MONGO03:27017/?replicaSet=rs0&readPreference=secondaryPreferred
+      - ConnectionStrings__MongoHangFire=mongodb://dev:123456@mongo0:27017,mongo1:27017,mongo2:27017?replicaSet=rs&readPreference=secondaryPreferred
       - ConnectionStrings__HangfireDatabaseName=topup_backend_job
 
       - Kestrel__Endpoints__Http__Url=http://backend:80
@@ -36,19 +36,19 @@ services:
       - ServiceUrlConfig__GrpcServices__Gateway=http://gateway:5000
       - ServiceUrlConfig__GrpcServices__Worker=http://worker:5000
 
-      - RedisConfig__SentinelHosts__0=10.10.227.248:6379
-      #- RedisConfig__SentinelHosts__1=10.10.227.248:6379
-      #- RedisConfig__SentinelHosts__2=10.10.227.248:6379
+      - RedisConfig__SentinelHosts__0=redis://:123456@redis:6379
+      #- RedisConfig__SentinelHosts__0=redis://:123456@redis:6379
+      #- RedisConfig__SentinelHosts__0=redis://:123456@redis:6379
       - RedisConfig__IsSentinel=false
       - RedisConfig__IsEnable=true
       - RedisConfig__MasterName=mymaster
 
       - MassTransitConfig__IsUseGrpc=false
-      - MassTransitConfig__RabbitMqConfig__Host=worker01
-      - MassTransitConfig__RabbitMqConfig__Clusters=worker01;worker02;worker03
+      - MassTransitConfig__RabbitMqConfig__Host=rabbitmq
+      - MassTransitConfig__RabbitMqConfig__Clusters=rabbitmq
       - MassTransitConfig__RabbitMqConfig__VirtualHost=topup_job
       - MassTransitConfig__RabbitMqConfig__Username=topup
-      - MassTransitConfig__RabbitMqConfig__Password=gmobile_topup2024#
+      - MassTransitConfig__RabbitMqConfig__Password=123456
 
       - Hangfire__IsRun=true
       - Hangfire__EnableHangfire=true
@@ -91,7 +91,7 @@ services:
       - LoggingConfig__Application=backend_job
       - LoggingConfig__IsDisableElk=false 
       - LoggingConfig__UserName=elastic
-      - LoggingConfig__Password=123423434a@    
+      - LoggingConfig__Password=123456a@    
 
     deploy:
       restart_policy:
@@ -100,20 +100,13 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.report!=1
+          #- node.labels.report!=1
       resources:
         limits:
           cpus: "1.5"
           memory: "2000M"
         reservations:
           memory: "500M"
-    extra_hosts:
-      - "worker01:10.10.227.228"
-      - "worker02:10.10.227.229"
-      - "worker03:10.10.227.230"
-      - "NTN-TOPUP-MONGO01:10.10.227.245"
-      - "NTN-TOPUP-MONGO02:10.10.227.246"
-      - "NTN-TOPUP-MONGO03:10.10.227.247"
-      - "postgres:10.10.227.248"      
+      
     volumes:
       - backend_job_data:/app/Logs

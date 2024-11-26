@@ -13,23 +13,23 @@ services:
       - REGISTRY_CONFIG_FILE=appsettings.Production.json
       - ASPNETCORE_ENVIRONMENT=Production
       - TZ=Asia/Ho_Chi_Minh
-      - ConnectionStrings__Default=User Id=topup;Password=topup_2024#!&;Host=postgres;Port=5432;Database=TopupGate;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
-      - ConnectionStrings__Hangfire=User Id=topup;Password=topup_2024#!&;Host=postgres;Port=5432;Database=HangFire;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - ConnectionStrings__Default=User Id=dev;Password=123456;Host=postgres;Port=5432;Database=gmobile_topup;Pooling=true;MinPoolSize=0;MaxPoolSize=200;
+      - ConnectionStrings__Hangfire=User Id=dev;Password=123456;Host=postgres;Port=5432;Database=gmobile_topup_hangfire;Pooling=true;MinPoolSize=0;MaxPoolSize=200
 
-      - Abp__RedisCache__ConnectionString=10.10.227.248:6379
+      - Abp__RedisCache__ConnectionString=redis:6379,password=123456
       - Abp__RedisCache__DatabaseId=0
       #- Abp__RedisCache__IsEnable=true
       #- Abp__RedisCache__IsSentinel=false
-      - Abp__RedisCache__RedisServer=10.10.227.248:6379
+      - Abp__RedisCache__RedisServer=redis://:123456@redis:6379
       - Abp__RedisCache__MasterName=mymaster
 
       - EventBus__IsEnabled=true
       - EventBus__IsConsumer=false
-      - EventBus__RabbitMq__Host=worker01
-      - EventBus__RabbitMq__Clusters=worker01;worker02;worker03
+      - EventBus__RabbitMq__Host=rabbitmq
+      - EventBus__RabbitMq__Clusters=rabbitmq
       - EventBus__RabbitMq__VirtualHost=topup
       - EventBus__RabbitMq__Username=topup
-      - EventBus__RabbitMq__Password=gmobile_topup2024#
+      - EventBus__RabbitMq__Password=123456
 
       - App__AllowHangFireServer=false
       - App__SwichProviderConfigValue=4
@@ -67,30 +67,21 @@ services:
       - LoggingConfig__RollingInterval=Day
       - LoggingConfig__IndexFormat=gmb-topup-log-{0:yyyy.MM}
       - LoggingConfig__AutoRegisterTemplate=true
-      - LoggingConfig__Application=api
+      - LoggingConfig__Application=topup-api
       - LoggingConfig__IsDisableElk=false 
       - LoggingConfig__UserName=elastic
-      - LoggingConfig__Password=123423434a@   
+      - LoggingConfig__Password=123456a@   
     networks:
       - net
 
-    extra_hosts:
-      - "worker01:10.10.227.228"
-      - "worker02:10.10.227.229"
-      - "worker03:10.10.227.230"
-  
-      - "NTN-TOPUP-MONGO01:10.10.227.245"
-      - "NTN-TOPUP-MONGO02:10.10.227.246"
-      - "NTN-TOPUP-MONGO03:10.10.227.247"
-      - "postgres:10.10.227.248"
     deploy:
       restart_policy:
         condition: on-failure
-      replicas: 3
+      replicas: 1
       placement:
         constraints:
           - node.role == worker
-          - node.labels.report!=1
+          #- node.labels.report!=1
       resources:
         limits:
           cpus: "4"

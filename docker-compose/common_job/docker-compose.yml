@@ -13,7 +13,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
       - REGISTRY_CONFIG_FILE=appsettings.json
       - TZ=Asia/Ho_Chi_Minh
-      - ConnectionStrings__Mongodb=mongodb://topup:app_topup_2024#!&@NTN-TOPUP-MONGO01:27017,NTN-TOPUP-MONGO02:27017,NTN-TOPUP-MONGO03:27017/?replicaSet=rs0&readPreference=secondaryPreferred
+      - ConnectionStrings__Mongodb=mongodb://dev:123456@mongo0:27017,mongo1:27017,mongo2:27017?replicaSet=rs&readPreference=secondaryPreferred
       - ConnectionStrings__HangfireDatabaseName=topup_common_job
       - ConnectionStrings__MongoDatabaseName=topup_common
 
@@ -34,19 +34,19 @@ services:
       - ServiceUrlConfig__GrpcServices__Worker=http://worker:5000
 
 
-      - RedisConfig__SentinelHosts__0=10.10.227.248:6379
-      #- RedisConfig__SentinelHosts__1=10.10.227.248:6379
-      #- RedisConfig__SentinelHosts__2=10.10.227.248:6379
+      - RedisConfig__SentinelHosts__0=redis://:123456@redis:6379
+      #- RedisConfig__SentinelHosts__0=redis://:123456@redis:6379
+      #- RedisConfig__SentinelHosts__0=redis://:123456@redis:6379
       - RedisConfig__IsSentinel=false
       - RedisConfig__IsEnable=true
       - RedisConfig__MasterName=mymaster
 
       - MassTransitConfig__IsUseGrpc=false
-      - MassTransitConfig__RabbitMqConfig__Host=worker01
-      - MassTransitConfig__RabbitMqConfig__Clusters=worker01;worker02;worker03
+      - MassTransitConfig__RabbitMqConfig__Host=rabbitmq
+      - MassTransitConfig__RabbitMqConfig__Clusters=rabbitmq
       - MassTransitConfig__RabbitMqConfig__VirtualHost=topup_job
       - MassTransitConfig__RabbitMqConfig__Username=topup
-      - MassTransitConfig__RabbitMqConfig__Password=gmobile_topup2024#
+      - MassTransitConfig__RabbitMqConfig__Password=123456
 
       - BotConfig__Url=https://api.telegram.org
       - BotConfig__BotName=gmb_bot
@@ -85,7 +85,7 @@ services:
       
       - HealthChecks__HealthChecksEnabled=true
       - HealthChecks__Url=http://common_job:80
-      - HealthChecks__CheckEndpoints__IdentityServer=https://topup.gmobile.vn
+      - HealthChecks__CheckEndpoints__IdentityServer=https://sadnbox-topup.gmobile.vn
       - HealthChecks__HealthChecksUI__HealthChecksUIEnabled=true
       - HealthChecks__HealthChecksUI__IsCheckService=true
       - HealthChecks__HealthChecksUI__EvaluationTimeOnSeconds=30
@@ -104,7 +104,7 @@ services:
       - Hangfire__AutoCheckMinBalance__CronExpression=*/15 * * * *
       
       - FcmConfig__ServerUrl=https://fcm.googleapis.com
-      - FcmConfig__ServerKey=AAAAC-l4vXY:APA91bF-im5ETsrvQP8cASmkfaPaL3OiPpIpWoyVSj3iTr8xfhHYUp-PHLS45h5NsIeuQnWArtrptTHTzcluC353C6xOw3sT5Sr1XctX6Up6tjyVOMFF9quEhHhaZGnVc0ZQiFfMu_6q
+      - FcmConfig__ServerKey=xxxx
       
       - LoggingConfig__LogServer=http://elasticsearch:9200
       - LoggingConfig__LogFileUrl=Logs/logs.txt
@@ -115,7 +115,7 @@ services:
       - LoggingConfig__Application=common
       - LoggingConfig__IsDisableElk=false 
       - LoggingConfig__UserName=elastic
-      - LoggingConfig__Password=123423434a@   
+      - LoggingConfig__Password=123456a@   
 
     deploy:
       restart_policy:
@@ -124,22 +124,13 @@ services:
       placement:
         constraints:
           - node.role == worker
-          - node.labels.report!=1
+          #- node.labels.report!=1
       resources:
         limits:
           cpus: "1"
           memory: "1000M"
         reservations:
           memory: "500M"
-    extra_hosts:
-      - "worker01:10.10.227.228"
-      - "worker02:10.10.227.229"
-      - "worker03:10.10.227.230"
-      - "NTN-TOPUP-MONGO01:10.10.227.245"
-      - "NTN-TOPUP-MONGO02:10.10.227.246"
-      - "NTN-TOPUP-MONGO03:10.10.227.247"
-      - "postgres:10.10.227.248"
-      - "daily-topup.gmobile.vn:192.168.0.5"
     ports:
       - 9009:80
     #volumes:

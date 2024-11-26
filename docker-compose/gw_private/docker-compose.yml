@@ -24,8 +24,8 @@ services:
       #- Kestrel__Endpoints__Https__Url=https://*:5001
       #- Kestrel__Endpoints__Https__Certificate__Path=hls.vn.pfx
 
-      - OAuth__IdentityServer__AuthorizeUrl=https://id-topup.gmobile.vn/
-      - OAuth__IdentityServer__AuthRealm=https://id-topup.gmobile.vn/
+      - OAuth__IdentityServer__AuthorizeUrl=https://sandbox-id-topup.gmobile.vn/
+      - OAuth__IdentityServer__AuthRealm=https://sandbox-id-topup.gmobile.vn/
       - OAuth__IdentityServer__ClientId=default-api      
       - OAuth__IdentityServer__Audience=default-api            
       - OAuth__IdentityServer__ClientSecret=def2edf7-5d42-4edc-a84a-30136c340e13
@@ -35,21 +35,21 @@ services:
       - LoggingConfig__LogFileUrl=Logs/logs.txt
       - LoggingConfig__OutputTemplate={Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext}.{Method}] {Message}{NewLine}{Exception}
       - LoggingConfig__RollingInterval=Day
-      - LoggingConfig__IndexFormat=rewards-log-{0:yyyy.MM}
+      - LoggingConfig__IndexFormat=gmb-topup-log-{0:yyyy.MM}
       - LoggingConfig__AutoRegisterTemplate=true
       - LoggingConfig__Application=gw_private
       - LoggingConfig__UserName=elastic
-      - LoggingConfig__Password=123423434a@
+      - LoggingConfig__Password=123456a@
       - LoggingConfig__IsDisableElk=true 
 
     deploy:
       restart_policy:
         condition: on-failure
-      replicas: 3
+      replicas: 1
       placement:
         constraints:
-          - node.role == worker
-          - node.labels.report!=1
+          - node.role == manager
+          #- node.labels.report!=1
       #resources:
         #limits:
           #cpus: "2"

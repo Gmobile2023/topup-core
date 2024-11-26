@@ -6,7 +6,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "id-topup.gmobile.vn",
+          "Host": "sandbox-id-topup.gmobile.vn",
           "Port": 443
         }
       ],
@@ -18,7 +18,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "id-topup.gmobile.vn",
+          "Host": "sandbox-id-topup.gmobile.vn",
           "Port": 443
         }
       ],
