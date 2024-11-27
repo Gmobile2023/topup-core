@@ -34,7 +34,7 @@ namespace Topup.Report.Domain.Repositories
                 var fromDate = request.FromDate.Value.ToUniversalTime();
                 var toDate = request.ToDate.Value.AddDays(1).ToUniversalTime();
 
-                query.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                     )
@@ -200,7 +200,7 @@ namespace Topup.Report.Domain.Repositories
                         saleCode = request.LoginCode;
                 }
 
-                query.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.AccountType).Query("CUSTOMER"))
@@ -308,7 +308,7 @@ namespace Topup.Report.Domain.Repositories
                 string serviceCode = request.ServiceCode ?? "";
 
 
-                query.Index(ReportIndex.ReportCardstockbydatesIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportCardstockbydatesIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDate).LessThanOrEquals(dateNow))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.StockCode).Query(storeCode))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.ProductCode).Query(productCode))
@@ -527,7 +527,7 @@ namespace Topup.Report.Domain.Repositories
                 string providerCode = request.ProviderCode ?? string.Empty;
 
 
-                query.Index(ReportIndex.ReportCardstockproviderbydates).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportCardstockproviderbydates)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDate).LessThanOrEquals(dateNow))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.StockCode).Query(storeCode))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.ProductCode).Query(productCode))
@@ -777,7 +777,7 @@ namespace Topup.Report.Domain.Repositories
                 var query = new SearchDescriptor<ReportAccountBalanceDay>();
                 var fromDate = request.FromDate.ToUniversalTime();
                 var toDate = request.ToDate.ToUniversalTime();
-                query.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.AccountType).Query("CUSTOMER"))
@@ -895,7 +895,7 @@ namespace Topup.Report.Domain.Repositories
                     accountType = "CUSTOMER";
                 }
 
-                query.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(fromDate).LessThan(toDate))
                           , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                           , mu => mu.MatchPhrase(m => m.Field(f => f.AccountCode).Query(request.AccountCode))
@@ -977,7 +977,7 @@ namespace Topup.Report.Domain.Repositories
                 }
 
 
-                query.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(fromDate).LessThan(toDate))
                          , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("DEBT"))
                          , mu => mu.MatchPhrase(m => m.Field(f => f.AccountCode).Query(accountCode))
@@ -1094,7 +1094,7 @@ namespace Topup.Report.Domain.Repositories
                 var query = new SearchDescriptor<ReportItemDetail>();
                 var fromDate = DateTime.Now.Date.ToUniversalTime();
                 var toDate = DateTime.Now.Date.AddDays(1).ToUniversalTime();
-                query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.MultiMatch(m => m.Fields(f => f.Field(c => c.AccountCode).Field(c => c.PerformAccount)).Query(request.AccountCode))
                         , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
@@ -1151,7 +1151,7 @@ namespace Topup.Report.Domain.Repositories
                     cardValue = request.CardValue.ToString();
 
 
-                query.Index(ReportIndex.ReportCardstockbydatesIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportCardstockbydatesIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.CardValue).Query(cardValue))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.Vendor).Query(vendor))
@@ -1201,7 +1201,7 @@ namespace Topup.Report.Domain.Repositories
             };
 
             var query = new SearchDescriptor<ReportAccountBalanceDay>();
-            query.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                      , mu => mu.MatchPhrase(m => m.Field(f => f.AccountType).Query("CUSTOMER"))
                      , mu => mu.MatchPhrase(m => m.Field(f => f.TextDay).Query(toTxt))
@@ -1225,7 +1225,7 @@ namespace Topup.Report.Domain.Repositories
             {
                 var tempFromDate = toDate.AddDays(-35);
                 var queryAfter = new SearchDescriptor<ReportAccountBalanceDay>();
-                queryAfter.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                queryAfter.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(tempFromDate.ToUniversalTime()).LessThanOrEquals(toDate.ToUniversalTime()))
                          , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                          , mu => mu.MatchPhrase(m => m.Field(f => f.AccountType).Query("CUSTOMER"))
@@ -1301,7 +1301,7 @@ namespace Topup.Report.Domain.Repositories
                 var searchDataBalance = new List<ReportAccountBalanceDay>();
                 _logger.LogInformation($"KeyCode= {keyCode} StartUp SearchData ");
                 var query = new SearchDescriptor<ReportBalanceHistories>();
-                query.Index(ReportIndex.ReportBalanceHistoriesIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportBalanceHistoriesIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate)))
                 )).From(0).Size(10000).Scroll("5m");
                 var scanResults = await _elasticClient.SearchAsync<ReportBalanceHistories>(query);
@@ -1310,7 +1310,7 @@ namespace Topup.Report.Domain.Repositories
 
                 _logger.LogInformation($"KeyCode= {keyCodeBalance} StartUp SearchData ");
                 var queryBalance = new SearchDescriptor<ReportAccountBalanceDay>();
-                queryBalance.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                queryBalance.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                    b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.Match(m => m.Field(f => f.AccountType).Query("CUSTOMER"))
                    ))).From(0).Size(10000).Scroll("5m"); ;
@@ -1465,7 +1465,7 @@ namespace Topup.Report.Domain.Repositories
                 var searchData = new List<ReportBalanceHistories>();
                 _logger.LogInformation($"KeyCode= {keyCode} StartUp SearchData ");
                 var query = new SearchDescriptor<ReportBalanceHistories>();
-                query.Index(ReportIndex.ReportBalanceHistoriesIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportBalanceHistoriesIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
                           , mu => mu.MultiMatch(m => m.Fields(f => f.Field(c => c.SrcAccountCode).Field(c => c.DesAccountCode)).Query(accountCode)))
                 )).From(0).Size(10000).Scroll("5m");
@@ -1563,7 +1563,7 @@ namespace Topup.Report.Domain.Repositories
                     cardValue = request.CardValue.ToString();
 
 
-                query.Index(ReportIndex.ReportCardstockHistoriesIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportCardstockHistoriesIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.CardValue).Query(cardValue))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.Vendor).Query(vendor))

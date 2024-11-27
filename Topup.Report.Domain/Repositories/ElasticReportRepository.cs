@@ -17,6 +17,7 @@ using Nest;
 using ServiceStack;
 using Topup.Report.Domain.Entities;
 using Topup.Report.Domain.Exporting;
+using Microsoft.Extensions.Configuration;
 
 namespace Topup.Report.Domain.Repositories;
 
@@ -29,6 +30,9 @@ public partial class ElasticReportRepository : IElasticReportRepository
     private readonly ILogger<ElasticReportRepository> _logger;
     private readonly IReportMongoRepository _reportMongoRepository;
     private readonly IFileUploadRepository _uploadFile;
+    private IConfiguration _configuration { get; }
+    private readonly string _subKeyReport;
+    private readonly string _subKeyTopup;
 
     public ElasticReportRepository(ElasticClient elasticClient,
         IDateTimeHelper dateHepper,
@@ -36,6 +40,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
         IExportDataExcel exportDataExcel,
         ICacheManager cacheManager,
         IFileUploadRepository uploadFile,
+        IConfiguration configuration,
         ILogger<ElasticReportRepository> logger)
     {
         _elasticClient = elasticClient;
@@ -45,6 +50,9 @@ public partial class ElasticReportRepository : IElasticReportRepository
         _cacheManager = cacheManager;
         _uploadFile = uploadFile;
         _logger = logger;
+        _configuration = configuration;
+        _subKeyReport = _configuration["ElasticSearch:SubKeyReport"];
+        _subKeyTopup = _configuration["ElasticSearch:SubKeyTopup"];
     }
 
     #region A.=>Báo cáo
@@ -141,7 +149,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             var dateTemp = DateTime.Now;
             _logger.LogInformation($"KeyCode= {keyCode} StartUp SearchData ");
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.Match(m => m.Field(f => f.AccountCode).Query(request.AgentCode))
                     , mu => mu.DateRange(
                         r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
@@ -554,7 +562,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             var dateTemp = DateTime.Now;
             _logger.LogInformation($"KeyCode= {keyCode} StartUp SearchData {dateSearch.ToString("dd/MM/yyyy")}");
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.Match(m => m.Field(f => f.AccountCode).Query(request.AgentCode))
                     , mu => mu.DateRange(
                         r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
@@ -649,7 +657,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             var dateTemp = DateTime.Now;
             _logger.LogInformation($"KeyCode= {keyCode} StartUp SearchData ");
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.Match(m => m.Field(f => f.AccountCode).Query(request.AgentCode)), mu => mu.DateRange(
                         r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                     , mu => mu.Match(m => m.Field(f => f.PaidTransCode).Query(request.TransCode))
@@ -1065,7 +1073,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             filter = request.Filter;
 
         if (datePoint != null)
-            query.Index(ReportIndex.ReportBalanceHistoriesIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportBalanceHistoriesIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                     , mu => mu.DateRange(r =>
                         r.Field(f => f.CreatedDate).GreaterThanOrEquals(datePoint).LessThanOrEquals(datePoint))
@@ -1080,7 +1088,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                     , mu => mu.Match(m => m.Field(f => f.TransCode).Query(request.TransCode))
                 )));
         else
-            query.Index(ReportIndex.ReportBalanceHistoriesIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportBalanceHistoriesIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                     , mu => mu.DateRange(
                         r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
@@ -1121,7 +1129,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
         if (type == "Increment")
         {
-            query.Index(ReportIndex.ReportBalanceHistoriesIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportBalanceHistoriesIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                     , mu => mu.DateRange(
                         r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
@@ -1138,7 +1146,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
         }
         else
         {
-            query.Index(ReportIndex.ReportBalanceHistoriesIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportBalanceHistoriesIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                     , mu => mu.DateRange(
                         r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
@@ -1833,7 +1841,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
         if (!string.IsNullOrEmpty(filter))
         {
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
             b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                , mu => mu.MultiMatch(r => r.Fields(f => f.Field(c => c.AccountCode).Field(c => c.PerformAccount)).Query(request.AccountCode))
                , mu => mu.MultiMatch(r => r.Fields(f => f.Field(c => c.RequestRef.Suffix("keyword")).Field(c => c.TransCode.Suffix("keyword")).Field(c => c.PaidTransCode.Suffix("keyword"))).Query(requestTransCode))
@@ -1866,7 +1874,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
         }
         else
         {
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
            b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
               , mu => mu.MultiMatch(r => r.Fields(f => f.Field(c => c.AccountCode).Field(c => c.PerformAccount)).Query(request.AccountCode))
               , mu => mu.MultiMatch(r => r.Fields(f => f.Field(c => c.RequestRef.Suffix("keyword")).Field(c => c.TransCode.Suffix("keyword")).Field(c => c.PaidTransCode.Suffix("keyword"))).Query(requestTransCode))
@@ -1936,7 +1944,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
                         productCode.Add(a.ToLower());
 
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.DateRange(r =>
                         r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThanOrEquals(toDate))
                     , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
@@ -2112,7 +2120,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             if (request.AgentType > 0)
                 agentType = request.AgentType.ToString();
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.DateRange(r =>
                         r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThanOrEquals(toDate))
                     , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
@@ -2301,7 +2309,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             var dateTemp = DateTime.Now;
             _logger.LogInformation($"KeyCode= {keyCode} StartUp SearchData ");
 
-            query.Index(TopupGwIndex.TopupRequestLogIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearchTopup(TopupGwIndex.TopupRequestLogIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.Match(m => m.Field(f => f.PartnerCode).Query(request.PartnerCode))
                     , mu => mu.DateRange(
                         r => r.Field(f => f.RequestDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
@@ -2612,7 +2620,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             var dateTemp = DateTime.Now;
             _logger.LogInformation($"KeyCode= {keyCode} StartUp SearchData {dateSearch.ToString("dd/MM/yyyy")}");
 
-            query.Index(TopupGwIndex.TopupRequestLogIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearchTopup(TopupGwIndex.TopupRequestLogIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.Match(m => m.Field(f => f.PartnerCode).Query(request.PartnerCode))
                     , mu => mu.DateRange(
                         r => r.Field(f => f.RequestDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
@@ -2681,7 +2689,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
             var fromDate = request.FromDate.ToUniversalTime();
             var toDate = request.ToDate.ToUniversalTime();
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                     , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(serviceCode.ToArray()))
                     , mu => mu.Terms(m => m.Field(f => f.TransType).Terms(serviceCode))
@@ -2736,8 +2744,6 @@ public partial class ElasticReportRepository : IElasticReportRepository
             };
         }
     }
-
-
     public async Task<object> RemoveKeyData(string key)
     {
         try
@@ -2751,5 +2757,16 @@ public partial class ElasticReportRepository : IElasticReportRepository
 
         return true;
     }
+
+    private string getIndexSearch(string index)
+    {
+        return string.Format(index, _subKeyReport);
+    }
+
+    private string getIndexSearchTopup(string index)
+    {
+        return string.Format(index, _subKeyTopup);
+    }
+
     #endregion
 }

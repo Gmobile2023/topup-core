@@ -58,7 +58,7 @@ namespace Topup.Report.Domain.Repositories
                 if (request.AgentType > 0)
                     agentType = request.AgentType.ToString();
 
-                query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                     b.Must(mu =>
                             mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.Match(m => m.Field(f => f.TransCode).Query(request.TransCode))
@@ -190,7 +190,7 @@ namespace Topup.Report.Domain.Repositories
                 if (request.AgentType > 0)
                     agentType = request.AgentType.ToString();
 
-                query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                     b.Must(mu =>mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
                         , mu => mu.Terms(m => m.Field(f => f.TransType).Terms(services))
@@ -343,7 +343,7 @@ namespace Topup.Report.Domain.Repositories
                         saleCode = request.LoginCode;
                 }
 
-                query.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.Match(m => m.Field(f => f.AccountCode).Query(request.AgentCode))
                         , mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(fromDateLimit).LessThan(toDate))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
@@ -590,7 +590,7 @@ namespace Topup.Report.Domain.Repositories
                             productCode.Add(a.ToLower());
 
 
-                query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                     b.Must(mu =>
                             mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
@@ -778,7 +778,7 @@ namespace Topup.Report.Domain.Repositories
                     agentType = request.AgentType.ToString();
 
 
-                query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
                         , mu => mu.Terms(m => m.Field(f => f.TransType).Terms(services))
@@ -1057,7 +1057,7 @@ namespace Topup.Report.Domain.Repositories
                     agentType = request.AgentType.ToString();
 
 
-                query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
                         , mu => mu.Terms(m => m.Field(f => f.TransType).Terms(services))
