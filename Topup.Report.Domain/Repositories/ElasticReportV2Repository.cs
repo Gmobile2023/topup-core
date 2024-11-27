@@ -68,7 +68,7 @@ public partial class ElasticReportRepository
             var fromDate = request.FromDate.Value.ToUniversalTime();
             var toDate = request.ToDate.Value.AddDays(1).ToUniversalTime();
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.Match(m => m.Field(f => f.AccountCode).Query(agentCode))
                     , mu => mu.DateRange(
                         r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
@@ -178,7 +178,7 @@ public partial class ElasticReportRepository
             var fromDate = request.FromDate.Value.ToUniversalTime();
             var toDate = request.ToDate.Value.AddDays(1).ToUniversalTime();
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.DateRange(r =>
                         r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThanOrEquals(toDate))
                     , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
@@ -302,7 +302,7 @@ public partial class ElasticReportRepository
             var fromDate = request.FromDate.Value.ToUniversalTime();
             var toDate = request.ToDate.Value.AddDays(1).ToUniversalTime();
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.Match(m => m.Field(f => f.AccountCode).Query(agentCode))
                     , mu => mu.DateRange(
                         r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
@@ -456,7 +456,7 @@ public partial class ElasticReportRepository
                         productCode.Add(a.ToLower());
 
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThanOrEquals(toDate))
                     , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
                     , mu => mu.Terms(m => m.Field(f => f.TransType).Terms(services))
@@ -563,7 +563,7 @@ public partial class ElasticReportRepository
             var fromDate = request.FromDate.Value.ToUniversalTime();
             var toDate = request.ToDate.Value.AddDays(1).ToUniversalTime();
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.DateRange(r =>
                         r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThanOrEquals(toDate))
                     , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
@@ -667,7 +667,7 @@ public partial class ElasticReportRepository
             var toDate = request.ToDate.Value.AddDays(1).ToUniversalTime();
             string agentCode = string.Empty;
 
-            query.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(fromDate).LessThan(toDate))
                     , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                     , mu => mu.MatchPhrase(m => m.Field(f => f.AccountType).Query("CUSTOMER"))
@@ -805,7 +805,7 @@ public partial class ElasticReportRepository
             string agentCode = request.AgentCode ?? "";
             string transCode = request.TransCode ?? "";
 
-            query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                     , mu => mu.MatchPhrase(m => m.Field(f => f.ServiceCode).Query("DEPOSIT"))
                     , mu => mu.MatchPhrase(m => m.Field(f => f.TransType).Query("DEPOSIT"))

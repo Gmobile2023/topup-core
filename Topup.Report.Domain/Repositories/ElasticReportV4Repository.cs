@@ -123,7 +123,7 @@ namespace Topup.Report.Domain.Repositories
                 var fromDate = date.ToUniversalTime();
                 var toDate = date.AddDays(1).ToUniversalTime();
 
-                query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                     b.Must(mu =>
                         mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                     )
@@ -162,7 +162,7 @@ namespace Topup.Report.Domain.Repositories
                 var fromDate = date.ToUniversalTime();
                 var toDate = date.AddDays(1).ToUniversalTime();
 
-                query.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                     b.Must(mu =>
                         mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                     )
@@ -226,7 +226,7 @@ namespace Topup.Report.Domain.Repositories
                 var fromDate = date.ToUniversalTime();
                 var toDate = date.AddDays(1).ToUniversalTime();
 
-                query.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                     b.Must(mu =>
                         mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(fromDate).LessThan(toDate))
                       , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query(currencyCode))
@@ -254,7 +254,7 @@ namespace Topup.Report.Domain.Repositories
                 var fromDate = date.ToUniversalTime();
                 var toDate = date.AddDays(1).ToUniversalTime();
 
-                query.Index(ReportIndex.ReportStaffdetailsIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportStaffdetailsIndex)).Query(q => q.Bool(b =>
                     b.Must(mu =>
                         mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                       , mu => mu.MatchPhrase(m => m.Field(f => f.TransCode).Query(transCode))
@@ -287,7 +287,7 @@ namespace Topup.Report.Domain.Repositories
                 var fromDate = date.ToUniversalTime();
                 var toDate = date.AddDays(1).ToUniversalTime();
 
-                query.Index(ReportIndex.ReportCardstockbydatesIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportCardstockbydatesIndex)).Query(q => q.Bool(b =>
                     b.Must(mu =>
                         mu.DateRange(r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
                     )
@@ -318,7 +318,7 @@ namespace Topup.Report.Domain.Repositories
                 var fromDate = date.ToUniversalTime();
                 var toDate = date.AddDays(1).ToUniversalTime();
 
-                query.Index(ReportIndex.ReportCardstockproviderbydates).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportCardstockproviderbydates)).Query(q => q.Bool(b =>
                     b.Must(mu =>
                         mu.DateRange(r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
                     )
@@ -348,7 +348,7 @@ namespace Topup.Report.Domain.Repositories
                 var query = new SearchDescriptor<ReportCardStockByDate>();
                 var dateNow = DateTime.Now.Date.ToUniversalTime();
 
-                query.Index(ReportIndex.ReportCardstockbydatesIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportCardstockbydatesIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDate).LessThanOrEquals(dateNow)))
                 ));
                 query.From(0).Size(10000).Scroll("5m");
@@ -404,7 +404,7 @@ namespace Topup.Report.Domain.Repositories
                 var query = new SearchDescriptor<ReportCardStockProviderByDate>();
                 var dateNow = DateTime.Now.ToUniversalTime();
 
-                query.Index(ReportIndex.ReportCardstockproviderbydates).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportCardstockproviderbydates)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDate).LessThanOrEquals(dateNow)))
                 ));
                 query.From(0).Size(10000).SearchType(Elasticsearch.Net.SearchType.QueryThenFetch).Scroll("5m");
@@ -430,7 +430,7 @@ namespace Topup.Report.Domain.Repositories
                 var fromDate = date.ToUniversalTime();
                 var toDate = date.AddDays(1).ToUniversalTime();
 
-                query.Index(ReportIndex.ReportBalanceHistoriesIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportBalanceHistoriesIndex)).Query(q => q.Bool(b =>
                     b.Must(mu =>
                         mu.DateRange(r => r.Field(f => f.CreatedDate).GreaterThanOrEquals(fromDate).LessThan(toDate))
                     )
@@ -534,7 +534,7 @@ namespace Topup.Report.Domain.Repositories
             {
                 var arraysConvert = arrays.Select(c => c.ToLower()).ToList();
                 var query = new SearchDescriptor<ReportAccountDto>();
-                query.Index(ReportIndex.ReportaccountdtosIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportaccountdtosIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.Terms(m => m.Field(f => f.AccountCode).Terms(arraysConvert.ToArray())))));
                 query.From(0).Size(10000).Scroll("3m");
                 var searchData = new List<ReportAccountDto>();
@@ -560,7 +560,7 @@ namespace Topup.Report.Domain.Repositories
                 #region 
 
                 var query = new SearchDescriptor<ReportProductDto>();
-                query.Index(ReportIndex.ReportproductdtosIndex).Query(q => q.Bool(b =>
+                query.Index(getIndexSearch(ReportIndex.ReportproductdtosIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.Terms(m => m.Field(f => f.ProductCode).Terms(arrays.ToArray())))));
                 query.From(0).Size(10000).Scroll("3m");
                 var searchData = new List<ReportProductDto>();
