@@ -163,6 +163,81 @@ public class NewMessageResponseBase<T>
     [DataMember(Order = 1)] public T Results { get; set; }
     [DataMember(Order = 2)] public ResponseStatusApi ResponseStatus { get; set; }
     [DataMember(Order = 3)] public string Signature { get; set; }
+    
+    public static NewMessageResponseBase<T> Error()
+    {
+        return new NewMessageResponseBase<T>()
+        {
+            ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error, nameof (Error))
+        };
+    }
+
+    public static NewMessageResponseBase<T> WaitResult()
+    {
+        return new NewMessageResponseBase<T>()
+        {
+            ResponseStatus = new ResponseStatusApi("15", "Giao dịch đang xử lý. Vui lòng liên hệ CSKH để được hỗ trợ")
+        };
+    }
+
+    public static NewMessageResponseBase<T> WaitResult(string message)
+    {
+        return new NewMessageResponseBase<T>()
+        {
+            ResponseStatus = new ResponseStatusApi("15", message)
+        };
+    }
+
+    public static NewMessageResponseBase<T> Error(string message)
+    {
+        return new NewMessageResponseBase<T>()
+        {
+            ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error, message)
+        };
+    }
+
+    public static NewMessageResponseBase<T> Error(string code, string message)
+    {
+        return new NewMessageResponseBase<T>()
+        {
+            ResponseStatus = new ResponseStatusApi(code, message)
+        };
+    }
+
+    public static NewMessageResponseBase<T> Error(T data)
+    {
+        return new NewMessageResponseBase<T>()
+        {
+            ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error, nameof (Error)),
+            Results = data
+        };
+    }
+
+    public static NewMessageResponseBase<T> Error(string code, string message, T data)
+    {
+        return new NewMessageResponseBase<T>()
+        {
+            ResponseStatus = new ResponseStatusApi(code, message),
+            Results = data
+        };
+    }
+
+    public static NewMessageResponseBase<T> Success()
+    {
+        return new NewMessageResponseBase<T>()
+        {
+            ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Success, nameof (Success))
+        };
+    }
+
+    public static NewMessageResponseBase<T> Success(T data)
+    {
+        return new NewMessageResponseBase<T>()
+        {
+            ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Success, nameof (Success)),
+            Results = data
+        };
+    }
 }
 
 [DataContract]

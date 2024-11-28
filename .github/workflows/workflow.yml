@@ -9,7 +9,6 @@ on:
           - backend
           - balance
           - common
-          - commission
           - mobile_check
           - gateway
           - report
@@ -17,6 +16,7 @@ on:
           - topup_gw
           - worker
           - commission
+          - identity
         required: true
         type: choice
         description: Choose which service to run
@@ -128,5 +128,18 @@ jobs:
         builder: ${{ steps.buildx.outputs.name }}
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/gmobile:topup_worker
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache
+        
+    - name: identity
+      if: ${{ github.event.inputs.service == 'identity' || github.event.inputs.service == 'all' }}
+      uses: docker/build-push-action@v2
+      id: docker_build_identity
+      with:
+        context: ./
+        file: ./Identity/Dockerfile
+        builder: ${{ steps.buildx.outputs.name }}
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/gmobile:topup_identity
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache

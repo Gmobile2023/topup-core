@@ -11,7 +11,7 @@ public class DbInitializer
 {
     public static async Task InitDb(WebApplication app)
     {
-        await DB.InitAsync("MobileCheck", MongoClientSettings
+        await DB.InitAsync("Identity", MongoClientSettings
             .FromConnectionString(app.Configuration.GetConnectionString("Mongodb")));
 
         await DB.Index<MobileInfo>()

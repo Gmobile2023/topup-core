@@ -1,19 +1,19 @@
 using System.Collections.Generic;
-using Hangfire;
-using Topup.Shared.Helpers;
+using Identity.BussinessService;
+using Identity.Configurations;
+using Identity.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using MobileCheck.Services;
-using MobileCheck.Configurations;
 using ServiceStack;
 using ServiceStack.Api.OpenApi;
 using ServiceStack.Text;
 using ServiceStack.Validation;
+using Topup.Shared.Helpers;
 
 [assembly: HostingStartup(typeof(AppHost))]
 
-namespace MobileCheck.Configurations;
+namespace Identity.Configurations;
 
 public class AppHost : AppHostBase, IHostingStartup
 {
@@ -27,9 +27,8 @@ public class AppHost : AppHostBase, IHostingStartup
             .ConfigureServices(services =>
             {
                 // Configure ASP.NET Core IOC Dependencies
-                services.AddTransient<CheckMobileHttpClient>();
                 services.AddTransient<GrpcClientHepper>();
-                services.AddTransient<CheckMobileProcess>();
+                services.AddScoped<IIdentityService, IdentityService>();
             })
             .Configure((context, app) =>
             {
@@ -39,10 +38,7 @@ public class AppHost : AppHostBase, IHostingStartup
 
                 var pathBase = context.Configuration["PATH_BASE"];
                 if (!string.IsNullOrEmpty(pathBase)) app.UsePathBase(pathBase);
-
                 app.UseRouting();
-                RecurringJob.AddOrUpdate<CheckMobileProcess>("MyAutoCheck", x => x.CheckMobileJob(),
-                    Cron.Minutely());
             });
     }
 
@@ -59,7 +55,7 @@ public class AppHost : AppHostBase, IHostingStartup
             {
                 { "Server", "nginx/1.4.7" },
                 { "Vary", "Accept" },
-                { "X-Powered-By", "GMB_TopupGw" }
+                { "X-Powered-By", "GMB" }
             },
             EnableFeatures = Feature.All.Remove(
                 Feature.Csv | Feature.Soap11 | Feature.Soap12) // | Feature.Metadata),
@@ -73,12 +69,4 @@ public class AppHost : AppHostBase, IHostingStartup
             ExcludeTypeInfo = true
         });
     }
-
-    // private static IAsyncPolicy<HttpResponseMessage> GetPolicy()
-    // {
-    //     return HttpPolicyExtensions
-    //         .HandleTransientHttpError()
-    //         .OrResult(msg => msg.StatusCode == HttpStatusCode.NotFound)
-    //         .WaitAndRetryForeverAsync(_ => TimeSpan.FromSeconds(3));
-    // }
 }
