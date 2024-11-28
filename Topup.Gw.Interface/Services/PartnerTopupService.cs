@@ -180,7 +180,7 @@ public class PartnerTopupService : AppServiceBase
             {
                 _logger.LogInformation("{TransRef}: TopupPartnerRequest not valid: {Response}",
                     topupRequest.RequestCode,
-                    response.ToJson());
+                    validate.ToJson());
                 response.Status = validate.ResponseStatus.ErrorCode;
                 response.Message = validate.ResponseStatus.Message;
                 return response;

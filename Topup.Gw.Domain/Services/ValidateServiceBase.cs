@@ -25,6 +25,7 @@ public class ValidateServiceBase : IValidateServiceBase
     {
         try
         {
+            _logger.LogInformation($"VerifyPartnerAsync {requestDto.ToJson()}");
             var response = new NewMessageResponseBase<PartnerConfigDto>();
             var partner = await _systemService.GetPartnerCache(requestDto.PartnerCode);
             if (partner == null)
@@ -74,9 +75,10 @@ public class ValidateServiceBase : IValidateServiceBase
                     return response;
                 }
             }
+
             if (requestDto.CategoryCode != "CheckTrans")
             {
-                var productNotAlows = (partner.ProductConfigsNotAllow??"").FromJson<List<string>>();
+                var productNotAlows = (partner.ProductConfigsNotAllow ?? "").FromJson<List<string>>();
                 if (productNotAlows != null && productNotAlows.Contains(requestDto.ProductCode))
                 {
                     _logger.LogInformation(
