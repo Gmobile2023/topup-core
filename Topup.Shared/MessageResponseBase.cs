@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 
 namespace Topup.Shared;
 
+[DataContract]
 public class MessageResponseBase
 {
     public MessageResponseBase()

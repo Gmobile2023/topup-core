@@ -5,13 +5,12 @@ using ServiceStack.DataAnnotations;
 
 namespace Topup.Gw.Model.RequestDtos;
 
-[DataContract]
 [Route("/api/v1/partner/payment/topup", "POST")]
 public class TopupPartnerRequest : PartnerRequestBase, IPost
 {
     [DataMember(Name = "phone")] public string PhoneNumber { get; set; }
     public int Amount { get; set; }
-    [Required] public string RequestCode { get; set; }
+    public string RequestCode { get; set; }
     [DataMember(Name = "partner")] public string PartnerCode { get; set; }
     [DataMember(Name = "provider")] public string CategoryCode { get; set; }
     public string ProductCode { get; set; }
@@ -24,11 +23,9 @@ public class PinCodePartnerRequest : PartnerRequestBase, IPost
     [Required] public string TransCode { get; set; }
 
     [DataMember(Name = "partner")]
-    [Required]
     public string PartnerCode { get; set; }
 
     [DataMember(Name = "provider")]
-    [Required]
     public string CategoryCode { get; set; }
 
     public Channel Channel { get; set; }
@@ -72,7 +69,6 @@ public class CheckTransRequest : PartnerRequestBase, IGet, IReturn<MessageRespon
     public string PartnerCode { get; set; }
 }
 
-[DataContract]
 [Route("/api/v1/partner/payment/status", "GET")]
 public class PartnerCheckTransRequest : PartnerRequestBase, IGet, IReturn<MessageResponseBase>
 {

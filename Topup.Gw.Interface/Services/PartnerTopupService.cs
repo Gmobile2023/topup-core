@@ -72,7 +72,7 @@ public class PartnerTopupService : AppServiceBase
             {
                 _logger.LogInformation("{TransRef}: TopupPartnerRequest not valid: {Response}",
                     check.RequestCode,
-                    response.ToJson());
+                    validate.ToJson());
                 response.Status = validate.ResponseStatus.ErrorCode;
                 response.Message = validate.ResponseStatus.Message;
                 return response;
@@ -99,6 +99,9 @@ public class PartnerTopupService : AppServiceBase
     public async Task<object> PostAsync(TopupPartnerRequest topupRequest)
     {
         if (topupRequest == null)
+            return new PartnerResponseBase<PartnerResult>(ResponseCodeConst.ResponseCode_00, "Invalid request");
+        if (string.IsNullOrEmpty(topupRequest.RequestCode) || string.IsNullOrEmpty(topupRequest.PartnerCode) ||
+            string.IsNullOrEmpty(topupRequest.PhoneNumber) || string.IsNullOrEmpty(topupRequest.CategoryCode))
             return new PartnerResponseBase<PartnerResult>(ResponseCodeConst.ResponseCode_00, "Invalid request");
         _logger.LogInformation("{Partner}: TopupRequest {Request}", topupRequest.PartnerCode,
             topupRequest.ToJson());
