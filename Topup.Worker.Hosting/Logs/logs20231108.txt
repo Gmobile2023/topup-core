@@ -204,7 +204,7 @@
 2023-11-08 18:07:54.162 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-08 18:07:55.183 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-08 18:07:55.849 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-08 18:07:55.996 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 1809.335ms. No errors detected.
+2023-11-08 18:07:55.996 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 1809.335ms. No errors detected.
 2023-11-08 18:07:56.047 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-08 18:07:56.060 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-08 18:07:56.060 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -417,7 +417,7 @@
 2023-11-08 18:42:31.659 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-08 18:42:31.889 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-08 18:42:32.412 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-08 18:42:32.503 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 819.8438ms. No errors detected.
+2023-11-08 18:42:32.503 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 819.8438ms. No errors detected.
 2023-11-08 18:42:32.545 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-08 18:42:32.558 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-08 18:42:32.559 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -705,7 +705,7 @@ System.ArgumentException: Object of type 'ServiceStack.ResponseStatus' cannot be
 2023-11-08 18:52:08.870 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-08 18:52:09.066 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-08 18:52:09.491 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-08 18:52:09.585 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 691.2978ms. No errors detected.
+2023-11-08 18:52:09.585 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 691.2978ms. No errors detected.
 2023-11-08 18:52:09.630 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-08 18:52:09.643 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-08 18:52:09.644 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -918,7 +918,7 @@ System.ArgumentException: Object of type 'ServiceStack.ResponseStatus' cannot be
 2023-11-08 18:53:25.116 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-08 18:53:25.316 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-08 18:53:25.772 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-08 18:53:25.848 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 709.9275ms. No errors detected.
+2023-11-08 18:53:25.848 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 709.9275ms. No errors detected.
 2023-11-08 18:53:25.893 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-08 18:53:25.906 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-08 18:53:25.907 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -1135,7 +1135,7 @@ System.ArgumentException: Object of type 'ServiceStack.ResponseStatus' cannot be
 2023-11-08 18:56:28.482 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-08 18:56:28.752 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-08 18:56:29.550 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-08 18:56:29.686 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 1181.6609ms. No errors detected.
+2023-11-08 18:56:29.686 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 1181.6609ms. No errors detected.
 2023-11-08 18:56:29.752 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-08 18:56:29.774 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-08 18:56:29.777 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -1348,7 +1348,7 @@ System.ArgumentException: Object of type 'ServiceStack.ResponseStatus' cannot be
 2023-11-08 18:57:08.004 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-08 18:57:08.211 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-08 18:57:08.632 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-08 18:57:08.733 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 701.6588ms. No errors detected.
+2023-11-08 18:57:08.733 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 701.6588ms. No errors detected.
 2023-11-08 18:57:08.786 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-08 18:57:08.804 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-08 18:57:08.804 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -1565,7 +1565,7 @@ System.ArgumentException: Object of type 'ServiceStack.ResponseStatus' cannot be
 2023-11-08 19:02:14.550 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-08 19:02:14.744 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-08 19:02:15.188 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-08 19:02:15.269 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 692.6767ms. No errors detected.
+2023-11-08 19:02:15.269 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 692.6767ms. No errors detected.
 2023-11-08 19:02:15.313 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-08 19:02:15.328 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-08 19:02:15.329 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -1802,7 +1802,7 @@ System.ArgumentException: Object of type 'ServiceStack.ResponseStatus' cannot be
 2023-11-08 21:54:17.348 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-08 21:54:17.721 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-08 21:54:18.378 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-08 21:54:18.477 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 1101.4957ms. No errors detected.
+2023-11-08 21:54:18.477 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 1101.4957ms. No errors detected.
 2023-11-08 21:54:18.543 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-08 21:54:18.558 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-08 21:54:18.558 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -2039,7 +2039,7 @@ System.ArgumentException: Object of type 'ServiceStack.ResponseStatus' cannot be
 2023-11-08 22:05:47.759 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-08 22:05:47.977 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-08 22:05:48.472 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-08 22:05:48.571 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 781.3767ms. No errors detected.
+2023-11-08 22:05:48.571 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 781.3767ms. No errors detected.
 2023-11-08 22:05:48.613 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-08 22:05:48.625 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-08 22:05:48.626 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"

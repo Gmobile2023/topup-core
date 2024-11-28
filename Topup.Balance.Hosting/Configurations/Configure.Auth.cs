@@ -1,20 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using Topup.Gw.Hosting.Configurations;
-using Topup.Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using ServiceStack;
 using ServiceStack.Auth;
+using Topup.Balance.Hosting.Configurations;
+using Topup.Shared;
 
 [assembly: HostingStartup(typeof(ConfigureAuth))]
 
-namespace Topup.Gw.Hosting.Configurations;
+namespace Topup.Balance.Hosting.Configurations;
 
 public class ConfigureAuth : IHostingStartup
 {

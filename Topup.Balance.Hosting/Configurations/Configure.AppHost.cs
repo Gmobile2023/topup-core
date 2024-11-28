@@ -8,6 +8,7 @@ using Topup.Shared.CacheManager;
 using Topup.Shared.Helpers;
 using Topup.Shared.UniqueIdGenerator;
 using Infrastructure.AppVersion;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceStack;
@@ -45,6 +46,7 @@ public class AppHost : AppHostBase, IHostingStartup
             .Configure(app =>
             {
                 // Configure ASP .NET Core App
+                app.UseAuthentication();
                 if (!HasInit)
                     app.UseServiceStack(new AppHost());
             });
@@ -62,7 +64,7 @@ public class AppHost : AppHostBase, IHostingStartup
             {
                 { "Server", "nginx/1.4.7" },
                 { "Vary", "Accept" },
-                { "X-Powered-By", "NT_Balance" }
+                { "X-Powered-By", "GMB_Balance" }
             },
             EnableFeatures = Feature.All.Remove(
                 Feature.Csv | Feature.Soap11 | Feature.Soap12) // | Feature.Metadata),

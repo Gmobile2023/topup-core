@@ -145,7 +145,7 @@ MassTransit.RabbitMqConnectionException: Broker unreachable: paygate@10.105.33.7
    at MassTransit.MassTransitBus.StartAsync(CancellationToken cancellationToken) in /_/src/MassTransit/MassTransitBus.cs:line 194
 2024-11-19 22:07:15.931 +07:00 [INF] [MassTransit.] Bus stopped: rabbitmq://10.105.33.70/paygate
 2024-11-19 22:07:16.604 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 2
-2024-11-19 22:07:16.736 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Commission" took 4951.9276ms. No errors detected.
+2024-11-19 22:07:16.736 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Commission" took 4951.9276ms. No errors detected.
 2024-11-19 22:07:16.798 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"http://localhost:58810/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2024-11-19 22:07:16.816 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:5791"
 2024-11-19 22:07:16.817 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:5891"

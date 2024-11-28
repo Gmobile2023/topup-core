@@ -3,8 +3,8 @@ using ServiceStack;
 
 namespace Topup.Balance.Models.Requests;
 
-[Route("/api/v1/balance/check-balance", "GET")]
-public class AccountBalanceGetRequest : IGet, IReturn<object>
+[Route("/api/v1/partner/balance/{PartnerCode}", "GET")]
+public class PartnerBalanceGetRequest : IGet, IReturn<object>
 {
     public string PartnerCode { get; set; }
 }

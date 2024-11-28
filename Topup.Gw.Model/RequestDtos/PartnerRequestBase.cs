@@ -2,5 +2,5 @@
 
 public class PartnerRequestBase
 {
-    public string Signature { get; set; }
+    public string Sig { get; set; }
 }

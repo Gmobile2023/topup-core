@@ -20,7 +20,7 @@
         <EmbeddedResource Remove="Migration\**" />
         <None Remove="Migration\**" />
         <Content Remove="Migration\**" />
-        <None Update="NT_PrivateKey.pem">
+        <None Update="GMB_PrivateKey.pem">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Update="public.pem">
@@ -29,7 +29,7 @@
         <None Update="PY_PublicKey.pem">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Update="NT_PrivateKey_Production.pem">
+        <None Update="GMB_PrivateKey_Production.pem">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <Compile Remove="AppHost.cs" />

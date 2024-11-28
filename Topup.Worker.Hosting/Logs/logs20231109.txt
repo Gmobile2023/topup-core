@@ -204,7 +204,7 @@
 2023-11-09 17:46:44.922 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-09 17:46:45.308 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-09 17:46:45.721 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-09 17:46:45.810 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 860.7533ms. No errors detected.
+2023-11-09 17:46:45.810 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 860.7533ms. No errors detected.
 2023-11-09 17:46:45.852 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-09 17:46:45.866 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-09 17:46:45.867 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -417,7 +417,7 @@
 2023-11-09 17:47:18.965 +07:00 [INF] [MassTransit.] Bus started: http://127.0.0.1:19796/
 2023-11-09 17:47:19.161 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-11-09 17:47:19.668 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-11-09 17:47:19.768 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 781.0006ms. No errors detected.
+2023-11-09 17:47:19.768 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 781.0006ms. No errors detected.
 2023-11-09 17:47:19.819 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2023-11-09 17:47:19.833 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-11-09 17:47:19.833 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"

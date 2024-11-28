@@ -204,7 +204,7 @@
 2024-03-22 00:05:10.129 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-22 00:05:10.259 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-22 00:05:10.497 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2024-03-22 00:05:10.546 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 414.2629ms. No errors detected.
+2024-03-22 00:05:10.546 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 414.2629ms. No errors detected.
 2024-03-22 00:05:10.575 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9802"
 2024-03-22 00:05:10.575 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9801"
 2024-03-22 00:05:10.576 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
@@ -450,7 +450,7 @@
 2024-03-22 00:11:25.168 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-22 00:11:25.291 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-22 00:11:25.527 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2024-03-22 00:11:25.574 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 403.0179ms. No errors detected.
+2024-03-22 00:11:25.574 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 403.0179ms. No errors detected.
 2024-03-22 00:11:25.602 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9802"
 2024-03-22 00:11:25.602 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9801"
 2024-03-22 00:11:25.603 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
@@ -682,7 +682,7 @@
 2024-03-22 00:15:44.400 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/test
 2024-03-22 00:15:44.523 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-03-22 00:15:44.754 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2024-03-22 00:15:44.799 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 396.6581ms. No errors detected.
+2024-03-22 00:15:44.799 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 396.6581ms. No errors detected.
 2024-03-22 00:15:44.827 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9802"
 2024-03-22 00:15:44.827 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9801"
 2024-03-22 00:15:44.828 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
