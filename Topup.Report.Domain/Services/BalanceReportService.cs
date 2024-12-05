@@ -3970,7 +3970,7 @@ namespace Topup.Report.Domain.Services
                 ? new ReportAccountBalanceDay()
                 {
                     AccountCode = settlement.DesAccountCode,
-                    AccountType = settlement.DesAccountCode.StartsWith("NT9")
+                    AccountType = settlement.DesAccountCode.StartsWith("GMB")
                         ? BalanceAccountTypeConst.CUSTOMER
                         : BalanceAccountTypeConst.SYSTEM,
                     Credite = currencyCode == "DEBT" ? 0 : settlement.Amount,
@@ -3990,7 +3990,7 @@ namespace Topup.Report.Domain.Services
                 : new ReportAccountBalanceDay()
                 {
                     AccountCode = settlement.SrcAccountCode,
-                    AccountType = settlement.SrcAccountCode.StartsWith("NT9")
+                    AccountType = settlement.SrcAccountCode.StartsWith("GMB")
                         ? BalanceAccountTypeConst.CUSTOMER
                         : BalanceAccountTypeConst.SYSTEM,
                     Credite = currencyCode == "DEBT" ? settlement.Amount : 0,
@@ -4035,7 +4035,7 @@ namespace Topup.Report.Domain.Services
                             infoAccountDes.CurrencyCode = request.Settlement.CurrencyCode;
                             infoAccountDes.BalanceAfter = balanceInfoDes.BalanceAfter;
                             if (request.Transaction.TransType == TransactionType.SaleDeposit &&
-                                request.Settlement.CurrencyCode == "DEBT")
+                                request.Settlement.CurrencyCode == CurrencyCode.DEBT.ToString())
                             {
                                 infoAccountDes.Debit = infoAccountDes.Debit + balanceInfoDes.Debit;
                                 var limit = await _externalServiceConnector.GetLimitDebtAccount(infoDes.AccountCode);
@@ -4047,7 +4047,7 @@ namespace Topup.Report.Domain.Services
                             if (request.Transaction.TransType == TransactionType.Deposit)
                                 infoAccountDes.IncDeposit = (infoAccountDes.IncDeposit ?? 0) + balanceInfoDes.Credite;
                             else if (request.Transaction.TransType == TransactionType.SaleDeposit &&
-                                     request.Settlement.CurrencyCode == "VND")
+                                     request.Settlement.CurrencyCode == CurrencyCode.VND.ToString())
                                 infoAccountDes.IncDeposit = (infoAccountDes.IncDeposit ?? 0) + balanceInfoDes.Credite;
                             else if (request.Transaction.TransType == TransactionType.Transfer
                                 || request.Transaction.TransType == TransactionType.AdjustmentIncrease
@@ -4075,7 +4075,7 @@ namespace Topup.Report.Domain.Services
                             balanceInfoDes.LimitBefore = infoAccountDes.LimitAfter;
                             balanceInfoDes.CurrencyCode = request.Settlement.CurrencyCode;
                             if (request.Transaction.TransType == TransactionType.SaleDeposit &&
-                                request.Settlement.CurrencyCode == "DEBT")
+                                request.Settlement.CurrencyCode == CurrencyCode.DEBT.ToString())
                             {
                                 var limit = await _externalServiceConnector.GetLimitDebtAccount(balanceInfoDes.AccountCode);
                                 balanceInfoDes.DecPayment = balanceInfoDes.Debit;
@@ -4090,7 +4090,7 @@ namespace Topup.Report.Domain.Services
                             else if (request.Transaction.TransType == TransactionType.Deposit)
                                 balanceInfoDes.IncDeposit = balanceInfoDes.Credite;
                             else if (request.Transaction.TransType == TransactionType.SaleDeposit &&
-                                     request.Settlement.CurrencyCode == "VND")
+                                     request.Settlement.CurrencyCode == CurrencyCode.VND.ToString())
                                 infoAccountDes.IncDeposit = balanceInfoDes.Credite;
                             else if (request.Transaction.TransType == TransactionType.Transfer
                                 || request.Transaction.TransType == TransactionType.AdjustmentIncrease
@@ -4118,10 +4118,10 @@ namespace Topup.Report.Domain.Services
                         if (request.Transaction.TransType == TransactionType.Deposit)
                             balanceInfoDes.IncDeposit = balanceInfoDes.Credite;
                         else if (request.Transaction.TransType == TransactionType.SaleDeposit &&
-                                 request.Settlement.CurrencyCode == "VND")
+                                 request.Settlement.CurrencyCode == CurrencyCode.VND.ToString())
                             balanceInfoDes.IncDeposit = balanceInfoDes.Credite;
                         else if (request.Transaction.TransType == TransactionType.SaleDeposit &&
-                                 request.Settlement.CurrencyCode == "DEBT")
+                                 request.Settlement.CurrencyCode == CurrencyCode.DEBT.ToString())
                         {
                             balanceInfoDes.DecPayment = balanceInfoDes.Debit;
                             var limit = await _externalServiceConnector.GetLimitDebtAccount(balanceInfoDes.AccountCode);
@@ -4167,7 +4167,7 @@ namespace Topup.Report.Domain.Services
                         {
                             infoAccountSrc.BalanceAfter = balanceInfoSrc.BalanceAfter;
                             if (request.Transaction.TransType == TransactionType.ClearDebt &&
-                                request.Settlement.CurrencyCode == "DEBT")
+                                request.Settlement.CurrencyCode == CurrencyCode.DEBT.ToString())
                             {
                                 infoAccountSrc.Credite = infoAccountSrc.Credite + balanceInfoSrc.Credite;
                                 infoAccountSrc.IncDeposit = (infoAccountSrc.IncDeposit ?? 0) + balanceInfoSrc.Credite;
@@ -4201,7 +4201,7 @@ namespace Topup.Report.Domain.Services
                             balanceInfoSrc.BalanceBefore = infoAccountSrc.BalanceAfter;
 
                             if (request.Transaction.TransType == TransactionType.SaleDeposit &&
-                                request.Settlement.CurrencyCode == "DEBT")
+                                request.Settlement.CurrencyCode == CurrencyCode.DEBT.ToString())
                             {
                                 infoAccountSrc.IncDeposit = balanceInfoSrc.Credite;
                                 var limit =
@@ -4238,7 +4238,7 @@ namespace Topup.Report.Domain.Services
                         _logger.LogInformation($"AccountCode={balanceInfoSrc.AccountCode} UpdateAccountBalanceDayReport => TextDayTran={balanceInfoSrc.TextDay} => chua_co_ban_ghi");
 
                         if (request.Transaction.TransType == TransactionType.SaleDeposit &&
-                            request.Settlement.CurrencyCode == "DEBT")
+                            request.Settlement.CurrencyCode == CurrencyCode.DEBT.ToString())
                         {
                             balanceInfoSrc.IncDeposit = balanceInfoSrc.Credite;
                             var limit = await _externalServiceConnector.GetLimitDebtAccount(balanceInfoSrc.AccountCode);
@@ -4304,7 +4304,7 @@ namespace Topup.Report.Domain.Services
                     list.Add(new BalanceTotalItem()
                     {
                         AccountCode = item.SrcAccountCode,
-                        AccountType = item.SrcAccountCode.StartsWith("NT9")
+                        AccountType = item.SrcAccountCode.StartsWith(AccountWith.StartWith)
                             ? BalanceAccountTypeConst.CUSTOMER
                             : BalanceAccountTypeConst.SYSTEM,
                         BalanceBefore = item.SrcAccountBalanceBeforeTrans,
@@ -4319,7 +4319,7 @@ namespace Topup.Report.Domain.Services
                     list.Add(new BalanceTotalItem()
                     {
                         AccountCode = item.DesAccountCode,
-                        AccountType = item.DesAccountCode.StartsWith("NT9")
+                        AccountType = item.DesAccountCode.StartsWith(AccountWith.StartWith)
                             ? BalanceAccountTypeConst.CUSTOMER
                             : BalanceAccountTypeConst.SYSTEM,
                         BalanceBefore = item.DesAccountBalanceBeforeTrans,
@@ -4341,7 +4341,7 @@ namespace Topup.Report.Domain.Services
                 return new ReportAccountBalanceDay()
                 {
                     AccountCode = accountCode,
-                    AccountType = accountCode.StartsWith("NT9")
+                    AccountType = accountCode.StartsWith(AccountWith.StartWith)
                         ? BalanceAccountTypeConst.CUSTOMER
                         : BalanceAccountTypeConst.SYSTEM,
                     BalanceAfter = list.First(c => c.CreateDate == maxDate).BalanceAfter,
@@ -4361,7 +4361,7 @@ namespace Topup.Report.Domain.Services
                     return new ReportAccountBalanceDay()
                     {
                         AccountCode = accountCode,
-                        AccountType = accountCode.StartsWith("NT9")
+                        AccountType = accountCode.StartsWith(AccountWith.StartWith)
                             ? BalanceAccountTypeConst.CUSTOMER
                             : BalanceAccountTypeConst.SYSTEM,
                         BalanceAfter = balanceReport.BalanceAfter,
@@ -4377,7 +4377,7 @@ namespace Topup.Report.Domain.Services
                     return new ReportAccountBalanceDay()
                     {
                         AccountCode = accountCode,
-                        AccountType = accountCode.StartsWith("NT9")
+                        AccountType = accountCode.StartsWith(AccountWith.StartWith)
                             ? BalanceAccountTypeConst.CUSTOMER
                             : BalanceAccountTypeConst.SYSTEM,
                         BalanceAfter = balanceHistory,
@@ -4459,8 +4459,8 @@ namespace Topup.Report.Domain.Services
                 DateTime fromDate = date.AddDays(-60);
                 DateTime toDate = date.Date.AddDays(1);
 
-                var lstAccount = await _externalServiceConnector.GetListAccountCode("", "VND");
-                var lstDebt = await _externalServiceConnector.GetListAccountCode("", "DEBT");
+                var lstAccount = await _externalServiceConnector.GetListAccountCode("", CurrencyCode.VND.ToString());
+                var lstDebt = await _externalServiceConnector.GetListAccountCode("", CurrencyCode.DEBT.ToString());
 
                 #region 1.Loại VND
 
@@ -4469,8 +4469,8 @@ namespace Topup.Report.Domain.Services
                     var account = await GetAccountBackend(accountCode);
                     if (account != null && new[] { 1, 2, 3, 4, 5, 6 }.Contains(account.AgentType) && new[] { 1, 2, 3, 4 }.Contains(account.AccountType))
                     {
-                        _logger.LogInformation($"{accountCode}|VND");
-                        await SysAccountBalance(accountCode, "VND", fromDate, date, toDate);
+                        _logger.LogInformation($"{accountCode}|{CurrencyCode.VND.ToString()}");
+                        await SysAccountBalance(accountCode, CurrencyCode.VND.ToString(), fromDate, date, toDate);
                     }
                 }
 
@@ -4483,8 +4483,8 @@ namespace Topup.Report.Domain.Services
                     var account = await GetAccountBackend(accountCode);
                     if (account != null && new[] { 1, 2, 3, 4, 5, 6 }.Contains(account.AgentType) && account.AccountType > 0)
                     {
-                        _logger.LogInformation($"{accountCode}|DEBT");
-                        await SysAccountBalance(accountCode, "DEBT", fromDate, date, toDate);
+                        _logger.LogInformation($"{accountCode}|{CurrencyCode.DEBT.ToString()}");
+                        await SysAccountBalance(accountCode, CurrencyCode.DEBT.ToString(), fromDate, date, toDate);
                     }
                 }
 
@@ -4516,7 +4516,7 @@ namespace Topup.Report.Domain.Services
                             BalanceBefore = balance,
                             UpdateDate = DateTime.Now,
                             TextDay = dateText,
-                            CurrencyCode = "VND"
+                            CurrencyCode = CurrencyCode.VND.ToString()
                         };
                     }
                     else
