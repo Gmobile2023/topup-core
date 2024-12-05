@@ -204,7 +204,7 @@
 2022-12-26 09:51:11.615 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2022-12-26 09:51:12.267 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2022-12-26 09:51:13.258 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2022-12-26 09:51:13.397 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 1709.5533ms. No errors detected.
+2022-12-26 09:51:13.397 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 1709.5533ms. No errors detected.
 2022-12-26 09:51:13.476 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2022-12-26 09:51:13.488 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2022-12-26 09:51:13.489 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -467,7 +467,7 @@
 2022-12-26 10:19:09.671 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2022-12-26 10:19:09.870 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2022-12-26 10:19:10.243 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2022-12-26 10:19:10.315 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 619.6475ms. No errors detected.
+2022-12-26 10:19:10.315 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 619.6475ms. No errors detected.
 2022-12-26 10:19:10.353 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2022-12-26 10:19:10.363 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2022-12-26 10:19:10.363 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
@@ -708,7 +708,7 @@
 2022-12-26 10:25:46.992 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2022-12-26 10:25:47.218 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2022-12-26 10:25:47.608 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2022-12-26 10:25:47.698 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 676.8715ms. No errors detected.
+2022-12-26 10:25:47.698 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 676.8715ms. No errors detected.
 2022-12-26 10:25:47.743 +07:00 [WRN] [Microsoft.AspNetCore.Server.Kestrel.] Overriding address(es) '"https://localhost:5001/, http://localhost:5000/"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2022-12-26 10:25:47.754 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2022-12-26 10:25:47.754 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"

@@ -1,0 +1,23 @@
+{
+  "profiles": {
+    "Anpos.Core.Hosting": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:58810/"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:58809/",
+      "sslPort": 0
+    }
+  }
+}

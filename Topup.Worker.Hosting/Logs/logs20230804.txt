@@ -204,7 +204,7 @@
 2023-08-04 00:41:25.604 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2023-08-04 00:41:26.012 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-08-04 00:41:26.899 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-08-04 00:41:27.112 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 1501.5633ms. No errors detected.
+2023-08-04 00:41:27.112 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 1501.5633ms. No errors detected.
 2023-08-04 00:41:27.270 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-08-04 00:41:27.270 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
 2023-08-04 00:41:27.274 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
@@ -734,7 +734,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2023-08-04 00:57:32.314 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2023-08-04 00:57:32.660 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-08-04 00:57:33.186 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-08-04 00:57:33.302 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 983.528ms. No errors detected.
+2023-08-04 00:57:33.302 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 983.528ms. No errors detected.
 2023-08-04 00:57:33.359 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-08-04 00:57:33.360 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
 2023-08-04 00:57:33.361 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
@@ -958,7 +958,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2023-08-04 01:00:35.616 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2023-08-04 01:00:35.890 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-08-04 01:00:36.442 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-08-04 01:00:36.522 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 901.2591ms. No errors detected.
+2023-08-04 01:00:36.522 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 901.2591ms. No errors detected.
 2023-08-04 01:00:36.572 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-08-04 01:00:36.573 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
 2023-08-04 01:00:36.574 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.

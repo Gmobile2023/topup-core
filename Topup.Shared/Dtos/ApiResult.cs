@@ -29,7 +29,7 @@ public class SaleResult
     [DataMember(Order = 7)] public string ServiceCode { get; set; }
 }
 [DataContract]
-public partial class CheckTransResult
+public  class CheckTransResult
 {
    [DataMember(Order = 1)]  public string TransCode { get; set; } //Mã giao dịch đối tác
    [DataMember(Order = 2)]  public string ReferenceCode { get; set; } //Đã giao dịch nhất trần

@@ -197,7 +197,7 @@ public class AppHost : AppHostBase, IHostingStartup
             {
                 { "Server", "nginx/1.4.7" },
                 { "Vary", "Accept" },
-                { "X-Powered-By", "NT_TopupGw" }
+                { "X-Powered-By", "GMB_TopupGw" }
             },
             EnableFeatures = Feature.All.Remove(
                 Feature.Csv | Feature.Soap11 | Feature.Soap12) // | Feature.Metadata),

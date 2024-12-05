@@ -3,6 +3,7 @@
 public class ResponseCodeConst
 {
     public const string Success = "1"; //Thành công
+    public const string InvalidAuth = "401"; //Thành công
 
     public const string Error = "0"; //Lỗi
     public const string InvalidAuthen = "001";

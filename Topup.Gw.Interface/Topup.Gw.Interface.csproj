@@ -19,6 +19,7 @@
         <Compile Remove="Services\TopupProviderService.cs"/>
         <Compile Remove="Filters\ResponseTransFilter.cs"/>
         <Compile Remove="Middleware\VerifyRequestMiddleware.cs"/>
+        <Compile Remove="Services\TransactionService.cs" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Middleware"/>

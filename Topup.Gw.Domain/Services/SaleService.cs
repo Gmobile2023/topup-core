@@ -1839,11 +1839,12 @@ namespace Topup.Gw.Domain.Services
                                 Amount = saleRequest.Amount,
                                 PaymentAmount = saleRequest.PaymentAmount,
                                 Discount = Convert.ToDecimal(saleRequest.DiscountAmount),
-                                ReceiverType = saleRequest.ReceiverType == ReceiverType.PostPaid
-                                    ? "TS"
-                                    : saleRequest.ReceiverType is ReceiverType.PrePaid or ReceiverType.Default
-                                        ? "TT"
-                                        : saleRequest.ReceiverType,
+                                ReceiverType = saleRequest.ReceiverType switch
+                                {
+                                    ReceiverType.PostPaid => "TS",
+                                    ReceiverType.PrePaid or ReceiverType.Default => "TT",
+                                    _ => saleRequest.ReceiverType
+                                },
                                 ServiceCode = saleRequest.ServiceCode,
                             };
 

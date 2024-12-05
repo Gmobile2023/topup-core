@@ -204,7 +204,7 @@
 2023-02-07 15:26:04.008 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2023-02-07 15:26:04.506 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-02-07 15:26:05.356 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-02-07 15:26:05.563 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 1550.2886ms. No errors detected.
+2023-02-07 15:26:05.563 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 1550.2886ms. No errors detected.
 2023-02-07 15:26:05.692 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-02-07 15:26:05.692 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
 2023-02-07 15:26:05.701 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
@@ -478,7 +478,7 @@
 2023-02-07 22:02:19.866 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2023-02-07 22:02:20.322 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-02-07 22:02:20.895 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-02-07 22:02:21.015 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 1144.1479ms. No errors detected.
+2023-02-07 22:02:21.015 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 1144.1479ms. No errors detected.
 2023-02-07 22:02:21.083 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-02-07 22:02:21.084 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
 2023-02-07 22:02:21.087 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
@@ -749,7 +749,7 @@
 2023-02-07 22:04:44.724 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2023-02-07 22:04:44.934 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-02-07 22:04:45.333 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-02-07 22:04:45.404 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 675.2065ms. No errors detected.
+2023-02-07 22:04:45.404 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 675.2065ms. No errors detected.
 2023-02-07 22:04:45.447 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-02-07 22:04:45.447 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
 2023-02-07 22:04:45.449 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
@@ -966,7 +966,7 @@
 2023-02-07 22:06:08.017 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2023-02-07 22:06:08.220 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-02-07 22:06:08.613 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-02-07 22:06:08.685 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 662.3569ms. No errors detected.
+2023-02-07 22:06:08.685 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 662.3569ms. No errors detected.
 2023-02-07 22:06:08.727 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-02-07 22:06:08.727 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
 2023-02-07 22:06:08.730 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.
@@ -1218,7 +1218,7 @@
 2023-02-07 22:08:49.709 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/paygate
 2023-02-07 22:08:49.908 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2023-02-07 22:08:50.295 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2023-02-07 22:08:50.365 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 652.0689ms. No errors detected.
+2023-02-07 22:08:50.365 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 652.0689ms. No errors detected.
 2023-02-07 22:08:50.408 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9791"
 2023-02-07 22:08:50.408 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9891"
 2023-02-07 22:08:50.410 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.

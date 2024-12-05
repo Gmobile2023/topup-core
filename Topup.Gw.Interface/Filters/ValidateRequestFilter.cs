@@ -38,7 +38,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
         if (requestDto.GetType() == typeof(TopupPartnerRequest))
             if (requestDto is TopupPartnerRequest dto)
             {
-                transCode = dto.TransCode;
+                transCode = dto.RequestCode;
                 cateCode = dto.CategoryCode;
 
                 amount = dto.Amount;
@@ -56,7 +56,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                         ResponseStatus = checkResponse.ResponseStatus,
                         Signature = Cryptography.Sign(
                             string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
-                            "NT_PrivateKey.pem")
+                            "GMB_PrivateKey.pem")
                     };
                     await res.WriteToResponse(req, newResponse);
                     return;
@@ -76,17 +76,17 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                         ResponseStatus = checkResponse.ResponseStatus,
                         Signature = Cryptography.Sign(
                             string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
-                            "NT_PrivateKey.pem")
+                            "GMB_PrivateKey.pem")
                     };
                     await res.WriteToResponse(req, newResponse);
                     return;
                 }
 
-                if (dto.ReceiverInfo.StartsWith("84"))
-                    dto.ReceiverInfo =
-                        Regex.Replace(dto.ReceiverInfo, "^84", "0"); //"0" + dto.ReceiverInfo.Substring(2);
+                if (dto.PhoneNumber.StartsWith("84"))
+                    dto.PhoneNumber =
+                        Regex.Replace(dto.PhoneNumber, "^84", "0"); //"0" + dto.ReceiverInfo.Substring(2);
 
-                if (!ValidationHelper.IsPhone(dto.ReceiverInfo))
+                if (!ValidationHelper.IsPhone(dto.PhoneNumber))
                 {
                     checkResponse.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_PhoneNotValid,
                         "Số điện thoại không hợp lệ")
@@ -98,7 +98,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                         ResponseStatus = checkResponse.ResponseStatus,
                         Signature = Cryptography.Sign(
                             string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
-                            "NT_PrivateKey.pem")
+                            "GMB_PrivateKey.pem")
                     };
                     await res.WriteToResponse(req, newResponse);
                     return;
@@ -108,8 +108,8 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 productCodeAdd?.SetValue(requestDto, productCode, null);
 
                 partnerRequest = dto.PartnerCode;
-                sigText = dto.Signature;
-                plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.ReceiverInfo,
+                sigText = dto.Sig;
+                plainText = string.Join("|", dto.PartnerCode, dto.RequestCode, dto.PhoneNumber,
                     dto.CategoryCode,
                     dto.Amount);
             }
@@ -134,7 +134,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                         ResponseStatus = checkResponse.ResponseStatus,
                         Signature = Cryptography.Sign(
                             string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
-                            "NT_PrivateKey.pem")
+                            "GMB_PrivateKey.pem")
                     };
                     await res.WriteToResponse(req, newResponse);
                     return;
@@ -153,7 +153,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                         ResponseStatus = checkResponse.ResponseStatus,
                         Signature = Cryptography.Sign(
                             string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
-                            "NT_PrivateKey.pem")
+                            "GMB_PrivateKey.pem")
                     };
                     await res.WriteToResponse(req, newResponse);
                     return;
@@ -165,7 +165,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 serviceCodeAdd?.SetValue(requestDto, serviceCode, null);
 
                 partnerRequest = dto.PartnerCode;
-                sigText = dto.Signature;
+                sigText = dto.Sig;
                 dto.ServiceCode = serviceCode;
                 plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.CategoryCode,
                     dto.CardValue, dto.Quantity);
@@ -178,7 +178,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 transCode = dto.TransCode;
                 cateCode = dto.CategoryCode;
                 partnerRequest = dto.PartnerCode;
-                sigText = dto.Signature;
+                sigText = dto.Sig;
                 serviceCode = ServiceCodes.PAY_BILL;
                 plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.ReceiverInfo,
                     dto.CategoryCode, dto.ProductCode, dto.Amount);
@@ -191,7 +191,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 transCode = dto.TransCode;
                 cateCode = dto.CategoryCode;
                 partnerRequest = dto.PartnerCode;
-                sigText = dto.Signature;
+                sigText = dto.Sig;
                 serviceCode = ServiceCodes.QUERY_BILL;
                 plainText = string.Join("|", dto.PartnerCode, dto.ReceiverInfo, dto.CategoryCode,
                     dto.ProductCode);
@@ -205,30 +205,30 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 cateCode = "CheckTrans";
                 serviceCode = null;
                 partnerRequest = dto.PartnerCode;
-                sigText = dto.Signature;
+                sigText = dto.Sig;
                 plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.TransCodeToCheck);
             }
 
-        if (requestDto.GetType() == typeof(CheckTransAuthenV2Request))
-            if (requestDto is CheckTransAuthenV2Request dto)
+        if (requestDto.GetType() == typeof(PartnerCheckTransRequest))
+            if (requestDto is PartnerCheckTransRequest dto)
             {
-                transCode = dto.TransCode;
                 cateCode = "CheckTrans";
                 serviceCode = null;
                 partnerRequest = dto.PartnerCode;
-                sigText = dto.Signature;
-                plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.TransCodeToCheck);
+                sigText = dto.Sig;
+                plainText = string.Join("|", dto.PartnerCode, dto.RequestCode);
             }
-        if (requestDto.GetType() == typeof(CheckTransAuthenNewRequest))
-            if (requestDto is CheckTransAuthenNewRequest dto)
-            {
-                transCode = dto.TransCode;
-                cateCode = "CheckTrans";
-                serviceCode = null;
-                partnerRequest = dto.PartnerCode;
-                sigText = dto.Signature;
-                plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.TransCodeToCheck);
-            }
+
+        // if (requestDto.GetType() == typeof(CheckTransAuthenNewRequest))
+        //     if (requestDto is CheckTransAuthenNewRequest dto)
+        //     {
+        //         transCode = dto.TransCode;
+        //         cateCode = "CheckTrans";
+        //         serviceCode = null;
+        //         partnerRequest = dto.PartnerCode;
+        //         sigText = dto.Signature;
+        //         plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.TransCodeToCheck);
+        //     }
 
         //Chỉ check với  Topup,
         if (!string.IsNullOrEmpty(productCode) && requestDto.GetType() == typeof(TopupPartnerRequest))
@@ -249,7 +249,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                     ResponseStatus = checkResponse.ResponseStatus,
                     Signature = Cryptography.Sign(
                         string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
-                        "NT_PrivateKey.pem")
+                        "GMB_PrivateKey.pem")
                 };
                 await res.WriteToResponse(req, newResponse);
                 return;
@@ -293,7 +293,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
             //     {
             //         ResponseStatus = checkResponse.ResponseStatus, Signature = Cryptography.Sign(
             //             string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
-            //             "NT_PrivateKey.pem")
+            //             "GMB_PrivateKey.pem")
             //     };
             //     await res.WriteToResponse(req, newResponse);
             //     return;
@@ -303,7 +303,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
             {
                 ResponseStatus = checkResponse.ResponseStatus,
                 Signature = Cryptography.Sign(string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
-                    "NT_PrivateKey.pem")
+                    "GMB_PrivateKey.pem")
             };
             await res.WriteToResponse(req, newResponse);
             return;

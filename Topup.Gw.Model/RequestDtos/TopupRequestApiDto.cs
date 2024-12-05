@@ -1,31 +1,33 @@
-﻿using Topup.Shared;
+﻿using System.Runtime.Serialization;
+using Topup.Shared;
 using ServiceStack;
 using ServiceStack.DataAnnotations;
 
 namespace Topup.Gw.Model.RequestDtos;
 
-[Route("/api/v1/transactions/topup", "POST")]
+[Route("/api/v1/partner/payment/topup", "POST")]
 public class TopupPartnerRequest : PartnerRequestBase, IPost
 {
-    public string ReceiverInfo { get; set; }
+    [DataMember(Name = "phone")] public string PhoneNumber { get; set; }
     public int Amount { get; set; }
-    [Required] public string TransCode { get; set; }
-    [Required] public string PartnerCode { get; set; }
-    [Required] public string CategoryCode { get; set; }
+    public string RequestCode { get; set; }
+    [DataMember(Name = "partner")] public string PartnerCode { get; set; }
+    [DataMember(Name = "provider")] public string CategoryCode { get; set; }
     public string ProductCode { get; set; }
-    public Channel Channel { get; set; }
-    public bool IsCheckReceiverType { get; set; }
-    public bool IsNoneDiscount { get; set; }
-    public string DefaultReceiverType { get; set; }
-    public bool IsCheckAllowTopupReceiverType { get; set; }
 }
 
-[Route("/api/v1/transactions/pincode", "POST")]
+[DataContract]
+[Route("/api/v1/partner/payment/pincode", "POST")]
 public class PinCodePartnerRequest : PartnerRequestBase, IPost
 {
     [Required] public string TransCode { get; set; }
-    [Required] public string PartnerCode { get; set; }
-    [Required] public string CategoryCode { get; set; }
+
+    [DataMember(Name = "partner")]
+    public string PartnerCode { get; set; }
+
+    [DataMember(Name = "provider")]
+    public string CategoryCode { get; set; }
+
     public Channel Channel { get; set; }
     [Required] public int Quantity { get; set; }
     [Required] public int CardValue { get; set; }
@@ -35,7 +37,7 @@ public class PinCodePartnerRequest : PartnerRequestBase, IPost
     public string ClientKey { get; set; }
 }
 
-[Route("/api/v1/transactions/pay-bill", "POST")]
+[Route("/api/v1/parner/payment/paybill", "POST")]
 public class PayBillPartnerRequest : PartnerRequestBase, IPost
 {
     [Required] public string ReceiverInfo { get; set; }
@@ -48,7 +50,7 @@ public class PayBillPartnerRequest : PartnerRequestBase, IPost
     [Required] public bool IsInvoice => true;
 }
 
-[Route("/api/v1/transactions/bill-query", "GET")]
+[Route("/api/v1/partner/payment/query", "GET")]
 public class BillQueryPartnerRequest : PartnerRequestBase, IGet
 {
     [Required] public string ReceiverInfo { get; set; }
@@ -67,21 +69,11 @@ public class CheckTransRequest : PartnerRequestBase, IGet, IReturn<MessageRespon
     public string PartnerCode { get; set; }
 }
 
-[Route("/api/v2/transactions/checktrans", "GET")]
-public class CheckTransAuthenV2Request : PartnerRequestBase, IGet, IReturn<MessageResponseBase>
+[Route("/api/v1/partner/payment/status", "GET")]
+public class PartnerCheckTransRequest : PartnerRequestBase, IGet, IReturn<MessageResponseBase>
 {
-    public string TransCode { get; set; }
-    public string TransCodeToCheck { get; set; }
-    public string PartnerCode { get; set; }
-    public string ClientKey { get; set; }
-}
-
-[Route("/api/v1/transactions/checktrans_v2", "GET")]
-public class CheckTransAuthenNewRequest : PartnerRequestBase, IGet, IReturn<MessageResponseBase>
-{
-    public string TransCode { get; set; }
-    public string TransCodeToCheck { get; set; }
-    public string PartnerCode { get; set; }
+    public string RequestCode { get; set; }
+    [DataMember(Name = "partner")] public string PartnerCode { get; set; }
     public string ClientKey { get; set; }
 }
 

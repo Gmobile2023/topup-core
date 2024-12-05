@@ -1231,7 +1231,7 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2024-11-09 09:46:39.588 +07:00 [INF] [MassTransit.] Bus started: rabbitmq://10.105.33.70/dev
 2024-11-09 09:46:40.238 +07:00 [WRN] [ServiceStack.ServiceStackHost.] Multiple ValidationFeature Plugins detected. Removing default ValidationFeature plugin...
 2024-11-09 09:46:41.230 +07:00 [INF] [ProtoBuf.Grpc.Server.ServicesExtensions.CodeFirstServiceMethodProvider.] RPC services being provided by "GrpcServices": 6
-2024-11-09 09:46:41.568 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "NT_Worker" took 1973.2467ms. No errors detected.
+2024-11-09 09:46:41.568 +07:00 [INF] [ServiceStack.ServiceStackHost.] Initializing Application "GMB_Worker" took 1973.2467ms. No errors detected.
 2024-11-09 09:46:41.663 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9802"
 2024-11-09 09:46:41.663 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Now listening on: "http://[::]:9801"
 2024-11-09 09:46:41.666 +07:00 [INF] [Microsoft.Hosting.Lifetime.] Application started. Press Ctrl+C to shut down.

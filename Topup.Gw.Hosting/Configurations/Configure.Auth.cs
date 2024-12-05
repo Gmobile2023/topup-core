@@ -1,11 +1,14 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using Topup.Gw.Hosting.Configurations;
 using Topup.Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
 using ServiceStack;
 using ServiceStack.Auth;
 
@@ -28,9 +31,19 @@ public class ConfigureAuth : IHostingStartup
                 }).AddJwtBearer(options =>
                 {
                     if (context.Configuration == null) return;
-                    options.Authority = context.Configuration["OAuth:IdentityServer:AuthorizeUrl"];
+                    options.Authority = context.Configuration[$"OAuth:IdentityServer:AuthorizeUrl"];
                     options.RequireHttpsMetadata = false;
                     options.Audience = context.Configuration["OAuth:IdentityServer:Audience"];
+                    
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidIssuers = context.Configuration.GetSection("OAuth:IdentityServer:Issuers").Get<List<string>>(),// "https://llq-sandbox-auth.izota.vn" },
+                        SignatureValidator = delegate (string token, TokenValidationParameters parameters)
+                        {
+                            var jwt = new Microsoft.IdentityModel.JsonWebTokens.JsonWebToken(token);
+                            return jwt;
+                        }
+                    };
                 });
             })
             .ConfigureAppHost(appHost =>
