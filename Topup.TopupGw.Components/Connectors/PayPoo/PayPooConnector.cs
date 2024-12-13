@@ -269,7 +269,7 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
                             //         result.Data.ReferenceCode,
                             //         transCodeToCheck);
                             responseMessage.ResponseCode = ResponseCodeConst.Error;
-                            responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                            responseMessage.ResponseMessage = "Provider error";
                             //     reResult != null ? reResult.ReponseName : result.Data.ReferenceMessage;
                             // responseMessage.ProviderResponseCode = result?.Data.ReferenceCode;
                             // responseMessage.ProviderResponseMessage = result?.Data.ReferenceMessage;

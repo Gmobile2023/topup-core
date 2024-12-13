@@ -1569,7 +1569,7 @@ public class BalanceService : IBalanceService
             _logger.LogError($"Checkbalance error:{srcAccount}-{e.Message}");
             return new MessageResponseBase
             {
-                ResponseCode = ResponseCodeConst.ResponseCode_00,
+                ResponseCode = ResponseCodeConst.Error,
                 ResponseMessage = "Giao dịch không thành công"
             };
         }

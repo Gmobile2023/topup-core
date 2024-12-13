@@ -13,7 +13,7 @@ public class TopupPartnerRequest : PartnerRequestBase, IPost
     public string RequestCode { get; set; }
     [DataMember(Name = "partner")] public string PartnerCode { get; set; }
     [DataMember(Name = "provider")] public string CategoryCode { get; set; }
-    public string ProductCode { get; set; }
+    [DataMember(Name = "product")] public string ProductCode { get; set; }
 }
 
 [DataContract]
@@ -22,11 +22,9 @@ public class PinCodePartnerRequest : PartnerRequestBase, IPost
 {
     [Required] public string TransCode { get; set; }
 
-    [DataMember(Name = "partner")]
-    public string PartnerCode { get; set; }
+    [DataMember(Name = "partner")] public string PartnerCode { get; set; }
 
-    [DataMember(Name = "provider")]
-    public string CategoryCode { get; set; }
+    [DataMember(Name = "provider")] public string CategoryCode { get; set; }
 
     public Channel Channel { get; set; }
     [Required] public int Quantity { get; set; }

@@ -79,7 +79,7 @@ public class CommissionService : ICommissionService
                 _logger.LogWarning($"{request.TransRef} commission exsit");
                 return new NewMessageResponseBase<object>
                 {
-                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         "Giao dịch đã được ghi nhận hoa hồng")
                 };
             }
@@ -110,7 +110,7 @@ public class CommissionService : ICommissionService
                 _logger.LogWarning($"{request.TransRef} Cannot get discount parentAccount");
                 return new NewMessageResponseBase<object>
                 {
-                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         "Giao dịch không thành công")
                 };
             }
@@ -120,7 +120,7 @@ public class CommissionService : ICommissionService
                 _logger.LogWarning($"{request.TransRef} Discount parent not valid");
                 return new NewMessageResponseBase<object>
                 {
-                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         "Thông tin chiết khấu tài khoản tổng không hợp lệ")
                 };
             }
@@ -131,7 +131,7 @@ public class CommissionService : ICommissionService
                 _logger.LogWarning($"{request.TransRef} Commission value not valid");
                 return new NewMessageResponseBase<object>
                 {
-                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         "Thông tin hoa hồng không hợp lệ")
                 };
             }

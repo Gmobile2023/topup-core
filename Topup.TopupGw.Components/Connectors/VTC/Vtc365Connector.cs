@@ -123,7 +123,7 @@ public class Vtc365Connector : GatewayConnectorBase
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Giao dịch không thành công từ nhà cung cấp";
+                        : "Provider error";
                     topupRequestLog.Status = TransRequestStatus.Fail;
                 }
                 else
@@ -254,7 +254,7 @@ public class Vtc365Connector : GatewayConnectorBase
                 if (errCodes.Contains(checkResult.responseCode))
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = "Provider error";
                 }
                 else
                 {
@@ -476,7 +476,7 @@ public class Vtc365Connector : GatewayConnectorBase
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
                 responseMessage.ResponseMessage =
-                    reResult != null ? reResult.ResponseName : "Giao dịch không thành công từ nhà cung cấp";
+                    reResult != null ? reResult.ResponseName : "Provider error";
                 cardRequestLog.Status = TransRequestStatus.Fail;
             }
             else
@@ -663,7 +663,7 @@ public class Vtc365Connector : GatewayConnectorBase
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Giao dịch không thành công từ nhà cung cấp";
+                        : "Provider error";
                     payBillRequestLog.Status = TransRequestStatus.Fail;
                 }
                 else

@@ -53,7 +53,7 @@ namespace Topup.Worker.Components.WorkerProcess
 
                 if (string.IsNullOrEmpty(request.TransCode))
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         $"Vui lòng truyền mã giao dịch");
                     return response;
                 }
@@ -115,21 +115,21 @@ namespace Topup.Worker.Components.WorkerProcess
                 if (checkExist.ResponseCode != ResponseCodeConst.ResponseCode_TransactionNotFound)
                 {
                     _logger.LogWarning($"{saleRequest.TransRef}-{saleRequest.PartnerCode} is duplicate request");
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_InProcessing,
-                        "Giao dịch đang xử lý");
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_RequestAlreadyExists,
+                        "Mã giao dịch đã tồn tại");
                     return response;
                 }
 
                 if (string.IsNullOrEmpty(saleRequest.PartnerCode))
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         $"Tài khoản không tồn tại");
                     return response;
                 }
 
                 if (saleRequest.Amount <= 0)
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         $"Số tiền không hợp lệ");
                     return response;
                 }
@@ -190,7 +190,7 @@ namespace Topup.Worker.Components.WorkerProcess
                 saleRequest = await _saleService.SaleRequestCreateAsync(saleRequest);
                 if (saleRequest == null)
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         "Tiếp nhận giao dịch không thành công");
                     return response;
                 }
@@ -318,7 +318,7 @@ namespace Topup.Worker.Components.WorkerProcess
 
                 if (saleRequest.PaymentAmount <= 0)
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         $"Số tiền thanh toán không hợp lệ");
                     saleRequest.Status = SaleRequestStatus.Failed;
                     await _saleService.SaleRequestUpdateAsync(saleRequest);

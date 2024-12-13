@@ -50,103 +50,65 @@ public class FakeConnector : IGatewayConnector
 
         switch (topupRequestLog.ReceiverInfo)
         {
-            case "0988000001":
+            case "0969000001":
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
                 responseMessage.ResponseMessage = "GD thất bại";
                 break;
-            case "0988000002":
-                topupRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_PhoneLocked;
-                responseMessage.ResponseMessage = "Thuê bao đang bị khóa chiều nạp";
-                responseMessage.ProviderResponseCode = "K85";
-                responseMessage.ProviderResponseMessage =
-                    "Thuê bao chưa được kích hoạt hoặc không phải nhà mạng yêu cầu";
-                break;
-            case "0988000023":
-                await Task.Delay(TimeSpan.FromMinutes(1));
-                topupRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = "4005";
-                responseMessage.ResponseMessage = "Giao dịch TimeOut";
-                break;
-            case "0969898836":
-                //await Task.Delay(TimeSpan.FromMinutes(1));
-                topupRequestLog.Status = TransRequestStatus.Success; //ok
-                responseMessage.ResponseCode = ResponseCodeConst.Success;
-                responseMessage.ResponseMessage = "Giao dịch thành công";
-                responseMessage.ProviderResponseTransCode = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-                responseMessage.ReceiverType = "TS";
-                break;
-            case "0969898837":
+            case "0969000002":
                 await Task.Delay(TimeSpan.FromMinutes(1));
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
                 responseMessage.ResponseMessage = "Giao dịch lỗi";
                 break;
-            case "0969898838":
+            case "0969000003":
                 await Task.Delay(TimeSpan.FromMinutes(1));
                 topupRequestLog.Status = TransRequestStatus.Timeout;
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
                 responseMessage.ResponseMessage = "Chưa có KQ";
                 break;
-            case "0988000004":
+            case "0969000004":
                 await Task.Delay(TimeSpan.FromSeconds(15));
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_InProcessing;
                 responseMessage.ResponseMessage = "Giao dịch đang xử lý";
                 break;
-            case "0988000005":
+            case "0969000005":
                 await Task.Delay(TimeSpan.FromSeconds(10));
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
                 responseMessage.ResponseMessage =
                     "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                 break;
-            case "0988000006":
-                topupRequestLog.Status = TransRequestStatus.Fail; //TEST
-                responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_Paid;
-                responseMessage.ResponseMessage = "Giao dịch đã trừ tiền khách hàng";
-                break;
-            case "0988000007":
+            case "0969000006":
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_PhoneLocked;
                 responseMessage.ResponseMessage = "Số điện thoại khách hàng đã bị khóa";
                 break;
-            case "0988000008":
-                topupRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_PhoneNotValid;
-                responseMessage.ResponseMessage = "Số điện thoại không hợp lệ";
-                break;
-            case "0988000009":
-                topupRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_NotValidStatus;
-                responseMessage.ResponseMessage =
-                    "Giao dịch không thành công. Vui lòng kiểm tra thông tin của thuê bao";
-                break;
-            case "0988000010":
+            case "0969000007":
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_PhoneLockTopup;
-                responseMessage.ResponseMessage = "Số điện thoại bị khóa";
+                responseMessage.ResponseMessage = "Số điện thoại bị khóa chiều nạp";
                 break;
 
             //khangpv bổ sung fake mã lỗi - 2022-07-05
-            case "0988000011":
+            case "0969000008":
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_NotEzpay;
                 responseMessage.ResponseMessage = "Thuê bao chưa đăng ký EZPay.";
                 break;
 
-            case "0988000012":
+            case "0969000009":
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_ErrorProvider;
                 responseMessage.ResponseMessage = "Giao dịch lỗi từ phía NCC";
                 break;
-            case "0988000013":
+            case "0969000010":
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_ServiceConfigNotValid;
                 responseMessage.ResponseMessage = "Dịch vụ chưa được cấu hình";
                 break;
-            case "0988000014":
+            case "0969000011":
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_ProductNotFound;
                 responseMessage.ResponseMessage = "Sản phẩm không tồn tại, không được hỗ trợ";

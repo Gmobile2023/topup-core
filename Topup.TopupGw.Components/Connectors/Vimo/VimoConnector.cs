@@ -110,13 +110,13 @@ public class VimoConnector : IGatewayConnector
                     topupRequestLog.ResponseInfo = result.ToJson();
                     topupRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = "Provider error";
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VIMO,
                         result.error_code, topupRequestLog.TransCode);
                     responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Giao dịch không thành công từ nhà cung cấp";
+                        : "Provider error";
                 }
                 else
                 {
@@ -499,10 +499,10 @@ public class VimoConnector : IGatewayConnector
                     cardRequestLog.ResponseInfo = result.ToJson();
                     cardRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = "Provider error";
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VIMO, result.error_code, cardRequestLog.TransCode);
                     responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Provider error";
                 }
                 else
                 {
@@ -736,11 +736,11 @@ public class VimoConnector : IGatewayConnector
                     _logger.LogInformation($"VimoConnector return:{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
                     payBillRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = "Provider error";
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("VIMO",
                         result.error_code, payBillRequestLog.TransCode);
                     responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Provider error";
                 }
                 else
                 {

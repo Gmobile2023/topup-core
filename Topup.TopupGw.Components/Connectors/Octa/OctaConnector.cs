@@ -473,7 +473,7 @@ namespace Topup.TopupGw.Components.Connectors.Octa
                 else if (result.Response.Data.Status == 0)
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = "Provider error";
                     responseMessage.Payload = result.Response.Data.Accepted;
                     return responseMessage;
                 }

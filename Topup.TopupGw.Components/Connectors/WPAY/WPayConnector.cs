@@ -639,13 +639,13 @@ namespace Topup.TopupGw.Components.Connectors.WPay
                         $"WPayConnector return:{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
                     payBillRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = "Provider error";
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.WPAY,
                         result.resCode, payBillRequestLog.TransCode);
                     responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Giao dịch không thành công từ nhà cung cấp";
+                        : "Provider error";
                 }
                 else
                 {

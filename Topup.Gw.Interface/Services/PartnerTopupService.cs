@@ -99,10 +99,10 @@ public class PartnerTopupService : AppServiceBase
     public async Task<object> PostAsync(TopupPartnerRequest topupRequest)
     {
         if (topupRequest == null)
-            return new PartnerResponseBase<PartnerResult>(ResponseCodeConst.ResponseCode_00, "Invalid request");
+            return new PartnerResponseBase<PartnerResult>(ResponseCodeConst.Error, "Invalid request");
         if (string.IsNullOrEmpty(topupRequest.RequestCode) || string.IsNullOrEmpty(topupRequest.PartnerCode) ||
             string.IsNullOrEmpty(topupRequest.PhoneNumber) || string.IsNullOrEmpty(topupRequest.CategoryCode))
-            return new PartnerResponseBase<PartnerResult>(ResponseCodeConst.ResponseCode_00, "Invalid request");
+            return new PartnerResponseBase<PartnerResult>(ResponseCodeConst.Error, "Invalid request");
         _logger.LogInformation("{Partner}: TopupRequest {Request}", topupRequest.PartnerCode,
             topupRequest.ToJson());
         var response = new PartnerResponseBase<PartnerResult>(ResponseCodeConst.ResponseCode_WaitForResult,

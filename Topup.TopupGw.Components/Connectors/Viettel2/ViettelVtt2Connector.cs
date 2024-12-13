@@ -279,7 +279,7 @@ namespace Topup.TopupGw.Components.Connectors.Viettel2
                             //         result.Data.ReferenceCode,
                             //         transCodeToCheck);
                             responseMessage.ResponseCode = ResponseCodeConst.Error;
-                            responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                            responseMessage.ResponseMessage = "Provider error";
                             responseMessage.ProviderResponseCode = result?.Data.ReferenceCode;
                             responseMessage.ProviderResponseMessage = result?.Data.ReferenceMessage;
                         }

@@ -41,14 +41,14 @@ namespace Topup.Worker.Components.WorkerProcess
 
                 if (string.IsNullOrEmpty(request.TransCode))
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         $"Vui lòng truyền mã giao dịch");
                     return response;
                 }
 
                 if (request.Quantity <= 0)
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         $"Số lượng yêu cầu không hợp lệ");
                     return response;
                 }
@@ -70,14 +70,14 @@ namespace Topup.Worker.Components.WorkerProcess
 
                 if (string.IsNullOrEmpty(saleRequest.PartnerCode))
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         $"Tài khoản không tồn tại");
                     return response;
                 }
 
                 if (saleRequest.Amount <= 0)
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         $"Số tiền không hợp lệ");
                     return response;
                 }
@@ -145,7 +145,7 @@ namespace Topup.Worker.Components.WorkerProcess
                 saleRequest = await _saleService.SaleRequestCreateAsync(saleRequest);
                 if (saleRequest == null)
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         "Tiếp nhận giao dịch không thành công");
                     return response;
                 }
@@ -169,13 +169,13 @@ namespace Topup.Worker.Components.WorkerProcess
                 // if (updateSaleRequest == null)
                 // {
                 //     _logger.LogInformation($"{saleRequest.TransCode}-{saleRequest.TransRef}-Update SaleReuest fail");
-                //     response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                //     response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                 //         "Tiếp nhận giao dịch không thành công");
                 //     return response;
                 // }
                 if (saleRequest.PaymentAmount <= 0)
                 {
-                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         $"Số tiền thanh toán không hợp lệ");
                     saleRequest.Status = SaleRequestStatus.Failed;
                     await _saleService.SaleRequestUpdateAsync(saleRequest);

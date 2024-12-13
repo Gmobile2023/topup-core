@@ -100,7 +100,7 @@ public class CardConnector : IGatewayConnector
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                 responseMessage.ResponseMessage =
-                    reResult != null ? reResult.ResponseName : "Giao dịch không thành công từ nhà cung cấp";
+                    reResult != null ? reResult.ResponseName : "Provider error";
                 topupRequestLog.ModifiedDate = DateTime.Now;
             }
 
@@ -242,7 +242,7 @@ public class CardConnector : IGatewayConnector
                     reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                 responseMessage.ResponseMessage = reResult != null
                     ? reResult.ResponseName
-                    : "Giao dịch không thành công từ nhà cung cấp";
+                    : "Provider error";
             }
             else if (checkResult.ResponseCode == 501102)
             {
@@ -326,7 +326,7 @@ public class CardConnector : IGatewayConnector
             else if (new[] { 10, 2, 100 }.Contains(checkResult.ResponseCode))
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                responseMessage.ResponseMessage = "Provider error";
             }
             else
             {
@@ -480,7 +480,7 @@ public class CardConnector : IGatewayConnector
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Giao dịch không thành công từ nhà cung cấp";
+                        : "Provider error";
                 }
                 else
                 {
@@ -513,7 +513,7 @@ public class CardConnector : IGatewayConnector
             payBillRequestLog.Status = TransRequestStatus.Fail;
             responseMessage.ResponseCode = ResponseCodeConst.Error;
             responseMessage.ResponseMessage =
-                reResult != null ? reResult.ResponseName : "Giao dịch không thành công từ nhà cung cấp";
+                reResult != null ? reResult.ResponseName : "Provider error";
         }
 
         await _topupGatewayService.PayBillRequestLogUpdateAsync(payBillRequestLog);

@@ -124,12 +124,12 @@ public class VnptPayConnector : GatewayConnectorBase
                 var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VNPTPAY, response.ResponseCode, topupRequestLog.TransCode);
                 if (reResult.ResponseCode is ResponseCodeConst.ResponseCode_Failed
                     or ResponseCodeConst.ResponseCode_Cancel
-                    or ResponseCodeConst.ResponseCode_00)
+                    or ResponseCodeConst.Error)
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Giao dịch không thành công từ nhà cung cấp";
+                        : "Provider error";
                     topupRequestLog.Status = TransRequestStatus.Fail;
                 }
                 else
@@ -363,11 +363,11 @@ public class VnptPayConnector : GatewayConnectorBase
 
             if (reResult.ResponseCode is ResponseCodeConst.ResponseCode_Failed
                     or ResponseCodeConst.ResponseCode_Cancel
-                    or ResponseCodeConst.ResponseCode_00)
+                    or ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
                 responseMessage.ResponseMessage =
-                    reResult != null ? reResult.ResponseName : "Giao dịch không thành công từ nhà cung cấp";
+                    reResult != null ? reResult.ResponseName : "Provider error";
                 cardRequestLog.Status = TransRequestStatus.Fail;
             }
             else

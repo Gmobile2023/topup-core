@@ -231,7 +231,7 @@ public class PayTechConnector : IGatewayConnector
                         if (reponseMapStatus == TransRequestStatus.Fail)
                         {
                             responseMessage.ResponseCode = ResponseCodeConst.Error;
-                            responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                            responseMessage.ResponseMessage = "Provider error";
                         }
                         else
                         {

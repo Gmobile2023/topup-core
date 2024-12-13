@@ -245,8 +245,8 @@ namespace Topup.Gw.Domain.Services
                             returnMessage.ResponseMessage = "Giao dịch đang được xử lý.";
                             break;
                         case SaleRequestStatus.Init:
-                            returnMessage.ResponseCode = ResponseCodeConst.ResponseCode_RequestReceived;
-                            returnMessage.ResponseMessage = "Đã tiếp nhận giao dịch thành công";
+                            returnMessage.ResponseCode = ResponseCodeConst.ResponseCode_InProcessing;
+                            returnMessage.ResponseMessage = "Giao dịch đang được xử lý.";
                             break;
                         case SaleRequestStatus.WaitForResult:
                         case SaleRequestStatus.WaitForConfirm:
@@ -255,8 +255,8 @@ namespace Topup.Gw.Domain.Services
                                 "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                             break;
                         case SaleRequestStatus.Paid:
-                            returnMessage.ResponseCode = ResponseCodeConst.ResponseCode_Paid;
-                            returnMessage.ResponseMessage = "Giao dịch đã trừ tiền khách hàng - Đang xử lý";
+                            returnMessage.ResponseCode = ResponseCodeConst.ResponseCode_InProcessing;
+                            returnMessage.ResponseMessage = "Giao dịch đang được xử lý.";
                             break;
                         default:
                             returnMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
@@ -1447,7 +1447,7 @@ namespace Topup.Gw.Domain.Services
 
             if (string.IsNullOrEmpty(cardSaleRequest.PartnerCode))
             {
-                reponse.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                reponse.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                     "Chưa có tài khoản thực hiện.");
 
                 return reponse;
@@ -1455,7 +1455,7 @@ namespace Topup.Gw.Domain.Services
 
             if (string.IsNullOrEmpty(cardSaleRequest.ProviderCode))
             {
-                reponse.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                reponse.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                     "Chưa có nhà cung cấp.");
 
                 return reponse;
@@ -1465,7 +1465,7 @@ namespace Topup.Gw.Domain.Services
             {
                 reponse = new NewMessageResponseBase<string>()
                 {
-                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                    ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                         "Danh sách sản phẩm không hợp lệ."),
                 };
                 return reponse;

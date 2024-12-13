@@ -83,7 +83,7 @@ public class SHTConnector : IGatewayConnector
                     reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                 responseMessage.ResponseMessage = reResult != null
                     ? reResult.ResponseName
-                    : "Giao dịch không thành công từ nhà cung cấp";
+                    : "Provider error";
             }
             else
             {
@@ -159,7 +159,7 @@ public class SHTConnector : IGatewayConnector
             else if (extraInfo.Contains(checkResult.responseStatus.errorCode))
             {
                 responseMessage.ResponseCode =  ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                responseMessage.ResponseMessage = "Provider error";
             }
             else
             {

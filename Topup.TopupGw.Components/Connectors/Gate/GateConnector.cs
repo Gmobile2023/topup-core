@@ -143,7 +143,7 @@ public class GateConnector : GatewayConnectorBase
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                 responseMessage.ResponseMessage =
-                    reResult != null ? reResult.ResponseName : "Giao dịch không thành công từ nhà cung cấp";
+                    reResult != null ? reResult.ResponseName : "Provider error";
                 topupRequestLog.ModifiedDate = DateTime.Now;
             }
 
@@ -347,7 +347,7 @@ public class GateConnector : GatewayConnectorBase
                         reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Giao dịch không thành công từ nhà cung cấp";
+                        : "Provider error";
                 }
                 else
                 {
@@ -437,7 +437,7 @@ public class GateConnector : GatewayConnectorBase
                     //var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.GATE,
                     //checkResult.ResponseCode.ToString(), providerCode);
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = "Provider error";
                 }
                 else
                 {

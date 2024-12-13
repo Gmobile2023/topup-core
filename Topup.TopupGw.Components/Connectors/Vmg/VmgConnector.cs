@@ -273,7 +273,7 @@ public class VmgConnector : GatewayConnectorBase
                         // var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VMG,
                         //     result.ErrorCode.ToString(), transCode);
                         responseMessage.ResponseCode =ResponseCodeConst.Error;
-                        responseMessage.ResponseMessage ="Giao dịch không thành công từ nhà cung cấp";
+                        responseMessage.ResponseMessage ="Provider error";
                     }
                     else
                     {

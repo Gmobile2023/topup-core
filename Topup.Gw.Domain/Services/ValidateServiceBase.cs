@@ -41,8 +41,8 @@ public class ValidateServiceBase : IValidateServiceBase
             {
                 _logger.LogInformation(
                     $"Thông tin tài khoản không chính xác hoặc tài khoản không có quyền truy cập:{requestDto.ToJson()}");
-                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.InvalidAuthen,
-                    "Thông tin tài khoản không chính xác hoặc tài khoản không có quyền truy cập");
+                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.InvalidAccount,
+                    "Invalid Account");
                 return response;
             }
 
@@ -58,7 +58,7 @@ public class ValidateServiceBase : IValidateServiceBase
             {
                 _logger.LogInformation(
                     $"Thông tin tài khoản không chính xác hoặc tài khoản không có quyền truy cập:{requestDto.ToJson()}");
-                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.InvalidAuthen,
+                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.InvalidAccount,
                     "Thông tin tài khoản không chính xác hoặc tài khoản không có quyền truy cập");
                 return response;
             }
@@ -84,7 +84,7 @@ public class ValidateServiceBase : IValidateServiceBase
                     _logger.LogInformation(
                         $"Tài khoản không được cấu hình thanh toán cho loại sp {requestDto.ProductCode}:{requestDto.ToJson()}");
                     response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_ProductNotFound,
-                        $"Sản phẩm không được hỗ trợ: {requestDto.ProductCode}");
+                        $"Tài khoản chưa được khai báo dịch vụ");
                     return response;
                 }
             }
@@ -104,9 +104,9 @@ public class ValidateServiceBase : IValidateServiceBase
                 if (serviceCodes == null || !serviceCodes.Any() || !serviceCodes.Contains(requestDto.ServiceCode))
                 {
                     _logger.LogInformation(
-                        $"Tài khoản không được cấu hình thanh toán cho dịch vụ {requestDto.ServiceCode}:{requestDto.ToJson()}");
+                        $"Dịch  {requestDto.ServiceCode}:{requestDto.ToJson()}");
                     response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.AccountNotAllowService,
-                        $"Tài khoản không được cấu hình thanh toán cho dịch vụ {requestDto.ServiceCode}");
+                        $"Tài khoản chưa được khai báo dịch vụ");
                     return response;
                 }
 
@@ -140,7 +140,7 @@ public class ValidateServiceBase : IValidateServiceBase
                     _logger.LogInformation(
                         $"Tài khoản không được cấu hình thanh toán cho loại sp {requestDto.CategoryCode}:{requestDto.ToJson()}");
                     response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.AccountNotAllowService,
-                        $"Tài khoản không được cấu hình thanh toán cho dịch vụ {requestDto.CategoryCode}");
+                        $"Tài khoản chưa được khai báo dịch vụ");
                     return response;
                 }
             }

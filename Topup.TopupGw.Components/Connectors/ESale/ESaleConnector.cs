@@ -110,7 +110,7 @@ public class ESaleConnector : IGatewayConnector
                     // if (arrayErrors.Contains(result.RetCode))
                     // {
                     //     responseMessage.ResponseCode=ResponseCodeConst.Error;
-                    //     responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                    //     responseMessage.ResponseMessage = "Provider error";
                     // }
                     // else
                     // {

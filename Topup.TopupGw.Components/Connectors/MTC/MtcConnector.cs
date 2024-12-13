@@ -133,7 +133,7 @@ public class MtcConnector : IGatewayConnector
                     topupRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                     responseMessage.ResponseMessage =
-                        reResult != null ? reResult.ResponseName : "Giao dịch không thành công từ nhà cung cấp";
+                        reResult != null ? reResult.ResponseName : "Provider error";
                 }
 
                 responseMessage.ProviderResponseCode = resultCode;
@@ -240,7 +240,7 @@ public class MtcConnector : IGatewayConnector
                 {
                     //var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.MTC, resultCode, transCodeToCheck);
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                    responseMessage.ResponseMessage = "Provider error";
                 }
 
                 responseMessage.ProviderResponseCode = resultCode;

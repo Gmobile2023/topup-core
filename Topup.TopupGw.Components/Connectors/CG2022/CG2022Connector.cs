@@ -184,7 +184,7 @@ public class CG2022Connector : IGatewayConnector
                                 reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                             responseMessage.ResponseMessage = reResult != null
                                 ? reResult.ResponseName
-                                : "Giao dịch không thành công từ nhà cung cấp";
+                                : "Provider error";
                         }
                     }
                     catch (Exception ex)
@@ -210,7 +210,7 @@ public class CG2022Connector : IGatewayConnector
                     topupRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
                     responseMessage.ResponseMessage =
-                        reResult != null ? reResult.ResponseName : "Giao dịch không thành công từ nhà cung cấp";
+                        reResult != null ? reResult.ResponseName : "Provider error";
                     topupRequestLog.ModifiedDate = DateTime.Now;
                 }
             }
@@ -295,7 +295,7 @@ public class CG2022Connector : IGatewayConnector
             else if (extraInfo.Contains(checkResult.responseStatus.errorCode))
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = "Giao dịch không thành công từ nhà cung cấp";
+                responseMessage.ResponseMessage = "Provider error";
             }
             else
             {

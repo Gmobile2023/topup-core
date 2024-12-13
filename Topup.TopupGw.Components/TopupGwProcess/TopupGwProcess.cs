@@ -50,7 +50,7 @@ public partial class TopupGwProcess : ITopupGwProcess
             var amount = request.Amount;
             if (amount <= 0)
             {
-                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                     "Số tiền không hợp lệ");
                 return response;
             }
@@ -58,7 +58,7 @@ public partial class TopupGwProcess : ITopupGwProcess
             var receiverInfo = request.ReceiverInfo;
             if (string.IsNullOrEmpty(receiverInfo))
             {
-                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                     "Tài khoản nạp không tồn tại");
                 return response;
             }
@@ -66,7 +66,7 @@ public partial class TopupGwProcess : ITopupGwProcess
             var transRef = request.TransRef;
             if (string.IsNullOrEmpty(transRef))
             {
-                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                     "Mã giao dịch đối tác không tồn tại");
                 return response;
             }
@@ -74,7 +74,7 @@ public partial class TopupGwProcess : ITopupGwProcess
             var providerCode = request.ProviderCode;
             if (string.IsNullOrEmpty(providerCode))
             {
-                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.ResponseCode_00,
+                response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
                     "Provider not found");
                 return response;
             }
