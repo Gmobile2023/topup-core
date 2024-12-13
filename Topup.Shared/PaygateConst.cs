@@ -446,3 +446,8 @@ public static class ReportConst
     public const string Auto = "Auto";
     public const string Agent = "Agent";
 }
+
+public static class AccountWith
+{
+    public const string StartWith = "GMB";
+}
