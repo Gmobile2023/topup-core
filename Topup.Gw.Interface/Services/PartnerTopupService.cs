@@ -20,7 +20,7 @@ using Topup.Shared.Helpers;
 
 namespace Topup.Gw.Interface.Services;
 
-//[Authenticate]
+[Authenticate]
 [PartnerResponse]
 public class PartnerTopupService : AppServiceBase
 {
