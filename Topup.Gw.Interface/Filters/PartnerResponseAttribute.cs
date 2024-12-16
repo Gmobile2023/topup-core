@@ -26,7 +26,7 @@ public class PartnerResponseAttribute : ResponseFilterAsyncAttribute
             {
                 var statusCode = status.GetValue(responseDto, null);
                 sign = Cryptography.Sign(
-                    string.Join("|", statusCode, dataInfo.RequestCode),
+                    string.Join(statusCode?.ToString(), dataInfo.RequestCode),
                     "GMB_PrivateKey.pem"
                 );
             }

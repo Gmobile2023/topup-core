@@ -55,7 +55,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                     {
                         ResponseStatus = checkResponse.ResponseStatus,
                         Signature = Cryptography.Sign(
-                            string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
+                            string.Join(checkResponse.ResponseStatus.ErrorCode, transCode),
                             "GMB_PrivateKey.pem")
                     };
                     await res.WriteToResponse(req, newResponse);
@@ -75,7 +75,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                     {
                         ResponseStatus = checkResponse.ResponseStatus,
                         Signature = Cryptography.Sign(
-                            string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
+                            string.Join(checkResponse.ResponseStatus.ErrorCode, transCode),
                             "GMB_PrivateKey.pem")
                     };
                     await res.WriteToResponse(req, newResponse);
@@ -109,7 +109,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
 
                 partnerRequest = dto.PartnerCode;
                 sigText = dto.Sig;
-                plainText = string.Join("|", dto.PartnerCode, dto.RequestCode, dto.PhoneNumber,
+                plainText = string.Join(dto.PartnerCode, dto.RequestCode, dto.PhoneNumber,
                     dto.CategoryCode,
                     dto.Amount);
             }
@@ -133,7 +133,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                     {
                         ResponseStatus = checkResponse.ResponseStatus,
                         Signature = Cryptography.Sign(
-                            string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
+                            string.Join(checkResponse.ResponseStatus.ErrorCode, transCode),
                             "GMB_PrivateKey.pem")
                     };
                     await res.WriteToResponse(req, newResponse);
@@ -152,7 +152,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                     {
                         ResponseStatus = checkResponse.ResponseStatus,
                         Signature = Cryptography.Sign(
-                            string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
+                            string.Join(checkResponse.ResponseStatus.ErrorCode, transCode),
                             "GMB_PrivateKey.pem")
                     };
                     await res.WriteToResponse(req, newResponse);
@@ -167,7 +167,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 partnerRequest = dto.PartnerCode;
                 sigText = dto.Sig;
                 dto.ServiceCode = serviceCode;
-                plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.CategoryCode,
+                plainText = string.Join(dto.PartnerCode, dto.TransCode, dto.CategoryCode,
                     dto.CardValue, dto.Quantity);
             }
 
@@ -180,7 +180,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 partnerRequest = dto.PartnerCode;
                 sigText = dto.Sig;
                 serviceCode = ServiceCodes.PAY_BILL;
-                plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.ReceiverInfo,
+                plainText = string.Join(dto.PartnerCode, dto.TransCode, dto.ReceiverInfo,
                     dto.CategoryCode, dto.ProductCode, dto.Amount);
                 productCode = dto.ProductCode;
             }
@@ -193,7 +193,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 partnerRequest = dto.PartnerCode;
                 sigText = dto.Sig;
                 serviceCode = ServiceCodes.QUERY_BILL;
-                plainText = string.Join("|", dto.PartnerCode, dto.ReceiverInfo, dto.CategoryCode,
+                plainText = string.Join(dto.PartnerCode, dto.ReceiverInfo, dto.CategoryCode,
                     dto.ProductCode);
                 productCode = dto.ProductCode;
             }
@@ -206,7 +206,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 serviceCode = null;
                 partnerRequest = dto.PartnerCode;
                 sigText = dto.Sig;
-                plainText = string.Join("|", dto.PartnerCode, dto.TransCode, dto.TransCodeToCheck);
+                plainText = string.Join(dto.PartnerCode, dto.TransCode, dto.TransCodeToCheck);
             }
 
         if (requestDto.GetType() == typeof(PartnerCheckTransRequest))
@@ -216,7 +216,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 serviceCode = null;
                 partnerRequest = dto.PartnerCode;
                 sigText = dto.Sig;
-                plainText = string.Join("|", dto.PartnerCode, dto.RequestCode);
+                plainText = string.Join(dto.PartnerCode, dto.RequestCode);
             }
 
         // if (requestDto.GetType() == typeof(CheckTransAuthenNewRequest))
@@ -248,7 +248,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
                 {
                     ResponseStatus = checkResponse.ResponseStatus,
                     Signature = Cryptography.Sign(
-                        string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
+                        string.Join(checkResponse.ResponseStatus.ErrorCode, transCode),
                         "GMB_PrivateKey.pem")
                 };
                 await res.WriteToResponse(req, newResponse);
@@ -302,7 +302,7 @@ public class PartnerFilterAttribute : RequestFilterAsyncAttribute
             var newResponse = new NewMessageResponseBase<object>
             {
                 ResponseStatus = checkResponse.ResponseStatus,
-                Signature = Cryptography.Sign(string.Join("|", checkResponse.ResponseStatus.ErrorCode, transCode),
+                Signature = Cryptography.Sign(string.Join(checkResponse.ResponseStatus.ErrorCode, transCode),
                     "GMB_PrivateKey.pem")
             };
             await res.WriteToResponse(req, newResponse);
