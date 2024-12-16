@@ -63,7 +63,7 @@ public class PartnerTopupService : AppServiceBase
                 Signature = check.Sig,
                 PartnerCode = check.PartnerCode,
                 CategoryCode = "CheckTrans",
-                PlainText = string.Join(check.PartnerCode, check.RequestCode),
+                PlainText = string.Join("", check.PartnerCode, check.RequestCode),
                 ServiceCode = null,
                 SessionPartnerCode = UserSession.AccountCode,
                 TransCode = check.RequestCode
@@ -160,7 +160,8 @@ public class PartnerTopupService : AppServiceBase
             }
 
             productCode = productInfo.ProductCode;
-            var plainText = string.Join(topupRequest.PartnerCode, topupRequest.RequestCode, topupRequest.PhoneNumber,
+            var plainText = string.Join("", topupRequest.PartnerCode, topupRequest.RequestCode,
+                topupRequest.PhoneNumber,
                 topupRequest.Amount);
             var validate = await _validateServiceBase.VerifyPartnerAsync(new ValidateRequestDto
             {

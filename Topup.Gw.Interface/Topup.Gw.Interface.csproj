@@ -20,6 +20,7 @@
         <Compile Remove="Filters\ResponseTransFilter.cs"/>
         <Compile Remove="Middleware\VerifyRequestMiddleware.cs"/>
         <Compile Remove="Services\TransactionService.cs" />
+        <Compile Remove="Filters\ValidateRequestFilter.cs" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Middleware"/>
