@@ -39,7 +39,10 @@ namespace Topup.Worker.Components.WorkerProcess
             {
                 var response = new NewMessageResponseBase<WorkerResult>
                 {
-                    Results = new WorkerResult()
+                    Results = new WorkerResult
+                    {
+                        Amount = request.Amount
+                    }
                 };
                 _logger.LogInformation("TopupRequest: {Request}", request.ToJson());
                 if ((DateTime.Now - request.RequestDate).TotalSeconds >= _workerConfig.TimeOutProcess)
@@ -609,11 +612,13 @@ namespace Topup.Worker.Components.WorkerProcess
             {
                 case ResponseCodeConst.Success:
                 {
-                    response.Results.TransCode = await _commonService.GetReferenceCodeAsync(saleRequest.Provider, saleRequest.PartnerCode, saleRequest.TransCode);
+                    response.Results.TransCode = await _commonService.GetReferenceCodeAsync(saleRequest.Provider,
+                        saleRequest.PartnerCode, saleRequest.TransCode);
                     saleRequest.Status = SaleRequestStatus.Success;
                     await _saleService.SaleRequestUpdateStatusAsync(saleRequest.TransCode,
                         saleRequest.Provider, SaleRequestStatus.Success, transCodeProvider,
-                        providerResponseTransCode: providerResponseTransCode, receiverType: receiverType,referenceCode:response.Results.TransCode);
+                        providerResponseTransCode: providerResponseTransCode, receiverType: receiverType,
+                        referenceCode: response.Results.TransCode);
                     response.ResponseStatus = new ResponseStatusApi(
                         response.ResponseStatus.ErrorCode,
                         $"Bạn đã nạp tiền thành công cho số {saleRequest.ReceiverInfo} số tiền {saleRequest.Amount:0}. Mã GD {saleRequest.TransCode}");
