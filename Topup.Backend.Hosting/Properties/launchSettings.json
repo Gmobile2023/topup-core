@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Anpos.Core.Hosting": {
+    "Topup.BackendCore.Hosting": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Anpos.Core.Hosting": {
+    "Topup.MobileCheckCore.Hosting": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
