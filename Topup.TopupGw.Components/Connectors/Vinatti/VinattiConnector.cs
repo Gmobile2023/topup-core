@@ -1,26 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
-using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using Topup.Shared;
-using Topup.Shared.CacheManager;
-using Topup.Shared.Dtos;
-using Topup.Shared.Utils;
-using Topup.TopupGw.Contacts.ApiRequests;
 using Topup.TopupGw.Contacts.Dtos;
 using Topup.TopupGw.Contacts.Enums;
 using Topup.TopupGw.Domains.BusinessServices;
 using Microsoft.Extensions.Logging;
 using ServiceStack;
 using MongoDB.Bson;
-using Topup.TopupGw.Domains.Repositories;
-using ThirdParty.Json.LitJson;
 
 namespace Topup.TopupGw.Components.Connectors.Vinatti
 {
