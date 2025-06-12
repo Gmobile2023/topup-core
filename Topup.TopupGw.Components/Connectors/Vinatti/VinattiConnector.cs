@@ -19,30 +19,22 @@ using Topup.TopupGw.Domains.BusinessServices;
 using Microsoft.Extensions.Logging;
 using ServiceStack;
 using MongoDB.Bson;
+using Topup.TopupGw.Domains.Repositories;
+using ThirdParty.Json.LitJson;
 
 namespace Topup.TopupGw.Components.Connectors.Vinatti
 {
-    public class VinattiConnector : IGatewayConnector
+    public class VinattiConnector(
+    ITopupGatewayService TopupGatewayService,
+    ILogger<VinattiConnector> logger) : GatewayConnectorBase(TopupGatewayService)
     {
-        private readonly ILogger<VinattiConnector> _logger;
-        private readonly ITopupGatewayService _topupGatewayService;
-        private readonly ICacheManager _cacheManager;
-
-        public VinattiConnector(ITopupGatewayService topupGatewayService, ILogger<VinattiConnector> logger,
-            ICacheManager cacheManager)
+        public override async Task<MessageResponseBase> TopupAsync(TopupRequestLogDto topupRequestLog, ProviderInfoDto providerInfo)
         {
-            _topupGatewayService = topupGatewayService;
-            _logger = logger;
-            _cacheManager = cacheManager;
-        }
-
-        public async Task<MessageResponseBase> TopupAsync(TopupRequestLogDto topupRequestLog, ProviderInfoDto providerInfo)
-        {
-            _logger.LogInformation("VinattiConnector request: " + topupRequestLog.ToJson());
+            logger.LogInformation("VinattiConnector request: " + topupRequestLog.ToJson());
             var responseMessage = new MessageResponseBase();
-            if (!_topupGatewayService.ValidConnector(ProviderConst.VINATTI, providerInfo.ProviderCode))
+            if (!TopupGatewayService.ValidConnector(ProviderConst.VINATTI, providerInfo.ProviderCode))
             {
-                _logger.LogError($"{topupRequestLog.TransCode} - {topupRequestLog.TransRef}-{providerInfo.ProviderCode} - VinattiConnector ProviderConnector not valid");
+                logger.LogError($"{topupRequestLog.TransCode} - {topupRequestLog.TransRef} - {providerInfo.ProviderCode} - VinattiConnector ProviderConnector not valid");
                 return new MessageResponseBase
                 {
                     ResponseCode = ResponseCodeConst.Error,
@@ -72,33 +64,32 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
                 dto.Telco = "Mobifone";
             else if (dto.Telco is "WT" or "Wintel")
                 dto.Telco = "Wintel";
-
-
-            // Tạo secret key (32 byte)
-            byte[] key256 = new byte[32];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(key256);
-            }
-
-            // Mã hóa
-            string encrypted = EncryptJson(dto.ToJson(), key256);
-            string sign = Sign(encrypted, "./" + providerInfo.PrivateKeyFile);
-            var request = new VinattiRequest
-            {
-                Code = "TOPUP",
-                Time = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"),
-                Data = encrypted,
-                Signature = sign,
-            };
-
-            _logger.LogInformation($"{topupRequestLog.TransCode} VinattiConnector Param_Json: " + request.ToJson());
-
-            var result = await CallApi(providerInfo, request.Code, topupRequestLog.TransCode, request.ToJson());
-            _logger.LogInformation($"{topupRequestLog.TransCode} - {topupRequestLog.TransRef} VinattiConnector Topup Reponse: {result.ToJson()}");
-
+           
             try
             {
+                byte[] key256 = new byte[32];
+                using (var rng = RandomNumberGenerator.Create())
+                {
+                    rng.GetBytes(key256);
+                }
+
+                // Mã hóa
+                string encrypted = EncryptJson(dto.ToJson(), key256);
+                string sign = Sign(encrypted, "./" + providerInfo.PrivateKeyFile);
+                var request = new VinattiRequest
+                {
+                    Code = "TOPUP",
+                    Time = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"),
+                    Data = encrypted,
+                    Signature = sign,
+                };
+
+                string jsonData = request.ToJson();
+                logger.LogInformation($"{topupRequestLog.TransCode} VinattiConnector Param_Json: {jsonData}");
+                var result = await CallApi(providerInfo, request.Code, topupRequestLog.TransCode, jsonData);
+                var jsonResponse = result.ToJson();
+                logger.LogInformation($"{topupRequestLog.TransCode} - {topupRequestLog.TransRef} VinattiConnector Topup Reponse: {jsonResponse}");
+
                 responseMessage.ProviderResponseCode = result?.Code;
                 responseMessage.ProviderResponseMessage = result?.Message;
                 if (result.Code == "00")
@@ -111,49 +102,43 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
                 }
                 else
                 {
-
                     topupRequestLog.ModifiedDate = DateTime.Now;
-                    topupRequestLog.ResponseInfo = result.ToJson();
+                    topupRequestLog.ResponseInfo = jsonResponse;
                     topupRequestLog.Status = TransRequestStatus.Fail;
-                    var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VINATTI,
-                        result.Code, topupRequestLog.TransCode);
+                    var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VINATTI, result.Code, topupRequestLog.TransCode);
                     responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
-                    responseMessage.ResponseMessage = reResult != null
-                        ? reResult.ResponseName : "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(
-                    $"VinattiConnector Error: {topupRequestLog.ProviderCode}-{topupRequestLog.TransCode}-{topupRequestLog.TransRef}-{result.ToJson()} Exception: {ex}");
+                logger.LogInformation($"VinattiConnector Error: {topupRequestLog.ProviderCode} - {topupRequestLog.TransCode} - {topupRequestLog.TransRef} - exception: {ex}");
                 responseMessage.ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                 responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_TimeOut;
                 topupRequestLog.Status = TransRequestStatus.Timeout;
             }
             finally
             {
-                await _topupGatewayService.TopupRequestLogUpdateAsync(topupRequestLog);
+                await TopupGatewayService.TopupRequestLogUpdateAsync(topupRequestLog);
             }
             return responseMessage;
         }
 
-        public async Task<MessageResponseBase> TransactionCheckAsync(string providerCode, string transCodeToCheck,
+        public override async Task<MessageResponseBase> TransactionCheckAsync(string providerCode, string transCodeToCheck,
             string transCode, string serviceCode = null, ProviderInfoDto providerInfo = null)
         {
             try
             {
-                _logger.LogInformation($"{transCodeToCheck} VinattiConnector CheckTrans request: " + transCode);
+                logger.LogInformation($"{transCodeToCheck} VinattiConnector CheckTrans request: " + transCode);
                 var responseMessage = new MessageResponseBase();
 
                 if (providerInfo == null)
-                    providerInfo = await _topupGatewayService.ProviderInfoCacheGetAsync(providerCode);
-
+                    providerInfo = await TopupGatewayService.ProviderInfoCacheGetAsync(providerCode);
 
                 if (providerInfo == null ||
-                    !_topupGatewayService.ValidConnector(ProviderConst.VINATTI, providerInfo.ProviderCode))
+                    !TopupGatewayService.ValidConnector(ProviderConst.VINATTI, providerInfo.ProviderCode))
                 {
-                    _logger.LogError(
-                        $"{transCodeToCheck} - {providerCode} - VinattiConnector ProviderConnector not valid");
+                    logger.LogError($"{transCodeToCheck} - {providerCode} - VinattiConnector ProviderConnector not valid");
                     return new MessageResponseBase
                     {
                         ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult,
@@ -181,12 +166,10 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
                     Data = encrypted,
                     Signature = sign,
                 };
-
-                _logger.LogInformation($"{transCode} VinattiConnector Param_Json: " + request.ToJson());
-
-                var result = await CallApi(providerInfo, request.Code, transCode, request.ToJson());
-                _logger.LogInformation($"{transCode} - {providerCode} VinattiConnector Topup Reponse: " +
-                                       result.ToJson());
+                string jsonData = request.ToJson();
+                logger.LogInformation($"{transCode} VinattiConnector Param_Json: {jsonData}");
+                var result = await CallApi(providerInfo, request.Code, transCode, jsonData);
+                logger.LogInformation($"{transCode} - {providerCode} VinattiConnector Topup Reponse: {result.ToJson()}");
 
                 if (result.Code == "00")
                 {
@@ -210,11 +193,9 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
                 }
                 else
                 {
-                    var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VINATTI,
-                         result.Code, transCodeToCheck);
+                    var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VINATTI,result.Code, transCodeToCheck);
                     responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
-                    responseMessage.ResponseMessage = reResult != null
-                        ? reResult.ResponseName : "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                 }
 
                 responseMessage.ProviderResponseCode = result?.Code;
@@ -223,6 +204,7 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
             }
             catch (Exception e)
             {
+                logger.LogInformation($"{transCode} VinattiConnector TransactionCheckAsync exception : {e}");
                 return new MessageResponseBase
                 {
                     ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ",
@@ -232,32 +214,21 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
             }
         }
 
-        public async Task<NewMessageResponseBase<InvoiceResultDto>> QueryAsync(PayBillRequestLogDto payBillRequestLog)
+        public override async Task<MessageResponseBase> CheckBalanceAsync(string providerCode, string transCode)
         {
-            throw new NotImplementedException();
-        }
-
-        public async Task<MessageResponseBase> CardGetByBatchAsync(CardRequestLogDto cardRequestLog)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<MessageResponseBase> CheckBalanceAsync(string providerCode, string transCode)
-        {
-            _logger.LogInformation("QueryBalanceAsync request: " + providerCode);
+            logger.LogInformation($"QueryBalanceAsync request: {providerCode}");
             var responseMessage = new MessageResponseBase();
-            var providerInfo = await _topupGatewayService.ProviderInfoCacheGetAsync(providerCode);
+            var providerInfo = await TopupGatewayService.ProviderInfoCacheGetAsync(providerCode);
 
             if (providerInfo == null)
             {
-                _logger.LogInformation($"providerCode= {providerCode}|providerInfo is null");
+                logger.LogInformation($"providerCode = {providerCode} - providerInfo is null");
                 return responseMessage;
             }
 
-            if (!_topupGatewayService.ValidConnector(ProviderConst.VINATTI, providerInfo.ProviderCode))
+            if (!TopupGatewayService.ValidConnector(ProviderConst.VINATTI, providerInfo.ProviderCode))
             {
-                _logger.LogError(
-                    $"{providerCode}-{transCode}-{providerInfo.ProviderCode} - VinattiConnector ProviderConnector not valid");
+                logger.LogError($"{transCode} - {providerInfo.ProviderCode} - VinattiConnector ProviderConnector not valid");
                 return new MessageResponseBase
                 {
                     ResponseCode = ResponseCodeConst.Error,
@@ -265,53 +236,52 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
                 };
             }
 
-            var dto = new VinattiBalanceDto
+            try
             {
-                MerchantCode = providerInfo.ApiUser,
-                TransRefNumber = transCode,
-            };
+                var dto = new VinattiTransDto
+                {
+                    MerchantCode = providerInfo.ApiUser,
+                    TransRefNumber = transCode,
+                };
 
-            byte[] key256 = new byte[32];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(key256);
+                byte[] key256 = new byte[32];
+                using (var rng = RandomNumberGenerator.Create())
+                {
+                    rng.GetBytes(key256);
+                }
+
+                string encrypted = EncryptJson(dto.ToJson(), key256);
+                string sign = Sign(encrypted, "./" + providerInfo.PrivateKeyFile);
+                var request = new VinattiRequest
+                {
+                    Code = "CHECK_BALANCE",
+                    Time = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"),
+                    Data = encrypted,
+                    Signature = sign,
+                };
+
+                var jsonData = request.ToJson();
+                logger.LogInformation($"{transCode} VinattiConnector Param_Json: {jsonData}");
+                var result = await CallApi(providerInfo, request.Code, transCode, jsonData);
+                logger.LogInformation($"{transCode} - {providerCode} VinattiConnector Topup Reponse: {result.ToJson()}");
+
+                if (result.Code == "00")
+                {
+                    string dataGen = DecryptJson(result.Data, key256);
+                    responseMessage.ResponseMessage = "Thành công";
+                    responseMessage.ResponseCode = ResponseCodeConst.Success;
+                }
+                else
+                {
+                    responseMessage.ResponseMessage = "Không thành công";
+                    responseMessage.ResponseCode = ResponseCodeConst.Error;
+                }                     
             }
-
-            string encrypted = EncryptJson(dto.ToJson(), key256);
-            string sign = Sign(encrypted, "./" + providerInfo.PrivateKeyFile);
-            var request = new VinattiRequest
+            catch(Exception ex)
             {
-                Code = "CHECK_BALANCE",
-                Time = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"),
-                Data = encrypted,
-                Signature = sign,
-            };
-
-            _logger.LogInformation($"{transCode} VinattiConnector Param_Json: " + request.ToJson());
-
-            var result = await CallApi(providerInfo, request.Code, transCode, request.ToJson());
-            _logger.LogInformation($"{transCode} - {providerCode} VinattiConnector Topup Reponse: " +
-                                   result.ToJson());
-
-
-            if (result.Code == "00")
-            {
-                string dataGen = DecryptJson(result.Data, key256);
-                responseMessage.ResponseMessage = "Thành công";
-                responseMessage.ResponseCode = ResponseCodeConst.Success;
+                logger.LogError($"{transCode} VinattiConnector CheckBalanceAsync exception : {ex}");
             }
-
             return responseMessage;
-        }
-
-        public Task<MessageResponseBase> DepositAsync(DepositRequestDto request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<MessageResponseBase> PayBillAsync(PayBillRequestLogDto payBillRequestLog)
-        {
-            throw new NotImplementedException();
         }
 
         private async Task<VinattiResponse> CallApi(ProviderInfoDto providerInfo, string function, string transCode, string JsonData)
@@ -322,34 +292,22 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 var client = new JsonServiceClient(providerInfo.ApiUrl) { Timeout = TimeSpan.FromMinutes(providerInfo.Timeout) };
                 var result = await client.PostAsync<object>("/Gateway/Execute", JsonData);
-                _logger.LogInformation($"{transCode} Func = {function} - CallApi_VinattiConnector - Reponse result: {result.ToJson()}");
+                logger.LogInformation($"{transCode} Func = {function} - CallApi_VinattiConnector - result: {result.ToJson()}");
                 return result.ConvertTo<VinattiResponse>();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"{transCode} CallApi_VinattiConnector - Reponse exception : {ex.Message}");
-
+                logger.LogError($"{transCode} CallApi_VinattiConnector - exception : {ex.Message}");
                 return new VinattiResponse()
                 {
                     Code = "501102",
+                    Message="Chưa có kết quả"
                 };
             }
         }
 
-        public Task<ResponseMessageApi<object>> GetProductInfo(GetProviderProductInfo info)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<MessageResponseBase> CheckPrePostPaid(string msisdn, string transCode, string providerCode)
-        {
-            throw new NotImplementedException();
-        }
-
         private string Sign(string dataToSign, string privateFile)
-        {
-            //todo Cache privateKey;
-
+        {           
             var privateKey = File.ReadAllText("files/" + privateFile);
             var privateKeyBlocks = privateKey.Split("-", StringSplitOptions.RemoveEmptyEntries);
             var privateKeyBytes = Convert.FromBase64String(privateKeyBlocks[1]);
@@ -479,6 +437,7 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
 
         public string TransRefNumber { get; set; }
     }
+
     internal class VinattiBalanceDto
     {
         public string MerchantCode { get; set; }
