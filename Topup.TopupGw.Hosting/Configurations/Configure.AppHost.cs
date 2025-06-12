@@ -55,6 +55,7 @@ using Topup.TopupGw.Components.Connectors.Vinnet;
 using Topup.TopupGw.Components.Connectors.Finviet;
 using Topup.TopupGw.Components.Connectors.VNPTPay;
 using Topup.TopupGw.Components.Connectors.Vmg2;
+using Topup.TopupGw.Components.Connectors.Vinatti;
 
 [assembly: HostingStartup(typeof(AppHost))]
 
@@ -186,7 +187,9 @@ public class AppHost : AppHostBase, IHostingStartup
          .ReusedWithin(ReuseScope.None);
         container.RegisterAutoWiredAs<FinVietConnector, IGatewayConnector>(ProviderConst.FINVIET);
         container.RegisterAutoWiredAs<VnptPayConnector, IGatewayConnector>(ProviderConst.VNPTPAY)
-        .ReusedWithin(ReuseScope.None);
+           .ReusedWithin(ReuseScope.None);
+        container.RegisterAutoWiredAs<VinattiConnector, IGatewayConnector>(ProviderConst.VINATTI)
+            .ReusedWithin(ReuseScope.None);
 
         SetConfig(new HostConfig
         {
