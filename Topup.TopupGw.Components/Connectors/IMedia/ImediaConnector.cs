@@ -661,7 +661,7 @@ namespace Topup.TopupGw.Components.Connectors.Imedia
             {
                 var key = "PayGate_ProviderToken:Items:IMEDIA_TOKEN";
                 var tokenCache = await _cacheManager.GetEntity<TokenInfo>(key);
-                if (tokenCache != null && string.IsNullOrEmpty(tokenCache.Token) && reLogin == false)
+                if (tokenCache != null && !string.IsNullOrEmpty(tokenCache.Token) && reLogin == false)
                 {
                     _logger.Log(LogLevel.Information, $"GetTokenFromCache: {tokenCache}");
                     return tokenCache.Token;

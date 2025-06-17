@@ -619,6 +619,7 @@ public class TopupGatewayService : BusinessServiceBase, ITopupGatewayService
             case ProviderConst.VINNET when providerCheck == ProviderConst.VINNET:
             case ProviderConst.FINVIET when providerCheck == ProviderConst.FINVIET:
             case ProviderConst.VNPTPAY when providerCheck == ProviderConst.VNPTPAY:
+            case ProviderConst.VINATTI when providerCheck == ProviderConst.VINATTI:
                 return true;
             default:
                 return false;
