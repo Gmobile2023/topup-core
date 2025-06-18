@@ -495,7 +495,7 @@ namespace Topup.Gw.Domain.Services
 
                 if (topupListGetRequest.ToDate != null)
                 {
-                    var todate = $"NT{topupListGetRequest.ToDate.Value.AddDays(1).ToString("yMMdd")}";
+                    var todate = $"{topupListGetRequest.ToDate.Value.AddDays(1):yMMdd}";
                     //var toDate = (DateTime?)_dateTimeHelper.ConvertToUtcTime(topupListGetRequest.ToDate.Value,
                     //    _dateTimeHelper.CurrentTimeZone());
                     Expression<Func<SaleRequest, bool>> newQuery = p =>
