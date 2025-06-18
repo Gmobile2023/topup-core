@@ -91,6 +91,7 @@ public static class ProviderConst
     public const string VINNET = "VINNET";
     public const string FINVIET = "FINVIET";
     public const string VNPTPAY = "VNPTPAY";
+    public const string VINATTI = "VINATTI";
 }
 
 public enum ViettelValuesConst
