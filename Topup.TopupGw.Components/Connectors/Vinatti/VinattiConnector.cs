@@ -183,7 +183,7 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
                     {
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
                         responseMessage.ResponseMessage = "Thành công";
-                        responseMessage.ProviderResponseMessage = "Thành công";                        
+                        responseMessage.ProviderResponseMessage = "Thành công";
                     }
                     else if (objData.Status is "C" or "E")
                     {
@@ -199,7 +199,12 @@ namespace Topup.TopupGw.Components.Connectors.Vinatti
                     }
 
                     responseMessage.ProviderResponseCode = objData.Status;
-                   
+
+                }
+                else if (result.Code is "96" or "30" or "100")
+                {
+                    responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
+                    responseMessage.ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                 }
                 else
                 {

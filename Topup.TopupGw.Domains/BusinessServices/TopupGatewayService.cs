@@ -377,11 +377,11 @@ public class TopupGatewayService : BusinessServiceBase, ITopupGatewayService
             if (!string.IsNullOrEmpty(request.Name) && providerReponse.Name != request.Name)
                 providerReponse.Name = request.Name;
 
-            if (!string.IsNullOrEmpty(request.ReponseName) && providerReponse.ResponseName != request.ReponseName)
-                providerReponse.ResponseName = request.ReponseName;
+            if (!string.IsNullOrEmpty(request.ResponseName) && providerReponse.ResponseName != request.ResponseName)
+                providerReponse.ResponseName = request.ResponseName;
 
-            if (!string.IsNullOrEmpty(request.ReponseCode) && providerReponse.ResponseCode != request.ReponseCode)
-                providerReponse.ResponseCode = request.ReponseCode;
+            if (!string.IsNullOrEmpty(request.ResponseCode) && providerReponse.ResponseCode != request.ResponseCode)
+                providerReponse.ResponseCode = request.ResponseCode;
             await _transRepository.UpdateOneAsync(providerReponse);
             var key =
                 $"PayGate:ResponseMessageItems:{string.Join("_", providerReponse.Provider, providerReponse.Code)}";
