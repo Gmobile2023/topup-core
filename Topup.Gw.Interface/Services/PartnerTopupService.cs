@@ -211,7 +211,7 @@ public class PartnerTopupService : AppServiceBase
             response.Message = getApi.ResponseStatus.Message;
             response.Data.Amount = getApi.Results.Amount;
             response.Data.PaymentAmount = getApi.Results.PaymentAmount;
-            response.Data.TransCode = getApi.Results.TransRef;
+            response.Data.TransCode = getApi.Results.TransCode;
             response.Data.ProviderType = getApi.Results.ReceiverType;
             response.Data.Discount = getApi.Results.Discount;
 
