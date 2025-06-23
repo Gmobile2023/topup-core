@@ -192,7 +192,7 @@ public class PartnerTopupService : AppServiceBase
                 AgentType = AgentType.AgentApi,
                 AccountType = SystemAccountType.MasterAgent,
                 CategoryCode = topupRequest.CategoryCode,
-                ProductCode = topupRequest.ProductCode,
+                ProductCode = productCode,
                 PartnerCode = topupRequest.PartnerCode,
                 ReceiverInfo = topupRequest.PhoneNumber,
                 RequestIp = Request?.RemoteIp,

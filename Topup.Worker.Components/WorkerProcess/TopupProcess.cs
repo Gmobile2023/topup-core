@@ -61,6 +61,14 @@ namespace Topup.Worker.Components.WorkerProcess
                     return response;
                 }
 
+                if (string.IsNullOrEmpty(request.ProductCode) || string.IsNullOrEmpty(request.CategoryCode) ||
+                    string.IsNullOrEmpty(request.PartnerCode) || request.Amount <= 0)
+                {
+                    response.ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error,
+                        $"Thông tin giao dịch không hợp lệ");
+                    return response;
+                }
+
                 // var partner = await _systemService.GetPartnerCache(request.PartnerCode);
                 // if (partner == null)
                 // {
