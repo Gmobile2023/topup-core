@@ -379,7 +379,7 @@ public class ExternalServiceConnector
             if (configs == null || !configs.Any()) return configs;
 
             //TODO: Lấy tỉ lệ chạy của các nhà cung cấp Namnl (2023/11/11)
-            _logger.LogInformation($"ServiceConfiguration {transCode} - before_configs : {configs.Select(x=>x.ProviderCode).ToJson()}");
+            _logger.LogInformation($"ServiceConfiguration {transCode} - before_configs : {configs.Select(x => x.ProviderCode).ToJson()}");
             var n = configs.FindAll(p => !string.IsNullOrEmpty(p.WorkShortCode) && p.RateRunning > 0 && !string.IsNullOrEmpty(p.AccountCode));
 
             var tempConfigs = configs;
@@ -420,7 +420,7 @@ public class ExternalServiceConnector
                 item.TransCodeConfig = newItem.TransCodeConfig;
             }
 
-            _logger.LogInformation($"ServiceConfiguration {transCode} - after_set_configs : {configs.Select(x=>x.ProviderCode).ToJson()}");
+            _logger.LogInformation($"ServiceConfiguration {transCode} - after_set_configs : {configs.Select(x => x.ProviderCode).ToJson()}");
             return configs;
         }
         catch (Exception e)
@@ -436,18 +436,21 @@ public class ExternalServiceConnector
     {
         try
         {
-            _logger.LogInformation($"Send tele msg: {title} - {msg}");
-            using var client = new JsonServiceClient(_apiUrl);
-            var rs = await client.PostAsync<object>(
-                new SendTeleMsg
-                {
-                    Title = title,
-                    BotType = "Dev",
-                    Module = "WORKER",
-                    Message = msg,
-                    MessageType = "Error"
-                });
-            _logger.LogInformation($"Send tele msg: {title} - {msg}=> {rs.ToJson()}");
+            Task.Factory.StartNew(() =>
+            {
+                _logger.LogInformation($"Send tele msg: {title} - {msg}");
+                using var client = new JsonServiceClient(_apiUrl);
+                client.PostAsync<object>(
+                    new SendTeleMsg
+                    {
+                        Title = title,
+                        BotType = "Dev",
+                        Module = "WORKER",
+                        Message = msg,
+                        MessageType = "Error"
+                    });
+  
+            });
         }
         catch (Exception e)
         {
