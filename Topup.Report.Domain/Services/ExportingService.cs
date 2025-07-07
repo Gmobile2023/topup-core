@@ -1109,7 +1109,7 @@ namespace Topup.Report.Domain.Services
                     await _balanceReportSvc.ExportFileSaleByPartner(litPayBill, pathSavePayBill);
                 }
 
-                string tileMail = $"Đối soát Nhất Trần - {account.FullName} từ ngày {fromDate.ToString("dd/MM/yyyy")} tới ngày {toDate.ToString("dd/MM/yyyy")}";
+                string tileMail = $"Đối soát Hệ thống - {account.FullName} từ ngày {fromDate.ToString("dd/MM/yyyy")} tới ngày {toDate.ToString("dd/MM/yyyy")}";
 
                 if (!string.IsNullOrEmpty(account.FolderFtp) && isAuto)
                 {
@@ -1507,7 +1507,7 @@ namespace Topup.Report.Domain.Services
                 StringBuilder strBuilder = new StringBuilder();
                 strBuilder.Append($"Dear {agentName},<br/>");
                 strBuilder.Append(
-                    $"Nhất Trần gửi team số liệu chi tiết đối soát cho dịch vụ với mã {agentCode} từ ngày {fromDate} tới ngày {toDate} trong file đính kèm.,<br/>");
+                    $"Hệ thống gửi team số liệu chi tiết đối soát cho dịch vụ với mã {agentCode} từ ngày {fromDate} tới ngày {toDate} trong file đính kèm.,<br/>");
                 strBuilder.Append($"Dưới đây là số liệu tổng hợp: <br/><br/>");
                 strBuilder.Append("<div class='col-xl-12'>'");
                 strBuilder.Append(
@@ -1529,7 +1529,7 @@ namespace Topup.Report.Domain.Services
                 strBuilder.Append("9=1+2-3+4-5-6+7-8<br/>");
                 strBuilder.Append("Team vui lòng kiểm tra số liệu và phản hồi.<br/>");
                 strBuilder.Append("Trân trọng cảm ơn,<br/>");
-                strBuilder.Append("Nhất Trần Team.");
+                strBuilder.Append("Hệ thống Team.");
                 return strBuilder.ToString();
             }
             catch (Exception ex)

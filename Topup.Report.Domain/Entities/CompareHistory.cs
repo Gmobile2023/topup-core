@@ -29,7 +29,7 @@ public class CompareHistory : Document
     public string ProviderCode { get; set; }
 
     /// <summary>
-    ///     Tên file đối soát của Nhất Trần
+    ///     Tên file đối soát của Hệ thống
     /// </summary>
     public string SysFileName { get; set; }
 
@@ -39,7 +39,7 @@ public class CompareHistory : Document
     public string ProviderFileName { get; set; }
 
     /// <summary>
-    ///     Số lượng giao dịch của hệ thống Nhất Trần
+    ///     Số lượng giao dịch của hệ thống Hệ thống
     /// </summary>
     public int SysQuantity { get; set; }
 

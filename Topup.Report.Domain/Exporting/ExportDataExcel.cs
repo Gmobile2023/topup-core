@@ -261,7 +261,7 @@ public partial class ExportDataExcel : IExportDataExcel
                         sheet,
                         "Loại kết quá",
                         "SL giao dịch",
-                        "Số tiền BF Nhất Trần",
+                        "Số tiền BF Hệ thống",
                         "Số tiền BF NCC",
                         "Số tiền lệch"
                     );
@@ -838,7 +838,7 @@ public partial class ExportDataExcel : IExportDataExcel
                     rowsIndex = rowsIndex + input.TotalRowsBalance + 2;
                     _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 4, "Ngày.......tháng.......năm.........");
                     rowsIndex = rowsIndex + 1;
-                    _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 1, "CÔNG TY TM DV NHẤT TRẦN");
+                    _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 1, "CÔNG TY TM DV Hệ thống");
                     _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 4, input.FullName, false);
 
                     _log.LogInformation($"{input.Provider} ReportCompareParnerExportToFile_True");
