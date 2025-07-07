@@ -84,8 +84,9 @@ namespace Topup.Common.Domain.Services
             try
             {
                 _logger.LogInformation($"SendMessage: {chatId}-{token}-{message}");
-                var response = await $"https://api.telegram.org/{token}/sendMessage"
+                var response = await $"{_configuration["BotConfig:Url"]}/{token}/sendMessage"
                     .PostToUrlAsync($"chat_id={chatId}&text={message}").ConfigureAwait(false);
+                //_logger.LogInformation($"{_configuration["BotConfig:Url"]}/{token}/sendMessage?chat_id={chatId}&text={message}");
                 _logger.LogInformation($"SendMessage:{response}");
                 return true;
             }
