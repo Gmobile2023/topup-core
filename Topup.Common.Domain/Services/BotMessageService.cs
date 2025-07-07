@@ -41,15 +41,15 @@ namespace Topup.Common.Domain.Services
                     chatId = input.ChatId;
                 else
                 {
-                    if (_botConfig.ChatIds != null && _botConfig.ChatIds.Any())
+                    if (_botConfig.ChatIds != null && _botConfig.ChatIds.Count != 0)
                     {
                         var getChatId = _botConfig.ChatIds.Find(x => x.BotType == input.BotType.ToString("G"))
                             ?.ChatId;
                         if (getChatId != null)
-                            chatId = (int)getChatId;
+                            chatId = (long)getChatId;
                     }
                 }
-
+                _logger.LogInformation($"SendAlarmMessage with chatID {chatId}");
                 var message = GetAlarmMessage(input);
                 var response = await SendMessage(message, chatId, _botConfig.Token);
                 _logger.LogInformation($"SendAlarmMessage return:{response}");
@@ -83,9 +83,10 @@ namespace Topup.Common.Domain.Services
         {
             try
             {
-                _logger.LogInformation($"Send tele request {_configuration["BotConfig:Url"]}/{token}/sendMessage?chat_id={chatId}&text={message}");
+                _logger.LogInformation($"SendMessage: {chatId}-{token}-{message}");
                 var response = await $"{_configuration["BotConfig:Url"]}/{token}/sendMessage"
                     .PostToUrlAsync($"chat_id={chatId}&text={message}").ConfigureAwait(false);
+                _logger.LogInformation($"{_configuration["BotConfig:Url"]}/{token}/sendMessage?chat_id={chatId}&text={message}");
                 _logger.LogInformation($"SendMessage:{response}");
                 return true;
             }
