@@ -255,7 +255,7 @@ public class CompareService : ICompareService
 
             list.Add(new CompareReponseDto
             {
-                CompareType = "NCC có, Nhất Trần không có",
+                CompareType = "NCC có, Hệ thống không có",
                 Quantity = lst.Sum(c => c.ProviderOnlyQuantity),
                 AmountSys = 0,
                 AmountProvider = lst.Sum(c => c.ProviderOnlyAmount),
@@ -264,7 +264,7 @@ public class CompareService : ICompareService
 
             list.Add(new CompareReponseDto
             {
-                CompareType = "Nhất Trần có, NCC không có",
+                CompareType = "Hệ thống có, NCC không có",
                 Quantity = lst.Sum(c => c.SysOnlyQuantity),
                 AmountSys = lst.Sum(c => c.SysOnlyAmount),
                 AmountProvider = 0,
@@ -618,7 +618,7 @@ public class CompareService : ICompareService
 
                     inputDtos.Add(new CompareReponseDto
                     {
-                        CompareType = "NCC có, Nhất Trần không có",
+                        CompareType = "NCC có, Hệ thống không có",
                         Quantity = history.ProviderOnlyQuantity,
                         AmountSys = 0,
                         AmountProvider = history.ProviderOnlyAmount,
@@ -627,7 +627,7 @@ public class CompareService : ICompareService
 
                     inputDtos.Add(new CompareReponseDto
                     {
-                        CompareType = "Nhất Trần có,NCC không có",
+                        CompareType = "Hệ thống có,NCC không có",
                         Quantity = history.SysOnlyQuantity,
                         AmountSys = history.SysOnlyAmount,
                         AmountProvider = 0,
@@ -786,7 +786,7 @@ public class CompareService : ICompareService
                                     //             balanceRs != null)
                                     //         {
                                     //             var message =
-                                    //                 $"Nhất Trần xin thông báo .Tài khoản {userAccount.AccountCode}-{userAccount.FullName} " +
+                                    //                 $"Hệ thống xin thông báo .Tài khoản {userAccount.AccountCode}-{userAccount.FullName} " +
                                     //                 $"vừa được hoàn tiền thành công cho giao dịch lỗi, số tiền {saleRequest.PaymentAmount.ToFormat("đ")}. " +
                                     //                 $"Số dư: {balanceRs.DesBalance.ToFormat("đ")}, lúc {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}." +
                                     //                 $"%0ANội dung: {$"Hoàn tiền cho giao dịch lỗi. Mã giao dịch:{saleRequest.TransRef}"}";
@@ -970,7 +970,7 @@ public class CompareService : ICompareService
                 "<table cellpadding='1' cellspacing='1' border='1' class='table-bordered table-hover dataTable' cellspacing='1' cellpadding='1' align='Left' rules='all' style='border-width:0px;width:100%;margin-bottom: 0px'><tr>");
             strBuilder.Append("<th class='align_center' scope='col'>Loại kết quả</th>");
             strBuilder.Append("<th class='align_center' scope='col'>SL giao dịch</th>");
-            strBuilder.Append("<th class='align_center' scope='col'>Số tiền BF Nhất Trần</th>");
+            strBuilder.Append("<th class='align_center' scope='col'>Số tiền BF Hệ thống</th>");
             strBuilder.Append("<th class='align_center' scope='col'>Số tiền BF NCC</th>");
             strBuilder.Append("<th class='align_center' scope='col'>Số tiền lệch</th>");
             strBuilder.Append("</tr>");

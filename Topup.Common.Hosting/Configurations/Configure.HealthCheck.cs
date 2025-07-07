@@ -32,7 +32,7 @@ public class HealthCheck : IHostingStartup
                 {
                     //Set the maximum history entries by endpoint that will be served by the UI api middleware
                     setup.MaximumHistoryEntriesPerEndpoint(50);
-                    setup.AddHealthCheckEndpoint("Nhất Trần", $"{config.Url}/health");
+                    setup.AddHealthCheckEndpoint("Hệ thống", $"{config.Url}/health");
                     setup.AddWebhookNotification("health-check-notifi",
                         $"{config.Url}/health-check-notifi",
                         "{ \"message\": \"Cảnh báo service [[LIVENESS]]\n[[FAILURE]]\nThông tin chi tiết:\n[[DESCRIPTIONS]]\"}",

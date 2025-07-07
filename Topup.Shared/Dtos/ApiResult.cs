@@ -21,7 +21,7 @@ public class WorkerResult
 public class SaleResult
 {
     [DataMember(Order = 1)] public string TransCode { get; set; } //Mã giao dịch đối tác
-    [DataMember(Order = 2)] public string ReferenceCode { get; set; } //Đã giao dịch nhất trần
+    [DataMember(Order = 2)] public string ReferenceCode { get; set; } //Đã giao dịch Hệ thống
     [DataMember(Order = 3)] public decimal Amount { get; set; }
     [DataMember(Order = 4)] public decimal PaymentAmount { get; set; }
     [DataMember(Order = 5)] public decimal Discount { get; set; }
@@ -32,7 +32,7 @@ public class SaleResult
 public  class CheckTransResult
 {
    [DataMember(Order = 1)]  public string TransCode { get; set; } //Mã giao dịch đối tác
-   [DataMember(Order = 2)]  public string ReferenceCode { get; set; } //Đã giao dịch nhất trần
+   [DataMember(Order = 2)]  public string ReferenceCode { get; set; } //Đã giao dịch Hệ thống
    [DataMember(Order = 3)]  public decimal Amount { get; set; }
    [DataMember(Order = 4)]  public decimal PaymentAmount { get; set; }
    [DataMember(Order = 5)]  public decimal Discount { get; set; }
