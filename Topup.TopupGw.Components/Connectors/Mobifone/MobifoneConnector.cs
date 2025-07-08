@@ -103,19 +103,19 @@ public class MobifoneConnector : IGatewayConnector
                         response.Result.ToString(), topupRequestLog.TransCode);
                     topupRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = responseMessage.ResponseCode =
-                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseMessage =
-                        reResult != null ? reResult.ResponseName : "Giao dịch không thành công";
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.MOBIFONE,
                         response.Result.ToString(), topupRequestLog.TransCode);
                     topupRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : response.ResultNamespace ?? "Giao dịch không thành công";
+                        : response.ResultNamespace ?? "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -293,8 +293,8 @@ public class MobifoneConnector : IGatewayConnector
             {
                 var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.MOBIFONE,
                     result.Result.ToString(), transCode);
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.ResultNamespace;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
             }
         }
         else

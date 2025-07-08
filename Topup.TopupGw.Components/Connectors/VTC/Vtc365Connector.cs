@@ -123,7 +123,7 @@ public class Vtc365Connector : GatewayConnectorBase
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Provider error";
+                        : "Giao dịch lỗi phía NCC";
                     topupRequestLog.Status = TransRequestStatus.Fail;
                 }
                 else
@@ -254,7 +254,7 @@ public class Vtc365Connector : GatewayConnectorBase
                 if (errCodes.Contains(checkResult.responseCode))
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Provider error";
+                    responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -476,7 +476,7 @@ public class Vtc365Connector : GatewayConnectorBase
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
                 responseMessage.ResponseMessage =
-                    reResult != null ? reResult.ResponseName : "Provider error";
+                    reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 cardRequestLog.Status = TransRequestStatus.Fail;
             }
             else
@@ -663,7 +663,7 @@ public class Vtc365Connector : GatewayConnectorBase
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Provider error";
+                        : "Giao dịch lỗi phía NCC";
                     payBillRequestLog.Status = TransRequestStatus.Fail;
                 }
                 else

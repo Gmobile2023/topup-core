@@ -73,7 +73,7 @@ public class NhattranConnector : IGatewayConnector
                 topupRequestLog.ResponseInfo = "Không phải số thuê bao viettel";
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = "Provider error";
+                responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                 await _topupGatewayService.TopupRequestLogUpdateAsync(topupRequestLog);
                 responseMessage.ExtraInfo = "STOP";
                 return responseMessage;
@@ -109,13 +109,13 @@ public class NhattranConnector : IGatewayConnector
                 //_logger.LogInformation($"NhattranConnector return:{topupRequestLog.ProviderCode}-{topupRequestLog.TransCode}-{topupRequestLog.TransRef}-{result.ToJson()}");
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = "Provider error";
+                responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                 var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("NHATTRAN",
                     result.responseStatus.errorCode, topupRequestLog.TransCode);
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                 responseMessage.ResponseMessage = reResult != null
                     ? reResult.ResponseName
-                    : "Provider error";
+                    : "Giao dịch lỗi phía NCC";
 
                 sendTelegram = true;
                 content = result.ToJson();
@@ -570,13 +570,13 @@ public class NhattranConnector : IGatewayConnector
                     $"NhattranConnector return:{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
                 payBillRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = "Provider error";
+                responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                 var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("NHATTRAN",
                     result.responseStatus.errorCode, payBillRequestLog.TransCode);
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                 responseMessage.ResponseMessage = reResult != null
                     ? reResult.ResponseName
-                    : "Provider error";
+                    : "Giao dịch lỗi phía NCC";
             }
             else
             {

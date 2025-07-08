@@ -147,9 +147,9 @@ public class VmgConnector : GatewayConnectorBase
                                 result.ErrorCode.ToString(), topupRequestLog.TransCode);
                             topupRequestLog.Status = TransRequestStatus.Fail;
                             responseMessage.ResponseCode =
-                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                             responseMessage.ResponseMessage =
-                                reResult != null ? reResult.ResponseName : result.ErrorMessage;
+                                reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                         }
                         else
                         {
@@ -273,7 +273,7 @@ public class VmgConnector : GatewayConnectorBase
                         // var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VMG,
                         //     result.ErrorCode.ToString(), transCode);
                         responseMessage.ResponseCode =ResponseCodeConst.Error;
-                        responseMessage.ResponseMessage ="Provider error";
+                        responseMessage.ResponseMessage ="Giao dịch lỗi phía NCC";
                     }
                     else
                     {
@@ -396,8 +396,8 @@ public class VmgConnector : GatewayConnectorBase
                 var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VMG,
                     result.ErrorCode.ToString(), cardRequestLog.TransCode);
                 cardRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.ErrorMessage;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
             }
             else
             {
@@ -532,8 +532,8 @@ public class VmgConnector : GatewayConnectorBase
                 var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VMG,
                     result.ErrorCode.ToString(), payBillRequestLog.TransCode);
                 payBillRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.ErrorMessage;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
             }
             else
             {

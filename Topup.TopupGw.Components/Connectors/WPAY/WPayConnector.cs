@@ -122,8 +122,8 @@ namespace Topup.TopupGw.Components.Connectors.WPay
                             result.resCode, topupRequestLog.TransCode);
                         topupRequestLog.Status = TransRequestStatus.Fail;
                         responseMessage.ResponseCode =
-                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.resMessage;
+                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     }
                     else
                     {
@@ -340,9 +340,9 @@ namespace Topup.TopupGw.Components.Connectors.WPay
                         result.resCode,
                         payBillRequestLog.TransCode);
                     responseMessage.ResponseStatus.ErrorCode =
-                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseStatus.Message =
-                        reResult != null ? reResult.ResponseName : "Giao dịch không thành công";
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -438,9 +438,9 @@ namespace Topup.TopupGw.Components.Connectors.WPay
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.WPAY,
                         result.resCode, cardRequestLog.TransCode);
                     cardRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseMessage =
-                        reResult != null ? reResult.ResponseName : "Giao dịch không thành công";
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -519,8 +519,8 @@ namespace Topup.TopupGw.Components.Connectors.WPay
                 {
                     var reResult =
                         await _topupGatewayService.GetResponseMassageCacheAsync("WPAY", result.resCode, transCode);
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.resMessage;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -639,13 +639,13 @@ namespace Topup.TopupGw.Components.Connectors.WPay
                         $"WPayConnector return:{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
                     payBillRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Provider error";
+                    responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.WPAY,
                         result.resCode, payBillRequestLog.TransCode);
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Provider error";
+                        : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {

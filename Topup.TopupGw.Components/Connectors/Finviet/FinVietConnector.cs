@@ -446,7 +446,7 @@ namespace Topup.TopupGw.Components.Connectors.Finviet
                 var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.FINVIET, result.code, cardRequestLog.TransCode);
                 cardRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
-                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.message;
+                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
             }
             await TopupGatewayService.CardRequestLogUpdateAsync(cardRequestLog);
             return responseMessage;

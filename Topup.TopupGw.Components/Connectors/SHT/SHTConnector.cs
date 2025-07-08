@@ -80,10 +80,10 @@ public class SHTConnector : IGatewayConnector
                     result.responseStatus.errorCode, providerInfo.ProviderCode);
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode =
-                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                 responseMessage.ResponseMessage = reResult != null
                     ? reResult.ResponseName
-                    : "Provider error";
+                    : "Giao dịch lỗi phía NCC";
             }
             else
             {
@@ -159,7 +159,7 @@ public class SHTConnector : IGatewayConnector
             else if (extraInfo.Contains(checkResult.responseStatus.errorCode))
             {
                 responseMessage.ResponseCode =  ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = "Provider error";
+                responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
             }
             else
             {

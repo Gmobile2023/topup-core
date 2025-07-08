@@ -147,7 +147,7 @@ public class WhyPayConnector : GatewayConnectorBase
                             {
                                 var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.WHYPAY, result.ResponseStatus, topupRequestLog.TransCode);
                                 responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
-                                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Desc;
+                                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
                             }
 
                             //var errorCode = result.ResponseStatus;
@@ -333,7 +333,7 @@ public class WhyPayConnector : GatewayConnectorBase
                     {
                         var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.WHYPAY, result.ResponseStatus, cardRequestLog.TransCode);
                         responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
-                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Desc;
+                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
                     }
                 }
                 else
@@ -466,7 +466,7 @@ public class WhyPayConnector : GatewayConnectorBase
                         {
                             var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.WHYPAY, result.ResponseStatus, string.Empty);
                             responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
-                            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Desc;
+                            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
                         }
                     }
                     else
