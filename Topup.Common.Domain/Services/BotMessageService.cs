@@ -41,15 +41,15 @@ namespace Topup.Common.Domain.Services
                     chatId = input.ChatId;
                 else
                 {
-                    if (_botConfig.ChatIds != null && _botConfig.ChatIds.Any())
+                    if (_botConfig.ChatIds != null && _botConfig.ChatIds.Count != 0)
                     {
                         var getChatId = _botConfig.ChatIds.Find(x => x.BotType == input.BotType.ToString("G"))
                             ?.ChatId;
                         if (getChatId != null)
-                            chatId = (int)getChatId;
+                            chatId = (long)getChatId;
                     }
                 }
-
+                _logger.LogInformation($"SendAlarmMessage with chatID {chatId}");
                 var message = GetAlarmMessage(input);
                 var response = await SendMessage(message, chatId, _botConfig.Token);
                 _logger.LogInformation($"SendAlarmMessage return:{response}");
