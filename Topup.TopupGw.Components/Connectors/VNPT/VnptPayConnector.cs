@@ -129,7 +129,7 @@ public class VnptPayConnector : GatewayConnectorBase
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Provider error";
+                        : "Giao dịch lỗi phía NCC";
                     topupRequestLog.Status = TransRequestStatus.Fail;
                 }
                 else
@@ -367,7 +367,7 @@ public class VnptPayConnector : GatewayConnectorBase
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
                 responseMessage.ResponseMessage =
-                    reResult != null ? reResult.ResponseName : "Provider error";
+                    reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 cardRequestLog.Status = TransRequestStatus.Fail;
             }
             else

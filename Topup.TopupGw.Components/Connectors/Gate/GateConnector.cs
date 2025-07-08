@@ -141,9 +141,9 @@ public class GateConnector : GatewayConnectorBase
                     await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.GATE,
                         result.ResponseCode.ToString(), providerInfo.ProviderCode);
                 topupRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                 responseMessage.ResponseMessage =
-                    reResult != null ? reResult.ResponseName : "Provider error";
+                    reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 topupRequestLog.ModifiedDate = DateTime.Now;
             }
 
@@ -344,10 +344,10 @@ public class GateConnector : GatewayConnectorBase
                         checkResult.ResponseCode.ToString(), providerInfo.ProviderCode);
                     topupRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode =
-                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Provider error";
+                        : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -437,7 +437,7 @@ public class GateConnector : GatewayConnectorBase
                     //var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.GATE,
                     //checkResult.ResponseCode.ToString(), providerCode);
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Provider error";
+                    responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                 }
                 else
                 {

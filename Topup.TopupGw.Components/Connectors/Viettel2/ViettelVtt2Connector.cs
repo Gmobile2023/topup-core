@@ -162,9 +162,9 @@ namespace Topup.TopupGw.Components.Connectors.Viettel2
 
                             topupRequestLog.Status = TransRequestStatus.Fail;
                             responseMessage.ResponseCode =
-                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                             responseMessage.ResponseMessage =
-                                reResult != null ? reResult.ResponseName : "Giao dịch không thành công";
+                                reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                         }
                         catch (Exception exx)
                         {
@@ -279,7 +279,7 @@ namespace Topup.TopupGw.Components.Connectors.Viettel2
                             //         result.Data.ReferenceCode,
                             //         transCodeToCheck);
                             responseMessage.ResponseCode = ResponseCodeConst.Error;
-                            responseMessage.ResponseMessage = "Provider error";
+                            responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                             responseMessage.ProviderResponseCode = result?.Data.ReferenceCode;
                             responseMessage.ProviderResponseMessage = result?.Data.ReferenceMessage;
                         }
@@ -400,9 +400,9 @@ namespace Topup.TopupGw.Components.Connectors.Viettel2
                         result.Data.ErrorCode,
                         payBillRequestLog.TransCode);
                     responseMessage.ResponseStatus.Message =
-                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseStatus.Message =
-                        reResult != null ? reResult.ResponseName : "Giao dịch không thành công";
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -490,16 +490,16 @@ namespace Topup.TopupGw.Components.Connectors.Viettel2
 
                         var viettelCards = addStr.FromJson<List<ViettelCards>>();
                         var cardList = viettelCards.Select(viettelCard => new CardRequestResponseDto
-                        {
-                            CardType = "VTE",
-                            CardValue = viettelCard.Amount,
-                            CardCode = viettelCard.Pincode,
-                            Serial = viettelCard.Serial,
-                            ExpireDate = DateTime.ParseExact(viettelCard.Expire, "yyyy-MM-ddTHH:mm:ss",
+                            {
+                                CardType = "VTE",
+                                CardValue = viettelCard.Amount,
+                                CardCode = viettelCard.Pincode,
+                                Serial = viettelCard.Serial,
+                                ExpireDate = DateTime.ParseExact(viettelCard.Expire, "yyyy-MM-ddTHH:mm:ss",
                                     CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"),
-                            ExpiredDate = DateTime.ParseExact(viettelCard.Expire, "yyyy-MM-ddTHH:mm:ss",
+                                ExpiredDate = DateTime.ParseExact(viettelCard.Expire, "yyyy-MM-ddTHH:mm:ss",
                                     CultureInfo.InvariantCulture)
-                        })
+                            })
                             .ToList();
 
                         responseMessage.Payload = cardList;
@@ -526,8 +526,11 @@ namespace Topup.TopupGw.Components.Connectors.Viettel2
                         result.Data.ErrorCode,
                         cardRequestLog.TransCode);
                     cardRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                    responseMessage.ResponseCode = reResult != null
+                        ? reResult.ResponseCode
+                        : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage =
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -615,9 +618,9 @@ namespace Topup.TopupGw.Components.Connectors.Viettel2
                             await _topupGatewayService.GetResponseMassageCacheAsync("VIETTEL", result.Data.ErrorCode,
                                 transCode);
                         responseMessage.ResponseCode =
-                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                         responseMessage.ResponseMessage =
-                            reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                            reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     }
                 }
                 else
@@ -713,8 +716,11 @@ namespace Topup.TopupGw.Components.Connectors.Viettel2
                     var reResult =
                         await _topupGatewayService.GetResponseMassageCacheAsync("VIETTEL", result.Data.ErrorCode,
                             request.TransCode);
-                    responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                    responseMessage.ResponseCode = reResult != null
+                        ? reResult.ResponseCode
+                        : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage =
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -823,9 +829,9 @@ namespace Topup.TopupGw.Components.Connectors.Viettel2
 
                         payBillRequestLog.Status = TransRequestStatus.Fail;
                         responseMessage.ResponseCode =
-                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                         responseMessage.ResponseMessage =
-                            reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                            reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     }
                     catch (Exception exx)
                     {

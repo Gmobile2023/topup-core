@@ -131,9 +131,9 @@ public class MtcConnector : IGatewayConnector
                         await _topupGatewayService.GetResponseMassageCacheAsync("MTC", resultCode,
                             topupRequestLog.TransCode);
                     topupRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseMessage =
-                        reResult != null ? reResult.ResponseName : "Provider error";
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
 
                 responseMessage.ProviderResponseCode = resultCode;
@@ -240,7 +240,7 @@ public class MtcConnector : IGatewayConnector
                 {
                     //var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.MTC, resultCode, transCodeToCheck);
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Provider error";
+                    responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                 }
 
                 responseMessage.ProviderResponseCode = resultCode;

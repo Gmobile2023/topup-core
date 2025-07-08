@@ -230,7 +230,7 @@ namespace Topup.TopupGw.Components.Connectors.Advance
                             if (arrayErrors.Contains(result.status))
                             {
                                 responseMessage.ResponseCode = ResponseCodeConst.Error;
-                                responseMessage.ResponseMessage = "Provider error";
+                                responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                                 responseMessage.ProviderResponseCode = result.status.ToString();
                                 responseMessage.ProviderResponseMessage = "Giao dịch thất bại";
                             }
@@ -248,7 +248,7 @@ namespace Topup.TopupGw.Components.Connectors.Advance
                         var reResult = await TopupGatewayService.GetResponseMassageCacheAsync(ProviderConst.ADVANCE,
                             result.error_code, transCodeToCheck);
                         responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
-                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.error_code;
+                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
                         responseMessage.ProviderResponseCode = result?.error_code;
                         responseMessage.ProviderResponseMessage = result?.message;
                     }

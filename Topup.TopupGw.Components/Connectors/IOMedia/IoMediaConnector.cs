@@ -195,8 +195,8 @@ public class IoMediaConnector : IGatewayConnector
                             result.ResCode, topupRequestLog.TransCode);
                         topupRequestLog.Status = TransRequestStatus.Fail;
                         responseMessage.ResponseCode =
-                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result?.ResMessage;
+                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     }
 
                     responseMessage.ProviderResponseCode = result?.ResCode;
@@ -314,7 +314,7 @@ public class IoMediaConnector : IGatewayConnector
                     else
                     {
                         responseMessage.ResponseCode = ResponseCodeConst.Error;
-                        responseMessage.ResponseMessage = "Provider error";
+                        responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                     }
                 }
                 else
@@ -446,9 +446,9 @@ public class IoMediaConnector : IGatewayConnector
                     payBillRequestLog.TransCode);
 
                 responseMessage.ResponseStatus.ErrorCode =
-                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                 responseMessage.ResponseStatus.Message =
-                    reResult != null ? reResult.ResponseName : result.ResMessage;
+                    reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
             }
         }
         else
@@ -572,8 +572,8 @@ public class IoMediaConnector : IGatewayConnector
                 var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.IOMEDIA,
                     result.ResCode, cardRequestLog.TransCode);
                 cardRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.ResMessage;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
             }
 
             responseMessage.ProviderResponseCode = result?.ResCode;
@@ -667,8 +667,8 @@ public class IoMediaConnector : IGatewayConnector
                 var reResult =
                     await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.IOMEDIA, result.ResCode,
                         transCode);
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.ResMessage;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
             }
         }
         else
@@ -787,8 +787,8 @@ public class IoMediaConnector : IGatewayConnector
                         payBillRequestLog.TransCode);
 
                 payBillRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.ResMessage;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
             }
         }
         else

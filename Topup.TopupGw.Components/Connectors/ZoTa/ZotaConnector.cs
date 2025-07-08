@@ -162,9 +162,9 @@ namespace Topup.TopupGw.Components.Connectors.ZoTa
                                 result.Status.Code.ToString(), topupRequestLog.TransCode);
                             topupRequestLog.Status = TransRequestStatus.Fail;
                             responseMessage.ResponseCode =
-                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                             responseMessage.ResponseMessage =
-                                reResult != null ? reResult.ResponseName : result.Status.Value;
+                                reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                         }
 
                         if (request.TelcoType == "VTM" && new[] { 0, 4501, 501102 }.Contains(result.Status.Code))
@@ -492,9 +492,9 @@ namespace Topup.TopupGw.Components.Connectors.ZoTa
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("ZOTA",
                         result.Status.Code.ToString(), payBillRequestLog.TransCode);
                     responseMessage.ResponseStatus.ErrorCode =
-                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseStatus.Message =
-                        reResult != null ? reResult.ResponseName : result.Status.Value;
+                        reResult != null ? reResult.ResponseName :"Giao dịch lỗi phía NCC";
                 }
                 //responseMessage.ProviderResponseCode = result?.Status.Code.ToString();
                 //responseMessage.ProviderResponseMessage = result?.Status.Value;
@@ -653,8 +653,8 @@ namespace Topup.TopupGw.Components.Connectors.ZoTa
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("ZOTA",
                         result.Status.Code.ToString(), cardRequestLog.TransCode);
                     cardRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Status.Value;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
 
                 responseMessage.ProviderResponseCode = result?.Status.Code.ToString();
@@ -757,8 +757,8 @@ namespace Topup.TopupGw.Components.Connectors.ZoTa
                     var reResult =
                         await _topupGatewayService.GetResponseMassageCacheAsync("ZOTA", result.Status.Code.ToString(),
                             transCode);
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Status.Value;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -885,8 +885,8 @@ namespace Topup.TopupGw.Components.Connectors.ZoTa
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("ZOTA",
                         result.Status.Code.ToString(), payBillRequestLog.TransCode);
                     payBillRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Status.Value;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
 
                 responseMessage.ProviderResponseCode = result?.Status.Code.ToString();

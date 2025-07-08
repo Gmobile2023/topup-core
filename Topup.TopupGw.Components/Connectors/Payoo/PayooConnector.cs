@@ -130,10 +130,9 @@ namespace Topup.TopupGw.Components.Connectors.Payoo
                             returnCode, topupRequestLog.TransCode);
                         topupRequestLog.Status = TransRequestStatus.Fail;
                         responseMessage.ResponseCode =
-                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName :
-                            !string.IsNullOrEmpty(reponse.DescriptionCode) ? reponse.DescriptionCode :
-                            "Giao dịch không thành công.";
+                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                        responseMessage.ResponseMessage =
+                            reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     }
                     else
                     {
@@ -448,10 +447,9 @@ namespace Topup.TopupGw.Components.Connectors.Payoo
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.PAYOO,
                         returnCode, cardRequestLog.TransCode);
                     cardRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName :
-                        !string.IsNullOrEmpty(reponse.DescriptionCode) ? reponse.DescriptionCode :
-                        "Giao dịch không thành công.";
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage =
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {

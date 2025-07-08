@@ -110,7 +110,7 @@ public class ESaleConnector : IGatewayConnector
                     // if (arrayErrors.Contains(result.RetCode))
                     // {
                     //     responseMessage.ResponseCode=ResponseCodeConst.Error;
-                    //     responseMessage.ResponseMessage = "Provider error";
+                    //     responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                     // }
                     // else
                     // {
@@ -242,8 +242,8 @@ public class ESaleConnector : IGatewayConnector
                 if (arrayErrors.Contains(result.RetCode))
                 {
                     cardRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode=reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.RetMsg;
+                    responseMessage.ResponseCode=reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -312,8 +312,8 @@ public class ESaleConnector : IGatewayConnector
                 if (arrayErrors.Contains(result.RetCode))
                 {
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.ESALE, result.RetCode.ToString(), request.TransId);
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.RetMsg;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName :"Giao dịch lỗi phía NCC";
                 }
                 else
                 {

@@ -294,8 +294,8 @@ namespace Topup.TopupGw.Components.Connectors.Octa
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("OCTA",
                         result.Response.Code.ToString(), topupRequestLog.TransCode);
                     topupRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Response.Message;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -473,7 +473,7 @@ namespace Topup.TopupGw.Components.Connectors.Octa
                 else if (result.Response.Data.Status == 0)
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Provider error";
+                    responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                     responseMessage.Payload = result.Response.Data.Accepted;
                     return responseMessage;
                 }
@@ -646,9 +646,9 @@ namespace Topup.TopupGw.Components.Connectors.Octa
                             result.Response.Code.ToString(), cardRequestLog.TransCode);
                         cardRequestLog.Status = TransRequestStatus.Fail;
                         responseMessage.ResponseCode =
-                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                         responseMessage.ResponseMessage =
-                            reResult != null ? reResult.ResponseName : result.Response.Message;
+                            reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     }
                     else
                     {
@@ -849,8 +849,8 @@ namespace Topup.TopupGw.Components.Connectors.Octa
                     var reResult =
                         await _topupGatewayService.GetResponseMassageCacheAsync("OCTA", result.Response.Code.ToString(),
                             transCode);
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Response.Message;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else

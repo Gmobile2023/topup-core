@@ -109,9 +109,9 @@ public class PayTechConnector : IGatewayConnector
                             {
                                 topupRequestLog.Status = TransRequestStatus.Fail;
                                 responseMessage.ResponseCode =
-                                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                                 responseMessage.ResponseMessage =
-                                    reResult != null ? reResult.ResponseName : "Giao dịch thất bại";
+                                    reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                             }
                             else
                             {
@@ -138,8 +138,8 @@ public class PayTechConnector : IGatewayConnector
                         {
                             topupRequestLog.Status = TransRequestStatus.Fail;
                             responseMessage.ResponseCode =
-                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.message;
+                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                         }
                         else
                         {
@@ -231,7 +231,7 @@ public class PayTechConnector : IGatewayConnector
                         if (reponseMapStatus == TransRequestStatus.Fail)
                         {
                             responseMessage.ResponseCode = ResponseCodeConst.Error;
-                            responseMessage.ResponseMessage = "Provider error";
+                            responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                         }
                         else
                         {
@@ -375,8 +375,8 @@ public class PayTechConnector : IGatewayConnector
                 if (new[] { "FAI", "BUS", "INV" }.Contains(result.code))
                 {
                     responseMessage.ResponseStatus.ErrorCode =
-                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseStatus.Message = reResult != null ? reResult.ResponseName : result.message;
+                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseStatus.Message = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -570,8 +570,8 @@ public class PayTechConnector : IGatewayConnector
                     if (new[] { "FAI", "BUS", "INV" }.Contains(result.code))
                     {
                         responseMessage.ResponseCode =
-                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.message;
+                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                        responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     }
                     else
                     {
@@ -693,9 +693,9 @@ public class PayTechConnector : IGatewayConnector
                                 {
                                     payBillRequestLog.Status = TransRequestStatus.Fail;
                                     responseMessage.ResponseCode =
-                                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                                     responseMessage.ResponseMessage =
-                                        reResult != null ? reResult.ResponseName : "Giao dịch thất bại";
+                                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                                 }
                                 else
                                 {
@@ -736,8 +736,8 @@ public class PayTechConnector : IGatewayConnector
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.PAYTECH,
                         transReponse.status, payBillRequestLog.TransCode);
                     payBillRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.message;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     responseMessage.ProviderResponseCode = $"{orderReponse.status},{transReponse.status}";
                     responseMessage.ProviderResponseMessage =
                         $"{orderReponse.message}-{orderReponse.reason},{transReponse.status}-{transReponse.message}";
@@ -751,8 +751,8 @@ public class PayTechConnector : IGatewayConnector
                 if (new[] { "FAI", "BUS", "INV" }.Contains(result.code))
                 {
                     payBillRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.message;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -760,7 +760,7 @@ public class PayTechConnector : IGatewayConnector
                     responseMessage.ResponseCode = reResult != null
                         ? reResult.ResponseCode
                         : ResponseCodeConst.ResponseCode_WaitForResult;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.message;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
                 }
 
                 responseMessage.ProviderResponseCode = result.code;

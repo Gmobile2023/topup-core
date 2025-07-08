@@ -130,11 +130,9 @@ namespace Topup.TopupGw.Components.Connectors.Vinnet
                                     ProviderConst.VINNET, result.resCode, topupRequestLog.TransCode);
                             topupRequestLog.Status = TransRequestStatus.Fail;
                             responseMessage.ResponseCode =
-                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                             responseMessage.ResponseMessage =
-                                reResult != null ? reResult.ResponseName : result.resMesg;
-                            responseMessage.ResponseCode = ResponseCodeConst.Error;
-                            responseMessage.ResponseMessage = "Giao dịch không thành công";
+                                reResult != null ? reResult.ResponseName :"Giao dịch lỗi phía NCC";
                         }
                         else
                         {

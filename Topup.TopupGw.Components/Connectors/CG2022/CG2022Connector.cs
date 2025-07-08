@@ -181,10 +181,10 @@ public class CG2022Connector : IGatewayConnector
                                 result.responseStatus.errorCode, providerInfo.ProviderCode);
                             topupRequestLog.Status = TransRequestStatus.Fail;
                             responseMessage.ResponseCode =
-                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                             responseMessage.ResponseMessage = reResult != null
                                 ? reResult.ResponseName
-                                : "Provider error";
+                                : "Giao dịch lỗi phía NCC";
                         }
                     }
                     catch (Exception ex)
@@ -208,9 +208,9 @@ public class CG2022Connector : IGatewayConnector
                         await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.CG2022, ResponseCodeConst.Success,
                             providerInfo.ProviderCode);
                     topupRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseMessage =
-                        reResult != null ? reResult.ResponseName : "Provider error";
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     topupRequestLog.ModifiedDate = DateTime.Now;
                 }
             }
@@ -295,7 +295,7 @@ public class CG2022Connector : IGatewayConnector
             else if (extraInfo.Contains(checkResult.responseStatus.errorCode))
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = "Provider error";
+                responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
             }
             else
             {

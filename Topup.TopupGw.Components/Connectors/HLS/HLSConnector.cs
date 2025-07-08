@@ -136,7 +136,7 @@ public class HLSConnector : IGatewayConnector
                 var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.HLS,
                     respDto.ResponseCode, payBillRequestLog.TransCode);
                 responseMessage.ResponseStatus.ErrorCode =
-                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                 responseMessage.ResponseStatus.Message = reResult != null ? reResult.ResponseName : "Truy vấn thất bại";
             }
         }

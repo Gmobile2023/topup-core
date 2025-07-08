@@ -98,9 +98,9 @@ public class CardConnector : IGatewayConnector
                 var reResult =
                     await _topupGatewayService.GetResponseMassageCacheAsync("123Card", "2", providerInfo.ProviderCode);
                 topupRequestLog.Status = TransRequestStatus.Fail;
-                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                 responseMessage.ResponseMessage =
-                    reResult != null ? reResult.ResponseName : "Provider error";
+                    reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 topupRequestLog.ModifiedDate = DateTime.Now;
             }
 
@@ -239,10 +239,10 @@ public class CardConnector : IGatewayConnector
                     checkResult.ResponseCode.ToString(), providerInfo.ProviderCode);
                 topupRequestLog.Status = TransRequestStatus.Fail;
                 responseMessage.ResponseCode =
-                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                 responseMessage.ResponseMessage = reResult != null
                     ? reResult.ResponseName
-                    : "Provider error";
+                    : "Giao dịch lỗi phía NCC";
             }
             else if (checkResult.ResponseCode == 501102)
             {
@@ -326,7 +326,7 @@ public class CardConnector : IGatewayConnector
             else if (new[] { 10, 2, 100 }.Contains(checkResult.ResponseCode))
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Error;
-                responseMessage.ResponseMessage = "Provider error";
+                responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
             }
             else
             {
@@ -459,12 +459,9 @@ public class CardConnector : IGatewayConnector
                     payBillRequestLog.ResponseInfo = checkResult.ToJson();
                     _logger.LogInformation(
                         $"Topup return:{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{checkResult}");
-                    var reResult =
-                        await _topupGatewayService.GetResponseMassageCacheAsync("123Card", "1",
-                            providerInfo.ProviderCode);
                     payBillRequestLog.Status = TransRequestStatus.Success;
                     responseMessage.ResponseCode = ResponseCodeConst.Success;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Thành công";
+                    responseMessage.ResponseMessage = "Thành công";
                     responseMessage.ExtraInfo = checkResult.TotalTopupAmount.ToString();
                 }
                 else if (new[] { 10, 2, 100 }.Contains(checkResult.ResponseCode))
@@ -480,7 +477,7 @@ public class CardConnector : IGatewayConnector
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Provider error";
+                        : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -513,7 +510,7 @@ public class CardConnector : IGatewayConnector
             payBillRequestLog.Status = TransRequestStatus.Fail;
             responseMessage.ResponseCode = ResponseCodeConst.Error;
             responseMessage.ResponseMessage =
-                reResult != null ? reResult.ResponseName : "Provider error";
+                reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
         }
 
         await _topupGatewayService.PayBillRequestLogUpdateAsync(payBillRequestLog);

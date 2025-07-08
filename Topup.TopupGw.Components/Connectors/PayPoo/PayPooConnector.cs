@@ -153,9 +153,9 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
 
                             topupRequestLog.Status = TransRequestStatus.Fail;
                             responseMessage.ResponseCode =
-                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                             responseMessage.ResponseMessage =
-                                reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                                reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                         }
                         catch (Exception exx)
                         {
@@ -182,6 +182,7 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
                 responseMessage.ResponseMessage =
                     "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
             }
+
             return responseMessage;
         }
 
@@ -269,13 +270,13 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
                             //         result.Data.ReferenceCode,
                             //         transCodeToCheck);
                             responseMessage.ResponseCode = ResponseCodeConst.Error;
-                            responseMessage.ResponseMessage = "Provider error";
+                            responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                             //     reResult != null ? reResult.ReponseName : result.Data.ReferenceMessage;
                             // responseMessage.ProviderResponseCode = result?.Data.ReferenceCode;
                             // responseMessage.ProviderResponseMessage = result?.Data.ReferenceMessage;
                         }
                     }
-                    else 
+                    else
                     {
                         // var reResult =
                         //     await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.PAYPOO, result.Data.ErrorCode,
@@ -285,7 +286,7 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
                             "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                         responseMessage.ProviderResponseCode = result?.Data.ErrorCode;
                         responseMessage.ProviderResponseMessage = result?.Data.ErrorMsg;
-                    }                   
+                    }
                 }
                 else
                 {
@@ -393,9 +394,9 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
                         result.Data.ErrorCode,
                         payBillRequestLog.TransCode);
                     responseMessage.ResponseStatus.ErrorCode =
-                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                        reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseStatus.Message =
-                        reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -522,8 +523,8 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
                         result.Data.ErrorCode,
                         cardRequestLog.TransCode);
                     cardRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -614,9 +615,9 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
                                 result.Data.ErrorCode,
                                 transCode);
                         responseMessage.ResponseCode =
-                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                         responseMessage.ResponseMessage =
-                            reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                            reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     }
                 }
                 else
@@ -713,7 +714,7 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
                         await _topupGatewayService.GetResponseMassageCacheAsync("VIETTEL", result.Data.ErrorCode,
                             request.TransCode);
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -848,9 +849,9 @@ namespace Topup.TopupGw.Components.Connectors.PayPoo
 
                         payBillRequestLog.Status = TransRequestStatus.Fail;
                         responseMessage.ResponseCode =
-                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                            reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                         responseMessage.ResponseMessage =
-                            reResult != null ? reResult.ResponseName : result.Data.ErrorMsg;
+                            reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                     }
                     catch (Exception exx)
                     {

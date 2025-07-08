@@ -146,9 +146,9 @@ namespace Topup.TopupGw.Components.Connectors.Imedia
                                     result.errorCode.ToString(), topupRequestLog.TransCode);
                                 topupRequestLog.Status = TransRequestStatus.Fail;
                                 responseMessage.ResponseCode =
-                                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                                    reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
                                 responseMessage.ResponseMessage =
-                                    reResult != null ? reResult.ResponseName : result.errorMessage;
+                                    reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                             }
                             else
                             {
@@ -282,7 +282,7 @@ namespace Topup.TopupGw.Components.Connectors.Imedia
                             var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.IMEDIA,
                             result.errorCode.ToString(), transCode);
                             responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
-                            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.errorMessage;
+                            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
                         }
                         else
                         {
@@ -416,8 +416,8 @@ namespace Topup.TopupGw.Components.Connectors.Imedia
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.IMEDIA,
                         result.errorCode.ToString(), cardRequestLog.TransCode);
                     cardRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.errorMessage;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -574,8 +574,8 @@ namespace Topup.TopupGw.Components.Connectors.Imedia
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.IMEDIA,
                         result.errorCode.ToString(), payBillRequestLog.TransCode);
                     payBillRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.errorMessage;
+                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {

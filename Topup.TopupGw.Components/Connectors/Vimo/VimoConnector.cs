@@ -40,7 +40,8 @@ public class VimoConnector : IGatewayConnector
         var responseMessage = new MessageResponseBase();
         if (!_topupGatewayService.ValidConnector(ProviderConst.VIMO, providerInfo.ProviderCode))
         {
-            _logger.LogError($"{topupRequestLog.TransCode}-{topupRequestLog.TransRef}-{providerInfo.ProviderCode}-VimoConnector ProviderConnector not valid");
+            _logger.LogError(
+                $"{topupRequestLog.TransCode}-{topupRequestLog.TransRef}-{providerInfo.ProviderCode}-VimoConnector ProviderConnector not valid");
             return new MessageResponseBase
             {
                 ResponseCode = ResponseCodeConst.Error,
@@ -110,17 +111,18 @@ public class VimoConnector : IGatewayConnector
                     topupRequestLog.ResponseInfo = result.ToJson();
                     topupRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Provider error";
+                    responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VIMO,
                         result.error_code, topupRequestLog.TransCode);
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
+                    responseMessage.ResponseCode = reResult != null
+                        ? reResult.ResponseCode
+                        : ResponseCodeConst.ResponseCode_ErrorProvider;
                     responseMessage.ResponseMessage = reResult != null
                         ? reResult.ResponseName
-                        : "Provider error";
+                        : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
-
                     responseMessage.ResponseMessage =
                         "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                     responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_TimeOut;
@@ -142,8 +144,9 @@ public class VimoConnector : IGatewayConnector
         }
         finally
         {
-            await _topupGatewayService.TopupRequestLogUpdateAsync(topupRequestLog);   
+            await _topupGatewayService.TopupRequestLogUpdateAsync(topupRequestLog);
         }
+
         return responseMessage;
     }
 
@@ -186,16 +189,17 @@ public class VimoConnector : IGatewayConnector
                 serviceCodeProvider = providerService.ServiceCode.Split('|')[0];
                 publisher = providerService.ServiceCode.Split('|')[1];
             }
+
             string function = serviceCode == ServiceCodes.PAY_BILL
-                      ? "checkbilltransaction"
-                      : serviceCode == ServiceCodes.TOPUP || serviceCode == ServiceCodes.TOPUP_DATA
-                          ? "checktopuptransaction"
-                          : "getpincodetransaction";
+                ? "checkbilltransaction"
+                : serviceCode == ServiceCodes.TOPUP || serviceCode == ServiceCodes.TOPUP_DATA
+                    ? "checktopuptransaction"
+                    : "getpincodetransaction";
 
             var json = new
             {
                 mc_request_id = transCodeToCheck,
-                service_code = serviceCodeProvider,                
+                service_code = serviceCodeProvider,
             }.ToJson();
 
             _logger.LogInformation($"{transCodeToCheck} VimoConnector CheckTran Param_Json: " + json);
@@ -212,13 +216,14 @@ public class VimoConnector : IGatewayConnector
             };
 
             var result = await CallApi(providerInfo, request, transCodeToCheck);
-            _logger.LogInformation($"{transCodeToCheck}-{transCode} VimoConnector CheckTran Reponse: " + result.ToJson());
+            _logger.LogInformation(
+                $"{transCodeToCheck}-{transCode} VimoConnector CheckTran Reponse: " + result.ToJson());
 
             if (result != null && result.error_code == ResponseCodeConst.Error)
             {
                 responseMessage.ResponseCode = ResponseCodeConst.Success;
                 responseMessage.ResponseMessage = "Thành công";
-               
+
                 try
                 {
                     if (function == "getpincodetransaction")
@@ -228,7 +233,7 @@ public class VimoConnector : IGatewayConnector
                         var cardList = new List<CardRequestResponseDto>();
                         foreach (var card in cards)
                             cardList.Add(new CardRequestResponseDto
-                            {                                
+                            {
                                 CardValue = card.cardValue,
                                 CardCode = card.cardCode.EncryptTripDes(),
                                 Serial = card.cardSerial,
@@ -366,13 +371,13 @@ public class VimoConnector : IGatewayConnector
                 BillId = responseData.billDetail != null ? responseData.billDetail[0].billNumber : "",
                 PeriodDetails = responseData.billDetail != null
                     ? (from x in responseData.billDetail
-                       select new PeriodDto
-                       {
-                           Amount = x.amount,
-                           Period = x.period,
-                           BillNumber = x.billNumber,
-                           BillType = x.billType
-                       }).ToList()
+                        select new PeriodDto
+                        {
+                            Amount = x.amount,
+                            Period = x.period,
+                            BillNumber = x.billNumber,
+                            BillType = x.billType
+                        }).ToList()
                     : new List<PeriodDto>()
             };
 
@@ -383,7 +388,8 @@ public class VimoConnector : IGatewayConnector
         {
             var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("VIMO", reponse?.error_code,
                 payBillRequestLog.TransCode);
-            responseMessage.ResponseStatus.ErrorCode = ResponseCodeConst.Error;
+            responseMessage.ResponseStatus.ErrorCode =
+                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
             responseMessage.ResponseStatus.Message =
                 reResult != null ? reResult.ResponseName : reponse?.error_message;
             //responseMessage.ProviderResponseCode = reponse?.error_code;
@@ -456,8 +462,9 @@ public class VimoConnector : IGatewayConnector
         };
 
         var result = await CallApi(providerInfo, request, cardRequestLog.TransCode);
-        _logger.LogInformation($"{cardRequestLog.TransCode}-{cardRequestLog.TransRef} VimoConnector Topup Reponse: {result.error_code}|{result.error_message}"
-                              );
+        _logger.LogInformation(
+            $"{cardRequestLog.TransCode}-{cardRequestLog.TransRef} VimoConnector Topup Reponse: {result.error_code}|{result.error_message}"
+        );
 
         try
         {
@@ -499,10 +506,14 @@ public class VimoConnector : IGatewayConnector
                     cardRequestLog.ResponseInfo = result.ToJson();
                     cardRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Provider error";
-                    var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VIMO, result.error_code, cardRequestLog.TransCode);
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Provider error";
+                    responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
+                    var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VIMO,
+                        result.error_code, cardRequestLog.TransCode);
+                    responseMessage.ResponseCode = reResult != null
+                        ? reResult.ResponseCode
+                        : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage =
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
@@ -511,6 +522,7 @@ public class VimoConnector : IGatewayConnector
                     cardRequestLog.ModifiedDate = DateTime.Now;
                 }
             }
+
             responseMessage.ProviderResponseCode = result?.error_code;
             responseMessage.ProviderResponseMessage = result?.error_message;
         }
@@ -640,13 +652,13 @@ public class VimoConnector : IGatewayConnector
             var query = await QueryAsync(dtoQuery);
             if (query.ResponseStatus.ErrorCode == ResponseCodeConst.Success)
                 objCache = (from x in query.Results.PeriodDetails
-                            select new billDetailDto
-                            {
-                                amount = Convert.ToInt32(x.Amount),
-                                period = x.Period,
-                                billNumber = x.BillNumber,
-                                billType = x.BillType
-                            }).ToList();
+                    select new billDetailDto
+                    {
+                        amount = Convert.ToInt32(x.Amount),
+                        period = x.Period,
+                        billNumber = x.BillNumber,
+                        billType = x.BillType
+                    }).ToList();
         }
 
         if (objCache == null && objCache.Count == 0)
@@ -733,19 +745,25 @@ public class VimoConnector : IGatewayConnector
                 {
                     payBillRequestLog.ModifiedDate = DateTime.Now;
                     payBillRequestLog.ResponseInfo = result.ToJson();
-                    _logger.LogInformation($"VimoConnector return:{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
+                    _logger.LogInformation(
+                        $"VimoConnector return:{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
                     payBillRequestLog.Status = TransRequestStatus.Fail;
                     responseMessage.ResponseCode = ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = "Provider error";
+                    responseMessage.ResponseMessage = "Giao dịch lỗi phía NCC";
                     var reResult = await _topupGatewayService.GetResponseMassageCacheAsync("VIMO",
                         result.error_code, payBillRequestLog.TransCode);
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.Error;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Provider error";
+                    responseMessage.ResponseCode = reResult != null
+                        ? reResult.ResponseCode
+                        : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage =
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
                 else
                 {
-                    _logger.LogInformation($"VimoConnector return:{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
-                    responseMessage.ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
+                    _logger.LogInformation(
+                        $"VimoConnector return:{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
+                    responseMessage.ResponseMessage =
+                        "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                     responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_TimeOut;
                     payBillRequestLog.Status = TransRequestStatus.Timeout;
                     payBillRequestLog.ModifiedDate = DateTime.Now;

@@ -145,7 +145,7 @@ public class Vmg2Connector : GatewayConnectorBase
                         responseMessage.ResponseCode =
                             reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_TimeOut;
                         responseMessage.ResponseMessage =
-                            reResult != null ? reResult.ResponseName : result.ErrorMessage;
+                            reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
                         if (reResult != null && reResult.ResponseCode is ResponseCodeConst.Error)
                             topupRequestLog.Status = TransRequestStatus.Fail;
                     }
@@ -229,11 +229,15 @@ public class Vmg2Connector : GatewayConnectorBase
                         var cardList = result.Products.First()
                             .Softpins.Select(card => new CardRequestResponseDto
                             {
-                                CardCode = DecryptCodeVmg(card.SoftpinPinCode, providerInfo.PublicKey.Split('|')[1]).EncryptTripDes(),
+                                CardCode = DecryptCodeVmg(card.SoftpinPinCode, providerInfo.PublicKey.Split('|')[1])
+                                    .EncryptTripDes(),
                                 Serial = card.SoftpinSerial,
-                                ExpiredDate = DateTime.ParseExact(card.ExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                                ExpireDate = DateTime.ParseExact(card.ExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"),
-                                CardValue = "",//chỗ này sao k có mệnh giá
+                                ExpiredDate = DateTime.ParseExact(card.ExpiryDate, "dd/MM/yyyy",
+                                    CultureInfo.InvariantCulture),
+                                ExpireDate = DateTime
+                                    .ParseExact(card.ExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture)
+                                    .ToString("dd/MM/yyyy"),
+                                CardValue = "", //chỗ này sao k có mệnh giá
                             })
                             .ToList();
 
@@ -257,9 +261,9 @@ public class Vmg2Connector : GatewayConnectorBase
                     else
                     {
                         responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
-                        responseMessage.ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
+                        responseMessage.ResponseMessage =
+                            "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                     }
-
                 }
                 else
                 {
@@ -271,10 +275,12 @@ public class Vmg2Connector : GatewayConnectorBase
                     else
                     {
                         responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
-                        responseMessage.ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
+                        responseMessage.ResponseMessage =
+                            "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                     }
                 }
             }
+
             responseMessage.ProviderResponseCode = result?.ErrorCode.ToString();
             responseMessage.ProviderResponseMessage = result?.ErrorMessage;
             return responseMessage;
@@ -301,7 +307,8 @@ public class Vmg2Connector : GatewayConnectorBase
 
     public override async Task<MessageResponseBase> CardGetByBatchAsync(CardRequestLogDto cardRequestLog)
     {
-        _logger.LogInformation($"{cardRequestLog.TransCode} Vmg2Connector Get card request: " + cardRequestLog.ToJson());
+        _logger.LogInformation($"{cardRequestLog.TransCode} Vmg2Connector Get card request: " +
+                               cardRequestLog.ToJson());
         var responseMessage = new MessageResponseBase();
 
         var providerInfo = await _topupGatewayService.ProviderInfoCacheGetAsync(cardRequestLog.ProviderCode);
@@ -311,7 +318,8 @@ public class Vmg2Connector : GatewayConnectorBase
 
         if (!_topupGatewayService.ValidConnector(ProviderConst.VMG2, providerInfo.ProviderCode))
         {
-            _logger.LogInformation($"{cardRequestLog.ProviderCode}-{cardRequestLog.TransCode}-{providerInfo.ProviderCode}-Vmg2Connector ProviderConnector not valid");
+            _logger.LogInformation(
+                $"{cardRequestLog.ProviderCode}-{cardRequestLog.TransCode}-{providerInfo.ProviderCode}-Vmg2Connector ProviderConnector not valid");
             return new MessageResponseBase
             {
                 ResponseCode = ResponseCodeConst.Error,
@@ -343,7 +351,8 @@ public class Vmg2Connector : GatewayConnectorBase
         VmgResponse result = await CallApi(FunctionVmg.RequestHandle, request, providerInfo);
 
         cardRequestLog.ModifiedDate = DateTime.Now;
-        _logger.LogInformation($"{cardRequestLog.TransCode} Vmg2Connector Card return: {providerInfo.ProviderCode}-{cardRequestLog.TransRef}-{result.ToJson()}");
+        _logger.LogInformation(
+            $"{cardRequestLog.TransCode} Vmg2Connector Card return: {providerInfo.ProviderCode}-{cardRequestLog.TransRef}-{result.ToJson()}");
         if (result.ErrorCode == 0)
         {
             responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -361,7 +370,8 @@ public class Vmg2Connector : GatewayConnectorBase
                             providerInfo.PublicKey.Split('|')[1]),
                         Serial = card.SoftpinSerial,
                         ExpiredDate = DateTime.ParseExact(card.ExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                        ExpireDate = DateTime.ParseExact(card.ExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"),
+                        ExpireDate = DateTime.ParseExact(card.ExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture)
+                            .ToString("dd/MM/yyyy"),
                         CardValue = cardRequestLog.TransAmount.ToString(CultureInfo.InvariantCulture),
                     });
                 }
@@ -378,8 +388,9 @@ public class Vmg2Connector : GatewayConnectorBase
             var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VMG2,
                 result.ErrorCode.ToString(), cardRequestLog.TransCode);
             cardRequestLog.Status = TransRequestStatus.Timeout;
-            responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
-            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.ErrorMessage;
+            responseMessage.ResponseCode =
+                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
+            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
             responseMessage.ProviderResponseCode = result?.ErrorCode.ToString();
             responseMessage.ProviderResponseMessage = result?.ErrorMessage;
             if (reResult != null && reResult.ResponseCode is ResponseCodeConst.Error)
@@ -428,7 +439,8 @@ public class Vmg2Connector : GatewayConnectorBase
         }
         catch (Exception ex)
         {
-            _logger.LogError($"{transCode} -providerCode= {providerCode} Vmg2Connector Balance exception: " + ex.Message);
+            _logger.LogError(
+                $"{transCode} -providerCode= {providerCode} Vmg2Connector Balance exception: " + ex.Message);
             responseMessage.Payload = 0;
             responseMessage.Exception = ex.Message;
         }
@@ -443,7 +455,8 @@ public class Vmg2Connector : GatewayConnectorBase
 
     public async Task<MessageResponseBase> PayBillAsync(PayBillRequestLogDto payBillRequestLog)
     {
-        _logger.LogInformation($"{payBillRequestLog.TransCode} Vmg2Connector paybill request: " + payBillRequestLog.ToJson());
+        _logger.LogInformation($"{payBillRequestLog.TransCode} Vmg2Connector paybill request: " +
+                               payBillRequestLog.ToJson());
 
         var responseMessage = new MessageResponseBase();
 
@@ -485,7 +498,8 @@ public class Vmg2Connector : GatewayConnectorBase
         responseMessage.TransCodeProvider = payBillRequestLog.TransCode;
         VmgResponse result = await CallApi(FunctionVmg.RequestHandle, request, providerInfo);
         payBillRequestLog.ModifiedDate = DateTime.Now;
-        _logger.LogInformation($"{providerInfo.ProviderCode}-{payBillRequestLog.TransCode} Vmg2Connector Paybill return: {payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
+        _logger.LogInformation(
+            $"{providerInfo.ProviderCode}-{payBillRequestLog.TransCode} Vmg2Connector Paybill return: {payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.ToJson()}");
 
         if (result.ErrorCode == 0)
         {
@@ -499,8 +513,9 @@ public class Vmg2Connector : GatewayConnectorBase
             var reResult = await _topupGatewayService.GetResponseMassageCacheAsync(ProviderConst.VMG2,
                 result.ErrorCode.ToString(), payBillRequestLog.TransCode);
             payBillRequestLog.Status = TransRequestStatus.Timeout;
-            responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
-            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : result.ErrorMessage;
+            responseMessage.ResponseCode =
+                reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_WaitForResult;
+            responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch chưa có kết quả";
             if (reResult != null && reResult.ResponseCode is ResponseCodeConst.Error)
                 payBillRequestLog.Status = TransRequestStatus.Fail;
         }
@@ -549,7 +564,9 @@ public class Vmg2Connector : GatewayConnectorBase
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError($"RequestID= {request.RequestID} - Operation= {request.Operation} Vmg2Connector CallApi_vmg2 Exception: " + ex.Message);
+                    _logger.LogError(
+                        $"RequestID= {request.RequestID} - Operation= {request.Operation} Vmg2Connector CallApi_vmg2 Exception: " +
+                        ex.Message);
                     result = new VmgResponse
                     {
                         ErrorCode = 501102,
@@ -560,7 +577,9 @@ public class Vmg2Connector : GatewayConnectorBase
         }
         catch (Exception ex)
         {
-            _logger.LogError($"RequestID= {request.RequestID} - Operation= {request.Operation} Vmg2Connector CallApi_vmg2 Exception : " + ex.Message);
+            _logger.LogError(
+                $"RequestID= {request.RequestID} - Operation= {request.Operation} Vmg2Connector CallApi_vmg2 Exception : " +
+                ex.Message);
             result = new VmgResponse
             {
                 ErrorCode = 501102,
@@ -660,7 +679,6 @@ public class Vmg2Connector : GatewayConnectorBase
         Array.Copy(keyBytes, validKey, Math.Min(keyBytes.Length, size));
         return validKey;
     }
-
 
 
     internal class BuyItem
