@@ -48,6 +48,8 @@ public class DataObject
 
     [DataMember(Name = "original_trans_id")]
     public string Original_TransId { get; set; }
+    [DataMember(Name = "original_request_date")]
+    public string OriginalRequestDate { get; set; }
 }
 
 public class ChannelInfo

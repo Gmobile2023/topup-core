@@ -23,6 +23,7 @@ public class BotSendMessageConsumer : IConsumer<SendBotMessage>, IConsumer<SendB
 
     public async Task Consume(ConsumeContext<SendBotMessage> context)
     {
+        _logger.LogInformation($"SendBotMessage received: {context.Message.ToJson()}");
         var input = context.Message.ConvertTo<SendAlarmMessageInput>();
         if (!string.IsNullOrEmpty(context.Message.ChatId))
             input.ChatId = long.Parse(context.Message.ChatId);
