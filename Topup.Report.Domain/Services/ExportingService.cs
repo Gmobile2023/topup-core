@@ -1052,7 +1052,7 @@ namespace Topup.Report.Domain.Services
                 var litPinGame = lit.Where(c => c.ServiceCode == ReportServiceCode.PIN_GAME).ToList();
                 var litTopupPrepa = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PrePaid).ToList();
                 var litTopupPostPaid = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PostPaid).ToList();
-                var litTopup = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.CategoryCode != "VTE_TOPUP").ToList();
+                var litTopup = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP).ToList();
                 var litData = lit.Where(c => c.ServiceCode == ReportServiceCode.PIN_DATA || c.ServiceCode == ReportServiceCode.TOPUP_DATA).ToList();
                 var litPayBill = lit.Where(c => c.ServiceCode == ReportServiceCode.PAY_BILL).ToList();
 
@@ -1109,7 +1109,7 @@ namespace Topup.Report.Domain.Services
                     await _balanceReportSvc.ExportFileSaleByPartner(litPayBill, pathSavePayBill);
                 }
 
-                string tileMail = $"Đối soát Hệ thống - {account.FullName} từ ngày {fromDate.ToString("dd/MM/yyyy")} tới ngày {toDate.ToString("dd/MM/yyyy")}";
+                string tileMail = $"Gtel Mobile - {account.FullName} Đối soát dịch vụ Topup từ ngày {fromDate.ToString("dd/MM/yyyy")} tới ngày {toDate.ToString("dd/MM/yyyy")}";
 
                 if (!string.IsNullOrEmpty(account.FolderFtp) && isAuto)
                 {
@@ -1236,7 +1236,7 @@ namespace Topup.Report.Domain.Services
                     PeriodPayment = $"CHU KỲ : ....{(userPeriod.Period > 0 ? userPeriod.Period.ToString() : "")}....",
                     PinCodeItems = lst.Where(p => p.ServiceCode == ReportServiceCode.PIN_CODE).ToList(),
                     PinGameItems = lst.Where(p => p.ServiceCode == ReportServiceCode.PIN_GAME).ToList(),
-                    TopupItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP && p.CategoryCode != "VTE_TOPUP").ToList(),
+                    TopupItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP).ToList(),
                     TopupPostpaIdItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP && p.ReceiverType == ReceiverType.PostPaid).ToList(),
                     TopupPrepaIdItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP && p.ReceiverType == ReceiverType.PrePaid).ToList(),
                     DataItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP_DATA || p.ServiceCode == ReportServiceCode.PIN_DATA).ToList(),
@@ -1505,9 +1505,9 @@ namespace Topup.Report.Domain.Services
             try
             {
                 StringBuilder strBuilder = new StringBuilder();
-                strBuilder.Append($"Dear {agentName},<br/>");
+                strBuilder.Append($"Kính gửi {agentName},<br/>");
                 strBuilder.Append(
-                    $"Hệ thống gửi team số liệu chi tiết đối soát cho dịch vụ với mã {agentCode} từ ngày {fromDate} tới ngày {toDate} trong file đính kèm.,<br/>");
+                    $"GTEL MOBILE xin gửi Quý đối tác biên bản đối soát dịch vụ Topup từ ngày {fromDate} tới ngày {toDate}. ( Chi tiết xem trong file đính kèm).,<br/>");
                 strBuilder.Append($"Dưới đây là số liệu tổng hợp: <br/><br/>");
                 strBuilder.Append("<div class='col-xl-12'>'");
                 strBuilder.Append(
@@ -1526,10 +1526,9 @@ namespace Topup.Report.Domain.Services
 
                 strBuilder.Append("</table></div>");
                 strBuilder.Append("<br/><br/>");
-                strBuilder.Append("9=1+2-3+4-5-6+7-8<br/>");
-                strBuilder.Append("Team vui lòng kiểm tra số liệu và phản hồi.<br/>");
-                strBuilder.Append("Trân trọng cảm ơn,<br/>");
-                strBuilder.Append("Hệ thống Team.");
+                strBuilder.Append("Ghi chú: 9=1+2-3+4-5-6+7-8<br/>");
+                strBuilder.Append("Quý đối tác vui lòng kiểm tra và phản hồi giúp Gtel Mobile.<br/>");
+                strBuilder.Append("Trân trọng./.,<br/>");                
                 return strBuilder.ToString();
             }
             catch (Exception ex)
