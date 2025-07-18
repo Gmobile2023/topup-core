@@ -14,6 +14,8 @@ using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using ServiceStack;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Topup.Report.Interface.Services;
 
@@ -467,7 +469,9 @@ public partial class ReportService : Service
     public async Task<object> Post(TestFptRequest request)
     {
         //_uploadFile.UploadFileToDataServerPullFpt(request.ProviderCode, null, "xuanpt.csv");
-        await _autoService.SysJobTest();
+        //await _autoService.SysJobTest();
+        var mails = new[] { "hoa.nt@gmobile.vn", "hoant.qc@gmail.com", "tienbvyeudoi@gmail.com" };
+        _emailSender.SendEmailReportAuto(mails.ToList(), "Test mail", "Gưi thông báo test");
         return true;
     }
 
@@ -499,7 +503,7 @@ public partial class ReportService : Service
 
         return new NewMessageResponseBase<ItemMobileCheckDto>()
         {
-            ResponseStatus=new ResponseStatusApi(ResponseCodeConst.Error, "Truy vấn thất bại"),
-        };     
-    }   
+            ResponseStatus = new ResponseStatusApi(ResponseCodeConst.Error, "Truy vấn thất bại"),
+        };
+    }
 }
