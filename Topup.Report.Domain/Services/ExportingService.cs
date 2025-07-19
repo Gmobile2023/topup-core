@@ -1050,8 +1050,8 @@ namespace Topup.Report.Domain.Services
 
                 var litPinCode = lit.Where(c => c.ServiceCode == ReportServiceCode.PIN_CODE).ToList();
                 var litPinGame = lit.Where(c => c.ServiceCode == ReportServiceCode.PIN_GAME).ToList();
-                var litTopupPrepa = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PrePaid).ToList();
-                var litTopupPostPaid = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PostPaid).ToList();
+                //var litTopupPrepa = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PrePaid).ToList();
+                //var litTopupPostPaid = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PostPaid).ToList();
                 var litTopup = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP).ToList();
                 var litData = lit.Where(c => c.ServiceCode == ReportServiceCode.PIN_DATA || c.ServiceCode == ReportServiceCode.TOPUP_DATA).ToList();
                 var litPayBill = lit.Where(c => c.ServiceCode == ReportServiceCode.PAY_BILL).ToList();
@@ -1073,19 +1073,19 @@ namespace Topup.Report.Domain.Services
                     await _balanceReportSvc.ExportFileSaleByPartner(litPinGame, pathSavePinGame);
                 }
 
-                if (litTopupPrepa.Count > 0)
-                {
-                    string fileNamePrepaId = $"{account.AgentCode}_TopupTraTruoc_{fromDateFile.ToString("ddMMyyyyHHmmssfff")}.csv";
-                    var pathSavePrepaId = $"{sourcePath.PathName}/{fileNamePrepaId}";
-                    await _balanceReportSvc.ExportFileSaleByPartner(litTopupPrepa, pathSavePrepaId);
-                }
+                //if (litTopupPrepa.Count > 0)
+                //{
+                //    string fileNamePrepaId = $"{account.AgentCode}_TopupTraTruoc_{fromDateFile.ToString("ddMMyyyyHHmmssfff")}.csv";
+                //    var pathSavePrepaId = $"{sourcePath.PathName}/{fileNamePrepaId}";
+                //    await _balanceReportSvc.ExportFileSaleByPartner(litTopupPrepa, pathSavePrepaId);
+                //}
 
-                if (litTopupPostPaid.Count > 0)
-                {
-                    string fileNamePostPaid = $"{account.AgentCode}_TopupTrasau_{fromDateFile.ToString("ddMMyyyyHHmmssfff")}.csv";
-                    var pathSavePostPaid = $"{sourcePath.PathName}/{fileNamePostPaid}";
-                    await _balanceReportSvc.ExportFileSaleByPartner(litTopupPostPaid, pathSavePostPaid);
-                }
+                //if (litTopupPostPaid.Count > 0)
+                //{
+                //    string fileNamePostPaid = $"{account.AgentCode}_TopupTrasau_{fromDateFile.ToString("ddMMyyyyHHmmssfff")}.csv";
+                //    var pathSavePostPaid = $"{sourcePath.PathName}/{fileNamePostPaid}";
+                //    await _balanceReportSvc.ExportFileSaleByPartner(litTopupPostPaid, pathSavePostPaid);
+                //}
 
                 if (litTopup.Count > 0)
                 {
@@ -1280,23 +1280,23 @@ namespace Topup.Report.Domain.Services
                     Quantity = partnerInput.TopupItems.Sum(c => c.Quantity),
                 };
 
-                partnerInput.SumTopupPostpaId = new ReportComparePartnerDto()
-                {
-                    Fee = partnerInput.TopupPostpaIdItems.Sum(c => c.Fee),
-                    Value = partnerInput.TopupPostpaIdItems.Sum(c => c.Value),
-                    Discount = partnerInput.TopupPostpaIdItems.Sum(c => c.Discount),
-                    Price = partnerInput.TopupPostpaIdItems.Sum(c => c.Price),
-                    Quantity = partnerInput.TopupPostpaIdItems.Sum(c => c.Quantity),
-                };
+                //partnerInput.SumTopupPostpaId = new ReportComparePartnerDto()
+                //{
+                //    Fee = partnerInput.TopupPostpaIdItems.Sum(c => c.Fee),
+                //    Value = partnerInput.TopupPostpaIdItems.Sum(c => c.Value),
+                //    Discount = partnerInput.TopupPostpaIdItems.Sum(c => c.Discount),
+                //    Price = partnerInput.TopupPostpaIdItems.Sum(c => c.Price),
+                //    Quantity = partnerInput.TopupPostpaIdItems.Sum(c => c.Quantity),
+                //};
 
-                partnerInput.SumTopupPrepaId = new ReportComparePartnerDto()
-                {
-                    Fee = partnerInput.TopupPrepaIdItems.Sum(c => c.Fee),
-                    Value = partnerInput.TopupPrepaIdItems.Sum(c => c.Value),
-                    Discount = partnerInput.TopupPrepaIdItems.Sum(c => c.Discount),
-                    Price = partnerInput.TopupPrepaIdItems.Sum(c => c.Price),
-                    Quantity = partnerInput.TopupPrepaIdItems.Sum(c => c.Quantity),
-                };
+                //partnerInput.SumTopupPrepaId = new ReportComparePartnerDto()
+                //{
+                //    Fee = partnerInput.TopupPrepaIdItems.Sum(c => c.Fee),
+                //    Value = partnerInput.TopupPrepaIdItems.Sum(c => c.Value),
+                //    Discount = partnerInput.TopupPrepaIdItems.Sum(c => c.Discount),
+                //    Price = partnerInput.TopupPrepaIdItems.Sum(c => c.Price),
+                //    Quantity = partnerInput.TopupPrepaIdItems.Sum(c => c.Quantity),
+                //};
 
                 partnerInput.SumData = new ReportComparePartnerDto()
                 {
@@ -1318,8 +1318,8 @@ namespace Topup.Report.Domain.Services
 
 
                 partnerInput.TotalRowsTopup = partnerInput.TopupItems.Count();
-                partnerInput.TotalRowsTopupPostpaId = partnerInput.TopupPostpaIdItems.Count();
-                partnerInput.TotalRowsTopupPrepaId = partnerInput.TopupPrepaIdItems.Count();
+                //partnerInput.TotalRowsTopupPostpaId = partnerInput.TopupPostpaIdItems.Count();
+                //partnerInput.TotalRowsTopupPrepaId = partnerInput.TopupPrepaIdItems.Count();
                 partnerInput.TotalRowsPinCode = partnerInput.PinCodeItems.Count();
                 partnerInput.TotalRowsPinGame = partnerInput.PinGameItems.Count();
                 partnerInput.TotalRowsData = partnerInput.DataItems.Count();
@@ -1507,7 +1507,7 @@ namespace Topup.Report.Domain.Services
                 StringBuilder strBuilder = new StringBuilder();
                 strBuilder.Append($"Kính gửi {agentName},<br/>");
                 strBuilder.Append(
-                    $"GTEL MOBILE xin gửi Quý đối tác biên bản đối soát dịch vụ Topup từ ngày {fromDate} tới ngày {toDate}. ( Chi tiết xem trong file đính kèm).,<br/>");
+                    $"GTEL MOBILE xin gửi Quý đối tác biên bản đối soát dịch vụ Topup từ ngày {fromDate} tới ngày {toDate}. ( Chi tiết xem trong file đính kèm).<br/>");
                 strBuilder.Append($"Dưới đây là số liệu tổng hợp: <br/><br/>");
                 strBuilder.Append("<div class='col-xl-12'>'");
                 strBuilder.Append(
@@ -1526,9 +1526,9 @@ namespace Topup.Report.Domain.Services
 
                 strBuilder.Append("</table></div>");
                 strBuilder.Append("<br/><br/>");
-                strBuilder.Append("Ghi chú: 9=1+2-3+4-5-6+7-8<br/>");
+                strBuilder.Append("Ghi chú: 10=1+2+3-4+5-6-7+8-9<br/>");
                 strBuilder.Append("Quý đối tác vui lòng kiểm tra và phản hồi giúp Gtel Mobile.<br/>");
-                strBuilder.Append("Trân trọng./.,<br/>");                
+                strBuilder.Append("Trân trọng./.<br/>");                
                 return strBuilder.ToString();
             }
             catch (Exception ex)
