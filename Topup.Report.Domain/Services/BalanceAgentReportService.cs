@@ -54,13 +54,7 @@ namespace Topup.Report.Domain.Services
                     {
                         Expression<Func<ReportItemDetail, bool>> newQueryChanger = p => p.ReceiverType == request.ChangerType;                 
                         query = query.And(newQueryChanger);
-                    }
-                    else
-                    {
-                        Expression<Func<ReportItemDetail, bool>> newQueryChanger = p => p.CategoryCode != "VTE_TOPUP";
-                        query = query.And(newQueryChanger);
-                    } 
-                        
+                    }                                           
                 }
                 else if (request.Type == "DATA")
                 {

@@ -130,7 +130,7 @@ public partial class ElasticReportRepository
                      , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
                      , mu => mu.Terms(m => m.Field(f => f.TransType).Terms(services))
                      , mu => mu.Terms(m => m.Field(f => f.Status).Terms(status))
-                   ).MustNot(v => v.MatchPhrase(i => i.Field(p => p.CategoryCode.Suffix("keyword")).Query("VTE_TOPUP")))));
+                   )));
                 }
                 else
                 {
