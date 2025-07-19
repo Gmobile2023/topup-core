@@ -504,117 +504,117 @@ public partial class ExportDataExcel : IExportDataExcel
 
                     #region 2.1.Bảng nạp tiền trả trước
 
-                    if (input.TopupPrepaIdItems.Count > 0)
-                    {
-                        rowsIndex = rowsIndex + 1;
-                        _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
-                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ NẠP TIỀN TRẢ TRƯỚC",
-                            isCenter: false);
-                        rowsIndex = rowsIndex + 1;
+                    //if (input.TopupPrepaIdItems.Count > 0)
+                    //{
+                    //    rowsIndex = rowsIndex + 1;
+                    //    _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
+                    //        $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ NẠP TIỀN TRẢ TRƯỚC",
+                    //        isCenter: false);
+                    //    rowsIndex = rowsIndex + 1;
 
-                        _exporter.AddHeaderStartRowIndex(
-                            sheet, rowsIndex, columsIndex,
-                            "Dịch vụ",
-                            "Loại sản phẩm",
-                            "Mệnh giá",
-                            "Số lượng",
-                            "Thành tiền chưa CK",
-                            "Tỷ lệ CK(%)",
-                            "Tiền thanh toán"                          
-                        );
-                        _exporter.AddObjectStartRowsIndex(
-                            sheet, rowsIndex, columsIndex, style, input.TopupPrepaIdItems,
-                            _ => _.ServiceName,
-                            _ => _.CategoryName,
-                            _ => CellOption.Create(_.ProductValue, "Number"),
-                            _ => CellOption.Create(_.Quantity, "Number"),
-                            _ => CellOption.Create(_.Value, "Number"),
-                            _ => CellOption.Create(_.DiscountRate, "Number"),
-                            _ => CellOption.Create(_.Price, "Number")                           
-                        );
+                    //    _exporter.AddHeaderStartRowIndex(
+                    //        sheet, rowsIndex, columsIndex,
+                    //        "Dịch vụ",
+                    //        "Loại sản phẩm",
+                    //        "Mệnh giá",
+                    //        "Số lượng",
+                    //        "Thành tiền chưa CK",
+                    //        "Tỷ lệ CK(%)",
+                    //        "Tiền thanh toán"                          
+                    //    );
+                    //    _exporter.AddObjectStartRowsIndex(
+                    //        sheet, rowsIndex, columsIndex, style, input.TopupPrepaIdItems,
+                    //        _ => _.ServiceName,
+                    //        _ => _.CategoryName,
+                    //        _ => CellOption.Create(_.ProductValue, "Number"),
+                    //        _ => CellOption.Create(_.Quantity, "Number"),
+                    //        _ => CellOption.Create(_.Value, "Number"),
+                    //        _ => CellOption.Create(_.DiscountRate, "Number"),
+                    //        _ => CellOption.Create(_.Price, "Number")                           
+                    //    );
 
-                        rowsIndex = rowsIndex + input.TotalRowsTopupPrepaId + 1;
+                    //    rowsIndex = rowsIndex + input.TotalRowsTopupPrepaId + 1;
 
-                        _exporter.AddObjectSumTableIndex(
-                            sheet, styleSum, rowsIndex, columsIndex, input.SumTopupPrepaId,
-                            _ => "Tổng",
-                            _ => "",
-                            _ => "",
-                            _ => CellOption.Create(_.Quantity, "Number"),
-                            _ => CellOption.Create(_.Value, "Number"),
-                            _ => "",
-                            _ => CellOption.Create(_.Price, "Number")
-                        );
+                    //    _exporter.AddObjectSumTableIndex(
+                    //        sheet, styleSum, rowsIndex, columsIndex, input.SumTopupPrepaId,
+                    //        _ => "Tổng",
+                    //        _ => "",
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Quantity, "Number"),
+                    //        _ => CellOption.Create(_.Value, "Number"),
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Price, "Number")
+                    //    );
 
-                        rowsIndex = rowsIndex + 1;
-                        _exporter.AddObjectSumIndex(
-                            sheet, styleSum2, rowsIndex, columsIndex, input.SumTopupPrepaId,
-                            _ => "Tổng doanh số thu được hưởng:",
-                            _ => "",
-                            _ => CellOption.Create(_.Price, "Number"),
-                            _ => "đồng (bao gồm VAT)"
-                        );
-                        sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
-                        rowsType = rowsType + 1;
-                    }
+                    //    rowsIndex = rowsIndex + 1;
+                    //    _exporter.AddObjectSumIndex(
+                    //        sheet, styleSum2, rowsIndex, columsIndex, input.SumTopupPrepaId,
+                    //        _ => "Tổng doanh số thu được hưởng:",
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Price, "Number"),
+                    //        _ => "đồng (bao gồm VAT)"
+                    //    );
+                    //    sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
+                    //    rowsType = rowsType + 1;
+                    //}
 
                     #endregion
 
                     #region 2.2.Bảng nạp tiền trả sau
 
-                    if (input.TopupPostpaIdItems.Count > 0)
-                    {
-                        rowsIndex = rowsIndex + 1;
-                        _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
-                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ NẠP TIỀN TRẢ SAU",
-                            isCenter: false);
-                        rowsIndex = rowsIndex + 1;
+                    //if (input.TopupPostpaIdItems.Count > 0)
+                    //{
+                    //    rowsIndex = rowsIndex + 1;
+                    //    _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
+                    //        $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ NẠP TIỀN TRẢ SAU",
+                    //        isCenter: false);
+                    //    rowsIndex = rowsIndex + 1;
 
-                        _exporter.AddHeaderStartRowIndex(
-                            sheet, rowsIndex, columsIndex,
-                            "Dịch vụ",
-                            "Loại sản phẩm",
-                            "Mệnh giá",
-                            "Số lượng",
-                            "Thành tiền chưa CK",
-                            "Tỷ lệ CK(%)",
-                            "Tiền thanh toán"                          
-                        );
-                        _exporter.AddObjectStartRowsIndex(
-                            sheet, rowsIndex, columsIndex, style, input.TopupPostpaIdItems,
-                            _ => _.ServiceName,
-                            _ => _.CategoryName,
-                            _ => CellOption.Create(_.ProductValue, "Number"),
-                            _ => CellOption.Create(_.Quantity, "Number"),
-                            _ => CellOption.Create(_.Value, "Number"),
-                            _ => CellOption.Create(_.DiscountRate, "Number"),
-                            _ => CellOption.Create(_.Price, "Number")                           
-                        );
+                    //    _exporter.AddHeaderStartRowIndex(
+                    //        sheet, rowsIndex, columsIndex,
+                    //        "Dịch vụ",
+                    //        "Loại sản phẩm",
+                    //        "Mệnh giá",
+                    //        "Số lượng",
+                    //        "Thành tiền chưa CK",
+                    //        "Tỷ lệ CK(%)",
+                    //        "Tiền thanh toán"                          
+                    //    );
+                    //    _exporter.AddObjectStartRowsIndex(
+                    //        sheet, rowsIndex, columsIndex, style, input.TopupPostpaIdItems,
+                    //        _ => _.ServiceName,
+                    //        _ => _.CategoryName,
+                    //        _ => CellOption.Create(_.ProductValue, "Number"),
+                    //        _ => CellOption.Create(_.Quantity, "Number"),
+                    //        _ => CellOption.Create(_.Value, "Number"),
+                    //        _ => CellOption.Create(_.DiscountRate, "Number"),
+                    //        _ => CellOption.Create(_.Price, "Number")                           
+                    //    );
 
-                        rowsIndex = rowsIndex + input.TotalRowsTopup + 1;
+                    //    rowsIndex = rowsIndex + input.TotalRowsTopup + 1;
 
-                        _exporter.AddObjectSumTableIndex(
-                            sheet, styleSum, rowsIndex, columsIndex, input.SumTopupPostpaId,
-                            _ => "Tổng",
-                            _ => "",
-                            _ => "",
-                            _ => CellOption.Create(_.Quantity, "Number"),
-                            _ => CellOption.Create(_.Value, "Number"),
-                            _ => "",
-                            _ => CellOption.Create(_.Price, "Number")
-                        );
+                    //    _exporter.AddObjectSumTableIndex(
+                    //        sheet, styleSum, rowsIndex, columsIndex, input.SumTopupPostpaId,
+                    //        _ => "Tổng",
+                    //        _ => "",
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Quantity, "Number"),
+                    //        _ => CellOption.Create(_.Value, "Number"),
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Price, "Number")
+                    //    );
 
-                        rowsIndex = rowsIndex + 1;
-                        _exporter.AddObjectSumIndex(
-                            sheet, styleSum2, rowsIndex, columsIndex, input.SumTopupPostpaId,
-                            _ => "Tổng doanh số thu được hưởng:",
-                            _ => "",
-                            _ => CellOption.Create(_.Price, "Number"),
-                            _ => "đồng (bao gồm VAT)"
-                        );
-                        sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
-                        rowsType = rowsType + 1;
-                    }
+                    //    rowsIndex = rowsIndex + 1;
+                    //    _exporter.AddObjectSumIndex(
+                    //        sheet, styleSum2, rowsIndex, columsIndex, input.SumTopupPostpaId,
+                    //        _ => "Tổng doanh số thu được hưởng:",
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Price, "Number"),
+                    //        _ => "đồng (bao gồm VAT)"
+                    //    );
+                    //    sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
+                    //    rowsType = rowsType + 1;
+                    //}
 
                     #endregion
 
