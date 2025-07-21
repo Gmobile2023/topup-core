@@ -364,7 +364,7 @@ public partial class ExportDataExcel : IExportDataExcel
                     sheet.AddMergedRegion(new CellRangeAddress(1, 1, 0, 6));
 
                     var columsIndex = 0;
-                    _exporter.AddObjectRowItemColumn(sheet, 2, 0, "ĐỐI TÁC:" + input.Provider);
+                    _exporter.AddObjectRowItemColumn(sheet, 2, 0, $"ĐỐI TÁC: {input.Provider} - {input.FullName}");
                     sheet.AddMergedRegion(new CellRangeAddress(2, 2, 0, 6));
                     _exporter.AddObjectRowItemColumn(sheet, 3, 0, input.Contract);
                     sheet.AddMergedRegion(new CellRangeAddress(3, 3, 0, 6));

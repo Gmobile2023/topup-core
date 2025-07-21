@@ -1506,12 +1506,10 @@ namespace Topup.Report.Domain.Services
             {
                 StringBuilder strBuilder = new StringBuilder();
                 strBuilder.Append($"Kính gửi {agentName},<br/>");
-                strBuilder.Append(
-                    $"GTEL MOBILE xin gửi Quý đối tác biên bản đối soát dịch vụ Topup từ ngày {fromDate} tới ngày {toDate}. ( Chi tiết xem trong file đính kèm).<br/>");
+                strBuilder.Append($"GTEL MOBILE xin gửi Quý đối tác biên bản đối soát dịch vụ Topup từ ngày {fromDate} tới ngày {toDate}. ( Chi tiết xem trong file đính kèm).<br/>");
                 strBuilder.Append($"Dưới đây là số liệu tổng hợp: <br/><br/>");
-                strBuilder.Append("<div class='col-xl-12'>'");
-                strBuilder.Append(
-                    "<table cellpadding='1' cellspacing='1' border='1' class='table-bordered table-hover dataTable' cellspacing='1' cellpadding='1' align='Left' rules='all' style='border-width:0px;width:100%;margin-bottom: 0px'><tr>");
+                strBuilder.Append("<div class='col-xl-12'>");
+                strBuilder.Append("<table cellpadding='1' cellspacing='1' border='1' class='table-bordered table-hover dataTable' cellspacing='1' cellpadding='1' align='Left' rules='all' style='border-width:0px;width:100%;margin-bottom: 0px'><tr>");
                 strBuilder.Append("<th class='align_center' scope='col'>STT</th>");
                 strBuilder.Append($"<th class='align_center' scope='col'>Nội dung</th>");
                 strBuilder.Append($"<th class='align_center' scope='col'>Số tiền</th>");
