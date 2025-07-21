@@ -100,7 +100,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                     responseMessage.ProviderResponseMessage = result?.Data.ErrorMsg;
 
                     //_logger.LogInformation($"{topupRequestLog.ProviderCode}-{topupRequestLog.TransCode} ViettelVtt2Connector return: {topupRequestLog.TransCode}-{topupRequestLog.TransRef}-{result.Data.ToJson()}");
-                    if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                    if (result.Data.ErrorCode == "00")
                     {
                         topupRequestLog.Status = TransRequestStatus.Success;
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -230,9 +230,9 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                 {
                     _logger.LogInformation(
                         $"{providerCode}-{transCodeToCheck} VDSConnector Check trans return: {transCodeToCheck}-{transCode}-{result.Data.ToJson()}");
-                    if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                    if (result.Data.ErrorCode == "00")
                     {
-                        if (result.Data.ReferenceCode == ResponseCodeConst.Error)
+                        if (result.Data.ReferenceCode == "00")
                         {
                             responseMessage.ResponseCode = ResponseCodeConst.Success;
                             responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -349,7 +349,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
             {
                 _logger.LogInformation(
                     $"{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode} VDSConnector return: {payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.Data.ToJson()}");
-                if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                if (result.Data.ErrorCode == "00")
                 {
                     var dto = new InvoiceResultDto()
                     {
@@ -447,7 +447,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                     $"Card return: {cardRequestLog.TransCode}-{cardRequestLog.TransRef}-{result.Data.ToJson()}");
                 cardRequestLog.ModifiedDate = DateTime.Now;
                 cardRequestLog.ResponseInfo = result.Data.ToJson();
-                if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                if (result.Data.ErrorCode == "00")
                 {
                     cardRequestLog.Status = TransRequestStatus.Success;
                     responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -468,16 +468,16 @@ namespace Topup.TopupGw.Components.Connectors.VDS
 
                         var viettelCards = addStr.FromJson<List<VDSCards>>();
                         var cardList = viettelCards.Select(viettelCard => new CardRequestResponseDto
-                            {
-                                CardType = "VTE",
-                                CardValue = viettelCard.Amount,
-                                CardCode = viettelCard.Pincode,
-                                Serial = viettelCard.Serial,
-                                ExpireDate = DateTime.ParseExact(viettelCard.Expire, "yyyy-MM-ddTHH:mm:ss",
+                        {
+                            CardType = "VTE",
+                            CardValue = viettelCard.Amount,
+                            CardCode = viettelCard.Pincode,
+                            Serial = viettelCard.Serial,
+                            ExpireDate = DateTime.ParseExact(viettelCard.Expire, "yyyy-MM-ddTHH:mm:ss",
                                     CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"),
-                                ExpiredDate = DateTime.ParseExact(viettelCard.Expire, "yyyy-MM-ddTHH:mm:ss",
+                            ExpiredDate = DateTime.ParseExact(viettelCard.Expire, "yyyy-MM-ddTHH:mm:ss",
                                     CultureInfo.InvariantCulture)
-                            })
+                        })
                             .ToList();
 
                         responseMessage.Payload = cardList;
@@ -572,7 +572,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                 {
                     responseMessage.ProviderResponseCode = result.Data.ErrorCode;
                     responseMessage.ProviderResponseMessage = result.Data.ErrorMsg;
-                    if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                    if (result.Data.ErrorCode == "00")
                     {
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
                         responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -671,7 +671,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                 _logger.LogInformation($"Deposit return: {request.TransCode}-{result.ToJson()}");
                 responseMessage.ProviderResponseCode = result.Data.ErrorCode;
                 responseMessage.ProviderResponseMessage = result.Data.ErrorMsg;
-                if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                if (result.Data.ErrorCode == "00")
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Success;
                     responseMessage.ResponseMessage = "Giao dịch thành công";
