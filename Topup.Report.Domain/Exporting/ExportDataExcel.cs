@@ -368,8 +368,8 @@ public partial class ExportDataExcel : IExportDataExcel
                     sheet.AddMergedRegion(new CellRangeAddress(2, 2, 0, 6));
                     _exporter.AddObjectRowItemColumn(sheet, 3, 0, input.Contract);
                     sheet.AddMergedRegion(new CellRangeAddress(3, 3, 0, 6));
-                    _exporter.AddObjectRowItemColumn(sheet, 4, 0, input.PeriodPayment);
-                    sheet.AddMergedRegion(new CellRangeAddress(4, 4, 0, 6));
+                    //_exporter.AddObjectRowItemColumn(sheet, 4, 0, input.PeriodPayment);
+                    //sheet.AddMergedRegion(new CellRangeAddress(4, 4, 0, 6));
 
                     var rowsIndex = 6;
                     var rowsType = 1;
@@ -406,11 +406,11 @@ public partial class ExportDataExcel : IExportDataExcel
                             sheet, rowsIndex, columsIndex, style, input.PinCodeItems,
                             _ => _.ServiceName,
                             _ => _.CategoryName,
-                            _ => string.Format("{0:C}", CellOption.Create(_.ProductValue, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.Quantity, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.Value, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.DiscountRate, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.Price, "Number"))
+                            _ => CellOption.Create(_.ProductValue, "Number"),
+                            _ => CellOption.Create(_.Quantity, "Number"),
+                            _ => CellOption.Create(_.Value, "Number"),
+                            _ => CellOption.Create(_.DiscountRate, "Number"),
+                            _ => CellOption.Create(_.Price, "Number")
                         );
 
                         rowsIndex = rowsIndex + input.TotalRowsPinCode + 1;
@@ -419,10 +419,10 @@ public partial class ExportDataExcel : IExportDataExcel
                             _ => "Tổng",
                             _ => "",
                             _ => "",
-                            _ => string.Format("{0:C}", CellOption.Create(_.Quantity, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.Value, "Number")),
+                            _ => CellOption.Create(_.Quantity, "Number"),
+                            _ => CellOption.Create(_.Value, "Number"),
                             _ => "",
-                            _ => string.Format("{0:C}", CellOption.Create(_.Price, "Number"))
+                            _ => CellOption.Create(_.Price, "Number")
                         );
 
                         rowsIndex = rowsIndex + 1;
@@ -642,11 +642,11 @@ public partial class ExportDataExcel : IExportDataExcel
                             sheet, rowsIndex, columsIndex, style, input.TopupItems,
                             _ => _.ServiceName,
                             _ => _.CategoryName,
-                            _ => string.Format("{0:C}", CellOption.Create(_.ProductValue, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.Quantity, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.Value, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.DiscountRate, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.Price, "Number"))
+                            _ => CellOption.Create(_.ProductValue, "Number"),
+                            _ => CellOption.Create(_.Quantity, "Number"),
+                            _ => CellOption.Create(_.Value, "Number"),
+                            _ => CellOption.Create(_.DiscountRate, "Number"),
+                            _ => CellOption.Create(_.Price, "Number")
                         );
 
                         rowsIndex = rowsIndex + input.TotalRowsTopup + 1;
@@ -656,10 +656,10 @@ public partial class ExportDataExcel : IExportDataExcel
                             _ => "Tổng",
                             _ => "",
                             _ => "",
-                            _ => string.Format("{0:C}", CellOption.Create(_.Quantity, "Number")),
-                            _ => string.Format("{0:C}", CellOption.Create(_.Value, "Number")),
+                            _ => CellOption.Create(_.Quantity, "Number"),
+                            _ => CellOption.Create(_.Value, "Number"),
                             _ => "",
-                            _ => string.Format("{0:C}", CellOption.Create(_.Price, "Number"))
+                            _ => CellOption.Create(_.Price, "Number")
                         );
 
                         rowsIndex = rowsIndex + 1;
@@ -667,7 +667,7 @@ public partial class ExportDataExcel : IExportDataExcel
                             sheet, styleSum2, rowsIndex, columsIndex, input.SumTopup,
                             _ => "Tổng giá trị giao dịch bao gồm VAT trong kỳ:",
                             _ => "",
-                            _ => string.Format("{0:C}", CellOption.Create(_.Price, "Number")),
+                            _ => CellOption.Create(_.Price, "Number"),
                             _ => ""
                         );
                         sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
@@ -832,7 +832,7 @@ public partial class ExportDataExcel : IExportDataExcel
                         sheet, rowsIndex, columsIndex, style, input.BalanceItems,
                         _ => _.Index == 10 ? "10=1+2+3-4+5-6-7+8-9" : _.Index,
                         _ => _.Name,
-                        _ => string.Format("{0:C}", CellOption.Create(_.Value, "Number"))
+                        _ => CellOption.Create(_.Value, "Number")
                     );
 
                     rowsIndex = rowsIndex + input.TotalRowsBalance + 2;
