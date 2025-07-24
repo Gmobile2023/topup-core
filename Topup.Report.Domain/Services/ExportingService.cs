@@ -1227,13 +1227,12 @@ namespace Topup.Report.Domain.Services
 
                 var partnerInput = new ReportComparePartnerExportInfo()
                 {
-                    Title = "BIÊN BẢN DOANH THU DỊCH VỤ THANH TOÁN",
-                    PeriodCompare = string.Format("Kỳ đối soát Từ: {0}{1} - {2}",
-                        compareText, fromDate.ToString("dd/MM/yyyy"), toDate.ToString("dd/MM/yyyy")),
-                    Contract =
-                        $"HỢP ĐỒNG SỐ: ...{userPeriod.ContractNumber}.... Ký ngày:..{(userPeriod.SigDate != null ? userPeriod.SigDate?.ToString("dd/MM/yyyy") : "")}..",
+                    Title = "BIÊN BẢN ĐỐI SOÁT DỊCH VỤ TOPUP",
+                    PeriodCompare = string.Format("Thời gian: Từ ngày {0} đến ngày {1}",
+                        fromDate.ToString("dd/MM/yyyy"), toDate.ToString("dd/MM/yyyy")),
+                    Contract = $"Căn cứ hợp đồng số {userPeriod.ContractNumber} ký ngày {(userPeriod.SigDate != null ? userPeriod.SigDate?.ToString("dd/MM/yyyy") : "")} giữa công ty",
                     Provider = $"{agentCode}",
-                    PeriodPayment = $"CHU KỲ : ....{(userPeriod.Period > 0 ? userPeriod.Period.ToString() : "")}....",
+                    PeriodPayment = $"CP Viễn thông Di động Toàn Cầu và {fileName}",
                     PinCodeItems = lst.Where(p => p.ServiceCode == ReportServiceCode.PIN_CODE).ToList(),
                     PinGameItems = lst.Where(p => p.ServiceCode == ReportServiceCode.PIN_GAME).ToList(),
                     TopupItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP).ToList(),
@@ -1526,7 +1525,7 @@ namespace Topup.Report.Domain.Services
                 strBuilder.Append("<br/><br/>");
                 strBuilder.Append("Ghi chú: 10=1+2+3-4+5-6-7+8-9<br/>");
                 strBuilder.Append("Quý đối tác vui lòng kiểm tra và phản hồi giúp Gtel Mobile.<br/>");
-                strBuilder.Append("Trân trọng./.<br/>");                
+                strBuilder.Append("Trân trọng./.<br/>");
                 return strBuilder.ToString();
             }
             catch (Exception ex)
