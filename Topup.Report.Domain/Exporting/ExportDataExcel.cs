@@ -371,13 +371,13 @@ public partial class ExportDataExcel : IExportDataExcel
                     //_exporter.AddObjectRowItemColumn(sheet, 4, 0, input.PeriodPayment);
                     //sheet.AddMergedRegion(new CellRangeAddress(4, 4, 0, 6));
 
-                    var rowsIndex = 6;
+                    var rowsIndex = 4;
                     var rowsType = 1;
 
                     #region 1.Bảng mã thẻ
 
                     sheet.SetColumnWidth(0, 7000);
-                    sheet.SetColumnWidth(1, 5000);
+                    sheet.SetColumnWidth(1, 7000);
                     sheet.SetColumnWidth(2, 4000);
                     sheet.SetColumnWidth(3, 4000);
                     sheet.SetColumnWidth(4, 4000);
