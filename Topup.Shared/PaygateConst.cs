@@ -425,6 +425,7 @@ public static class ReportRegisterType
     public const string WarningBalance = "WarningBalance";
     public const string WarningCard = "WarningCard";
     public const string CHECK_REVENUE = "CHECK_REVENUE";
+    public const string EXPORT_FTP = "EXPORT_FTP";
 }
 
 public static class ReceiverType
