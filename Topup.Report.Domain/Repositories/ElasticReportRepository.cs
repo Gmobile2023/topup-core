@@ -1283,7 +1283,7 @@ public partial class ElasticReportRepository : IElasticReportRepository
             };
 
             var queryMaxDate = new SearchDescriptor<ReportItemDetail>();
-            queryMaxDate.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+            queryMaxDate.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.DateRange(r =>
                         r.Field(f => f.CreatedTime).GreaterThanOrEquals(maxDate.ValueAsString)
                             .LessThanOrEquals(maxDate.ValueAsString))
