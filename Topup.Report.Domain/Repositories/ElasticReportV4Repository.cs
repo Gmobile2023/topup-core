@@ -55,7 +55,7 @@ namespace Topup.Report.Domain.Repositories
         {
             try
             {
-                var searchResponse = _elasticClient.Search<ReportItemDetail>(s => s.Index(ReportIndex.ReportItemDetailIndex)
+                var searchResponse = _elasticClient.Search<ReportItemDetail>(s => s.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex))
                     .Query(q => q
                         .Match(m => m
                             .Field(f => f.TransCode)
@@ -67,7 +67,7 @@ namespace Topup.Report.Domain.Repositories
 
                 var p = searchResponse.Documents.Take(100);
                 var test = await _elasticClient.SearchAsync<ReportItemDetail>(x =>
-                    x.Index(ReportIndex.ReportItemDetailIndex).From(0).Size(100).Query(y => y.MatchAll()));
+                    x.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).From(0).Size(100).Query(y => y.MatchAll()));
                 var lst = test.Documents.Take(1000).ToList();
                 return null;
             }
@@ -97,7 +97,7 @@ namespace Topup.Report.Domain.Repositories
         {
             try
             {
-                var searchResponse = _elasticClient.Search<ReportItemDetail>(s => s.Index(ReportIndex.ReportItemDetailIndex)
+                var searchResponse = _elasticClient.Search<ReportItemDetail>(s => s.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex))
                     .Query(q => q
                         .MatchPhrase(m => m
                             .Field(f => f.PaidTransCode)
@@ -200,7 +200,7 @@ namespace Topup.Report.Domain.Repositories
         {
             try
             {
-                var searchResponse = _elasticClient.Search<ReportAccountDto>(s => s.Index(ReportIndex.ReportaccountdtosIndex)
+                var searchResponse = _elasticClient.Search<ReportAccountDto>(s => s.Index(getIndexSearch(ReportIndex.ReportaccountdtosIndex))
                     .Query(q => q.Match(m => m
                             .Field(f => f.AccountCode)
                             .Query(accountCode)
