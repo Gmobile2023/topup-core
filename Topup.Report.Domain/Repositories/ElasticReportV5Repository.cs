@@ -790,7 +790,7 @@ namespace Topup.Report.Domain.Repositories
                 ScrollAccountBalanceDay(scanResults, int.MaxValue, ref searchData);
                 var agentTypes = new[] { "1", "2", "3" };
                 var queryAccount = new SearchDescriptor<ReportAccountDto>();
-                queryAccount.Index(ReportIndex.ReportaccountdtosIndex).Query(q => q.Bool(b =>
+                queryAccount.Index(getIndexSearch(ReportIndex.ReportaccountdtosIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.Terms(m => m.Field(f => f.AgentType).Terms(agentTypes.ToArray())))
                 ));
 
@@ -1247,7 +1247,7 @@ namespace Topup.Report.Domain.Repositories
             }
 
             var queryBeforeNow = new SearchDescriptor<ReportAccountBalanceDay>();
-            queryBeforeNow.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+            queryBeforeNow.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                 b.Must(mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                      , mu => mu.MatchPhrase(m => m.Field(f => f.AccountType).Query("CUSTOMER"))
                      , mu => mu.MatchPhrase(m => m.Field(f => f.TextDay).Query(fTxt))
@@ -1266,7 +1266,7 @@ namespace Topup.Report.Domain.Repositories
             {
                 var queryBeforeAfter = new SearchDescriptor<ReportAccountBalanceDay>();
                 var tempFromDate = fromDate.AddDays(-35);
-                queryBeforeAfter.Index(ReportIndex.ReportAccountbalanceDayIndex).Query(q => q.Bool(b =>
+                queryBeforeAfter.Index(getIndexSearch(ReportIndex.ReportAccountbalanceDayIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedDay).GreaterThanOrEquals(tempFromDate.ToUniversalTime()).LessThanOrEquals(fromDate.ToUniversalTime()))
                          , mu => mu.MatchPhrase(m => m.Field(f => f.CurrencyCode).Query("VND"))
                          , mu => mu.MatchPhrase(m => m.Field(f => f.AccountType).Query("CUSTOMER"))

@@ -16,6 +16,7 @@ using Topup.TopupGw.Contacts.Enums;
 using Topup.TopupGw.Domains.BusinessServices;
 using Microsoft.Extensions.Logging;
 using ServiceStack;
+using Topup.Shared.Helpers;
 
 
 namespace Topup.TopupGw.Components.Connectors.VDS
@@ -27,11 +28,14 @@ namespace Topup.TopupGw.Components.Connectors.VDS
 
         private readonly ITopupGatewayService _topupGatewayService;
         private readonly ILogger<VDSConnector> _logger;
+        private IDateTimeHelper _dateTimeHelper;
 
-        public VDSConnector(ITopupGatewayService topupGatewayService, ILogger<VDSConnector> logger)
+        public VDSConnector(ITopupGatewayService topupGatewayService, ILogger<VDSConnector> logger,
+            IDateTimeHelper dateTimeHelper)
         {
             _topupGatewayService = topupGatewayService;
             _logger = logger;
+            _dateTimeHelper = dateTimeHelper;
         }
 
         public async Task<MessageResponseBase> TopupAsync(TopupRequestLogDto topupRequestLog,
@@ -56,7 +60,8 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                 var encryptedPassword = string.IsNullOrEmpty(providerInfo.ApiPassword)
                     ? Encrypt(providerInfo.Password, providerInfo.PublicKey)
                     : providerInfo.ApiPassword;
-
+                var requestDate = _dateTimeHelper.ConvertToUserTime(topupRequestLog.RequestDate, DateTimeKind.Utc);
+                var transDate = requestDate.ToString("yyyyMMddHHmmss");
                 var data = new DataObject
                 {
                     OrderId = topupRequestLog.TransCode,
@@ -64,6 +69,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                     Password = encryptedPassword,
                     ServiceCode = "100000",
                     Amount = topupRequestLog.TransAmount,
+                    TransDate = transDate,
                     ChannelInfo = new ChannelInfo
                     {
                         ChannelType = "website",
@@ -94,7 +100,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                     responseMessage.ProviderResponseMessage = result?.Data.ErrorMsg;
 
                     //_logger.LogInformation($"{topupRequestLog.ProviderCode}-{topupRequestLog.TransCode} ViettelVtt2Connector return: {topupRequestLog.TransCode}-{topupRequestLog.TransRef}-{result.Data.ToJson()}");
-                    if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                    if (result.Data.ErrorCode == "00")
                     {
                         topupRequestLog.Status = TransRequestStatus.Success;
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -185,10 +191,20 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                         ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ"
                     };
                 }
-
+                var topupRequestLog = await _topupGatewayService.TopupRequestLogGetAsync(providerCode, transCodeToCheck);
+                if (topupRequestLog == null)
+                {
+                    _logger.LogError($"{transCode}-{providerCode}-VDSConnector get transaction not found");
+                    return new MessageResponseBase
+                    {
+                        ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult,
+                        ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ"
+                    };
+                }
                 var encryptedPassword = string.IsNullOrEmpty(providerInfo.ApiPassword)
                     ? Encrypt(providerInfo.Password, providerInfo.PublicKey)
                     : providerInfo.ApiPassword;
+                var requestDate = _dateTimeHelper.ConvertToUserTime(topupRequestLog.RequestDate, DateTimeKind.Utc);
                 var data = new DataObject
                 {
                     OrderId = transCode,
@@ -196,6 +212,8 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                     Username = providerInfo.Username,
                     Password = encryptedPassword,
                     ServiceCode = "100000",
+                    TransDate = DateTime.Now.ToString("yyyyMMddHHmmss"),
+                    OriginalRequestDate = requestDate.ToString("yyyyMMddHHmmss")
                 };
                 var json = data.ToJson();
 
@@ -212,9 +230,9 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                 {
                     _logger.LogInformation(
                         $"{providerCode}-{transCodeToCheck} VDSConnector Check trans return: {transCodeToCheck}-{transCode}-{result.Data.ToJson()}");
-                    if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                    if (result.Data.ErrorCode == "00")
                     {
-                        if (result.Data.ReferenceCode == ResponseCodeConst.Error)
+                        if (result.Data.ReferenceCode == "00")
                         {
                             responseMessage.ResponseCode = ResponseCodeConst.Success;
                             responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -255,7 +273,8 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                     else
                     {
                         responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_WaitForResult;
-                        responseMessage.ResponseMessage = "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
+                        responseMessage.ResponseMessage =
+                            "Giao dịch đang chờ kết quả. Vui lòng liên hệ CSKH để được hỗ trợ";
                         responseMessage.ProviderResponseCode = result?.Data.ErrorCode;
                         responseMessage.ProviderResponseMessage = result?.Data.ErrorMsg;
                     }
@@ -330,7 +349,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
             {
                 _logger.LogInformation(
                     $"{payBillRequestLog.ProviderCode}-{payBillRequestLog.TransCode} VDSConnector return: {payBillRequestLog.TransCode}-{payBillRequestLog.TransRef}-{result.Data.ToJson()}");
-                if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                if (result.Data.ErrorCode == "00")
                 {
                     var dto = new InvoiceResultDto()
                     {
@@ -428,7 +447,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                     $"Card return: {cardRequestLog.TransCode}-{cardRequestLog.TransRef}-{result.Data.ToJson()}");
                 cardRequestLog.ModifiedDate = DateTime.Now;
                 cardRequestLog.ResponseInfo = result.Data.ToJson();
-                if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                if (result.Data.ErrorCode == "00")
                 {
                     cardRequestLog.Status = TransRequestStatus.Success;
                     responseMessage.ResponseCode = ResponseCodeConst.Success;
@@ -486,8 +505,11 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                         result.Data.ErrorCode,
                         cardRequestLog.TransCode);
                     cardRequestLog.Status = TransRequestStatus.Fail;
-                    responseMessage.ResponseCode = reResult != null ? reResult.ResponseCode : ResponseCodeConst.ResponseCode_ErrorProvider;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
+                    responseMessage.ResponseCode = reResult != null
+                        ? reResult.ResponseCode
+                        : ResponseCodeConst.ResponseCode_ErrorProvider;
+                    responseMessage.ResponseMessage =
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else
@@ -550,7 +572,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                 {
                     responseMessage.ProviderResponseCode = result.Data.ErrorCode;
                     responseMessage.ProviderResponseMessage = result.Data.ErrorMsg;
-                    if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                    if (result.Data.ErrorCode == "00")
                     {
                         responseMessage.ResponseCode = ResponseCodeConst.Success;
                         responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -649,7 +671,7 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                 _logger.LogInformation($"Deposit return: {request.TransCode}-{result.ToJson()}");
                 responseMessage.ProviderResponseCode = result.Data.ErrorCode;
                 responseMessage.ProviderResponseMessage = result.Data.ErrorMsg;
-                if (result.Data.ErrorCode == ResponseCodeConst.Error)
+                if (result.Data.ErrorCode == "00")
                 {
                     responseMessage.ResponseCode = ResponseCodeConst.Success;
                     responseMessage.ResponseMessage = "Giao dịch thành công";
@@ -674,7 +696,8 @@ namespace Topup.TopupGw.Components.Connectors.VDS
                             result.Data.ErrorCode,
                             request.TransCode);
                     responseMessage.ResponseCode = ResponseCodeConst.ResponseCode_ErrorProvider;
-                    responseMessage.ResponseMessage = reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
+                    responseMessage.ResponseMessage =
+                        reResult != null ? reResult.ResponseName : "Giao dịch lỗi phía NCC";
                 }
             }
             else

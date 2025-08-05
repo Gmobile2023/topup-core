@@ -143,59 +143,59 @@ public partial class ExportDataExcel : IExportDataExcel
                     _exporter.AddHeaderV2(
                         sheet,
                         headers.ToArray()
-                    );                    
-                        _exporter.AddObjectsV2(
-                            sheet, input,
-                            _ => CellOption.Create(_.CreatedDay, "dd/MM/yyyy"),
-                            _ => CellOption.Create(_.Items[0].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[1].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[2].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[3].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[4].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[5].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[6].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[7].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[8].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[9].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[10].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[11].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[12].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[13].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[14].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[15].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[16].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[17].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[18].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[19].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[20].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[21].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[22].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[23].Balance, "Number"),
-                            _ => CellOption.Create(_.Items[0].Balance 
-                            + _.Items[1].Balance
-                            + _.Items[2].Balance
-                            + _.Items[3].Balance
-                            + _.Items[4].Balance
-                            + _.Items[5].Balance
-                            + _.Items[6].Balance
-                            + _.Items[7].Balance
-                            + _.Items[8].Balance
-                            + _.Items[9].Balance
-                            + _.Items[10].Balance
-                            + _.Items[11].Balance
-                            + _.Items[12].Balance
-                            + _.Items[13].Balance
-                            + _.Items[14].Balance
-                            + _.Items[15].Balance
-                            + _.Items[16].Balance
-                            + _.Items[17].Balance
-                            + _.Items[18].Balance
-                            + _.Items[19].Balance
-                            + _.Items[20].Balance
-                            + _.Items[21].Balance
-                            + _.Items[22].Balance
-                            + _.Items[23].Balance
-                            , "Number"));
+                    );
+                    _exporter.AddObjectsV2(
+                        sheet, input,
+                        _ => CellOption.Create(_.CreatedDay, "dd/MM/yyyy"),
+                        _ => CellOption.Create(_.Items[0].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[1].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[2].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[3].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[4].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[5].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[6].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[7].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[8].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[9].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[10].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[11].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[12].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[13].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[14].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[15].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[16].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[17].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[18].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[19].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[20].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[21].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[22].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[23].Balance, "Number"),
+                        _ => CellOption.Create(_.Items[0].Balance
+                        + _.Items[1].Balance
+                        + _.Items[2].Balance
+                        + _.Items[3].Balance
+                        + _.Items[4].Balance
+                        + _.Items[5].Balance
+                        + _.Items[6].Balance
+                        + _.Items[7].Balance
+                        + _.Items[8].Balance
+                        + _.Items[9].Balance
+                        + _.Items[10].Balance
+                        + _.Items[11].Balance
+                        + _.Items[12].Balance
+                        + _.Items[13].Balance
+                        + _.Items[14].Balance
+                        + _.Items[15].Balance
+                        + _.Items[16].Balance
+                        + _.Items[17].Balance
+                        + _.Items[18].Balance
+                        + _.Items[19].Balance
+                        + _.Items[20].Balance
+                        + _.Items[21].Balance
+                        + _.Items[22].Balance
+                        + _.Items[23].Balance
+                        , "Number"));
                 });
 
             #endregion
@@ -364,20 +364,20 @@ public partial class ExportDataExcel : IExportDataExcel
                     sheet.AddMergedRegion(new CellRangeAddress(1, 1, 0, 6));
 
                     var columsIndex = 0;
-                    _exporter.AddObjectRowItemColumn(sheet, 2, 0, "ĐỐI TÁC:" + input.Provider);
+                    _exporter.AddObjectRowItemColumn(sheet, 2, 0, $"ĐỐI TÁC: {input.Provider} - {input.FullName}");
                     sheet.AddMergedRegion(new CellRangeAddress(2, 2, 0, 6));
                     _exporter.AddObjectRowItemColumn(sheet, 3, 0, input.Contract);
                     sheet.AddMergedRegion(new CellRangeAddress(3, 3, 0, 6));
-                    _exporter.AddObjectRowItemColumn(sheet, 4, 0, input.PeriodPayment);
-                    sheet.AddMergedRegion(new CellRangeAddress(4, 4, 0, 6));
+                    //_exporter.AddObjectRowItemColumn(sheet, 4, 0, input.PeriodPayment);
+                    //sheet.AddMergedRegion(new CellRangeAddress(4, 4, 0, 6));
 
-                    var rowsIndex = 6;
+                    var rowsIndex = 4;
                     var rowsType = 1;
 
                     #region 1.Bảng mã thẻ
 
                     sheet.SetColumnWidth(0, 7000);
-                    sheet.SetColumnWidth(1, 5000);
+                    sheet.SetColumnWidth(1, 7000);
                     sheet.SetColumnWidth(2, 4000);
                     sheet.SetColumnWidth(3, 4000);
                     sheet.SetColumnWidth(4, 4000);
@@ -389,7 +389,7 @@ public partial class ExportDataExcel : IExportDataExcel
                     if (input.PinCodeItems.Count > 0)
                     {
                         _exporter.AddObjectRowItemColumn(sheet, 5, 0,
-                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ MÃ THẺ",
+                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. CHI TIẾT GIAO DỊCH MÃ THẺ",
                             isCenter: false);
                         _exporter.AddHeaderStartRowIndex(
                             sheet, rowsIndex, columsIndex,
@@ -428,10 +428,10 @@ public partial class ExportDataExcel : IExportDataExcel
                         rowsIndex = rowsIndex + 1;
                         _exporter.AddObjectSumIndex(
                             sheet, styleSum2, rowsIndex, columsIndex, input.SumPinCodes,
-                            _ => "Tổng doanh số thu được hưởng:",
+                            _ => "Tổng giá trị giao dịch bao gồm VAT trong kỳ:",
                             _ => "",
-                            _ => CellOption.Create(_.Price, "Number"),
-                            _ => "đồng (bao gồm VAT)"
+                            _ => string.Format("{0:C}", CellOption.Create(_.Price, "Number")),
+                            _ => ""
                         );
 
                         sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
@@ -447,7 +447,7 @@ public partial class ExportDataExcel : IExportDataExcel
                     {
                         rowsIndex = rowsIndex + 1;
                         _exporter.AddObjectRowItemColumn(sheet, 5, 0,
-                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ MÃ THẺ GAME",
+                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. CHI TIẾT GIAO DỊCH MÃ THẺ GAME",
                             isCenter: false);
                         _exporter.AddHeaderStartRowIndex(
                             sheet, rowsIndex, columsIndex,
@@ -486,10 +486,10 @@ public partial class ExportDataExcel : IExportDataExcel
                         rowsIndex = rowsIndex + 1;
                         _exporter.AddObjectSumIndex(
                             sheet, styleSum2, rowsIndex, columsIndex, input.SumPinGames,
-                            _ => "Tổng doanh số thu được hưởng:",
+                            _ => "Tông giá trị giao dịch bao gồm VAT trong kỳ:",
                             _ => "",
                             _ => CellOption.Create(_.Price, "Number"),
-                            _ => "đồng (bao gồm VAT)"
+                            _ => ""
                         );
 
                         sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
@@ -504,117 +504,117 @@ public partial class ExportDataExcel : IExportDataExcel
 
                     #region 2.1.Bảng nạp tiền trả trước
 
-                    if (input.TopupPrepaIdItems.Count > 0)
-                    {
-                        rowsIndex = rowsIndex + 1;
-                        _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
-                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ NẠP TIỀN TRẢ TRƯỚC",
-                            isCenter: false);
-                        rowsIndex = rowsIndex + 1;
+                    //if (input.TopupPrepaIdItems.Count > 0)
+                    //{
+                    //    rowsIndex = rowsIndex + 1;
+                    //    _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
+                    //        $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ NẠP TIỀN TRẢ TRƯỚC",
+                    //        isCenter: false);
+                    //    rowsIndex = rowsIndex + 1;
 
-                        _exporter.AddHeaderStartRowIndex(
-                            sheet, rowsIndex, columsIndex,
-                            "Dịch vụ",
-                            "Loại sản phẩm",
-                            "Mệnh giá",
-                            "Số lượng",
-                            "Thành tiền chưa CK",
-                            "Tỷ lệ CK(%)",
-                            "Tiền thanh toán"                          
-                        );
-                        _exporter.AddObjectStartRowsIndex(
-                            sheet, rowsIndex, columsIndex, style, input.TopupPrepaIdItems,
-                            _ => _.ServiceName,
-                            _ => _.CategoryName,
-                            _ => CellOption.Create(_.ProductValue, "Number"),
-                            _ => CellOption.Create(_.Quantity, "Number"),
-                            _ => CellOption.Create(_.Value, "Number"),
-                            _ => CellOption.Create(_.DiscountRate, "Number"),
-                            _ => CellOption.Create(_.Price, "Number")                           
-                        );
+                    //    _exporter.AddHeaderStartRowIndex(
+                    //        sheet, rowsIndex, columsIndex,
+                    //        "Dịch vụ",
+                    //        "Loại sản phẩm",
+                    //        "Mệnh giá",
+                    //        "Số lượng",
+                    //        "Thành tiền chưa CK",
+                    //        "Tỷ lệ CK(%)",
+                    //        "Tiền thanh toán"                          
+                    //    );
+                    //    _exporter.AddObjectStartRowsIndex(
+                    //        sheet, rowsIndex, columsIndex, style, input.TopupPrepaIdItems,
+                    //        _ => _.ServiceName,
+                    //        _ => _.CategoryName,
+                    //        _ => CellOption.Create(_.ProductValue, "Number"),
+                    //        _ => CellOption.Create(_.Quantity, "Number"),
+                    //        _ => CellOption.Create(_.Value, "Number"),
+                    //        _ => CellOption.Create(_.DiscountRate, "Number"),
+                    //        _ => CellOption.Create(_.Price, "Number")                           
+                    //    );
 
-                        rowsIndex = rowsIndex + input.TotalRowsTopupPrepaId + 1;
+                    //    rowsIndex = rowsIndex + input.TotalRowsTopupPrepaId + 1;
 
-                        _exporter.AddObjectSumTableIndex(
-                            sheet, styleSum, rowsIndex, columsIndex, input.SumTopupPrepaId,
-                            _ => "Tổng",
-                            _ => "",
-                            _ => "",
-                            _ => CellOption.Create(_.Quantity, "Number"),
-                            _ => CellOption.Create(_.Value, "Number"),
-                            _ => "",
-                            _ => CellOption.Create(_.Price, "Number")
-                        );
+                    //    _exporter.AddObjectSumTableIndex(
+                    //        sheet, styleSum, rowsIndex, columsIndex, input.SumTopupPrepaId,
+                    //        _ => "Tổng",
+                    //        _ => "",
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Quantity, "Number"),
+                    //        _ => CellOption.Create(_.Value, "Number"),
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Price, "Number")
+                    //    );
 
-                        rowsIndex = rowsIndex + 1;
-                        _exporter.AddObjectSumIndex(
-                            sheet, styleSum2, rowsIndex, columsIndex, input.SumTopupPrepaId,
-                            _ => "Tổng doanh số thu được hưởng:",
-                            _ => "",
-                            _ => CellOption.Create(_.Price, "Number"),
-                            _ => "đồng (bao gồm VAT)"
-                        );
-                        sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
-                        rowsType = rowsType + 1;
-                    }
+                    //    rowsIndex = rowsIndex + 1;
+                    //    _exporter.AddObjectSumIndex(
+                    //        sheet, styleSum2, rowsIndex, columsIndex, input.SumTopupPrepaId,
+                    //        _ => "Tổng doanh số thu được hưởng:",
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Price, "Number"),
+                    //        _ => "đồng (bao gồm VAT)"
+                    //    );
+                    //    sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
+                    //    rowsType = rowsType + 1;
+                    //}
 
                     #endregion
 
                     #region 2.2.Bảng nạp tiền trả sau
 
-                    if (input.TopupPostpaIdItems.Count > 0)
-                    {
-                        rowsIndex = rowsIndex + 1;
-                        _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
-                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ NẠP TIỀN TRẢ SAU",
-                            isCenter: false);
-                        rowsIndex = rowsIndex + 1;
+                    //if (input.TopupPostpaIdItems.Count > 0)
+                    //{
+                    //    rowsIndex = rowsIndex + 1;
+                    //    _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
+                    //        $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ NẠP TIỀN TRẢ SAU",
+                    //        isCenter: false);
+                    //    rowsIndex = rowsIndex + 1;
 
-                        _exporter.AddHeaderStartRowIndex(
-                            sheet, rowsIndex, columsIndex,
-                            "Dịch vụ",
-                            "Loại sản phẩm",
-                            "Mệnh giá",
-                            "Số lượng",
-                            "Thành tiền chưa CK",
-                            "Tỷ lệ CK(%)",
-                            "Tiền thanh toán"                          
-                        );
-                        _exporter.AddObjectStartRowsIndex(
-                            sheet, rowsIndex, columsIndex, style, input.TopupPostpaIdItems,
-                            _ => _.ServiceName,
-                            _ => _.CategoryName,
-                            _ => CellOption.Create(_.ProductValue, "Number"),
-                            _ => CellOption.Create(_.Quantity, "Number"),
-                            _ => CellOption.Create(_.Value, "Number"),
-                            _ => CellOption.Create(_.DiscountRate, "Number"),
-                            _ => CellOption.Create(_.Price, "Number")                           
-                        );
+                    //    _exporter.AddHeaderStartRowIndex(
+                    //        sheet, rowsIndex, columsIndex,
+                    //        "Dịch vụ",
+                    //        "Loại sản phẩm",
+                    //        "Mệnh giá",
+                    //        "Số lượng",
+                    //        "Thành tiền chưa CK",
+                    //        "Tỷ lệ CK(%)",
+                    //        "Tiền thanh toán"                          
+                    //    );
+                    //    _exporter.AddObjectStartRowsIndex(
+                    //        sheet, rowsIndex, columsIndex, style, input.TopupPostpaIdItems,
+                    //        _ => _.ServiceName,
+                    //        _ => _.CategoryName,
+                    //        _ => CellOption.Create(_.ProductValue, "Number"),
+                    //        _ => CellOption.Create(_.Quantity, "Number"),
+                    //        _ => CellOption.Create(_.Value, "Number"),
+                    //        _ => CellOption.Create(_.DiscountRate, "Number"),
+                    //        _ => CellOption.Create(_.Price, "Number")                           
+                    //    );
 
-                        rowsIndex = rowsIndex + input.TotalRowsTopup + 1;
+                    //    rowsIndex = rowsIndex + input.TotalRowsTopup + 1;
 
-                        _exporter.AddObjectSumTableIndex(
-                            sheet, styleSum, rowsIndex, columsIndex, input.SumTopupPostpaId,
-                            _ => "Tổng",
-                            _ => "",
-                            _ => "",
-                            _ => CellOption.Create(_.Quantity, "Number"),
-                            _ => CellOption.Create(_.Value, "Number"),
-                            _ => "",
-                            _ => CellOption.Create(_.Price, "Number")
-                        );
+                    //    _exporter.AddObjectSumTableIndex(
+                    //        sheet, styleSum, rowsIndex, columsIndex, input.SumTopupPostpaId,
+                    //        _ => "Tổng",
+                    //        _ => "",
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Quantity, "Number"),
+                    //        _ => CellOption.Create(_.Value, "Number"),
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Price, "Number")
+                    //    );
 
-                        rowsIndex = rowsIndex + 1;
-                        _exporter.AddObjectSumIndex(
-                            sheet, styleSum2, rowsIndex, columsIndex, input.SumTopupPostpaId,
-                            _ => "Tổng doanh số thu được hưởng:",
-                            _ => "",
-                            _ => CellOption.Create(_.Price, "Number"),
-                            _ => "đồng (bao gồm VAT)"
-                        );
-                        sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
-                        rowsType = rowsType + 1;
-                    }
+                    //    rowsIndex = rowsIndex + 1;
+                    //    _exporter.AddObjectSumIndex(
+                    //        sheet, styleSum2, rowsIndex, columsIndex, input.SumTopupPostpaId,
+                    //        _ => "Tổng doanh số thu được hưởng:",
+                    //        _ => "",
+                    //        _ => CellOption.Create(_.Price, "Number"),
+                    //        _ => "đồng (bao gồm VAT)"
+                    //    );
+                    //    sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
+                    //    rowsType = rowsType + 1;
+                    //}
 
                     #endregion
 
@@ -624,7 +624,7 @@ public partial class ExportDataExcel : IExportDataExcel
                     {
                         rowsIndex = rowsIndex + 1;
                         _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
-                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ NẠP TIỀN",
+                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. CHI TIẾT GIAO DỊCH NẠP TIỀN",
                             isCenter: false);
                         rowsIndex = rowsIndex + 1;
 
@@ -636,7 +636,7 @@ public partial class ExportDataExcel : IExportDataExcel
                             "Số lượng",
                             "Thành tiền chưa CK",
                             "Tỷ lệ CK(%)",
-                            "Tiền thanh toán"                           
+                            "Tiền thanh toán"
                         );
                         _exporter.AddObjectStartRowsIndex(
                             sheet, rowsIndex, columsIndex, style, input.TopupItems,
@@ -646,7 +646,7 @@ public partial class ExportDataExcel : IExportDataExcel
                             _ => CellOption.Create(_.Quantity, "Number"),
                             _ => CellOption.Create(_.Value, "Number"),
                             _ => CellOption.Create(_.DiscountRate, "Number"),
-                            _ => CellOption.Create(_.Price, "Number")                          
+                            _ => CellOption.Create(_.Price, "Number")
                         );
 
                         rowsIndex = rowsIndex + input.TotalRowsTopup + 1;
@@ -665,10 +665,10 @@ public partial class ExportDataExcel : IExportDataExcel
                         rowsIndex = rowsIndex + 1;
                         _exporter.AddObjectSumIndex(
                             sheet, styleSum2, rowsIndex, columsIndex, input.SumTopup,
-                            _ => "Tổng doanh số thu được hưởng:",
+                            _ => "Tổng giá trị giao dịch bao gồm VAT trong kỳ:",
                             _ => "",
                             _ => CellOption.Create(_.Price, "Number"),
-                            _ => "đồng (bao gồm VAT)"
+                            _ => ""
                         );
                         sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
                         rowsType = rowsType + 1;
@@ -684,7 +684,7 @@ public partial class ExportDataExcel : IExportDataExcel
                     {
                         rowsIndex = rowsIndex + 1;
                         _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
-                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. ĐỐI SOÁT DỊCH VỤ DATA",
+                            $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. CHI TIẾT GIAO DỊCH NẠP DATA",
                             isCenter: false);
                         rowsIndex = rowsIndex + 1;
 
@@ -725,14 +725,14 @@ public partial class ExportDataExcel : IExportDataExcel
                         rowsIndex = rowsIndex + 1;
                         _exporter.AddObjectSumIndex(
                             sheet, styleSum2, rowsIndex, columsIndex, input.SumData,
-                            _ => "Tổng doanh số thu được hưởng:",
+                            _ => "Tổng giá trị giao dịch bao gồm VAT trong kỳ:",
                             _ => "",
                             _ => CellOption.Create(_.Price, "Number"),
-                            _ => "đồng (bao gồm VAT)"
+                            _ => ""
                         );
                         sheet.AddMergedRegion(new CellRangeAddress(rowsIndex, rowsIndex, 0, 1));
                         rowsType = rowsType + 1;
-                    }                          
+                    }
 
                     #endregion
 
@@ -820,17 +820,17 @@ public partial class ExportDataExcel : IExportDataExcel
 
                     rowsIndex = rowsIndex + 1;
                     _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 0,
-                        $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. CÔNG NỢ", isCenter: false);
+                        $"{ReportComparePartnerExportInfo.GetIndex(rowsType)}. SỐ DƯ TÀI KHOẢN", isCenter: false);
                     rowsIndex = rowsIndex + 1;
                     _exporter.AddHeaderStartRowIndex(
                         sheet, rowsIndex, columsIndex,
                         "STT",
                         "Nội dung",
-                        "Số tiền"
+                        "Giá trị(bao gồm VAT)"
                     );
                     _exporter.AddObjectStartRowsIndex(
                         sheet, rowsIndex, columsIndex, style, input.BalanceItems,
-                        _ => _.Index,
+                        _ => _.Index == 10 ? "10=1+2+3-4+5-6-7+8-9" : _.Index,
                         _ => _.Name,
                         _ => CellOption.Create(_.Value, "Number")
                     );
@@ -838,7 +838,7 @@ public partial class ExportDataExcel : IExportDataExcel
                     rowsIndex = rowsIndex + input.TotalRowsBalance + 2;
                     _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 4, "Ngày.......tháng.......năm.........");
                     rowsIndex = rowsIndex + 1;
-                    _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 1, "CÔNG TY TM DV Hệ thống");
+                    _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 1, "CÔNG TY CỔ PHẦN VIẼN THÔNG DI ĐỘNG TOÀN CẦU");
                     _exporter.AddObjectRowItemColumn(sheet, rowsIndex, 4, input.FullName, false);
 
                     _log.LogInformation($"{input.Provider} ReportCompareParnerExportToFile_True");
@@ -1089,7 +1089,7 @@ public partial class ExportDataExcel : IExportDataExcel
                     _ => _.RequestRef,
                     _ => _.PayTransRef,
                     _ => _.Channel,
-                    _ => _.ReceiverType,                    
+                    _ => _.ReceiverType,
                     _ => _.ProviderTransCode,
                     _ => _.ProviderReceiverType,
                     _ => _.ParentProvider

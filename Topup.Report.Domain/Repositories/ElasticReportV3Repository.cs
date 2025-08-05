@@ -130,7 +130,7 @@ public partial class ElasticReportRepository
                      , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(services))
                      , mu => mu.Terms(m => m.Field(f => f.TransType).Terms(services))
                      , mu => mu.Terms(m => m.Field(f => f.Status).Terms(status))
-                   ).MustNot(v => v.MatchPhrase(i => i.Field(p => p.CategoryCode.Suffix("keyword")).Query("VTE_TOPUP")))));
+                   )));
                 }
                 else
                 {
@@ -526,88 +526,92 @@ public partial class ElasticReportRepository
         dateTemp = DateTime.Now;
         if (list.Count >= 3000)
         {
-            if (request.File == "EXCEL")
+            var register = await GetRegisterInfo(ReportRegisterType.EXPORT_FTP);
+            if (register != null && register.IsAuto)
             {
-                #region .xls
-
-                var excel = _exportDataExcel.ReportStaffDetailToFile(list);
-                _logger.LogInformation($"ReportServiceDetailGetList : {(!string.IsNullOrEmpty(excel.FileToken) ? "FileToken_Data" : "null")}");
-                var fileBytes = await _cacheManager.GetFile(excel.FileToken);
-
-                _logger.LogInformation($"KeyCode= {keyCode} Write file .xlsx Seconds : {DateTime.Now.Subtract(dateTemp).TotalSeconds}");
-                dateTemp = DateTime.Now;
-
-                if (excel.FileToken != null)
+                if (request.File == "EXCEL")
                 {
-                    var fileName = "DebtDetail_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".xlsx";
-                    var linkFile = _uploadFile.UploadFileToDataServer(fileBytes, fileName);
-                    _logger.LogInformation($"KeyCode= {keyCode} .Pust len ServerFpt Seconds: {DateTime.Now.Subtract(dateTemp).TotalSeconds}");
+                    #region .xls
+
+                    var excel = _exportDataExcel.ReportStaffDetailToFile(list);
+                    _logger.LogInformation($"ReportServiceDetailGetList : {(!string.IsNullOrEmpty(excel.FileToken) ? "FileToken_Data" : "null")}");
+                    var fileBytes = await _cacheManager.GetFile(excel.FileToken);
+
+                    _logger.LogInformation($"KeyCode= {keyCode} Write file .xlsx Seconds : {DateTime.Now.Subtract(dateTemp).TotalSeconds}");
                     dateTemp = DateTime.Now;
 
-                    if (!string.IsNullOrEmpty(linkFile))
+                    if (excel.FileToken != null)
                     {
-                        await _reportMongoRepository.InsertFileFptInfo(new ReportFileFpt
+                        var fileName = "DebtDetail_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".xlsx";
+                        var linkFile = _uploadFile.UploadFileToDataServer(fileBytes, fileName);
+                        _logger.LogInformation($"KeyCode= {keyCode} .Pust len ServerFpt Seconds: {DateTime.Now.Subtract(dateTemp).TotalSeconds}");
+                        dateTemp = DateTime.Now;
+
+                        if (!string.IsNullOrEmpty(linkFile))
                         {
-                            TextDay = DateTime.Now.ToString("yyyyMMdd"),
-                            AddedAtUtc = DateTime.Now,
-                            Type = "Báo cáo chi tiết bán hàng BE",
-                            FileName = linkFile
-                        });
-                        return new MessagePagedResponseBase
-                        {
-                            ResponseCode = ResponseCodeConst.Success,
-                            ResponseMessage = linkFile,
-                            Payload = null,
-                            ExtraInfo = "Downloadlink"
-                        };
+                            await _reportMongoRepository.InsertFileFptInfo(new ReportFileFpt
+                            {
+                                TextDay = DateTime.Now.ToString("yyyyMMdd"),
+                                AddedAtUtc = DateTime.Now,
+                                Type = "Báo cáo chi tiết bán hàng BE",
+                                FileName = linkFile
+                            });
+                            return new MessagePagedResponseBase
+                            {
+                                ResponseCode = ResponseCodeConst.Success,
+                                ResponseMessage = linkFile,
+                                Payload = null,
+                                ExtraInfo = "Downloadlink"
+                            };
+                        }
                     }
+
+                    #endregion
                 }
-
-                #endregion
-            }
-            else
-            {
-                #region .csv
-
-                var sourcePath = Path.Combine("", "ReportFiles");
-                if (!Directory.Exists(sourcePath)) Directory.CreateDirectory(sourcePath);
-
-                var fileName = "ServiceDetail_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".csv";
-                var pathSave = $"{sourcePath}/{fileName}";
-                var strReadFile = Directory.GetCurrentDirectory() + "/" + pathSave;
-                _exportDataExcel.ReportStaffDetailToFileCsv(pathSave, list);
-
-                _logger.LogInformation($"KeyCode= {keyCode} .Write file csv Seconds: {DateTime.Now.Subtract(dateTemp).TotalSeconds}");
-                dateTemp = DateTime.Now;
-                byte[] fileBytes;
-                var fs = new FileStream(strReadFile, FileMode.Open, FileAccess.Read);
-                var br = new BinaryReader(fs);
-                var numBytes = new FileInfo(strReadFile).Length;
-                fileBytes = br.ReadBytes((int)numBytes);
-                var linkFile = _uploadFile.UploadFileToDataServer(fileBytes, fileName);
-
-                _logger.LogInformation($"KeyCode= {keyCode} .Pust len ServerFpt Seconds: {DateTime.Now.Subtract(dateTemp).TotalSeconds}");
-                fs.Close();
-                await fs.DisposeAsync();
-                File.Delete(strReadFile);
-                await _reportMongoRepository.InsertFileFptInfo(new ReportFileFpt
+                else
                 {
-                    TextDay = DateTime.Now.ToString("yyyyMMdd"),
-                    AddedAtUtc = DateTime.Now,
-                    Type = "Báo cáo chi tiết bán hàng BE",
-                    FileName = linkFile
-                });
+                    #region .csv
 
-                _logger.LogInformation($"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
-                return new MessagePagedResponseBase
-                {
-                    ResponseCode = ResponseCodeConst.Success,
-                    ResponseMessage = linkFile,
-                    Payload = null,
-                    ExtraInfo = "Downloadlink"
-                };
+                    var sourcePath = Path.Combine("", "ReportFiles");
+                    if (!Directory.Exists(sourcePath)) Directory.CreateDirectory(sourcePath);
 
-                #endregion
+                    var fileName = "ServiceDetail_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".csv";
+                    var pathSave = $"{sourcePath}/{fileName}";
+                    var strReadFile = Directory.GetCurrentDirectory() + "/" + pathSave;
+                    _exportDataExcel.ReportStaffDetailToFileCsv(pathSave, list);
+
+                    _logger.LogInformation($"KeyCode= {keyCode} .Write file csv Seconds: {DateTime.Now.Subtract(dateTemp).TotalSeconds}");
+                    dateTemp = DateTime.Now;
+                    byte[] fileBytes;
+                    var fs = new FileStream(strReadFile, FileMode.Open, FileAccess.Read);
+                    var br = new BinaryReader(fs);
+                    var numBytes = new FileInfo(strReadFile).Length;
+                    fileBytes = br.ReadBytes((int)numBytes);
+                    var linkFile = _uploadFile.UploadFileToDataServer(fileBytes, fileName);
+
+                    _logger.LogInformation($"KeyCode= {keyCode} .Pust len ServerFpt Seconds: {DateTime.Now.Subtract(dateTemp).TotalSeconds}");
+                    fs.Close();
+                    await fs.DisposeAsync();
+                    File.Delete(strReadFile);
+                    await _reportMongoRepository.InsertFileFptInfo(new ReportFileFpt
+                    {
+                        TextDay = DateTime.Now.ToString("yyyyMMdd"),
+                        AddedAtUtc = DateTime.Now,
+                        Type = "Báo cáo chi tiết bán hàng BE",
+                        FileName = linkFile
+                    });
+
+                    _logger.LogInformation($"KeyCode= {keyCode} .Tong thoi gian Seconds: {DateTime.Now.Subtract(dateStart).TotalSeconds}");
+                    return new MessagePagedResponseBase
+                    {
+                        ResponseCode = ResponseCodeConst.Success,
+                        ResponseMessage = linkFile,
+                        Payload = null,
+                        ExtraInfo = "Downloadlink"
+                    };
+
+                    #endregion
+                }
             }
         }
 

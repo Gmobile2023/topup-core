@@ -708,6 +708,11 @@ public class TopupGatewayService : BusinessServiceBase, ITopupGatewayService
         return data;
     }
 
+    public async Task<TopupRequestLog> TopupRequestLogGetAsync(string providerCode, string transCode)
+    {
+        return await _transRepository.GetOneAsync<TopupRequestLog>(x => x.TransCode == transCode && x.ProviderCode == providerCode);
+    }
+
     public async Task SendTelegram(MessageResponseBase result,
         SendWarningDto logRequest)
     {

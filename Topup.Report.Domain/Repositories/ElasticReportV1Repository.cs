@@ -792,7 +792,7 @@ namespace Topup.Report.Domain.Repositories
                     )
                 ));
 
-                queryDeposit.Index(ReportIndex.ReportItemDetailIndex).Query(q => q.Bool(b =>
+                queryDeposit.Index(getIndexSearch(ReportIndex.ReportItemDetailIndex)).Query(q => q.Bool(b =>
                     b.Must(mu => mu.DateRange(r => r.Field(f => f.CreatedTime).GreaterThanOrEquals(fromDate).LessThan(toDate))
                         , mu => mu.Terms(m => m.Field(f => f.ServiceCode).Terms(ReportServiceCode.DEPOSIT.ToLower()))
                         , mu => mu.MatchPhrase(m => m.Field(f => f.AccountCode).Query(request.AgentCode))
@@ -865,7 +865,7 @@ namespace Topup.Report.Domain.Repositories
 
                 #region 2.Lấy thông tin tài khoản
 
-                queryAccount.Index(ReportIndex.ReportaccountdtosIndex).Query(q => q.Bool(b =>
+                queryAccount.Index(getIndexSearch(ReportIndex.ReportaccountdtosIndex)).Query(q => q.Bool(b =>
                    b.Must(mu => mu.Terms(m => m.Field(f => f.AccountType).Terms(accountTypes))
                        , mu => mu.MatchPhrase(m => m.Field(f => f.AccountCode).Query(request.AgentCode))
                        , mu => mu.MatchPhrase(m => m.Field(f => f.CityId).Query(city))

@@ -1050,9 +1050,9 @@ namespace Topup.Report.Domain.Services
 
                 var litPinCode = lit.Where(c => c.ServiceCode == ReportServiceCode.PIN_CODE).ToList();
                 var litPinGame = lit.Where(c => c.ServiceCode == ReportServiceCode.PIN_GAME).ToList();
-                var litTopupPrepa = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PrePaid).ToList();
-                var litTopupPostPaid = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PostPaid).ToList();
-                var litTopup = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.CategoryCode != "VTE_TOPUP").ToList();
+                //var litTopupPrepa = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PrePaid).ToList();
+                //var litTopupPostPaid = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP && c.ReceiverTypeNote == ReceiverType.PostPaid).ToList();
+                var litTopup = lit.Where(c => c.ServiceCode == ReportServiceCode.TOPUP).ToList();
                 var litData = lit.Where(c => c.ServiceCode == ReportServiceCode.PIN_DATA || c.ServiceCode == ReportServiceCode.TOPUP_DATA).ToList();
                 var litPayBill = lit.Where(c => c.ServiceCode == ReportServiceCode.PAY_BILL).ToList();
 
@@ -1073,19 +1073,19 @@ namespace Topup.Report.Domain.Services
                     await _balanceReportSvc.ExportFileSaleByPartner(litPinGame, pathSavePinGame);
                 }
 
-                if (litTopupPrepa.Count > 0)
-                {
-                    string fileNamePrepaId = $"{account.AgentCode}_TopupTraTruoc_{fromDateFile.ToString("ddMMyyyyHHmmssfff")}.csv";
-                    var pathSavePrepaId = $"{sourcePath.PathName}/{fileNamePrepaId}";
-                    await _balanceReportSvc.ExportFileSaleByPartner(litTopupPrepa, pathSavePrepaId);
-                }
+                //if (litTopupPrepa.Count > 0)
+                //{
+                //    string fileNamePrepaId = $"{account.AgentCode}_TopupTraTruoc_{fromDateFile.ToString("ddMMyyyyHHmmssfff")}.csv";
+                //    var pathSavePrepaId = $"{sourcePath.PathName}/{fileNamePrepaId}";
+                //    await _balanceReportSvc.ExportFileSaleByPartner(litTopupPrepa, pathSavePrepaId);
+                //}
 
-                if (litTopupPostPaid.Count > 0)
-                {
-                    string fileNamePostPaid = $"{account.AgentCode}_TopupTrasau_{fromDateFile.ToString("ddMMyyyyHHmmssfff")}.csv";
-                    var pathSavePostPaid = $"{sourcePath.PathName}/{fileNamePostPaid}";
-                    await _balanceReportSvc.ExportFileSaleByPartner(litTopupPostPaid, pathSavePostPaid);
-                }
+                //if (litTopupPostPaid.Count > 0)
+                //{
+                //    string fileNamePostPaid = $"{account.AgentCode}_TopupTrasau_{fromDateFile.ToString("ddMMyyyyHHmmssfff")}.csv";
+                //    var pathSavePostPaid = $"{sourcePath.PathName}/{fileNamePostPaid}";
+                //    await _balanceReportSvc.ExportFileSaleByPartner(litTopupPostPaid, pathSavePostPaid);
+                //}
 
                 if (litTopup.Count > 0)
                 {
@@ -1109,7 +1109,7 @@ namespace Topup.Report.Domain.Services
                     await _balanceReportSvc.ExportFileSaleByPartner(litPayBill, pathSavePayBill);
                 }
 
-                string tileMail = $"Đối soát Hệ thống - {account.FullName} từ ngày {fromDate.ToString("dd/MM/yyyy")} tới ngày {toDate.ToString("dd/MM/yyyy")}";
+                string tileMail = $"Gtel Mobile - {account.FullName} Đối soát dịch vụ Topup từ ngày {fromDate.ToString("dd/MM/yyyy")} tới ngày {toDate.ToString("dd/MM/yyyy")}";
 
                 if (!string.IsNullOrEmpty(account.FolderFtp) && isAuto)
                 {
@@ -1227,16 +1227,15 @@ namespace Topup.Report.Domain.Services
 
                 var partnerInput = new ReportComparePartnerExportInfo()
                 {
-                    Title = "BIÊN BẢN DOANH THU DỊCH VỤ THANH TOÁN",
-                    PeriodCompare = string.Format("Kỳ đối soát Từ: {0}{1} - {2}",
-                        compareText, fromDate.ToString("dd/MM/yyyy"), toDate.ToString("dd/MM/yyyy")),
-                    Contract =
-                        $"HỢP ĐỒNG SỐ: ...{userPeriod.ContractNumber}.... Ký ngày:..{(userPeriod.SigDate != null ? userPeriod.SigDate?.ToString("dd/MM/yyyy") : "")}..",
+                    Title = "BIÊN BẢN ĐỐI SOÁT DỊCH VỤ TOPUP",
+                    PeriodCompare = string.Format("Thời gian: Từ ngày {0} đến ngày {1}",
+                        fromDate.ToString("dd/MM/yyyy"), toDate.ToString("dd/MM/yyyy")),
+                    Contract = $"Căn cứ hợp đồng số {userPeriod.ContractNumber} ký ngày {(userPeriod.SigDate != null ? userPeriod.SigDate?.ToString("dd/MM/yyyy") : "")} giữa Công ty CP Viễn thông Di động Toàn Cầu và {userPeriod.FullName}",
                     Provider = $"{agentCode}",
-                    PeriodPayment = $"CHU KỲ : ....{(userPeriod.Period > 0 ? userPeriod.Period.ToString() : "")}....",
+                    PeriodPayment = $"CP Viễn thông Di động Toàn Cầu và {fileName}",
                     PinCodeItems = lst.Where(p => p.ServiceCode == ReportServiceCode.PIN_CODE).ToList(),
                     PinGameItems = lst.Where(p => p.ServiceCode == ReportServiceCode.PIN_GAME).ToList(),
-                    TopupItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP && p.CategoryCode != "VTE_TOPUP").ToList(),
+                    TopupItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP).ToList(),
                     TopupPostpaIdItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP && p.ReceiverType == ReceiverType.PostPaid).ToList(),
                     TopupPrepaIdItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP && p.ReceiverType == ReceiverType.PrePaid).ToList(),
                     DataItems = lst.Where(p => p.ServiceCode == ReportServiceCode.TOPUP_DATA || p.ServiceCode == ReportServiceCode.PIN_DATA).ToList(),
@@ -1280,23 +1279,23 @@ namespace Topup.Report.Domain.Services
                     Quantity = partnerInput.TopupItems.Sum(c => c.Quantity),
                 };
 
-                partnerInput.SumTopupPostpaId = new ReportComparePartnerDto()
-                {
-                    Fee = partnerInput.TopupPostpaIdItems.Sum(c => c.Fee),
-                    Value = partnerInput.TopupPostpaIdItems.Sum(c => c.Value),
-                    Discount = partnerInput.TopupPostpaIdItems.Sum(c => c.Discount),
-                    Price = partnerInput.TopupPostpaIdItems.Sum(c => c.Price),
-                    Quantity = partnerInput.TopupPostpaIdItems.Sum(c => c.Quantity),
-                };
+                //partnerInput.SumTopupPostpaId = new ReportComparePartnerDto()
+                //{
+                //    Fee = partnerInput.TopupPostpaIdItems.Sum(c => c.Fee),
+                //    Value = partnerInput.TopupPostpaIdItems.Sum(c => c.Value),
+                //    Discount = partnerInput.TopupPostpaIdItems.Sum(c => c.Discount),
+                //    Price = partnerInput.TopupPostpaIdItems.Sum(c => c.Price),
+                //    Quantity = partnerInput.TopupPostpaIdItems.Sum(c => c.Quantity),
+                //};
 
-                partnerInput.SumTopupPrepaId = new ReportComparePartnerDto()
-                {
-                    Fee = partnerInput.TopupPrepaIdItems.Sum(c => c.Fee),
-                    Value = partnerInput.TopupPrepaIdItems.Sum(c => c.Value),
-                    Discount = partnerInput.TopupPrepaIdItems.Sum(c => c.Discount),
-                    Price = partnerInput.TopupPrepaIdItems.Sum(c => c.Price),
-                    Quantity = partnerInput.TopupPrepaIdItems.Sum(c => c.Quantity),
-                };
+                //partnerInput.SumTopupPrepaId = new ReportComparePartnerDto()
+                //{
+                //    Fee = partnerInput.TopupPrepaIdItems.Sum(c => c.Fee),
+                //    Value = partnerInput.TopupPrepaIdItems.Sum(c => c.Value),
+                //    Discount = partnerInput.TopupPrepaIdItems.Sum(c => c.Discount),
+                //    Price = partnerInput.TopupPrepaIdItems.Sum(c => c.Price),
+                //    Quantity = partnerInput.TopupPrepaIdItems.Sum(c => c.Quantity),
+                //};
 
                 partnerInput.SumData = new ReportComparePartnerDto()
                 {
@@ -1318,8 +1317,8 @@ namespace Topup.Report.Domain.Services
 
 
                 partnerInput.TotalRowsTopup = partnerInput.TopupItems.Count();
-                partnerInput.TotalRowsTopupPostpaId = partnerInput.TopupPostpaIdItems.Count();
-                partnerInput.TotalRowsTopupPrepaId = partnerInput.TopupPrepaIdItems.Count();
+                //partnerInput.TotalRowsTopupPostpaId = partnerInput.TopupPostpaIdItems.Count();
+                //partnerInput.TotalRowsTopupPrepaId = partnerInput.TopupPrepaIdItems.Count();
                 partnerInput.TotalRowsPinCode = partnerInput.PinCodeItems.Count();
                 partnerInput.TotalRowsPinGame = partnerInput.PinGameItems.Count();
                 partnerInput.TotalRowsData = partnerInput.DataItems.Count();
@@ -1505,13 +1504,11 @@ namespace Topup.Report.Domain.Services
             try
             {
                 StringBuilder strBuilder = new StringBuilder();
-                strBuilder.Append($"Dear {agentName},<br/>");
-                strBuilder.Append(
-                    $"Hệ thống gửi team số liệu chi tiết đối soát cho dịch vụ với mã {agentCode} từ ngày {fromDate} tới ngày {toDate} trong file đính kèm.,<br/>");
+                strBuilder.Append($"Kính gửi {agentName},<br/>");
+                strBuilder.Append($"GTEL MOBILE xin gửi Quý đối tác biên bản đối soát dịch vụ Topup từ ngày {fromDate} tới ngày {toDate}. ( Chi tiết xem trong file đính kèm).<br/>");
                 strBuilder.Append($"Dưới đây là số liệu tổng hợp: <br/><br/>");
-                strBuilder.Append("<div class='col-xl-12'>'");
-                strBuilder.Append(
-                    "<table cellpadding='1' cellspacing='1' border='1' class='table-bordered table-hover dataTable' cellspacing='1' cellpadding='1' align='Left' rules='all' style='border-width:0px;width:100%;margin-bottom: 0px'><tr>");
+                strBuilder.Append("<div class='col-xl-12'>");
+                strBuilder.Append("<table cellpadding='1' cellspacing='1' border='1' class='table-bordered table-hover dataTable' cellspacing='1' cellpadding='1' align='Left' rules='all' style='border-width:0px;width:100%;margin-bottom: 0px'><tr>");
                 strBuilder.Append("<th class='align_center' scope='col'>STT</th>");
                 strBuilder.Append($"<th class='align_center' scope='col'>Nội dung</th>");
                 strBuilder.Append($"<th class='align_center' scope='col'>Số tiền</th>");
@@ -1526,10 +1523,9 @@ namespace Topup.Report.Domain.Services
 
                 strBuilder.Append("</table></div>");
                 strBuilder.Append("<br/><br/>");
-                strBuilder.Append("9=1+2-3+4-5-6+7-8<br/>");
-                strBuilder.Append("Team vui lòng kiểm tra số liệu và phản hồi.<br/>");
-                strBuilder.Append("Trân trọng cảm ơn,<br/>");
-                strBuilder.Append("Hệ thống Team.");
+                strBuilder.Append("Ghi chú: 10=1+2+3-4+5-6-7+8-9<br/>");
+                strBuilder.Append("Quý đối tác vui lòng kiểm tra và phản hồi giúp Gtel Mobile.<br/>");
+                strBuilder.Append("Trân trọng./.<br/>");
                 return strBuilder.ToString();
             }
             catch (Exception ex)

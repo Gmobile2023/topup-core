@@ -48,4 +48,5 @@ public interface ITopupGatewayService
         decimal value);
 
     int[] ConvertArrayCode(string extraInfo);
+    Task<TopupRequestLog> TopupRequestLogGetAsync(string providerCode,string transCode);
 }
