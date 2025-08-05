@@ -66,7 +66,7 @@ public class EmailSender : IEmailSender
                 $"Tài khoản {accountCode} có số dư sắp hết. Số dư hiện tại tại còn: {balance}. Vui lòng nạp tiền vào tài khoản để giao dịch không bị gián đoạn";
             mailMessage.AppendLine(msgBody);
             foreach (var item in emails)
-                ReplaceBodyAttachmentsAndSend(item, "Email cảnh báo số dư tài khoản sắp hết", emailTemplate,
+                _ = ReplaceBodyAttachmentsAndSend(item, "Email cảnh báo số dư tài khoản sắp hết", emailTemplate,
                     mailMessage);
 
             return true;
@@ -165,17 +165,13 @@ public class EmailSender : IEmailSender
         {
             var message = new MimeMessage();
 
-            // From
             message.From.Add(new MailboxAddress(
                 _configuration["EmailConfig:EmailDisplay"],
                 _configuration["EmailConfig:EmailAddress"]
             ));
-
-            // To
             message.To.Add(MailboxAddress.Parse(emailAddress));
             message.Subject = subject;
 
-            // Body
             emailTemplate.Replace("{EMAIL_BODY}", mailMessage.ToString());
 
             var builder = new BodyBuilder
@@ -183,22 +179,19 @@ public class EmailSender : IEmailSender
                 HtmlBody = emailTemplate.ToString()
             };
 
-            // Attachments
             if (pathAttachments != null && pathAttachments.Any())
             {
                 foreach (var filePath in pathAttachments)
                 {
-                    builder.Attachments.Add(filePath);
+                    await builder.Attachments.AddAsync(filePath); // Không cần async ở đây
                 }
             }
 
             message.Body = builder.ToMessageBody();
 
-            // SMTP client
             using var client = new SmtpClient();
-
-            // Optional: override HELO name (fix "Invalid HELO name" error)
-            client.LocalDomain = _configuration["EmailConfig:LocalDomain"]; // bạn có thể sửa theo nhu cầu
+            client.ServerCertificateValidationCallback = (sender, certificate, chain, errors) => true;
+            //client.LocalDomain = _configuration["EmailConfig:LocalDomain"];
 
             var smtpServer = _configuration["EmailConfig:SmtpServer"];
             var port = int.Parse(_configuration["EmailConfig:Port"]);
@@ -206,9 +199,17 @@ public class EmailSender : IEmailSender
             var password = _configuration["EmailConfig:EmailPassword"];
             var enableSsl = bool.Parse(_configuration["EmailConfig:EnableSsl"]);
 
-            await client.ConnectAsync(smtpServer, port,
-                enableSsl ? SecureSocketOptions.StartTls : SecureSocketOptions.None);
-            await client.AuthenticateAsync(email, password);
+            var socketOptions =
+                enableSsl ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTlsWhenAvailable;
+
+            await client.ConnectAsync(smtpServer, port, socketOptions);
+
+            // Check xem server có hỗ trợ authentication không
+            if (client.Capabilities.HasFlag(SmtpCapabilities.Authentication))
+            {
+                await client.AuthenticateAsync(email, password);
+            }
+
             await client.SendAsync(message);
             await client.DisconnectAsync(true);
         }
