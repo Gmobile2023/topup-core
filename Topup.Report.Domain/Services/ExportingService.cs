@@ -777,7 +777,7 @@ namespace Topup.Report.Domain.Services
                                        }).ToList();
 
                     mslist.AddRange(mslistBatch);
-                    string fileName = $"SALE.NHATTRAN_{provider}.{date.ToString("yyyyMMdd")}.txt";
+                    string fileName = $"SALE.SYSTEM_{provider}.{date.ToString("yyyyMMdd")}.txt";
                     var pathSave = $"{sourcePath.PathName}/{fileName}";
                     await IsWriteFileTxt(provider, headder, pathSave, mslist);
                 }
