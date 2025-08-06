@@ -18,7 +18,8 @@
         <PackageReference Include="AspNetCore.HealthChecks.Network" Version="8.0.1" />
         <PackageReference Include="AspNetCore.HealthChecks.OpenIdConnectServer" Version="8.0.1" />
         <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="8.0.2" />
-        <PackageReference Include="MailKit" Version="4.13.0" />
+        <PackageReference Include="MailKit" Version="3.2.0" />
+        <PackageReference Include="MimeKit" Version="3.2.0" />
         <PackageReference Include="MassTransit" Version="8.3.1" />
         <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.1" />
         <PackageReference Include="Microsoft.Orleans.Sdk" Version="8.2.0" />
