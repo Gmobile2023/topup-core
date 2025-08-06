@@ -18,15 +18,15 @@ using ServiceStack;
 
 namespace Topup.TopupGw.Components.Connectors.NhatTran;
 
-public class NhatTranStockConnector : IGatewayConnector
+public class SystemStockConnector : IGatewayConnector
 {
     //private readonly IServiceGateway _gateway; gunner
-    private readonly ILogger<NhatTranStockConnector> _logger;
+    private readonly ILogger<SystemStockConnector> _logger;
     private readonly ITopupGatewayService _topupGatewayService;
     private readonly GrpcClientHepper _grpcClient;
 
-    public NhatTranStockConnector(ITopupGatewayService topupGatewayService,
-        ILogger<NhatTranStockConnector> logger
+    public SystemStockConnector(ITopupGatewayService topupGatewayService,
+        ILogger<SystemStockConnector> logger
         ,
         GrpcClientHepper grpcClient)
     {

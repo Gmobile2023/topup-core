@@ -138,7 +138,7 @@ public class AppHost : AppHostBase, IHostingStartup
             .ReusedWithin(ReuseScope.None);
         container.RegisterAutoWiredAs<CardConnector, IGatewayConnector>(ProviderConst.CARD)
             .ReusedWithin(ReuseScope.None);
-        container.RegisterAutoWiredAs<NhatTranStockConnector, IGatewayConnector>(ProviderConst.NHATTRANSTOCK)
+        container.RegisterAutoWiredAs<SystemStockConnector, IGatewayConnector>(ProviderConst.SYSTEMSTOCK)
             .ReusedWithin(ReuseScope.None);
         container.RegisterAutoWiredAs<NhattranConnector, IGatewayConnector>(ProviderConst.NHATTRAN)
             .ReusedWithin(ReuseScope.None);

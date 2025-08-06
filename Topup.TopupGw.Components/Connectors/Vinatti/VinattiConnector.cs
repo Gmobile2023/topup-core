@@ -10,7 +10,6 @@ using Topup.TopupGw.Contacts.Enums;
 using Topup.TopupGw.Domains.BusinessServices;
 using Microsoft.Extensions.Logging;
 using ServiceStack;
-using MongoDB.Bson;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Crypto.Encodings;
@@ -20,8 +19,6 @@ using System.Security.Cryptography.X509Certificates;
 using System.Runtime.Serialization;
 using Org.BouncyCastle.Pkcs;
 using System.Linq;
-using Org.BouncyCastle.OpenSsl;
-using ServiceStack.Text.Controller;
 
 namespace Topup.TopupGw.Components.Connectors.Vinatti
 {

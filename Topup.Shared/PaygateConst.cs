@@ -63,7 +63,7 @@ public static class ProviderConst
     public const string CARD = "123CARD";
     public const string NHATTRAN = "NHATTRAN";
     public const string VIMO = "VIMO";
-    public const string NHATTRANSTOCK = "NHATTRANSTOCK";
+    public const string SYSTEMSTOCK = "SYSTEMSTOCK";
     public const string APPOTA = "APPOTA";
     public const string MTC = "MTC";
     public const string FAKE = "FAKE";

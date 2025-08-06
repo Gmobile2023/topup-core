@@ -59,7 +59,7 @@ public class TopupGwModule : Module
         builder.RegisterType<ImediaConnector>().Keyed<IGatewayConnector>(ProviderConst.IMEDIA_TEST);
         builder.RegisterType<CardConnector>().Keyed<IGatewayConnector>(ProviderConst.CARD);
         builder.RegisterType<NhattranConnector>().Keyed<IGatewayConnector>(ProviderConst.NHATTRAN);
-        builder.RegisterType<NhatTranStockConnector>().Keyed<IGatewayConnector>(ProviderConst.NHATTRANSTOCK);
+        builder.RegisterType<SystemStockConnector>().Keyed<IGatewayConnector>(ProviderConst.SYSTEMSTOCK);
         builder.RegisterType<WPayConnector>().Keyed<IGatewayConnector>(ProviderConst.WPAY);
         builder.RegisterType<PayooConnector>().Keyed<IGatewayConnector>(ProviderConst.PAYOO);
         builder.RegisterType<MobifoneConnector>().Keyed<IGatewayConnector>(ProviderConst.MOBIFONE);
